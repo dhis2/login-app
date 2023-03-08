@@ -1,0 +1,48 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"POT-Creation-Date: 2023-02-20T14:44:22.843Z\n"
+"PO-Revision-Date: 2023-02-20T14:44:22.843Z\n"
+
+msgid "Hello {{name}}"
+msgstr "Bonjour {{name}}"
+
+msgid "Incorrect username or password"
+msgstr "Identifiant ou mot de passe incorrect"
+
+msgid "This field is required"
+msgstr "Ce champ est obligatoire"
+
+msgid "Username"
+msgstr "Identifiant"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Log in"
+msgstr "Se connecter"
+
+msgid "Forgot password?"
+msgstr "Mot de passe oublié"
+
+msgid "Don't have an account?"
+msgstr "Pas de compte?"
+
+msgid "Create an account"
+msgstr "Créer un compte"
+
+msgid "Powered by DHIS2"
+msgstr "Propulsé par DHIS2"
+
+msgid "Reset password"
+msgstr "Reinitialiser le mot de passe"
+
+msgid ""
+"Enter your username below, a link to reset your password will be sent to "
+"your registered e-mail."
+msgstr ""
+"Saisir votre identifiant ci-dessous; un lien sera envoyé a votre adresse électronique enregistrée"

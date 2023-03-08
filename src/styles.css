@@ -1,0 +1,15 @@
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/roboto.min.css");
+@import url('http://localhost:8080/api/files/style/external');
+
+body {
+  padding: 0;
+  margin: 0;
+  background: #2a5298;
+}
+.App {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Roboto";
+  display: flex;
+  flex-direction: column;
+}
