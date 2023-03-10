@@ -1,0 +1,1 @@
+export const removeHTMLTags = (text) => text.replace(/(<([^>]+)>)/ig, '')

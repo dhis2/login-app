@@ -6,10 +6,11 @@ import React, {useState} from 'react'
 const loginMutation = {
     resource: 'auth/login',
     type: 'create',
-    data: ({ language }) => language,
+    data: ({username, password, twoFA}) => 
+        twoFA ? ({username, password, "2FA": twoFA}) : ({username, password}),
 }
 
-const useLogin = ({redirectTo}) => {
+export const useLogin = ({redirectTo}) => {
     const [twoFAVerificationRequired, setTwoFAVerificationRequired] = useState(false)
     const [twoFANotEnabled, setTwoFANotEnabled] = useState(false)
     const [otherError, setOtherError] = useState(false)
@@ -43,5 +44,3 @@ const useLogin = ({redirectTo}) => {
 
     return {login, cancelTwoFA, loading: loading || fetching, error: otherError, twoFAVerificationRequired, twoFANotEnabled}
 }
-
-export default useLogin

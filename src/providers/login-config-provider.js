@@ -1,7 +1,7 @@
 import { useDataQuery, useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { LoginConfigContext } from './login-config-context.js'
 import { Loader } from '../components/loader.js'
 
@@ -44,14 +44,14 @@ const defaultProviderValues = {
     applicationDescription: "This is the long application subtitle where there is a lot of information included in the subtitle so it must handle this much information",
     applicationFooter: "Application left side footer with a <a href='https://www.dhis2.org/'>link</a>",
     applicationNotification: "this is placeholder for the application notification.",
-    allowAccountRecovery: '',
+    allowAccountRecovery: true,
     applicationTitle: 'Example application title that could be very long',
     countryFlag: 'http://localhost:8080/dhis-web-commons/flags/norway.png',
     useCountryFlag: true,
     loginPageLogo: 'http://localhost:8080/api/staticContent/logo_front',
     useLoginPageLogo: true,
-    emailConfigured: false,
-    selfRegistrationEnabled: false,
+    emailConfigured: true,
+    selfRegistrationEnabled: true,
     selfRegistrationNoRecaptcha: false,
     uiLocale: 'en',
 }
@@ -71,9 +71,17 @@ const sampleTranslations = {
 //
 
 const LoginConfigProvider = ({ children }) => {
+
     const { data, loading, error } = useDataQuery(query,{variables:{locale:localStorage[localStorageLocaleKey]}})
-    const [translatedValues, setTranslatedValues] = useState(()=>({uiLocale: localStorage[localStorageLocaleKey] ||data?.loginConfig?.uiLocale || 'en'}))
-    console.log(translatedValues)
+    const [translatedValues, setTranslatedValues] = useState()
+
+    useEffect(()=>{        
+        // if there is a stored language, set it as i18next language
+        const userLanguage = localStorage[localStorageLocaleKey] ||data?.loginConfig?.uiLocale || 'en'
+        setTranslatedValues({uiLocale:userLanguage})
+        i18n.changeLanguage(userLanguage)
+    },[])
+
     const engine = useDataEngine()
 
     const refreshOnTranslation = async ({locale}) => {
@@ -110,8 +118,6 @@ const LoginConfigProvider = ({ children }) => {
          * provide an error boundary? or proceed with non-custom login page?
          */
     }
-
-    console.log(data)
 
     const providerValue = {
         ...defaultProviderValues,

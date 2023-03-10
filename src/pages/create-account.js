@@ -1,36 +1,40 @@
-import { InputField, Button } from "@dhis2/ui";
+import i18n from '@dhis2/d2-i18n'
+import { useDataMutation } from '@dhis2/app-runtime'
+import { ReactFinalForm, InputFieldFF,InputField, Button } from "@dhis2/ui";
+import {
+  composeValidators,
+  createCharacterLengthRange,
+  dhis2Password,
+  dhis2Username,
+  email,
+  internationalPhoneNumber,
+} from '@dhis2/ui-forms'
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles.css";
+// import "../styles.css";
 import { FormContainer } from "../components/form-container.js";
 import { FormSubtitle } from "../components/form-subtitle.js";
+import { useLoginConfig } from "../providers/use-login-config.js";
+import { useRedirectIfNotAllowed } from "../hooks/useRedirectIfNotAllowed.js";
+import { getIsRequired, removeHTMLTags } from '../helpers/index.js';
 
-export default function CreateAccount() {
-  return (
-    <>
-      <FormContainer width="70%" title="Create account">
-        <FormSubtitle>
-          <p>Enter your details below to create a application-title account.</p>
-          <p>
-            Already have an account?{" "}
-            <Link to="/">
-              <a href="#">Log in</a>
-            </Link>
-          </p>
-        </FormSubtitle>
-        <CreateAccountForm />
-      </FormContainer>
-    </>
-  );
+const selfRegisterMutation = {
+  resource: 'auth/register',
+  type: 'create',
+  data: (data) => (data),
 }
 
-const CreateAccountForm = () => (
+const XCreateAccountForm = () => {
+  const {uiLocale} = useLoginConfig()
+  return (
   <>
-    <div className="create-account-form">
-      <AccountFormSection title="Log in details">
-        <InputField label="Username" />
+    <div>
+      <AccountFormSection title={i18n.t('Log in details',{lng: uiLocale})}>
+        <div style={{width: '100%'}}>
+        <InputField width="90%" label={i18n.t("Username",{lng: uiLocale})} />
+        </div>
         <InputField
-          label="Password"
+          label={i18n.t('Password',{lng: uiLocale})}
           helpText="Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol
 "
         />
@@ -46,7 +50,7 @@ const CreateAccountForm = () => (
       <AccountFormActions />
     </div>
   </>
-);
+)}
 
 const AccountFormSection = (props) => (
   <>
@@ -75,21 +79,167 @@ const AccountFormSection = (props) => (
   </>
 );
 
-const AccountFormActions = () => (
+const InnerCreateAccountForm = ({handleSubmit, uiLocale, loading}) => {
+  const isRequired = getIsRequired(uiLocale)
+  return (
   <>
-    <div className="account-form-actions">
-      <Button primary>Create account</Button>
-      <Link to="/">
-        <Button secondary>Cancel</Button>
+  <form onSubmit={handleSubmit}>
+
+  <div>
+    <AccountFormSection title={i18n.t('Log in details',{lng: uiLocale})}>
+      <ReactFinalForm.Field
+        name="username"
+        label={i18n.t('Username',{lng: uiLocale})}
+        component={InputFieldFF}
+        className={'inputField'}
+        validate={composeValidators(isRequired,dhis2Username)}
+        readOnly={loading}
+      />
+      <ReactFinalForm.Field
+        name="password"
+        label={i18n.t('Password',{lng: uiLocale})}
+        component={InputFieldFF}
+        className={'inputField'}
+        validate={composeValidators(isRequired,dhis2Password)}
+        type='password'
+        readOnly={loading}
+        helpText={i18n.t("Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol")}
+      />
+    </AccountFormSection>
+    <AccountFormSection title={i18n.t("Personal details",{lng:uiLocale})}>
+      <ReactFinalForm.Field
+        name="firstName"
+        label={i18n.t('First name',{lng: uiLocale})}
+        component={InputFieldFF}
+        className={'inputField'}
+        validate={composeValidators(isRequired,createCharacterLengthRange(2,160))}
+        readOnly={loading}
+      />
+      <ReactFinalForm.Field
+        name="surname"
+        label={i18n.t('Last name',{lng: uiLocale})}
+        component={InputFieldFF}
+        className={'inputField'}
+        validate={composeValidators(isRequired,createCharacterLengthRange(2,160))}
+        readOnly={loading}
+      />
+      <ReactFinalForm.Field
+        name="email"
+        label={i18n.t('Email',{lng: uiLocale})}
+        component={InputFieldFF}
+        className={'inputField'}
+        validate={composeValidators(isRequired,email)}
+        readOnly={loading}
+      />
+      <ReactFinalForm.Field
+        name="phoneNumber"
+        label={i18n.t('Phone number',{lng: uiLocale})}
+        component={InputFieldFF}
+        className={'inputField'}
+        validate={composeValidators(isRequired,internationalPhoneNumber)}
+        readOnly={loading}
+      />
+      <ReactFinalForm.Field
+        name="employer"
+        label={i18n.t('Employer',{lng: uiLocale})}
+        component={InputFieldFF}
+        className={'inputField'}
+        validate={isRequired}
+        readOnly={loading}
+      />      
+      </AccountFormSection>    
+
+  </div>         
+  <div className="account-form-actions">
+      <Button primary>{i18n.t('Create account',{lng:uiLocale})}</Button>
+      <Link className='no-underline' to="/">
+        <Button secondary>{i18n.t('Cancel',{lng:uiLocale})}</Button>
       </Link>
-    </div>
-    <style>
+  </div>
+
+    
+  </form>
+  <style>
       {`
-.account-form-actions {
-  display: flex;
-  gap: var(--spacers-dp8);
-}
-`}
+        .inputField {
+          margin-bottom: var(--spacers-dp8);
+        }
+        .hiddenFields {
+          display:none;
+        }
+        .formButtons {
+          display: flex;
+          flex-direction: column;
+          gap: var(--spacers-dp8);          
+          margin-bottom: var(--spacers-dp16);
+        }
+        .reset-btn {
+          width: 100%;
+        }
+        .no-underline {
+          text-decoration: none;
+        }
+        .account-form-actions {
+          display: flex;
+          gap: var(--spacers-dp8);          
+        }
+        .no-underline {
+          text-decoration: none;
+        }
+      `}
     </style>
   </>
-);
+)
+}
+
+export const CreateAccountForm = ({uiLocale}) => {
+  // depends on https://dhis2.atlassian.net/browse/DHIS2-14615
+  const [resetPassword, {loading, fetching, error, data}] = useDataMutation(selfRegisterMutation)
+  
+  const handleSelfRegister = (values) => {
+    console.log(values)
+    resetPassword(values)
+  }
+  return (
+    <>
+    <div>
+      <div>
+        {error &&
+          <FormNotice title={i18n.t('Something went wrong, and we could not register your account', {lng: uiLocale})} error={true}>
+            <p>{error?.message}</p>
+          </FormNotice>
+        }
+        <ReactFinalForm.Form onSubmit={handleSelfRegister}>
+            {({ handleSubmit }) => <InnerCreateAccountForm handleSubmit={handleSubmit} uiLocale={uiLocale} loading={loading || fetching}/>}
+        </ReactFinalForm.Form>
+      </div>
+    </div>
+    </>
+
+  )
+}
+
+const requiredPropsForCreateAccount = ['selfRegistrationEnabled']
+
+const CreateAccountPage = () => {
+  const {applicationTitle,uiLocale} = useLoginConfig()
+  useRedirectIfNotAllowed(requiredPropsForCreateAccount)
+  return (
+    <>
+      <FormContainer width="368px" title={i18n.t('Create account',{lng:uiLocale})}>
+        <FormSubtitle>
+          <p>{i18n.t('Enter your details below to create a {{- application_name}} account.',{lng:uiLocale, application_name: removeHTMLTags(applicationTitle)})}</p>
+          <p>
+            {i18n.t('Already have an account?',{lng:uiLocale})}{' '}
+            <Link to="/">
+              {i18n.t('Log in.',{lng:uiLocale})}
+            </Link>
+          </p>
+        </FormSubtitle>
+        <CreateAccountForm />
+      </FormContainer>
+    </>
+  );
+}
+
+export default CreateAccountPage

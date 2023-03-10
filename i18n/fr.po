@@ -46,3 +46,40 @@ msgid ""
 "your registered e-mail."
 msgstr ""
 "Saisir votre identifiant ci-dessous; un lien sera envoyé a votre adresse électronique enregistrée"
+
+msgid "Verify and log in"
+msgstr "Vérifier et se connecter"
+
+msgid "Authentication code"
+msgstr "Code d'authentification"
+
+msgid "Logging in"
+msgstr "Se connectant..."
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Incorrect username or password"
+msgstr "Identifiant ou mot de passe incorrect"
+
+msgid "Two-factor authentication"
+msgstr "Authentification à deux facteurs"
+
+msgid "Enter the code from your two-factor authentication app to log in."
+msgstr "Saisir le code fourni par votre applis d'authentification pour se connecter."
+
+msgid "Username or email"
+msgstr "Identifiant ou adresse électronique"
+
+msgid "Sending..."
+msgstr "Envoyant..."
+
+msgid "Send password reset request form"
+msgstr "Envoyer fiche d'enquête pour reinitialiser le mot de passe"
+
+msgid ""
+"We’ve sent an email with a password reset link to your registered email "
+"address."
+msgstr ""
+"Nous avons envoyé un lien pour reinitialiser votre mot de passe à votre adresse "
+"électronique enregistrée."

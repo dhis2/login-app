@@ -1,2 +1,2 @@
 export {useLogin} from './useLogin'
-export {useTranslation} from './useTranslation'
+export {useRedirectIfNotAllowed} from './useRedirectIfNotAllowed'

@@ -1,11 +1,11 @@
 import { NoticeBox } from "@dhis2/ui";
 import React from "react";
 
-export const FormError = (props) => (
+export const FormNotice = ({title, error, valid, children}) => (
   <>
     <div className="form-error">
-      <NoticeBox error title={props.title}>
-        {props.children}
+      <NoticeBox valid={valid} error={error} title={title}>
+        {children}
       </NoticeBox>
     </div>
     <style>
@@ -17,3 +17,8 @@ export const FormError = (props) => (
     </style>
   </>
 );
+
+FormNotice.defaultProps = {
+  error: false,
+  valid: false,
+}

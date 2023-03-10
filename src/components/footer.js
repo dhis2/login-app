@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="footer-left">
           <span className="powered-by">
             <a href="https://www.dhis2.org" rel="noopener noreferrer" target="_blank">
-              {i18n.t('Powered by DHIS2')}
+              {i18n.t('Powered by DHIS2',{lng:uiLocale})}
             </a>
           </span>
           {applicationFooter &&

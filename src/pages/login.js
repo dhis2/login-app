@@ -2,17 +2,17 @@ import i18n from '@dhis2/d2-i18n'
 import { 
   ReactFinalForm,
   InputFieldFF,
-  Button } from "@dhis2/ui";
-import React, { useEffect, useState, useRef } from "react";
+  Button } from "@dhis2/ui"
+import React, { useEffect, useState, useRef } from "react"
 import { useForm } from 'react-final-form'
-import { Link } from "react-router-dom";
-import { FormContainer } from "../components/form-container.js";
-import { FormError } from "../components/form-error.js";
-import { FormSubtitle } from "../components/form-subtitle.js";
+import { Link } from "react-router-dom"
+import { FormContainer } from "../components/form-container.js"
+import { FormNotice } from "../components/form-notice.js"
+import { FormSubtitle } from "../components/form-subtitle.js"
 import {ApplicationNotification} from '../components/application-notification'
-import useLogin from '../hooks/useLogin'
-import { useLoginConfig } from '../providers/use-login-config.js';
-import { isRequired } from '../helpers/validators.js';
+import { useLogin } from '../hooks/index.js'
+import { useLoginConfig } from '../providers/use-login-config.js'
+import { getIsRequired } from '../helpers/validators.js'
 
 export default function LoginPage() {
   return (
@@ -24,20 +24,28 @@ export default function LoginPage() {
 }
 const genericUser = 'some person'
 
-const Links = () => (
+const Links = () => {
+  const {allowAccountRecovery, emailConfigured, selfRegistrationEnabled, uiLocale} = useLoginConfig()
+  
+  return (
   <>
   <div className="links">
-  <span>
+  {allowAccountRecovery && emailConfigured &&
+    <span>    
     <Link to="/reset-password">
-      <a href="#">{i18n.t('Forgot password?')}</a>
+      {i18n.t('Forgot password?',{lng:uiLocale})}
     </Link>
-  </span>
+    </span>
+  }
+  {selfRegistrationEnabled &&
   <span>
-    {i18n.t("Don't have an account?")}{" "}
-    <Link to="/create-account">
-      <a href="#">{i18n.t('Create an account')}</a>
-    </Link>
-  </span>
+  {i18n.t("Don't have an account?",{lng:uiLocale})}{" "}
+  <Link to="/create-account">
+    {i18n.t('Create an account',{lng:uiLocale})}
+  </Link>
+</span>  
+  }
+
   </div>
     <style>
     {`
@@ -54,7 +62,8 @@ const Links = () => (
     `}
   </style>
   </>
-)
+)}
+
 
 const InnerLoginForm = ({handleSubmit, twoFAVerificationRequired, cancelTwoFA, uiLocale, loading}) => {
   const form = useForm()
@@ -67,7 +76,7 @@ const InnerLoginForm = ({handleSubmit, twoFAVerificationRequired, cancelTwoFA, u
     ref?.current?.focus()
   }
   const loginButtonText = twoFAVerificationRequired ? i18n.t('Verify and log in',{lng: uiLocale}) : i18n.t('Log in',{lng:uiLocale})
-
+  const isRequired = getIsRequired(uiLocale)
 return (
   <>
   <form onSubmit={handleSubmit}>
@@ -75,7 +84,7 @@ return (
   <div className={twoFAVerificationRequired ? 'hiddenFields' : ''}>
     <ReactFinalForm.Field
       name="username"
-      label={i18n.t('Username')}
+      label={i18n.t('Username',{lng:uiLocale})}
       
       component={InputFieldFF}
       className={'inputField'}
@@ -163,7 +172,7 @@ const LoginForm = ({setTwoFAVerificationRequired, uiLocale}) => {
     return null
   }
   const handleLogin = (values) => {
-    login({"language":values.username})
+    login({ username: values.username, password: values.password, twoFA: values.twoFA})
   }
 
   return (
@@ -171,7 +180,7 @@ const LoginForm = ({setTwoFAVerificationRequired, uiLocale}) => {
     <div className="form-fields">
       <div className={'styles.container'}>
         {error &&
-          <FormError title={i18n.t('Incorrect username or password', {lng: uiLocale})} />
+          <FormNotice title={i18n.t('Incorrect username or password', {lng: uiLocale})} error={true}/>
         }
         <ReactFinalForm.Form onSubmit={handleLogin}>
             {({ handleSubmit }) => <InnerLoginForm handleSubmit={handleSubmit} twoFAVerificationRequired={twoFAVerificationRequired} cancelTwoFA={cancelTwoFA} uiLocale={uiLocale} loading={loading}/>}
