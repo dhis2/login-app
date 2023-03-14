@@ -1,38 +1,57 @@
 import i18n from '@dhis2/d2-i18n'
-import { SingleSelectField, SingleSelectOption } from "@dhis2/ui";
-import React from "react";
-import { useLoginConfig } from '../providers';
+import { SingleSelectField, SingleSelectOption } from '@dhis2/ui'
+import React from 'react'
+import { useLoginConfig } from '../providers/index.js'
 // import "../styles.css";
 
 export default function Footer() {
-  const { applicationFooter, refreshOnTranslation, localesUI, uiLocale} = useLoginConfig()
+    const { applicationFooter, refreshOnTranslation, localesUI, uiLocale } =
+        useLoginConfig()
 
-  return (
-    <>
-      <div className="footer">
-        <div className="footer-left">
-          <span className="powered-by">
-            <a href="https://www.dhis2.org" rel="noopener noreferrer" target="_blank">
-              {i18n.t('Powered by DHIS2',{lng:uiLocale})}
-            </a>
-          </span>
-          {applicationFooter &&
-            <span className="footer-left-content" dangerouslySetInnerHTML={{"__html": applicationFooter}}></span>
-          }
-          
-
-        </div>
-        <div className="footer-right">
-          <SingleSelectField dense prefix="Language" selected={uiLocale ?? 'en'} onChange={({selected})=>{refreshOnTranslation({locale:selected})}}>
-            {localesUI && localesUI.map(locale=>(
-              <SingleSelectOption key={locale.locale} value={locale.locale} label={locale.name} />
-            ))}
-
-          </SingleSelectField>
-        </div>
-      </div>
-      <style>
-        {`
+    return (
+        <>
+            <div className="footer">
+                <div className="footer-left">
+                    <span className="powered-by">
+                        <a
+                            href="https://www.dhis2.org"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                        >
+                            {i18n.t('Powered by DHIS2', { lng: uiLocale })}
+                        </a>
+                    </span>
+                    {applicationFooter && (
+                        <span
+                            className="footer-left-content"
+                            dangerouslySetInnerHTML={{
+                                __html: applicationFooter,
+                            }}
+                        ></span>
+                    )}
+                </div>
+                <div className="footer-right">
+                    <SingleSelectField
+                        dense
+                        prefix="Language"
+                        selected={uiLocale ?? 'en'}
+                        onChange={({ selected }) => {
+                            refreshOnTranslation({ locale: selected })
+                        }}
+                    >
+                        {localesUI &&
+                            localesUI.map((locale) => (
+                                <SingleSelectOption
+                                    key={locale.locale}
+                                    value={locale.locale}
+                                    label={locale.name}
+                                />
+                            ))}
+                    </SingleSelectField>
+                </div>
+            </div>
+            <style>
+                {`
     .footer {
       margin-top: auto;
       width: 100%;
@@ -73,7 +92,7 @@ export default function Footer() {
     }
     
     `}
-      </style>
-    </>
-  );
+            </style>
+        </>
+    )
 }

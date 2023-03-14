@@ -1,13 +1,14 @@
-import React from "react";
+import PropTypes from 'prop-types'
+import React from 'react'
 
 export const FormContainer = ({ children, title, width }) => {
-  return (
-    <>
-      <div className="form-container">
-        <p className="form-title">{title}</p>
-        {children}
-      </div>
-      <style>{`
+    return (
+        <>
+            <div className="form-container">
+                <p className="form-title">{title}</p>
+                {children}
+            </div>
+            <style>{`
         .form-container {
           margin: 0 auto var(--spacers-dp24);
           max-width: ${width};
@@ -22,6 +23,15 @@ export const FormContainer = ({ children, title, width }) => {
           color: var(--colors-grey900);
         }
       `}</style>
-    </>
-  );
-};
+        </>
+    )
+}
+
+FormContainer.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+    ]).isRequired,
+    title: PropTypes.string,
+    width: PropTypes.string,
+}

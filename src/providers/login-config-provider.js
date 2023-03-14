@@ -1,25 +1,28 @@
 import { useDataQuery, useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
-import React, {useEffect, useState} from 'react'
-import { LoginConfigContext } from './login-config-context.js'
+import React, { useEffect, useState } from 'react'
 import { Loader } from '../components/loader.js'
+import { LoginConfigContext } from './login-config-context.js'
 
 const query = {
     loginConfig: {
         // This is generic enpoint but will only return
         // exchanges a user is allowed to see
         resource: 'auth/loginConfig',
-        params: ({locale}) => locale ? ({
-            paging: false,
-            locale,
-        }) : ({
-            paging: false,
-        }),
+        params: ({ locale }) =>
+            locale
+                ? {
+                      paging: false,
+                      locale,
+                  }
+                : {
+                      paging: false,
+                  },
     },
     localesUI: {
-        resource: 'locales/ui'
-    }
+        resource: 'locales/ui',
+    },
 }
 
 const localStorageLocaleKey = 'dhis2.locale.ui'
@@ -29,88 +32,113 @@ const translationsQuery = {
         // This is generic enpoint but will only return
         // exchanges a user is allowed to see
         resource: 'auth/loginConfig',
-        params: ({locale}) => ({
+        params: ({ locale }) => ({
             paging: false,
             locale,
         }),
     },
 }
 
-const translatableValues = ['applicationDescription', 'applicationFooter', 'applicationNotification', 'applicationTitle']
+const translatableValues = [
+    'applicationDescription',
+    'applicationFooter',
+    'applicationNotification',
+    'applicationTitle',
+]
 
 // defaults for testing while endpoints are in development
 
 const defaultProviderValues = {
-    applicationDescription: "This is the long application subtitle where there is a lot of information included in the subtitle so it must handle this much information",
-    applicationFooter: "Application left side footer with a <a href='https://www.dhis2.org/'>link</a>",
-    applicationNotification: "this is placeholder for the application notification.",
+    applicationDescription:
+        'This is the long application subtitle where there is a lot of information included in the subtitle so it must handle this much information',
+    applicationFooter:
+        "Application left side footer with a <a href='https://www.dhis2.org/'>link</a>",
+    applicationNotification:
+        'this is placeholder for the application notification.',
     allowAccountRecovery: true,
     applicationTitle: 'Example application title that could be very long',
     countryFlag: 'http://localhost:8080/dhis-web-commons/flags/norway.png',
     useCountryFlag: true,
     loginPageLogo: 'http://localhost:8080/api/staticContent/logo_front',
     useLoginPageLogo: true,
-    emailConfigured: true,
+    emailConfigured: false,
     selfRegistrationEnabled: true,
     selfRegistrationNoRecaptcha: false,
     uiLocale: 'en',
 }
 
-const defaultLocales = [{"locale":"ar","name":"Arabic"},,{"locale":"en","name":"English"},{"locale":"fr","name":"French"},{"locale":"nb","name":"Norwegian"},{"locale":"es","name":"Spanish"}]
+const defaultLocales = [
+    { locale: 'ar', name: 'Arabic' },
+    { locale: 'en', name: 'English' },
+    { locale: 'fr', name: 'French' },
+    { locale: 'nb', name: 'Norwegian' },
+    { locale: 'es', name: 'Spanish' },
+]
 
 const sampleTranslations = {
-    "fr": {
-        applicationTitle: "Example d'un titre d'applis qui pourrait être très long"
+    fr: {
+        applicationTitle:
+            "Example d'un titre d'applis qui pourrait être très long",
     },
-    "nb": {
-        applicationTitle: "Eksempel på en applikasjonstittel som kunne være veldig lang",
-        applicationDescription: "Dette er den lange applikasjonsundertittelen som inneholder veldig mye informasjon slik at appen må kunne håndtere sånne innholdslengder"
-    }
+    nb: {
+        applicationTitle:
+            'Eksempel på en applikasjonstittel som kunne være veldig lang',
+        applicationDescription:
+            'Dette er den lange applikasjonsundertittelen som inneholder veldig mye informasjon slik at appen må kunne håndtere sånne innholdslengder',
+    },
 }
 
 //
 
 const LoginConfigProvider = ({ children }) => {
-
-    const { data, loading, error } = useDataQuery(query,{variables:{locale:localStorage[localStorageLocaleKey]}})
+    const { data, loading, error } = useDataQuery(query, {
+        variables: { locale: localStorage[localStorageLocaleKey] },
+    })
     const [translatedValues, setTranslatedValues] = useState()
 
-    useEffect(()=>{        
+    useEffect(() => {
         // if there is a stored language, set it as i18next language
-        const userLanguage = localStorage[localStorageLocaleKey] ||data?.loginConfig?.uiLocale || 'en'
-        setTranslatedValues({uiLocale:userLanguage})
+        const userLanguage =
+            localStorage[localStorageLocaleKey] ||
+            data?.loginConfig?.uiLocale ||
+            'en'
+        setTranslatedValues({ uiLocale: userLanguage })
         i18n.changeLanguage(userLanguage)
-    },[])
+    }, [])
 
     const engine = useDataEngine()
 
-    const refreshOnTranslation = async ({locale}) => {
+    const refreshOnTranslation = async ({ locale }) => {
         if (!engine) {
             return
         }
         let updatedValues
         try {
-            updatedValues = await engine.query(translationsQuery,{variables: {locale}})
+            updatedValues = await engine.query(translationsQuery, {
+                variables: { locale },
+            })
         } catch (e) {
             console.error(e)
             updatedValues = sampleTranslations[locale] ?? {}
         }
         i18n.changeLanguage(locale)
-        const updatedTranslations = translatableValues.reduce((translations, currentTranslationKey)=>{
-            if (updatedValues[currentTranslationKey]) {
-                translations[currentTranslationKey] = updatedValues[currentTranslationKey]
-            }
-            
-            return translations
-        },{})
-        setTranslatedValues({...updatedTranslations, uiLocale: locale})
+        const updatedTranslations = translatableValues.reduce(
+            (translations, currentTranslationKey) => {
+                if (updatedValues[currentTranslationKey]) {
+                    translations[currentTranslationKey] =
+                        updatedValues[currentTranslationKey]
+                }
+
+                return translations
+            },
+            {}
+        )
+        setTranslatedValues({ ...updatedTranslations, uiLocale: locale })
         localStorage.setItem(localStorageLocaleKey, locale)
-        
-        
     }
 
     if (loading) {
-        return <Loader/>
+        return <Loader />
     }
 
     if (error) {
@@ -124,7 +152,7 @@ const LoginConfigProvider = ({ children }) => {
         ...data?.loginConfig,
         ...translatedValues,
         localesUI: data?.localesUI || defaultLocales,
-        refreshOnTranslation
+        refreshOnTranslation,
     }
 
     return (

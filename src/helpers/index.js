@@ -1,2 +1,2 @@
-export {getIsRequired} from './validators'
-export {removeHTMLTags} from './removeHTMLTags'
+export { getIsRequired } from './validators.js'
+export { removeHTMLTags } from './removeHTMLTags.js'

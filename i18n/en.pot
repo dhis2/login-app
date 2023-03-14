@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2023-03-10T15:40:15.434Z\n"
-"PO-Revision-Date: 2023-03-10T15:40:15.434Z\n"
+"POT-Creation-Date: 2023-03-13T16:12:10.425Z\n"
+"PO-Revision-Date: 2023-03-13T16:12:10.425Z\n"
 
 msgid "Powered by DHIS2"
 msgstr "Powered by DHIS2"
@@ -44,23 +44,45 @@ msgstr "Phone number"
 msgid "Employer"
 msgstr "Employer"
 
+msgid "Creating..."
+msgstr "Creating..."
+
 msgid "Create account"
 msgstr "Create account"
 
 msgid "Cancel"
 msgstr "Cancel"
 
-msgid "Something went wrong, and we could not register your account"
-msgstr "Something went wrong, and we could not register your account"
-
-msgid "Enter your details below to create a application-title account."
-msgstr "Enter your details below to create a application-title account."
+msgid "Enter your details below to create a {{- applicationName}} account."
+msgstr "Enter your details below to create a {{- applicationName}} account."
 
 msgid "Already have an account?"
 msgstr "Already have an account?"
 
 msgid "Log in."
 msgstr "Log in."
+
+msgid "Something went wrong, and we could not register your account"
+msgstr "Something went wrong, and we could not register your account"
+
+msgid "Verify your email address"
+msgstr "Verify your email address"
+
+msgid ""
+"Check your email for a link to verify your email address and finish setting "
+"up your account."
+msgstr ""
+"Check your email for a link to verify your email address and finish setting "
+"up your account."
+
+msgid "Account created successfully"
+msgstr "Account created successfully"
+
+msgid "You can use your username and password to log in."
+msgstr "You can use your username and password to log in."
+
+msgid "Back to log in page"
+msgstr "Back to log in page"
 
 msgid "Forgot password?"
 msgstr "Forgot password?"

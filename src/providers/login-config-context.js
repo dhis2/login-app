@@ -1,21 +1,21 @@
 import { createContext } from 'react'
 
 const LoginConfigContext = createContext({
-    applicationDescription: "undefined",
-    applicationFooter: "undefined",
-    applicationNotification: "undefined",
+    applicationDescription: 'undefined',
+    applicationFooter: 'undefined',
+    applicationNotification: 'undefined',
     allowAccountRecovery: false,
-    applicationTitle: "undefined",
-    countryFlag: "undefined",
+    applicationTitle: 'undefined',
+    countryFlag: 'undefined',
     useCountryFlag: false,
-    loginPageLogo: "undefined",
+    loginPageLogo: 'undefined',
     useLoginPageLogo: false,
     emailConfigured: false,
     selfRegistrationEnabled: false,
     selfRegistrationNoRecaptcha: false,
-    uiLocale: "undefined",
+    uiLocale: 'undefined',
     localesUI: [],
-    refreshOnTranslation: "undefined (function)"
+    refreshOnTranslation: 'undefined (function)',
 })
 
 export { LoginConfigContext }

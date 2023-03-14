@@ -1,11 +1,12 @@
-import React from "react";
+import PropTypes from 'prop-types'
+import React from 'react'
 
-export const FormSubtitle = (props) => {
-  return (
-    <>
-      <div className="form-subtitle">{props.children}</div>
-      <style>
-        {`
+export const FormSubtitle = ({ children }) => {
+    return (
+        <>
+            <div className="form-subtitle">{children}</div>
+            <style>
+                {`
     .form-subtitle {
       font-size: 14px;
       line-height: 17px;
@@ -19,7 +20,14 @@ export const FormSubtitle = (props) => {
       color: var(--colors-grey700);
     }
     `}
-      </style>
-    </>
-  );
-};
+            </style>
+        </>
+    )
+}
+
+FormSubtitle.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+    ]).isRequired,
+}

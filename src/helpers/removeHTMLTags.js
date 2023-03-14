@@ -1,1 +1,1 @@
-export const removeHTMLTags = (text) => text.replace(/(<([^>]+)>)/ig, '')
+export const removeHTMLTags = (text) => text.replace(/(<([^>]+)>)/gi, '')
