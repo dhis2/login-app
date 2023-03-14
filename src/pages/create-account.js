@@ -12,6 +12,7 @@ import {
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { BackToLoginButton } from '../components/back-to-login-button.js'
 // import "../styles.css";
 import { FormContainer } from '../components/form-container.js'
 import { FormNotice } from '../components/form-notice.js'
@@ -254,18 +255,24 @@ export const CreateAccountForm = () => {
                     {error && (
                         <>
                             {emailConfigured && (
-                                <FormNotice
-                                    title={i18n.t('Verify your email address', {
-                                        lng: uiLocale,
-                                    })}
-                                >
-                                    <span>
-                                        {i18n.t(
-                                            'Check your email for a link to verify your email address and finish setting up your account.',
-                                            { lng: uiLocale }
+                                <>
+                                    <FormNotice
+                                        title={i18n.t(
+                                            'Verify your email address',
+                                            {
+                                                lng: uiLocale,
+                                            }
                                         )}
-                                    </span>
-                                </FormNotice>
+                                    >
+                                        <span>
+                                            {i18n.t(
+                                                'Check your email for a link to verify your email address and finish setting up your account.',
+                                                { lng: uiLocale }
+                                            )}
+                                        </span>
+                                    </FormNotice>
+                                    <BackToLoginButton />
+                                </>
                             )}
                             {!emailConfigured && (
                                 <FormNotice
@@ -286,13 +293,7 @@ export const CreateAccountForm = () => {
                                 </FormNotice>
                             )}
 
-                            <Link className="no-underline" to="/">
-                                <Button secondary>
-                                    {i18n.t('Back to log in page', {
-                                        lng: uiLocale,
-                                    })}
-                                </Button>
-                            </Link>
+                            <BackToLoginButton />
                         </>
                     )}
                     {!error && (
@@ -308,13 +309,6 @@ export const CreateAccountForm = () => {
                     )}
                 </div>
             </div>
-            <style>
-                {`
-        .no-underline {
-          text-decoration: none;
-        }    
-      `}
-            </style>
         </>
     )
 }

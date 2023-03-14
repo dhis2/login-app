@@ -8,9 +8,6 @@ msgstr ""
 "POT-Creation-Date: 2023-02-20T14:44:22.843Z\n"
 "PO-Revision-Date: 2023-02-20T14:44:22.843Z\n"
 
-msgid "Hello {{name}}"
-msgstr "Bonjour {{name}}"
-
 msgid "Incorrect username or password"
 msgstr "Identifiant ou mot de passe incorrect"
 
@@ -45,7 +42,7 @@ msgid ""
 "Enter your username below, a link to reset your password will be sent to "
 "your registered e-mail."
 msgstr ""
-"Saisir votre identifiant ci-dessous; un lien sera envoyé a votre adresse électronique enregistrée"
+"Saisir votre identifiant ci-dessous; un lien sera envoyé a votre adresse email enregistrée"
 
 msgid "Verify and log in"
 msgstr "Vérifier et se connecter"
@@ -59,8 +56,8 @@ msgstr "Se connectant..."
 msgid "Cancel"
 msgstr "Annuler"
 
-msgid "Incorrect username or password"
-msgstr "Identifiant ou mot de passe incorrect"
+msgid "Incorrect username or email"
+msgstr "Identifiant ou adresse email incorrect"
 
 msgid "Two-factor authentication"
 msgstr "Authentification à deux facteurs"
@@ -69,7 +66,7 @@ msgid "Enter the code from your two-factor authentication app to log in."
 msgstr "Saisir le code fourni par votre applis d'authentification pour se connecter."
 
 msgid "Username or email"
-msgstr "Identifiant ou adresse électronique"
+msgstr "Identifiant ou adresse email"
 
 msgid "Sending..."
 msgstr "Envoyant..."
@@ -82,4 +79,65 @@ msgid ""
 "address."
 msgstr ""
 "Nous avons envoyé un lien pour reinitialiser votre mot de passe à votre adresse "
-"électronique enregistrée."
+"email enregistrée."
+
+msgid "Log in details"
+msgstr "Détails de connexion"
+
+msgid "Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
+msgstr "Au moins 8 caractères, dont 1 lettre majuscule, 1 lettre miniscule, 1 chiffre, 1 symbole"
+
+msgid "Personal details"
+msgstr "Détails personnels"
+
+msgid "First name"
+msgstr "Prénom"
+
+msgid "Last name"
+msgstr "Nom"
+
+msgid "Email"
+msgstr "Adresse email"
+
+msgid "Phone number"
+msgstr "Numéro de téléphone"
+
+msgid "Employer"
+msgstr "Employeur"
+
+msgid "Create account"
+msgstr "Créer un compte"
+
+msgid "Creating..."
+msgstr "Création en cours..."
+
+msgid "Enter your details below to create a {{- applicationName}} account."
+msgstr "Saisir vos détails ci-dessous pour créer un compte sur {{- applicationName}}."
+
+msgid "Already have an account?"
+msgstr "Avez-vous déjà un compte?"
+
+msgid "Log in."
+msgstr "Connectez-vous."
+
+msgid "Something went wrong, and we could not register your account"
+msgstr "Un problème s'est produit, et vous n'avez pas réussi à créer votre compte."
+
+msgid "Verify your email address"
+msgstr "Vérifiez votre adresse email"
+
+msgid ""
+"Check your email for a link to verify your email address and finish setting "
+"up your account."
+msgstr ""
+"Consultez vos mails pour un lien pour vérifier votre adresse email et finir "
+"la création de votre compte."
+
+msgid "Account created successfully"
+msgstr "Compte a été créé avec succès"
+
+msgid "You can use your username and password to log in."
+msgstr "Vous pouvez utiliser votre identifiant et mot de passe pour vous connecter."
+
+msgid "Back to log in page"
+msgstr "Retournez à la page de connexion"

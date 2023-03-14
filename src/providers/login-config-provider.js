@@ -61,9 +61,10 @@ const defaultProviderValues = {
     useCountryFlag: true,
     loginPageLogo: 'http://localhost:8080/api/staticContent/logo_front',
     useLoginPageLogo: true,
-    emailConfigured: false,
+    emailConfigured: true,
     selfRegistrationEnabled: true,
     selfRegistrationNoRecaptcha: false,
+    systemUiLocale: 'en',
     uiLocale: 'en',
 }
 

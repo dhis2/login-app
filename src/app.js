@@ -7,7 +7,8 @@ import Header from './components/header.js'
 import i18n from './locales/index.js' // eslint-disable-line
 import CreateAccountPage from './pages/create-account.js'
 import LoginPage from './pages/login.js'
-import PasswordResetFormPage from './pages/password-reset.js'
+import PasswordResetRequestFormPage from './pages/password-reset-request.js'
+import PasswordUpdatePage from './pages/password-update.js'
 import { LoginConfigProvider } from './providers/index.js'
 import './styles.css'
 import './externalStyles.css'
@@ -23,7 +24,11 @@ const AppContent = () => {
                 <Route path="/create-account" element={<CreateAccountPage />} />
                 <Route
                     path="/reset-password"
-                    element={<PasswordResetFormPage />}
+                    element={<PasswordResetRequestFormPage />}
+                />
+                <Route
+                    path="/update-password"
+                    element={<PasswordUpdatePage />}
                 />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>

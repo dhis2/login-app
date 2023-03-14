@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2023-03-13T16:12:10.425Z\n"
-"PO-Revision-Date: 2023-03-13T16:12:10.425Z\n"
+"POT-Creation-Date: 2023-03-14T14:24:33.518Z\n"
+"PO-Revision-Date: 2023-03-14T14:24:33.518Z\n"
 
 msgid "Powered by DHIS2"
 msgstr "Powered by DHIS2"
@@ -122,6 +122,9 @@ msgstr "Sending..."
 
 msgid "Send password reset request form"
 msgstr "Send password reset request form"
+
+msgid "Incorrect username or email"
+msgstr "Incorrect username or email"
 
 msgid ""
 "We’ve sent an email with a password reset link to your registered email "

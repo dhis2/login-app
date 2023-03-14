@@ -20,9 +20,8 @@ export default function LoginPage() {
         </>
     )
 }
-const genericUser = 'some person'
 
-const Links = () => {
+const Links = ({ formUserName }) => {
     const {
         allowAccountRecovery,
         emailConfigured,
@@ -35,7 +34,7 @@ const Links = () => {
             <div className="links">
                 {allowAccountRecovery && emailConfigured && (
                     <span>
-                        <Link to="/reset-password">
+                        <Link to={`/reset-password?username=${formUserName}`}>
                             {i18n.t('Forgot password?', { lng: uiLocale })}
                         </Link>
                     </span>
@@ -67,12 +66,17 @@ const Links = () => {
     )
 }
 
+Links.propTypes = {
+    formUserName: PropTypes.string,
+}
+
 const InnerLoginForm = ({
     handleSubmit,
     twoFAVerificationRequired,
     cancelTwoFA,
     uiLocale,
     loading,
+    setFormUserName,
 }) => {
     const form = useForm()
     const ref = useRef()
@@ -93,12 +97,12 @@ const InnerLoginForm = ({
                 <div
                     className={twoFAVerificationRequired ? 'hiddenFields' : ''}
                 >
+                    {/* onChange will not update every change, so may need to use controlled InputField here for username tracking */}
                     <ReactFinalForm.Field
                         name="username"
                         label={i18n.t('Username', { lng: uiLocale })}
                         component={InputFieldFF}
                         className={'inputField'}
-                        initialValue={genericUser}
                         validate={(val) =>
                             !val
                                 ? i18n.t('This field is required', {
@@ -108,7 +112,7 @@ const InnerLoginForm = ({
                         }
                         initialFocus={!twoFAVerificationRequired}
                         onBlur={(e) => {
-                            console.log(e.value)
+                            setFormUserName(e.value)
                         }}
                         readOnly={loading}
                     />
@@ -118,7 +122,6 @@ const InnerLoginForm = ({
                         type="password"
                         component={InputFieldFF}
                         className={'inputField'}
-                        initialValue=""
                         validate={isRequired}
                         readOnly={loading}
                     />
@@ -192,10 +195,15 @@ InnerLoginForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     twoFAVerificationRequired: PropTypes.bool.isRequired,
     loading: PropTypes.bool,
+    setFormUserName: PropTypes.func,
     uiLocale: PropTypes.string,
 }
 
-const LoginForm = ({ setTwoFAVerificationRequired, uiLocale }) => {
+const LoginForm = ({
+    setFormUserName,
+    setTwoFAVerificationRequired,
+    uiLocale,
+}) => {
     const { login, cancelTwoFA, twoFAVerificationRequired, error, loading } =
         useLogin({ redirectTo: 'http://www.dhis2.org' })
 
@@ -238,6 +246,7 @@ const LoginForm = ({ setTwoFAVerificationRequired, uiLocale }) => {
                                 cancelTwoFA={cancelTwoFA}
                                 uiLocale={uiLocale}
                                 loading={loading}
+                                setFormUserName={setFormUserName}
                             />
                         )}
                     </ReactFinalForm.Form>
@@ -252,6 +261,7 @@ LoginForm.defaultProps = {
 }
 
 LoginForm.propTypes = {
+    setFormUserName: PropTypes.func,
     setTwoFAVerificationRequired: PropTypes.func,
     uiLocale: PropTypes.string,
 }
@@ -260,6 +270,7 @@ LoginForm.propTypes = {
 const LoginFormContainer = () => {
     const [twoFAVerificationRequired, setTwoFAVerificationRequired] =
         useState(false)
+    const [formUserName, setFormUserName] = useState('')
     const { uiLocale } = useLoginConfig()
 
     return (
@@ -282,10 +293,13 @@ const LoginFormContainer = () => {
                 </FormSubtitle>
             )}
             <LoginForm
+                setFormUserName={setFormUserName}
                 setTwoFAVerificationRequired={setTwoFAVerificationRequired}
                 uiLocale={uiLocale}
             />
-            {!twoFAVerificationRequired && <Links />}
+            {!twoFAVerificationRequired && (
+                <Links formUserName={formUserName} />
+            )}
             <style>
                 {`
         .form-fields {

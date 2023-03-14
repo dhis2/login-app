@@ -1,9 +1,11 @@
 import { useDataMutation } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { Button, ReactFinalForm, InputFieldFF } from '@dhis2/ui'
+import { composeValidators, dhis2Password } from '@dhis2/ui-forms'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { BackToLoginButton } from '../components/back-to-login-button.js'
 import { FormContainer } from '../components/form-container.js'
 import { FormNotice } from '../components/form-notice.js'
 import { FormSubtitle } from '../components/form-subtitle.js'
@@ -11,24 +13,26 @@ import { getIsRequired } from '../helpers/validators.js'
 import { useRedirectIfNotAllowed } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/use-login-config.js'
 
-const passwordResetMutation = {
-    resource: 'auth/forgotPassword',
+const passwordUpdateMutation = {
+    resource: 'auth/passwordReset',
     type: 'create',
     data: ({ emailOrUsername }) => ({ emailOrUsername }),
 }
 
-const InnerPasswordResetForm = ({ handleSubmit, uiLocale, loading }) => {
+const InnerPasswordUpdateForm = ({ handleSubmit, uiLocale, loading }) => {
     const isRequired = getIsRequired(uiLocale)
+
     return (
         <>
             <form onSubmit={handleSubmit}>
                 <div>
                     <ReactFinalForm.Field
-                        name="emailOrUsername"
-                        label={i18n.t('Username or email', { lng: uiLocale })}
+                        name="password"
+                        type="password"
+                        label={i18n.t('Password', { lng: uiLocale })}
                         component={InputFieldFF}
                         className={'inputField'}
-                        validate={isRequired}
+                        validate={composeValidators(isRequired, dhis2Password)}
                         initialFocus
                         readOnly={loading}
                     />
@@ -41,8 +45,8 @@ const InnerPasswordResetForm = ({ handleSubmit, uiLocale, loading }) => {
                         primary
                     >
                         {loading
-                            ? i18n.t('Sending...', { lng: uiLocale })
-                            : i18n.t('Send password reset request form', {
+                            ? i18n.t('Saving...', { lng: uiLocale })
+                            : i18n.t('Save new password', {
                                   lng: uiLocale,
                               })}
                     </Button>
@@ -83,20 +87,19 @@ const InnerPasswordResetForm = ({ handleSubmit, uiLocale, loading }) => {
     )
 }
 
-InnerPasswordResetForm.propTypes = {
+InnerPasswordUpdateForm.propTypes = {
     handleSubmit: PropTypes.func,
     loading: PropTypes.bool,
     uiLocale: PropTypes.string,
 }
 
-export const PasswordResetForm = ({ uiLocale }) => {
+export const PasswordUpdateForm = ({ uiLocale }) => {
     // depends on https://dhis2.atlassian.net/browse/DHIS2-14618
-    const [resetPassword, { loading, fetching, error, data }] = useDataMutation(
-        passwordResetMutation
-    )
+    const [updatePassword, { loading, fetching, error, data }] =
+        useDataMutation(passwordUpdateMutation)
 
-    const handlePasswordReset = (values) => {
-        resetPassword({ emailOrUsername: values.emailOrUsername })
+    const handlePasswordUpdate = (values) => {
+        updatePassword({ password: values.password })
     }
     return (
         <>
@@ -104,42 +107,54 @@ export const PasswordResetForm = ({ uiLocale }) => {
                 <div>
                     {error && (
                         <FormNotice
-                            title={i18n.t('Incorrect username or password', {
+                            title={i18n.t('New password not saved', {
                                 lng: uiLocale,
                             })}
                             error={true}
-                        />
-                    )}
-                    {data && (
-                        <FormNotice valid={true}>
+                        >
                             <span>
                                 {i18n.t(
-                                    'We’ve sent an email with a password reset link to your registered email address.',
+                                    'There was a problem saving your password. Try again or contact your system administrator.',
                                     { lng: uiLocale }
                                 )}
                             </span>
                         </FormNotice>
                     )}
-                    <ReactFinalForm.Form onSubmit={handlePasswordReset}>
-                        {({ handleSubmit }) => (
-                            <InnerPasswordResetForm
-                                handleSubmit={handleSubmit}
-                                uiLocale={uiLocale}
-                                loading={loading || fetching}
-                            />
-                        )}
-                    </ReactFinalForm.Form>
+                    {data && (
+                        <>
+                            <FormNotice valid={true}>
+                                <span>
+                                    {i18n.t(
+                                        'New password saved. You can use it to log in to your account.',
+                                        { lng: uiLocale }
+                                    )}
+                                </span>
+                            </FormNotice>
+                            <BackToLoginButton />
+                        </>
+                    )}
+                    {!data && (
+                        <ReactFinalForm.Form onSubmit={handlePasswordUpdate}>
+                            {({ handleSubmit }) => (
+                                <InnerPasswordUpdateForm
+                                    handleSubmit={handleSubmit}
+                                    uiLocale={uiLocale}
+                                    loading={loading || fetching}
+                                />
+                            )}
+                        </ReactFinalForm.Form>
+                    )}
                 </div>
             </div>
         </>
     )
 }
 
-PasswordResetForm.defaultProps = {
+PasswordUpdateForm.defaultProps = {
     uiLocale: 'en',
 }
 
-PasswordResetForm.propTypes = {
+PasswordUpdateForm.propTypes = {
     uiLocale: PropTypes.string,
 }
 
@@ -148,7 +163,7 @@ const requiredPropsForPasswordReset = [
     'emailConfigured',
 ]
 
-const PasswordResetFormPage = () => {
+const PasswordUpdatePage = () => {
     const { uiLocale } = useLoginConfig()
     useRedirectIfNotAllowed(requiredPropsForPasswordReset)
 
@@ -156,17 +171,17 @@ const PasswordResetFormPage = () => {
         <>
             <FormContainer
                 width="368px"
-                title={i18n.t('Reset password', { lng: uiLocale })}
+                title={i18n.t('Choose new password', { lng: uiLocale })}
             >
                 <FormSubtitle>
                     <p>
                         {i18n.t(
-                            'Enter your username below, a link to reset your password will be sent to your registered e-mail.',
+                            'Enter the new password for your account below',
                             { lng: uiLocale }
                         )}
                     </p>
                 </FormSubtitle>
-                <PasswordResetForm uiLocale={uiLocale} />
+                <PasswordUpdateForm uiLocale={uiLocale} />
                 <style>
                     {`
         .pw-request-form-fields {
@@ -196,4 +211,4 @@ const PasswordResetFormPage = () => {
     )
 }
 
-export default PasswordResetFormPage
+export default PasswordUpdatePage
