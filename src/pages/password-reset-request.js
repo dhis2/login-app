@@ -165,7 +165,7 @@ const requiredPropsForPasswordReset = [
     'emailConfigured',
 ]
 
-const PasswordResetRequestFormPage = () => {
+const PasswordResetRequestPage = () => {
     const { uiLocale } = useLoginConfig()
     useRedirectIfNotAllowed(requiredPropsForPasswordReset)
 
@@ -184,33 +184,9 @@ const PasswordResetRequestFormPage = () => {
                     </p>
                 </FormSubtitle>
                 <PasswordResetRequestForm uiLocale={uiLocale} />
-                <style>
-                    {`
-        .pw-request-form-fields {
-          min-width: 320px;
-          display: flex;
-          flex-direction: column;
-          gap: var(--spacers-dp16);
-        }
-        .inputs {
-          display: flex;
-          flex-direction: column;
-          gap: var(--spacers-dp8);
-          margin-bottom: var(--spacers-dp12);
-        }
-        .form-buttons {
-          display: flex;
-          flex-direction: column;
-          gap: var(--spacers-dp8);
-        }
-        .reset-submit-btn, .reset-cancel-btn {
-          width: 100%;
-        }
-      `}
-                </style>
             </FormContainer>
         </>
     )
 }
 
-export default PasswordResetRequestFormPage
+export default PasswordResetRequestPage

@@ -2,6 +2,7 @@ import { useDataQuery, useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Loader } from '../components/loader.js'
 import { LoginConfigContext } from './login-config-context.js'
 
@@ -92,20 +93,24 @@ const sampleTranslations = {
 //
 
 const LoginConfigProvider = ({ children }) => {
+    const [searchParams] = useSearchParams()
+    const paramLang = searchParams.get('lang')
     const { data, loading, error } = useDataQuery(query, {
-        variables: { locale: localStorage[localStorageLocaleKey] },
+        variables: { locale: paramLang ?? localStorage[localStorageLocaleKey] },
     })
+
     const [translatedValues, setTranslatedValues] = useState()
 
     useEffect(() => {
         // if there is a stored language, set it as i18next language
         const userLanguage =
+            paramLang ||
             localStorage[localStorageLocaleKey] ||
             data?.loginConfig?.uiLocale ||
             'en'
         setTranslatedValues({ uiLocale: userLanguage })
         i18n.changeLanguage(userLanguage)
-    }, [])
+    }, []) //eslint-disable-line
 
     const engine = useDataEngine()
 

@@ -300,21 +300,6 @@ const LoginFormContainer = () => {
             {!twoFAVerificationRequired && (
                 <Links formUserName={formUserName} />
             )}
-            <style>
-                {`
-        .form-fields {
-          min-width: 320px;
-          display: flex;
-          flex-direction: column;
-        }
-        .inputs {
-          display: flex;
-          flex-direction: column;
-          gap: var(--spacers-dp8);
-          margin-bottom: var(--spacers-dp12);
-        }
-      `}
-            </style>
         </FormContainer>
     )
 }

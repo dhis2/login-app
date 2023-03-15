@@ -11,7 +11,7 @@ export const FormContainer = ({ children, title, width }) => {
             <style>{`
         .form-container {
           margin: 0 auto var(--spacers-dp24);
-          max-width: ${width};
+          width: ${width};
           padding: var(--spacers-dp24);
           background: var(--colors-white);
           border-radius: 5px;

@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const BackToLoginButton = ({ uiLocale }) => (
+export const BackToLoginButton = ({ uiLocale, fullWidth }) => (
     <>
         <div>
             <Link className="no-underline" to="/">
-                <Button secondary>
+                <Button secondary className={fullWidth ? 'fullWidth' : ''}>
                     {i18n.t('Back to log in page', {
                         lng: uiLocale,
                     })}
@@ -20,6 +20,9 @@ export const BackToLoginButton = ({ uiLocale }) => (
         .no-underline {
           text-decoration: none;
         }
+        .fullWidth {
+            width: 100%;
+        }
       `}
         </style>
     </>
@@ -30,5 +33,6 @@ BackToLoginButton.defaultProps = {
 }
 
 BackToLoginButton.propTypes = {
+    fullWidth: PropTypes.bool,
     uiLocale: PropTypes.string,
 }

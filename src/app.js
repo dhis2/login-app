@@ -5,17 +5,18 @@ import Footer from './components/footer.js'
 import Header from './components/header.js'
 // (confirm this isn't tree shaken)
 import i18n from './locales/index.js' // eslint-disable-line
-import CreateAccountPage from './pages/create-account.js'
-import LoginPage from './pages/login.js'
-import PasswordResetRequestFormPage from './pages/password-reset-request.js'
-import PasswordUpdatePage from './pages/password-update.js'
+import {
+    CreateAccountPage,
+    ConfirmEmailPage,
+    LoginPage,
+    PasswordResetRequestPage,
+    PasswordUpdatePage,
+} from './pages/index.js'
 import { LoginConfigProvider } from './providers/index.js'
 import './styles.css'
 import './externalStyles.css'
 
 const AppContent = () => {
-    // if we are using redirect parameter, read it here (to persist if user navigates around app)
-    // const [searchParams] = useSearchParams() // (react-router-dom useSearchParams
     return (
         <>
             <Header />
@@ -24,12 +25,13 @@ const AppContent = () => {
                 <Route path="/create-account" element={<CreateAccountPage />} />
                 <Route
                     path="/reset-password"
-                    element={<PasswordResetRequestFormPage />}
+                    element={<PasswordResetRequestPage />}
                 />
                 <Route
                     path="/update-password"
                     element={<PasswordUpdatePage />}
                 />
+                <Route path="/confirm-email" element={<ConfirmEmailPage />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
             <Footer />

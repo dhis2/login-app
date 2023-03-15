@@ -4,7 +4,7 @@ import { Button, ReactFinalForm, InputFieldFF } from '@dhis2/ui'
 import { composeValidators, dhis2Password } from '@dhis2/ui-forms'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { BackToLoginButton } from '../components/back-to-login-button.js'
 import { FormContainer } from '../components/form-container.js'
 import { FormNotice } from '../components/form-notice.js'
@@ -16,7 +16,7 @@ import { useLoginConfig } from '../providers/use-login-config.js'
 const passwordUpdateMutation = {
     resource: 'auth/passwordReset',
     type: 'create',
-    data: ({ emailOrUsername }) => ({ emailOrUsername }),
+    data: (data) => ({ ...data }),
 }
 
 const InnerPasswordUpdateForm = ({ handleSubmit, uiLocale, loading }) => {
@@ -93,19 +93,19 @@ InnerPasswordUpdateForm.propTypes = {
     uiLocale: PropTypes.string,
 }
 
-export const PasswordUpdateForm = ({ uiLocale }) => {
+export const PasswordUpdateForm = ({ token, uiLocale }) => {
     // depends on https://dhis2.atlassian.net/browse/DHIS2-14618
     const [updatePassword, { loading, fetching, error, data }] =
         useDataMutation(passwordUpdateMutation)
 
     const handlePasswordUpdate = (values) => {
-        updatePassword({ password: values.password })
+        updatePassword({ newPassword: values.password, token })
     }
     return (
         <>
             <div>
                 <div>
-                    {error && (
+                    {data && (
                         <FormNotice
                             title={i18n.t('New password not saved', {
                                 lng: uiLocale,
@@ -120,7 +120,7 @@ export const PasswordUpdateForm = ({ uiLocale }) => {
                             </span>
                         </FormNotice>
                     )}
-                    {data && (
+                    {error && (
                         <>
                             <FormNotice valid={true}>
                                 <span>
@@ -130,10 +130,13 @@ export const PasswordUpdateForm = ({ uiLocale }) => {
                                     )}
                                 </span>
                             </FormNotice>
-                            <BackToLoginButton />
+                            <BackToLoginButton
+                                uiLocale={uiLocale}
+                                fullWidth={true}
+                            />
                         </>
                     )}
-                    {!data && (
+                    {!error && (
                         <ReactFinalForm.Form onSubmit={handlePasswordUpdate}>
                             {({ handleSubmit }) => (
                                 <InnerPasswordUpdateForm
@@ -155,9 +158,11 @@ PasswordUpdateForm.defaultProps = {
 }
 
 PasswordUpdateForm.propTypes = {
+    token: PropTypes.string,
     uiLocale: PropTypes.string,
 }
 
+// presumably these would need to be allowed
 const requiredPropsForPasswordReset = [
     'allowAccountRecovery',
     'emailConfigured',
@@ -165,6 +170,9 @@ const requiredPropsForPasswordReset = [
 
 const PasswordUpdatePage = () => {
     const { uiLocale } = useLoginConfig()
+    const [searchParams] = useSearchParams()
+    const token = searchParams.get('token') || ''
+    // display error if token is invalid?
     useRedirectIfNotAllowed(requiredPropsForPasswordReset)
 
     return (
@@ -181,7 +189,7 @@ const PasswordUpdatePage = () => {
                         )}
                     </p>
                 </FormSubtitle>
-                <PasswordUpdateForm uiLocale={uiLocale} />
+                <PasswordUpdateForm uiLocale={uiLocale} token={token} />
                 <style>
                     {`
         .pw-request-form-fields {

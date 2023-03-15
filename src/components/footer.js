@@ -34,7 +34,11 @@ export default function Footer() {
                     <SingleSelectField
                         dense
                         prefix="Language"
-                        selected={uiLocale ?? 'en'}
+                        selected={
+                            localesUI.map((l) => l.locale).includes(uiLocale)
+                                ? uiLocale
+                                : 'en'
+                        }
                         onChange={({ selected }) => {
                             refreshOnTranslation({ locale: selected })
                         }}

@@ -24,7 +24,7 @@ msgid "Log in"
 msgstr "Iniciar sesión"
 
 msgid "Forgot password?"
-msgstr "¿Contraseña ovlidada?"
+msgstr "¿Has olvidado tu contraseña?"
 
 msgid "Don't have an account?"
 msgstr "¿No tienes cuenta?"
