@@ -312,7 +312,7 @@ export const CreateAccountForm = ({
                                     </FormNotice>
                                 </>
                             )}
-                            <BackToLoginButton />
+                            <BackToLoginButton uiLocale={uiLocale} />
                         </>
                     )}
                     {!data && (
