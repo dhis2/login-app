@@ -24,7 +24,7 @@ msgid "Log in"
 msgstr "Se connecter"
 
 msgid "Forgot password?"
-msgstr "Mot de passe oublié"
+msgstr "Mot de passe oublié?"
 
 msgid "Don't have an account?"
 msgstr "Pas de compte?"
@@ -74,13 +74,6 @@ msgstr "Envoyant..."
 msgid "Send password reset request form"
 msgstr "Envoyer fiche d'enquête pour reinitialiser le mot de passe"
 
-msgid ""
-"We’ve sent an email with a password reset link to your registered email "
-"address."
-msgstr ""
-"Nous avons envoyé un lien pour reinitialiser votre mot de passe à votre adresse "
-"email enregistrée."
-
 msgid "Log in details"
 msgstr "Détails de connexion"
 
@@ -121,7 +114,7 @@ msgid "Log in."
 msgstr "Connectez-vous."
 
 msgid "Something went wrong, and we could not register your account"
-msgstr "Un problème s'est produit, et vous n'avez pas réussi à créer votre compte."
+msgstr "Un problème s'est produit, et nous n'avons pas réussi à créer votre compte."
 
 msgid "Verify your email address"
 msgstr "Vérifiez votre adresse email"
@@ -134,10 +127,80 @@ msgstr ""
 "la création de votre compte."
 
 msgid "Account created successfully"
-msgstr "Compte a été créé avec succès"
+msgstr "Votre compte a été créé"
 
 msgid "You can use your username and password to log in."
 msgstr "Vous pouvez utiliser votre identifiant et mot de passe pour vous connecter."
 
 msgid "Back to log in page"
-msgstr "Retournez à la page de connexion"
+msgstr "Retourner à la page de connexion"
+
+msgid "Cannot process registration"
+msgstr "L'enregistrement n'est pas possible"
+
+msgid ""
+"Information required to process your registration is missing. Please "
+"contact your system administrator."
+msgstr ""
+"Ils manquent des détails nécéssaires pour l'engregistrement. Veuillez contacter l'administrater du système."
+
+msgid "Email confirmation"
+msgstr "Vérification d'adresse email"
+
+msgid "Could not confirm email"
+msgstr "La vérification de l'adresse email n'a pas réussi"
+
+msgid ""
+"Your link may have expired. Please try again and contact your system "
+"administrator if the problem remains."
+msgstr ""
+"Le lien a peut-être expiré. Veuillez essayer de nouveau ou contacter l'administrateur du système"
+
+msgid "Email confirmed"
+msgstr "Adresse email vérifiée"
+
+msgid ""
+"Your email is confirmed. You can now use your username and password to log "
+"in."
+msgstr ""
+"Votre adresse email a été vérifiée. Vous pouvez maintenant utilizer votre identifiant et mot de passe pour vous connecter. "
+
+
+msgid "Password reset failed"
+msgstr "La reinitialisation du mot de passe n'a pas réussi"
+
+msgid ""
+"The username might be invalid, your account might not allow password reset, "
+"or there might be a problem with your account email address."
+msgstr ""
+"L'identifiant peut être invalide, votre system peut ne pas permettre la reinitialisation des mots de passes "
+"ou il y a peut-être un problème avec votre adresse email."
+
+msgid ""
+"We've sent an email with a password reset link to your registered email "
+"address."
+msgstr ""
+"Nous avons envoyé un lien pour reinitialiser votre mote de passe à votre adresse email "
+"enregistrée."
+
+msgid "Save new password"
+msgstr "Enregistrer nouveau mot de passe"
+
+msgid "New password not saved"
+msgstr "Le nouveau mot de passe n'a pas été enregistré"
+
+msgid ""
+"There was a problem saving your password. Try again or contact your system "
+"administrator."
+msgstr ""
+"Il y'a eu un problème avec l'enregistrement de votre mot de passe. Veuillez essayer de nouveau ou "
+"contacter votre administrateur du système."
+
+msgid "New password saved. You can use it to log in to your account."
+msgstr "Nouveau mot de passe enregistré. Vous pouvez l'utiliser pour vous connecter."
+
+msgid "Choose new password"
+msgstr "Saisir un nouveau de passe"
+
+msgid "Enter the new password for your account below"
+msgstr "Saisir ci-dessous le nouveau de passe pour votre compte"

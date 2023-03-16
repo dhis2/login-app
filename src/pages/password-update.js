@@ -105,7 +105,7 @@ export const PasswordUpdateForm = ({ token, uiLocale }) => {
         <>
             <div>
                 <div>
-                    {data && (
+                    {error && (
                         <FormNotice
                             title={i18n.t('New password not saved', {
                                 lng: uiLocale,
@@ -120,7 +120,7 @@ export const PasswordUpdateForm = ({ token, uiLocale }) => {
                             </span>
                         </FormNotice>
                     )}
-                    {error && (
+                    {data && (
                         <>
                             <FormNotice valid={true}>
                                 <span>
@@ -136,7 +136,7 @@ export const PasswordUpdateForm = ({ token, uiLocale }) => {
                             />
                         </>
                     )}
-                    {!error && (
+                    {!data && (
                         <ReactFinalForm.Form onSubmit={handlePasswordUpdate}>
                             {({ handleSubmit }) => (
                                 <InnerPasswordUpdateForm

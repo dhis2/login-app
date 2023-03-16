@@ -130,7 +130,10 @@ export const PasswordResetRequestForm = ({ uiLocale }) => {
                                     )}
                                 </span>
                             </FormNotice>
-                            <BackToLoginButton />
+                            <BackToLoginButton
+                                uiLocale={uiLocale}
+                                fullWidth={true}
+                            />
                         </>
                     )}
                     {!data && (

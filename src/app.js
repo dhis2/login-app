@@ -6,6 +6,7 @@ import Header from './components/header.js'
 // (confirm this isn't tree shaken)
 import i18n from './locales/index.js' // eslint-disable-line
 import {
+    CompleteRegistrationPage,
     CreateAccountPage,
     ConfirmEmailPage,
     LoginPage,
@@ -23,6 +24,10 @@ const AppContent = () => {
             <Routes>
                 <Route path="/" element={<LoginPage />} />
                 <Route path="/create-account" element={<CreateAccountPage />} />
+                <Route
+                    path="complete-registration"
+                    element={<CompleteRegistrationPage />}
+                />
                 <Route
                     path="/reset-password"
                     element={<PasswordResetRequestPage />}

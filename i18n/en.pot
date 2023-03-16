@@ -5,40 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2023-03-15T15:47:59.156Z\n"
-"PO-Revision-Date: 2023-03-15T15:47:59.156Z\n"
-
-msgid "Back to log in page"
-msgstr "Back to log in page"
-
-msgid "Powered by DHIS2"
-msgstr "Powered by DHIS2"
-
-msgid "This field is required"
-msgstr "This field is required"
-
-msgid "Email confirmation"
-msgstr "Email confirmation"
-
-msgid "Could not confirm email"
-msgstr "Could not confirm email"
-
-msgid ""
-"Your link may have expired. Please try again and contact your system "
-"administrator if the problem remains."
-msgstr ""
-"Your link may have expired. Please try again and contact your system "
-"administrator if the problem remains."
-
-msgid "Email confirmed"
-msgstr "Email confirmed"
-
-msgid ""
-"Your email is confirmed. You can now use your username and password to log "
-"in."
-msgstr ""
-"Your email is confirmed. You can now use your username and password to log "
-"in."
+"POT-Creation-Date: 2023-03-16T13:39:34.887Z\n"
+"PO-Revision-Date: 2023-03-16T13:39:34.887Z\n"
 
 msgid "Log in details"
 msgstr "Log in details"
@@ -91,6 +59,12 @@ msgstr "Log in."
 msgid "Something went wrong, and we could not register your account"
 msgstr "Something went wrong, and we could not register your account"
 
+msgid "Account created successfully"
+msgstr "Account created successfully"
+
+msgid "You can use your username and password to log in."
+msgstr "You can use your username and password to log in."
+
 msgid "Verify your email address"
 msgstr "Verify your email address"
 
@@ -101,11 +75,47 @@ msgstr ""
 "Check your email for a link to verify your email address and finish setting "
 "up your account."
 
-msgid "Account created successfully"
-msgstr "Account created successfully"
+msgid "Back to log in page"
+msgstr "Back to log in page"
 
-msgid "You can use your username and password to log in."
-msgstr "You can use your username and password to log in."
+msgid "Powered by DHIS2"
+msgstr "Powered by DHIS2"
+
+msgid "This field is required"
+msgstr "This field is required"
+
+msgid "Cannot process registration"
+msgstr "Cannot process registration"
+
+msgid ""
+"Information required to process your registration is missing. Please "
+"contact your system administrator."
+msgstr ""
+"Information required to process your registration is missing. Please "
+"contact your system administrator."
+
+msgid "Email confirmation"
+msgstr "Email confirmation"
+
+msgid "Could not confirm email"
+msgstr "Could not confirm email"
+
+msgid ""
+"Your link may have expired. Please try again and contact your system "
+"administrator if the problem remains."
+msgstr ""
+"Your link may have expired. Please try again and contact your system "
+"administrator if the problem remains."
+
+msgid "Email confirmed"
+msgstr "Email confirmed"
+
+msgid ""
+"Your email is confirmed. You can now use your username and password to log "
+"in."
+msgstr ""
+"Your email is confirmed. You can now use your username and password to log "
+"in."
 
 msgid "Forgot password?"
 msgstr "Forgot password?"

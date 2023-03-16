@@ -22,7 +22,9 @@ const ConfirmEmailPage = () => {
         useDataMutation(confirmEmailMutation)
 
     useEffect(() => {
-        confirmEmail({ token, email })
+        if (token && email) {
+            confirmEmail({ token, email })
+        }
     }, [token, email, confirmEmail])
 
     return (
@@ -59,7 +61,7 @@ const ConfirmEmailPage = () => {
                         </span>
                     </FormNotice>
                 )}
-                {(error || data) && <BackToLoginButton fullWidth={true} />}
+                <BackToLoginButton uiLocale={uiLocale} fullWidth={true} />
             </FormContainer>
         </>
     )
