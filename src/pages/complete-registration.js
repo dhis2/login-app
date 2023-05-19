@@ -10,7 +10,8 @@ import {
 import { BackToLoginButton } from '../components/back-to-login-button.js'
 import { FormContainer } from '../components/form-container.js'
 import { FormNotice } from '../components/form-notice.js'
-import { useRedirectIfNotAllowed } from '../hooks/useRedirectIfNotAllowed.js'
+import { NotAllowedNotice } from '../components/not-allowed-notice.js'
+import { useGetErrorIfNotAllowed } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/use-login-config.js'
 
 const selfRegisterMutation = {
@@ -75,7 +76,14 @@ const requiredPropsForCreateAccount = ['emailConfigured']
 
 const CompleteRegistrationPage = () => {
     const { uiLocale } = useLoginConfig()
-    useRedirectIfNotAllowed(requiredPropsForCreateAccount)
+    const { notAllowed } = useGetErrorIfNotAllowed(
+        requiredPropsForCreateAccount
+    )
+
+    if (notAllowed) {
+        return <NotAllowedNotice uiLocale={uiLocale} />
+    }
+
     return (
         <>
             <FormContainer title={i18n.t('Create account', { lng: uiLocale })}>

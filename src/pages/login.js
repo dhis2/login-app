@@ -8,7 +8,7 @@ import { ApplicationNotification } from '../components/application-notification.
 import { FormContainer } from '../components/form-container.js'
 import { FormNotice } from '../components/form-notice.js'
 import { FormSubtitle } from '../components/form-subtitle.js'
-import { getIsRequired } from '../helpers/index.js'
+import { checkIsFormValid, getIsRequired } from '../helpers/index.js'
 import { useLogin } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/use-login-config.js'
 
@@ -72,6 +72,7 @@ Links.propTypes = {
 
 const InnerLoginForm = ({
     handleSubmit,
+    formSubmitted,
     twoFAVerificationRequired,
     cancelTwoFA,
     uiLocale,
@@ -103,13 +104,8 @@ const InnerLoginForm = ({
                         label={i18n.t('Username', { lng: uiLocale })}
                         component={InputFieldFF}
                         className={'inputField'}
-                        validate={(val) =>
-                            !val
-                                ? i18n.t('This field is required', {
-                                      lng: uiLocale,
-                                  })
-                                : null
-                        }
+                        validate={!formSubmitted ? null : isRequired}
+                        key={formSubmitted ? 1 : 0}
                         initialFocus={!twoFAVerificationRequired}
                         onBlur={(e) => {
                             setFormUserName(e.value)
@@ -122,7 +118,8 @@ const InnerLoginForm = ({
                         type="password"
                         component={InputFieldFF}
                         className={'inputField'}
-                        validate={isRequired}
+                        validate={!formSubmitted ? null : isRequired}
+                        key={formSubmitted ? 2 : 3}
                         readOnly={loading}
                     />
                 </div>
@@ -194,6 +191,7 @@ InnerLoginForm.propTypes = {
     cancelTwoFA: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     twoFAVerificationRequired: PropTypes.bool.isRequired,
+    formSubmitted: PropTypes.bool,
     loading: PropTypes.bool,
     setFormUserName: PropTypes.func,
     uiLocale: PropTypes.string,
@@ -213,10 +211,27 @@ const LoginForm = ({
         }
     }, [twoFAVerificationRequired, setTwoFAVerificationRequired])
 
+    const [formSubmitted, setFormSubmitted] = useState(false)
+
     if (!login) {
         return null
     }
+    const isRequired = getIsRequired(uiLocale)
     const handleLogin = (values) => {
+        setFormSubmitted(true)
+        const validatorsByField = {
+            username: {
+                value: values.username,
+                validator: isRequired,
+            },
+            password: {
+                value: values.password,
+                validator: isRequired,
+            },
+        }
+        if (!checkIsFormValid(validatorsByField)) {
+            return
+        }
         login({
             username: values.username,
             password: values.password,
@@ -240,6 +255,7 @@ const LoginForm = ({
                         {({ handleSubmit }) => (
                             <InnerLoginForm
                                 handleSubmit={handleSubmit}
+                                formSubmitted={formSubmitted}
                                 twoFAVerificationRequired={
                                     twoFAVerificationRequired
                                 }

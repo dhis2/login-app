@@ -2,14 +2,15 @@ import { useDataMutation } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { Button, ReactFinalForm, InputFieldFF } from '@dhis2/ui'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { BackToLoginButton } from '../components/back-to-login-button.js'
 import { FormContainer } from '../components/form-container.js'
 import { FormNotice } from '../components/form-notice.js'
 import { FormSubtitle } from '../components/form-subtitle.js'
+import { NotAllowedNotice } from '../components/not-allowed-notice.js'
 import { getIsRequired } from '../helpers/validators.js'
-import { useRedirectIfNotAllowed } from '../hooks/index.js'
+import { useGetErrorIfNotAllowed } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/use-login-config.js'
 
 const passwordResetRequestMutation = {
@@ -18,8 +19,13 @@ const passwordResetRequestMutation = {
     data: ({ emailOrUsername }) => ({ emailOrUsername }),
 }
 
-const InnerPasswordResetRequestForm = ({ handleSubmit, uiLocale, loading }) => {
-    const isRequired = getIsRequired(uiLocale)
+const InnerPasswordResetRequestForm = ({
+    handleSubmit,
+    formSubmitted,
+    isRequired,
+    uiLocale,
+    loading,
+}) => {
     const [params] = useSearchParams()
 
     return (
@@ -31,7 +37,8 @@ const InnerPasswordResetRequestForm = ({ handleSubmit, uiLocale, loading }) => {
                         label={i18n.t('Username or email', { lng: uiLocale })}
                         component={InputFieldFF}
                         className={'inputField'}
-                        validate={isRequired}
+                        validate={!formSubmitted ? null : isRequired}
+                        key={formSubmitted ? 1 : 0}
                         initialFocus
                         readOnly={loading}
                         initialValue={params?.get('username') || ''}
@@ -88,7 +95,9 @@ const InnerPasswordResetRequestForm = ({ handleSubmit, uiLocale, loading }) => {
 }
 
 InnerPasswordResetRequestForm.propTypes = {
+    formSubmitted: PropTypes.bool,
     handleSubmit: PropTypes.func,
+    isRequired: PropTypes.bool,
     loading: PropTypes.bool,
     uiLocale: PropTypes.string,
 }
@@ -97,8 +106,15 @@ export const PasswordResetRequestForm = ({ uiLocale }) => {
     // depends on https://dhis2.atlassian.net/browse/DHIS2-14618
     const [resetPasswordRequest, { loading, fetching, error, data }] =
         useDataMutation(passwordResetRequestMutation)
+    const [formSubmitted, setFormSubmitted] = useState(false)
+    const isRequired = getIsRequired(uiLocale)
 
     const handlePasswordResetRequest = (values) => {
+        setFormSubmitted(true)
+        const validationError = isRequired(values.emailOrUsername)
+        if (validationError) {
+            return
+        }
         resetPasswordRequest({ emailOrUsername: values.emailOrUsername })
     }
     return (
@@ -143,6 +159,8 @@ export const PasswordResetRequestForm = ({ uiLocale }) => {
                             {({ handleSubmit }) => (
                                 <InnerPasswordResetRequestForm
                                     handleSubmit={handleSubmit}
+                                    formSubmitted={formSubmitted}
+                                    isRequired={isRequired}
                                     uiLocale={uiLocale}
                                     loading={loading || fetching}
                                 />
@@ -170,7 +188,13 @@ const requiredPropsForPasswordReset = [
 
 const PasswordResetRequestPage = () => {
     const { uiLocale } = useLoginConfig()
-    useRedirectIfNotAllowed(requiredPropsForPasswordReset)
+    const { notAllowed } = useGetErrorIfNotAllowed(
+        requiredPropsForPasswordReset
+    )
+
+    if (notAllowed) {
+        return <NotAllowedNotice uiLocale={uiLocale} />
+    }
 
     return (
         <>

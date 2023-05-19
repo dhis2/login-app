@@ -1,2 +1,2 @@
 export { useLogin } from './useLogin.js'
-export { useRedirectIfNotAllowed } from './useRedirectIfNotAllowed.js'
+export { useGetErrorIfNotAllowed } from './useGetErrorIfNotAllowed.js'

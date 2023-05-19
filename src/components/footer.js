@@ -1,25 +1,33 @@
 import i18n from '@dhis2/d2-i18n'
 import { SingleSelectField, SingleSelectOption } from '@dhis2/ui'
+import cx from 'classnames'
 import React from 'react'
 import { useLoginConfig } from '../providers/index.js'
 // import "../styles.css";
 
 export default function Footer() {
-    const { applicationFooter, refreshOnTranslation, localesUI, uiLocale } =
-        useLoginConfig()
+    const {
+        applicationFooter,
+        refreshOnTranslation,
+        localesUI,
+        uiLocale,
+        isRTL,
+    } = useLoginConfig()
 
     return (
         <>
-            <div className="footer">
+            <div className={cx('footer', { footerRTL: isRTL })}>
                 <div className="footer-left">
                     <span className="powered-by">
-                        <a
-                            href="https://www.dhis2.org"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                        >
-                            {i18n.t('Powered by DHIS2', { lng: uiLocale })}
-                        </a>
+                        <bdi>
+                            <a
+                                href="https://www.dhis2.org"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
+                                {i18n.t('Powered by DHIS2', { lng: uiLocale })}
+                            </a>
+                        </bdi>
                     </span>
                     {applicationFooter && (
                         <span
@@ -68,7 +76,9 @@ export default function Footer() {
       padding: var(--spacers-dp4) var(--spacers-dp16);
       border-top: 1px solid #1e3c72;
     }
-    
+    .footerRTL {
+        flex-direction: row-reverse;
+    }
     .footer span {
       font-size: 14px;
       line-height: 19px;
@@ -80,7 +90,7 @@ export default function Footer() {
     }
     .footer-left ** {
       display: flex;
-      gap: var(--spacers-dp8);
+      gap: var(--spacers-dp8);      
     }
     .footer-left-content::before {
       color: #1e3c72;

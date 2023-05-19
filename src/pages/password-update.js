@@ -9,8 +9,9 @@ import { BackToLoginButton } from '../components/back-to-login-button.js'
 import { FormContainer } from '../components/form-container.js'
 import { FormNotice } from '../components/form-notice.js'
 import { FormSubtitle } from '../components/form-subtitle.js'
+import { NotAllowedNotice } from '../components/not-allowed-notice.js'
 import { getIsRequired } from '../helpers/validators.js'
-import { useRedirectIfNotAllowed } from '../hooks/index.js'
+import { useGetErrorIfNotAllowed } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/use-login-config.js'
 
 const passwordUpdateMutation = {
@@ -173,7 +174,13 @@ const PasswordUpdatePage = () => {
     const [searchParams] = useSearchParams()
     const token = searchParams.get('token') || ''
     // display error if token is invalid?
-    useRedirectIfNotAllowed(requiredPropsForPasswordReset)
+    const { notAllowed } = useGetErrorIfNotAllowed(
+        requiredPropsForPasswordReset
+    )
+
+    if (notAllowed) {
+        return <NotAllowedNotice uiLocale={uiLocale} />
+    }
 
     return (
         <>

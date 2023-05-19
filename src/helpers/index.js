@@ -1,2 +1,2 @@
-export { getIsRequired } from './validators.js'
+export { checkIsFormValid, getIsRequired } from './validators.js'
 export { removeHTMLTags } from './removeHTMLTags.js'

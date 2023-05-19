@@ -1,72 +1,62 @@
-msgid ""
-msgstr ""
-"Project-Id-Version: i18next-conv\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2023-03-22T13:27:01.036Z\n"
-"PO-Revision-Date: 2023-03-22T13:27:01.036Z\n"
-
 msgid "Log in details"
-msgstr "Log in details"
+msgstr "登录详情"
 
 msgid "Username"
-msgstr "Username"
+msgstr "用户名"
 
 msgid "Password"
-msgstr "Password"
+msgstr "密码"
 
 msgid "Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
-msgstr "Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
+msgstr "最少8个字符，至少1个大写，1个小写，1个数字，1个符号"
 
 msgid "Personal details"
-msgstr "Personal details"
+msgstr "个人资料"
 
 msgid "First name"
-msgstr "First name"
+msgstr "名字"
 
 msgid "Last name"
-msgstr "Last name"
+msgstr "姓氏"
 
 msgid "Email"
-msgstr "Email"
+msgstr "电子邮件"
 
 msgid "Phone number"
-msgstr "Phone number"
+msgstr "电话号码"
 
 msgid "Employer"
-msgstr "Employer"
+msgstr "雇主"
 
 msgid "Creating..."
-msgstr "Creating..."
+msgstr "创建..."
 
 msgid "Create account"
-msgstr "Create account"
+msgstr "创建账户"
 
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "取消"
 
 msgid "Enter your details below to create a {{- applicationName}} account."
-msgstr "Enter your details below to create a {{- applicationName}} account."
+msgstr "在下面输入您的详细信息以创建一个 {{- applicationName}} 帐户。"
 
 msgid "Already have an account?"
-msgstr "Already have an account?"
+msgstr "已有帐号？"
 
 msgid "Log in."
-msgstr "Log in."
+msgstr "登录。"
 
 msgid "Something went wrong, and we could not register your account"
-msgstr "Something went wrong, and we could not register your account"
+msgstr "出了点问题，我们无法注册您的帐户"
 
 msgid "Account created successfully"
-msgstr "Account created successfully"
+msgstr "账号创建成功"
 
 msgid "You can use your username and password to log in."
-msgstr "You can use your username and password to log in."
+msgstr "您可以使用您的用户名和密码登录。"
 
 msgid "Verify your email address"
-msgstr "Verify your email address"
+msgstr "验证您的电子邮件地址"
 
 msgid ""
 "Check your email for a link to verify your email address and finish setting "
@@ -76,19 +66,19 @@ msgstr ""
 "up your account."
 
 msgid "Back to log in page"
-msgstr "Back to log in page"
+msgstr "返回登录页面"
 
 msgid "Powered by DHIS2"
-msgstr "Powered by DHIS2"
+msgstr "由 DHIS2 提供技术支持"
 
 msgid "The requested page is not configured for your system"
-msgstr "The requested page is not configured for your system"
+msgstr "请求的页面没有为您的系统配置"
 
 msgid "This field is required"
-msgstr "This field is required"
+msgstr "此字段为必填项"
 
 msgid "Cannot process registration"
-msgstr "Cannot process registration"
+msgstr "无法处理注册"
 
 msgid ""
 "Information required to process your registration is missing. Please "
@@ -98,10 +88,10 @@ msgstr ""
 "contact your system administrator."
 
 msgid "Email confirmation"
-msgstr "Email confirmation"
+msgstr "电子邮件确认"
 
 msgid "Could not confirm email"
-msgstr "Could not confirm email"
+msgstr "无法确认电子邮件"
 
 msgid ""
 "Your link may have expired. Please try again and contact your system "
@@ -111,7 +101,7 @@ msgstr ""
 "administrator if the problem remains."
 
 msgid "Email confirmed"
-msgstr "Email confirmed"
+msgstr "电子邮件已确认"
 
 msgid ""
 "Your email is confirmed. You can now use your username and password to log "
@@ -121,46 +111,46 @@ msgstr ""
 "in."
 
 msgid "Forgot password?"
-msgstr "Forgot password?"
+msgstr "忘记密码？"
 
 msgid "Don't have an account?"
-msgstr "Don't have an account?"
+msgstr "没有账号？"
 
 msgid "Create an account"
-msgstr "Create an account"
+msgstr "创建一个帐户"
 
 msgid "Verify and log in"
-msgstr "Verify and log in"
+msgstr "验证并登录"
 
 msgid "Log in"
-msgstr "Log in"
+msgstr "登录"
 
 msgid "Authentication code"
-msgstr "Authentication code"
+msgstr "验证码"
 
 msgid "Logging in"
-msgstr "Logging in"
+msgstr "登录"
 
 msgid "Incorrect username or password"
-msgstr "Incorrect username or password"
+msgstr "用户名或密码不正确"
 
 msgid "Two-factor authentication"
-msgstr "Two-factor authentication"
+msgstr "双因素身份验证"
 
 msgid "Enter the code from your two-factor authentication app to log in."
-msgstr "Enter the code from your two-factor authentication app to log in."
+msgstr "输入来自双因素身份验证应用程序的代码以登录。"
 
 msgid "Username or email"
-msgstr "Username or email"
+msgstr "用户名或电子邮件"
 
 msgid "Sending..."
-msgstr "Sending..."
+msgstr "发送中..."
 
 msgid "Send password reset request form"
-msgstr "Send password reset request form"
+msgstr "发送密码重置请求表"
 
 msgid "Password reset failed"
-msgstr "Password reset failed"
+msgstr "密码重置失败"
 
 msgid ""
 "The username might be invalid, your account might not allow password reset, "
@@ -177,7 +167,7 @@ msgstr ""
 "address."
 
 msgid "Reset password"
-msgstr "Reset password"
+msgstr "重置密码"
 
 msgid ""
 "Enter your username below, a link to reset your password will be sent to "
@@ -187,13 +177,13 @@ msgstr ""
 "your registered e-mail."
 
 msgid "Saving..."
-msgstr "Saving..."
+msgstr "保存..."
 
 msgid "Save new password"
-msgstr "Save new password"
+msgstr "保存新密码"
 
 msgid "New password not saved"
-msgstr "New password not saved"
+msgstr "新密码未保存"
 
 msgid ""
 "There was a problem saving your password. Try again or contact your system "
@@ -203,10 +193,11 @@ msgstr ""
 "administrator."
 
 msgid "New password saved. You can use it to log in to your account."
-msgstr "New password saved. You can use it to log in to your account."
+msgstr "新密码已保存。"
 
 msgid "Choose new password"
-msgstr "Choose new password"
+msgstr "选择新密码"
 
 msgid "Enter the new password for your account below"
-msgstr "Enter the new password for your account below"
+msgstr "在下面输入您的帐户的新密码"
+

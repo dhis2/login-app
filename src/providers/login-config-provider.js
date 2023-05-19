@@ -2,7 +2,6 @@ import { useDataQuery, useDataEngine } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
 import { Loader } from '../components/loader.js'
 import { LoginConfigContext } from './login-config-context.js'
 
@@ -52,8 +51,7 @@ const translatableValues = [
 const defaultProviderValues = {
     applicationDescription:
         'This is the long application subtitle where there is a lot of information included in the subtitle so it must handle this much information',
-    applicationFooter:
-        "Application left side footer with a <a href='https://www.dhis2.org/'>link</a>",
+    applicationFooter: 'Application left side footer text',
     applicationNotification:
         'this is placeholder for the application notification.',
     allowAccountRecovery: true,
@@ -67,10 +65,13 @@ const defaultProviderValues = {
     selfRegistrationNoRecaptcha: false,
     systemUiLocale: 'en',
     uiLocale: 'en',
+    isRTL: false,
+    htmlTemplate: 'custom',
 }
 
 const defaultLocales = [
-    { locale: 'ar', name: 'Arabic' },
+    { locale: 'ar', name: 'عربي (Arabic)' },
+    { locale: 'zh', name: 'Chinese' },
     { locale: 'en', name: 'English' },
     { locale: 'fr', name: 'French' },
     { locale: 'nb', name: 'Norwegian' },
@@ -93,10 +94,8 @@ const sampleTranslations = {
 //
 
 const LoginConfigProvider = ({ children }) => {
-    const [searchParams] = useSearchParams()
-    const paramLang = searchParams.get('lang')
     const { data, loading, error } = useDataQuery(query, {
-        variables: { locale: paramLang ?? localStorage[localStorageLocaleKey] },
+        variables: { locale: localStorage[localStorageLocaleKey] },
     })
 
     const [translatedValues, setTranslatedValues] = useState()
@@ -104,7 +103,6 @@ const LoginConfigProvider = ({ children }) => {
     useEffect(() => {
         // if there is a stored language, set it as i18next language
         const userLanguage =
-            paramLang ||
             localStorage[localStorageLocaleKey] ||
             data?.loginConfig?.uiLocale ||
             'en'
@@ -158,12 +156,13 @@ const LoginConfigProvider = ({ children }) => {
         ...data?.loginConfig,
         ...translatedValues,
         localesUI: data?.localesUI || defaultLocales,
+        isRTL: i18n.dir() === 'rtl',
         refreshOnTranslation,
     }
 
     return (
         <LoginConfigContext.Provider value={providerValue}>
-            {children}
+            <div dir={i18n.dir()}>{children}</div>
         </LoginConfigContext.Provider>
     )
 }
