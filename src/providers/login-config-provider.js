@@ -66,7 +66,7 @@ const defaultProviderValues = {
     systemUiLocale: 'en',
     uiLocale: 'en',
     isRTL: false,
-    htmlTemplate: 'custom',
+    htmlTemplate: 'standard',
 }
 
 const defaultLocales = [
