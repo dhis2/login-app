@@ -7,10 +7,11 @@ export const custom = `
     <style>
       :root {
         --form-container-background-color: #B4A269;
-        --form-container-font-color: white;
+        --form-container-font-color: green;
         --form-container-title-color: white;
         --form-container-box-shadow: '0px 0px 0px rgba(33,41,52,0.06), 0px 0px 0px rgba(33,41,52,0.1)',
-          --form-container-box-border-radius: 0px;
+        --form-container-box-border-radius: 0px;
+        --application-notification-non-main-page-display: none;
       }
 
       body {
@@ -34,6 +35,7 @@ export const custom = `
         background-color: white;
         display: flex;
         align-items: center;
+        justify-content: space-between; 
       }
 
       .flag-wrapper {
@@ -136,7 +138,7 @@ export const custom = `
         <div class='flag-wrapper'>
           <a href='https://www.norge.no'>
             <span id='flag'>
-        </a>
+           </a>
       </div>      
       <div class='titles-wrapper'>
       <div class='application-title-wrapper'><span id='application-title'></span>

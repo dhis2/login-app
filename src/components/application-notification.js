@@ -1,6 +1,7 @@
 import { NoticeBox } from '@dhis2/ui'
 import React from 'react'
-import { useLoginConfig } from '../providers/index.js'
+// import { useLoginForm } from '../login-form-provider/index.js'
+import { useLoginConfig } from '../providers'
 
 export const ApplicationNotification = () => {
     const { applicationNotification } = useLoginConfig()

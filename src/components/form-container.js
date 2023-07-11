@@ -10,12 +10,7 @@ export const FormContainer = ({ children, title, width }) => {
             </div>
             <style>{`
         .form-container {
-          margin: 0 auto var(--spacers-dp24) auto;
-          width: ${width};
-          padding: var(--spacers-dp24);
-          background: var(--form-container-background-color, var(--colors-white));
-          border-radius: var(--form-container-box-border-radius, 5px);
-          box-shadow: var(--form-container-box-shadow, var(--elevations-e400));
+          width: ${width ?? '320px'};
         }
         .form-container span {
            color: var(--form-container-font-color, black);

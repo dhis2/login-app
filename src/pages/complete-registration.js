@@ -74,7 +74,7 @@ CompleteRegistrationFormWrapper.propTypes = {
 
 const requiredPropsForCreateAccount = ['emailConfigured']
 
-const CompleteRegistrationPage = () => {
+const CompleteRegistrationPage = ({width}) => {
     const { uiLocale } = useLoginConfig()
     const { notAllowed } = useGetErrorIfNotAllowed(
         requiredPropsForCreateAccount
@@ -86,7 +86,7 @@ const CompleteRegistrationPage = () => {
 
     return (
         <>
-            <FormContainer title={i18n.t('Create account', { lng: uiLocale })}>
+            <FormContainer width={width} title={i18n.t('Create account', { lng: uiLocale })}>
                 <CompleteRegistrationFormWrapper uiLocale={uiLocale} />
             </FormContainer>
         </>

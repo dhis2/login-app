@@ -7,8 +7,6 @@ import { LoginConfigContext } from './login-config-context.js'
 
 const query = {
     loginConfig: {
-        // This is generic enpoint but will only return
-        // exchanges a user is allowed to see
         resource: 'auth/loginConfig',
         params: ({ locale }) =>
             locale
@@ -65,40 +63,40 @@ const defaultProviderValues = {
     selfRegistrationNoRecaptcha: false,
     systemUiLocale: 'en',
     uiLocale: 'en',
-    isRTL: false,
+    dir: 'ltr',
     htmlTemplate: 'standard',
 }
 
 const defaultLocales = [
-    { locale: 'ar', name: 'عربي (Arabic)' },
-    { locale: 'zh', name: 'Chinese' },
+    { locale: 'ar', name: 'العربية – Arabic' },
+    { locale: 'zh', name: '中文 – Chinese' },
     { locale: 'en', name: 'English' },
-    { locale: 'fr', name: 'French' },
-    { locale: 'nb', name: 'Norwegian' },
-    { locale: 'es', name: 'Spanish' },
+    { locale: 'fr', name: 'français – French' },
+    { locale: 'nb', name: 'norsk – Norwegian' },
+    { locale: 'es', name: 'español – Spanish' },
 ]
 
 const sampleTranslations = {
     fr: {
         applicationTitle:
-            "Example d'un titre d'applis qui pourrait être très long",
+            "Example d'un titre d'appli qui pourrait être très long",
+        applicationNotification: "Espace réservé pour la notification de l'appli"
     },
     nb: {
         applicationTitle:
-            'Eksempel på en applikasjonstittel som kunne være veldig lang',
+            'Eksempel på en applikasjonstittel som muligens er utrolig lang',
         applicationDescription:
-            'Dette er den lange applikasjonsundertittelen som inneholder veldig mye informasjon slik at appen må kunne håndtere sånne innholdslengder',
+            'Dette er den lange applikasjonsundertittelen som inneholder veldig mye informasjon slik at appen må være i stand til å håndtere slike innholdslengder',
     },
 }
 
 //
 
-const LoginConfigProvider = ({ children }) => {
+const LoginConfigProvider = ({ dir, children }) => {
     const { data, loading, error } = useDataQuery(query, {
         variables: { locale: localStorage[localStorageLocaleKey] },
     })
-
-    const [translatedValues, setTranslatedValues] = useState()
+    const [translatedValues, setTranslatedValues] = useState({})
 
     useEffect(() => {
         // if there is a stored language, set it as i18next language
@@ -106,7 +104,8 @@ const LoginConfigProvider = ({ children }) => {
             localStorage[localStorageLocaleKey] ||
             data?.loginConfig?.uiLocale ||
             'en'
-        setTranslatedValues({ uiLocale: userLanguage })
+        // REMOVE: sampleTranslations used for demo purposes 
+        setTranslatedValues({ uiLocale: userLanguage, ...sampleTranslations[userLanguage] })
         i18n.changeLanguage(userLanguage)
     }, []) //eslint-disable-line
 
@@ -153,16 +152,16 @@ const LoginConfigProvider = ({ children }) => {
 
     const providerValue = {
         ...defaultProviderValues,
-        ...data?.loginConfig,
+        ...data?.loginConfig,        
         ...translatedValues,
         localesUI: data?.localesUI || defaultLocales,
-        isRTL: i18n.dir() === 'rtl',
+        dir: dir?.includes('rtl','ltr') ? dir : i18n.dir(),
         refreshOnTranslation,
     }
 
     return (
         <LoginConfigContext.Provider value={providerValue}>
-            <div dir={i18n.dir()}>{children}</div>
+            <div dir={dir?.includes('rtl','ltr') ? dir : i18n.dir()}>{children}</div>
         </LoginConfigContext.Provider>
     )
 }

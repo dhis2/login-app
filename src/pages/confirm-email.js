@@ -1,6 +1,6 @@
 import { useDataMutation } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { BackToLoginButton } from '../components/back-to-login-button.js'
 import { FormContainer } from '../components/form-container.js'
@@ -13,27 +13,30 @@ const confirmEmailMutation = {
     data: (data) => ({ ...data }),
 }
 
-const ConfirmEmailPage = () => {
+const ConfirmEmailPage = ({width}) => {
     const { uiLocale } = useLoginConfig()
     const [searchParams] = useSearchParams()
     const token = searchParams.get('token')
     const email = searchParams.get('email')
     const [confirmEmail, { error, data }] =
         useDataMutation(confirmEmailMutation)
+    const [parametersMissing, setParametersMissing] = useState(false)
 
     useEffect(() => {
         if (token && email) {
             confirmEmail({ token, email })
+        } else {
+            setParametersMissing(true)
         }
     }, [token, email, confirmEmail])
 
     return (
         <>
             <FormContainer
-                width="368px"
+                width={width}
                 title={i18n.t('Email confirmation', { lng: uiLocale })}
             >
-                {error && (
+                {(error || parametersMissing) && (
                     <FormNotice
                         error={true}
                         title={i18n.t('Could not confirm email', {

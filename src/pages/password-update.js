@@ -169,7 +169,7 @@ const requiredPropsForPasswordReset = [
     'emailConfigured',
 ]
 
-const PasswordUpdatePage = () => {
+const PasswordUpdatePage = ({width}) => {
     const { uiLocale } = useLoginConfig()
     const [searchParams] = useSearchParams()
     const token = searchParams.get('token') || ''
@@ -185,7 +185,7 @@ const PasswordUpdatePage = () => {
     return (
         <>
             <FormContainer
-                width="368px"
+                width={width}
                 title={i18n.t('Choose new password', { lng: uiLocale })}
             >
                 <FormSubtitle>

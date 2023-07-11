@@ -11,12 +11,12 @@ export default function Footer() {
         refreshOnTranslation,
         localesUI,
         uiLocale,
-        isRTL,
+        dir,
     } = useLoginConfig()
 
     return (
         <>
-            <div className={cx('footer', { footerRTL: isRTL })}>
+            <div className={cx('footer', { footerRTL: dir === 'rtl' })}>
                 <div className="footer-left">
                     <span className="powered-by">
                         <bdi>

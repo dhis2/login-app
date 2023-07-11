@@ -1,4 +1,4 @@
-import { useLoginConfig } from '../providers/index.js'
+import { useLoginConfig } from '../providers/use-login-config.js'
 
 export const useGetErrorIfNotAllowed = (requiredSettings) => {
     // redirect to main page if password reset is not allowed

@@ -186,7 +186,7 @@ const requiredPropsForPasswordReset = [
     'emailConfigured',
 ]
 
-const PasswordResetRequestPage = () => {
+const PasswordResetRequestPage = ({width}) => {
     const { uiLocale } = useLoginConfig()
     const { notAllowed } = useGetErrorIfNotAllowed(
         requiredPropsForPasswordReset
@@ -199,7 +199,7 @@ const PasswordResetRequestPage = () => {
     return (
         <>
             <FormContainer
-                width="368px"
+                width={width}
                 title={i18n.t('Reset password', { lng: uiLocale })}
             >
                 <FormSubtitle>

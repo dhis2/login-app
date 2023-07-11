@@ -1,7 +1,7 @@
 import { CssReset, CssVariables } from '@dhis2/ui'
 import parse from 'html-react-parser'
-import React from 'react'
-import { HashRouter, Navigate, Routes, Route } from 'react-router-dom'
+import React, {useEffect, useState} from 'react'
+import { HashRouter, Navigate, Routes, Route, useLocation } from 'react-router-dom'
 import {
     ApplicationDescription,
     ApplicationFooter,
@@ -11,6 +11,7 @@ import {
     Logo,
     PoweredByDHIS2,
 } from './components/customizable-elements.js'
+import { ApplicationNotification } from './components/application-notification.js'
 import {
     LoginPage,
     ConfirmEmailPage,
@@ -21,25 +22,101 @@ import {
 } from './pages/index.js'
 import { LoginConfigProvider, useLoginConfig } from './providers/index.js'
 import i18n from './locales/index.js' // eslint-disable-line
-import { standard, sidebar, custom } from './templates/index.js'
+import { standard, sidebar, custom, crazy } from './templates/index.js'
+// import { LoginForm } from '@dhis2/ui'
 
-const LoginRoutes = () => {
+const FormStyling = ({children}) => (
+    <>
+    <div className='form-outer-wrapper'>
+    <div className='form-wrapper'>
+        {children}
+    </div>
+    </div>
+    <style>{`
+        .form-outer-wrapper {
+            display: flex;
+            margin-block-end: var(--spacers-dp24);
+        }
+        .form-wrapper {
+            display: inline-block;
+            margin: 0 auto;
+            width: auto;
+            padding: var(--spacers-dp24);
+            background: var(--form-container-background-color, var(--colors-white));
+            border-radius: var(--form-container-box-border-radius, 5px);
+            box-shadow: var(--form-container-box-shadow, var(--elevations-e400));    
+        }
+      `}</style>    
+    </>
+)
+
+const LoginRoutes = ({determineIfOnMainPage}) => {
+    const location = useLocation()
+    useEffect(()=>{
+        determineIfOnMainPage(location?.pathname)
+    },[location])
+return(
+    <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/create-account" element={<CreateAccountPage />} />
+        <Route
+            path="/complete-registration"
+            element={<CompleteRegistrationPage />}
+        />
+        <Route
+            path="/reset-password"
+            element={<PasswordResetRequestPage />}
+        />
+        <Route path="/update-password" element={<PasswordUpdatePage />} />
+        <Route path="/confirm-email" element={<ConfirmEmailPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
+)
+}
+
+const LoginFormStyled = () => {
+
+    const [onMainPage, setOnMainPage] = useState(false)
+
+    const determineIfOnMainPage = (pathname) => {
+        if (pathname === '/') {
+            setOnMainPage(true)
+        } else {
+            setOnMainPage(false)
+        }
+    }
+
     return (
-        <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/create-account" element={<CreateAccountPage />} />
-            <Route
-                path="/complete-registration"
-                element={<CompleteRegistrationPage />}
-            />
-            <Route
-                path="/reset-password"
-                element={<PasswordResetRequestPage />}
-            />
-            <Route path="/update-password" element={<PasswordUpdatePage />} />
-            <Route path="/confirm-email" element={<ConfirmEmailPage />} />
-            <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+        <>
+            <CssReset />
+            <CssVariables colors spacers theme elevations />
+            <div className={loadingWaitOver ? 'showLogin' : 'hideLogin'}>
+            <FormStyling>
+                <HashRouter>
+                    <LoginRoutes determineIfOnMainPage={determineIfOnMainPage} />
+                </HashRouter>
+            </FormStyling>
+            <div className={onMainPage ? 'showAppNotificationMainPage' : 'showAppNotificationNonMainPage'}>
+                <ApplicationNotification />
+            </div>
+            </div>
+            <style>{`
+                .showLogin {
+                    display: inline;
+                }
+                .hideLogin {
+                    display: none;
+                }
+                .showAppNotificationMainPage {
+                    display: inline;
+                }
+                .showAppNotificationNonMainPage {
+                    display: var(--application-notification-non-main-page-display, none);
+                }                
+            `}</style>
+
+        </>
+
     )
 }
 
@@ -50,7 +127,7 @@ const options = {
         }
 
         if (attribs.id === 'login-box') {
-            return <LoginRoutes />
+            return <LoginFormStyled />
         }
 
         if (attribs.id === 'application-title') {
@@ -90,6 +167,8 @@ const AppContent = () => {
         html = sidebar
     } else if (htmlTemplate === 'custom') {
         html = custom
+    } else if (htmlTemplate === 'crazy') {
+        html = crazy
     } else {
         html = standard
     }
@@ -98,15 +177,31 @@ const AppContent = () => {
 }
 
 const App = () => {
+    
     return (
-        <>
-            <HashRouter>
+        <>            
                 <LoginConfigProvider>
                     <CssReset />
                     <CssVariables colors spacers theme elevations />
-                    <AppContent />
+                    <HashRouter>
+                    <Routes>
+                        <Route path="/" element={<LoginPage />} />
+                        <Route path="/create-account" element={<CreateAccountPage width={'500px'} />} />
+                        <Route
+                            path="/complete-registration"
+                            element={<CompleteRegistrationPage />}
+                        />
+                        <Route
+                            path="/reset-password"
+                            element={<PasswordResetRequestPage />}
+                        />
+                        <Route path="/update-password" element={<PasswordUpdatePage />} />
+                        <Route path="/confirm-email" element={<ConfirmEmailPage />} />
+                        <Route path="*" element={<Navigate to="/" />} />
+                    </Routes>
+                    </HashRouter>                    
+                    {/* <AppContent /> */}
                 </LoginConfigProvider>
-            </HashRouter>
         </>
     )
 }

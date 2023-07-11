@@ -3,7 +3,7 @@ import { ReactFinalForm, InputFieldFF, Button } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState, useRef } from 'react'
 import { useForm } from 'react-final-form'
-import { Link } from 'react-router-dom'
+import { Link, useInRouterContext } from 'react-router-dom'
 import { ApplicationNotification } from '../components/application-notification.js'
 import { FormContainer } from '../components/form-container.js'
 import { FormNotice } from '../components/form-notice.js'
@@ -11,17 +11,18 @@ import { FormSubtitle } from '../components/form-subtitle.js'
 import { checkIsFormValid, getIsRequired } from '../helpers/index.js'
 import { useLogin } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/use-login-config.js'
+import { createBrowserHistory } from "history";
 
-export default function LoginPage() {
+export default function LoginPage({width}) {
     return (
         <>
-            <LoginFormContainer />
-            <ApplicationNotification />
+            <LoginFormContainer width={width}/>
         </>
     )
 }
 
 const Links = ({ formUserName }) => {
+    let history = createBrowserHistory();
     const {
         allowAccountRecovery,
         emailConfigured,
@@ -47,6 +48,7 @@ const Links = ({ formUserName }) => {
                         </Link>
                     </span>
                 )}
+                <Button onClick={()=>{history.push("#/reset-password", { some: "state" });window.dispatchEvent(new HashChangeEvent("hashchange"))}}>navigate to reset password</Button>
             </div>
             <style>
                 {`
@@ -283,7 +285,7 @@ LoginForm.propTypes = {
 }
 
 // this is set up this way to isolate styling from login form logic
-const LoginFormContainer = () => {
+const LoginFormContainer = ({width}) => {
     const [twoFAVerificationRequired, setTwoFAVerificationRequired] =
         useState(false)
     const [formUserName, setFormUserName] = useState('')
@@ -291,7 +293,7 @@ const LoginFormContainer = () => {
 
     return (
         <FormContainer
-            width="368px"
+            width={width}
             title={
                 twoFAVerificationRequired
                     ? i18n.t('Two-factor authentication', { lng: uiLocale })
