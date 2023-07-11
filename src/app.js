@@ -90,7 +90,7 @@ const LoginFormStyled = () => {
         <>
             <CssReset />
             <CssVariables colors spacers theme elevations />
-            <div className={loadingWaitOver ? 'showLogin' : 'hideLogin'}>
+            <div className='showLogin'>
             <FormStyling>
                 <HashRouter>
                     <LoginRoutes determineIfOnMainPage={determineIfOnMainPage} />
@@ -177,33 +177,7 @@ const AppContent = () => {
 }
 
 const App = () => {
-    
-    return (
-        <>            
-                <LoginConfigProvider>
-                    <CssReset />
-                    <CssVariables colors spacers theme elevations />
-                    <HashRouter>
-                    <Routes>
-                        <Route path="/" element={<LoginPage />} />
-                        <Route path="/create-account" element={<CreateAccountPage width={'500px'} />} />
-                        <Route
-                            path="/complete-registration"
-                            element={<CompleteRegistrationPage />}
-                        />
-                        <Route
-                            path="/reset-password"
-                            element={<PasswordResetRequestPage />}
-                        />
-                        <Route path="/update-password" element={<PasswordUpdatePage />} />
-                        <Route path="/confirm-email" element={<ConfirmEmailPage />} />
-                        <Route path="*" element={<Navigate to="/" />} />
-                    </Routes>
-                    </HashRouter>                    
-                    {/* <AppContent /> */}
-                </LoginConfigProvider>
-        </>
-    )
+    return <LoginConfigProvider><AppContent /></LoginConfigProvider>
 }
 
 export default App

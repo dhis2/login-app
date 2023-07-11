@@ -48,7 +48,6 @@ const Links = ({ formUserName }) => {
                         </Link>
                     </span>
                 )}
-                <Button onClick={()=>{history.push("#/reset-password", { some: "state" });window.dispatchEvent(new HashChangeEvent("hashchange"))}}>navigate to reset password</Button>
             </div>
             <style>
                 {`
