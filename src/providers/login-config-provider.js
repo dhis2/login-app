@@ -80,7 +80,8 @@ const sampleTranslations = {
     fr: {
         applicationTitle:
             "Example d'un titre d'appli qui pourrait être très long",
-        applicationNotification: "Espace réservé pour la notification de l'appli"
+        applicationNotification:
+            "Espace réservé pour la notification de l'appli",
     },
     nb: {
         applicationTitle:
@@ -104,8 +105,11 @@ const LoginConfigProvider = ({ dir, children }) => {
             localStorage[localStorageLocaleKey] ||
             data?.loginConfig?.uiLocale ||
             'en'
-        // REMOVE: sampleTranslations used for demo purposes 
-        setTranslatedValues({ uiLocale: userLanguage, ...sampleTranslations[userLanguage] })
+        // REMOVE: sampleTranslations used for demo purposes
+        setTranslatedValues({
+            uiLocale: userLanguage,
+            ...sampleTranslations[userLanguage],
+        })
         i18n.changeLanguage(userLanguage)
     }, []) //eslint-disable-line
 
@@ -152,16 +156,18 @@ const LoginConfigProvider = ({ dir, children }) => {
 
     const providerValue = {
         ...defaultProviderValues,
-        ...data?.loginConfig,        
+        ...data?.loginConfig,
         ...translatedValues,
         localesUI: data?.localesUI || defaultLocales,
-        dir: dir?.includes('rtl','ltr') ? dir : i18n.dir(),
+        dir: dir?.includes('rtl', 'ltr') ? dir : i18n.dir(),
         refreshOnTranslation,
     }
 
     return (
         <LoginConfigContext.Provider value={providerValue}>
-            <div dir={dir?.includes('rtl','ltr') ? dir : i18n.dir()}>{children}</div>
+            <div dir={dir?.includes('rtl', 'ltr') ? dir : i18n.dir()}>
+                {children}
+            </div>
         </LoginConfigContext.Provider>
     )
 }

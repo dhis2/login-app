@@ -1,4 +1,4 @@
-import { useDataMutation } from '@dhis2/app-runtime'
+import { useLoginSettings, useDataMutation } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -12,7 +12,6 @@ import { FormContainer } from '../components/form-container.js'
 import { FormNotice } from '../components/form-notice.js'
 import { NotAllowedNotice } from '../components/not-allowed-notice.js'
 import { useGetErrorIfNotAllowed } from '../hooks/index.js'
-import { useLoginConfig } from '../providers/use-login-config.js'
 
 const selfRegisterMutation = {
     resource: 'auth/completeRegistration',
@@ -74,8 +73,8 @@ CompleteRegistrationFormWrapper.propTypes = {
 
 const requiredPropsForCreateAccount = ['emailConfigured']
 
-const CompleteRegistrationPage = ({width}) => {
-    const { uiLocale } = useLoginConfig()
+const CompleteRegistrationPage = ({ width }) => {
+    const { uiLocale } = useLoginSettings()
     const { notAllowed } = useGetErrorIfNotAllowed(
         requiredPropsForCreateAccount
     )
@@ -86,7 +85,10 @@ const CompleteRegistrationPage = ({width}) => {
 
     return (
         <>
-            <FormContainer width={width} title={i18n.t('Create account', { lng: uiLocale })}>
+            <FormContainer
+                width={width}
+                title={i18n.t('Create account', { lng: uiLocale })}
+            >
                 <CompleteRegistrationFormWrapper uiLocale={uiLocale} />
             </FormContainer>
         </>

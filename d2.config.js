@@ -1,5 +1,5 @@
 const config = {
-    type: 'app',
+    type: 'login_app',
 
     entryPoints: {
         app: './src/app.js',

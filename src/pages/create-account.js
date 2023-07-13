@@ -1,4 +1,4 @@
-import { useDataMutation } from '@dhis2/app-runtime'
+import { useDataMutation, useLoginSettings } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import React from 'react'
 import {
@@ -8,7 +8,6 @@ import {
 import { FormContainer } from '../components/form-container.js'
 import { NotAllowedNotice } from '../components/not-allowed-notice.js'
 import { useGetErrorIfNotAllowed } from '../hooks/index.js'
-import { useLoginConfig } from '../providers/use-login-config.js'
 
 const selfRegisterMutation = {
     resource: 'auth/register',
@@ -18,7 +17,7 @@ const selfRegisterMutation = {
 
 const CreateAccountFormWrapper = () => {
     // depends on https://dhis2.atlassian.net/browse/DHIS2-14615
-    const { emailConfigured } = useLoginConfig()
+    const { emailConfigured } = useLoginSettings()
 
     const [resetPassword, { loading, fetching, error, data }] =
         useDataMutation(selfRegisterMutation)
@@ -41,8 +40,8 @@ const CreateAccountFormWrapper = () => {
 
 const requiredPropsForCreateAccount = ['selfRegistrationEnabled']
 
-const CreateAccountPage = ({width}) => {
-    const { uiLocale } = useLoginConfig()
+const CreateAccountPage = ({ width }) => {
+    const { uiLocale } = useLoginSettings()
     const { notAllowed } = useGetErrorIfNotAllowed(
         requiredPropsForCreateAccount
     )
@@ -53,7 +52,10 @@ const CreateAccountPage = ({width}) => {
 
     return (
         <>
-            <FormContainer width={width} title={i18n.t('Create account', { lng: uiLocale })}>
+            <FormContainer
+                width={width}
+                title={i18n.t('Create account', { lng: uiLocale })}
+            >
                 <CreateAccountFormWrapper />
             </FormContainer>
         </>

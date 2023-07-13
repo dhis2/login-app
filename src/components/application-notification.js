@@ -1,10 +1,15 @@
+import { useLoginSettings } from '@dhis2/app-runtime'
 import { NoticeBox } from '@dhis2/ui'
 import React from 'react'
 // import { useLoginForm } from '../login-form-provider/index.js'
-import { useLoginConfig } from '../providers'
 
 export const ApplicationNotification = () => {
-    const { applicationNotification } = useLoginConfig()
+    const { applicationNotification } = useLoginSettings()
+
+    if (!applicationNotification || applicationNotification === '') {
+        return null
+    }
+
     return (
         <>
             {applicationNotification && (

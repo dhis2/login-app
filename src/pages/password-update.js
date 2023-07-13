@@ -1,4 +1,4 @@
-import { useDataMutation } from '@dhis2/app-runtime'
+import { useDataMutation, useLoginSettings } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { Button, ReactFinalForm, InputFieldFF } from '@dhis2/ui'
 import { composeValidators, dhis2Password } from '@dhis2/ui-forms'
@@ -12,7 +12,6 @@ import { FormSubtitle } from '../components/form-subtitle.js'
 import { NotAllowedNotice } from '../components/not-allowed-notice.js'
 import { getIsRequired } from '../helpers/validators.js'
 import { useGetErrorIfNotAllowed } from '../hooks/index.js'
-import { useLoginConfig } from '../providers/use-login-config.js'
 
 const passwordUpdateMutation = {
     resource: 'auth/passwordReset',
@@ -169,8 +168,8 @@ const requiredPropsForPasswordReset = [
     'emailConfigured',
 ]
 
-const PasswordUpdatePage = ({width}) => {
-    const { uiLocale } = useLoginConfig()
+const PasswordUpdatePage = ({ width }) => {
+    const { uiLocale } = useLoginSettings()
     const [searchParams] = useSearchParams()
     const token = searchParams.get('token') || ''
     // display error if token is invalid?

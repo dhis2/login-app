@@ -1,3 +1,4 @@
+import { useLoginSettings } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { ReactFinalForm, InputFieldFF, Button } from '@dhis2/ui'
 import {
@@ -16,7 +17,6 @@ import { BackToLoginButton } from '../components/back-to-login-button.js'
 import { FormNotice } from '../components/form-notice.js'
 import { FormSubtitle } from '../components/form-subtitle.js'
 import { getIsRequired, removeHTMLTags } from '../helpers/index.js'
-import { useLoginConfig } from '../providers/use-login-config.js'
 
 export const CREATE_FORM_TYPES = {
     create: 'create',
@@ -223,7 +223,7 @@ export const CreateAccountForm = ({
     handleRegister,
 }) => {
     // depends on https://dhis2.atlassian.net/browse/DHIS2-14615
-    const { applicationTitle, uiLocale } = useLoginConfig()
+    const { applicationTitle, uiLocale } = useLoginSettings()
 
     useEffect(() => {
         // we should scroll top top of the page when an error is registered, so user sees this

@@ -1,4 +1,4 @@
-import { useDataMutation } from '@dhis2/app-runtime'
+import { useDataMutation, useLoginSettings } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { Button, ReactFinalForm, InputFieldFF } from '@dhis2/ui'
 import PropTypes from 'prop-types'
@@ -11,7 +11,6 @@ import { FormSubtitle } from '../components/form-subtitle.js'
 import { NotAllowedNotice } from '../components/not-allowed-notice.js'
 import { getIsRequired } from '../helpers/validators.js'
 import { useGetErrorIfNotAllowed } from '../hooks/index.js'
-import { useLoginConfig } from '../providers/use-login-config.js'
 
 const passwordResetRequestMutation = {
     resource: 'auth/forgotPassword',
@@ -186,8 +185,8 @@ const requiredPropsForPasswordReset = [
     'emailConfigured',
 ]
 
-const PasswordResetRequestPage = ({width}) => {
-    const { uiLocale } = useLoginConfig()
+const PasswordResetRequestPage = ({ width }) => {
+    const { uiLocale } = useLoginSettings()
     const { notAllowed } = useGetErrorIfNotAllowed(
         requiredPropsForPasswordReset
     )
