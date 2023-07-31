@@ -19,6 +19,10 @@ export default function LoginPage({ width }) {
     )
 }
 
+LoginPage.propTypes = {
+    width: PropTypes.string,
+}
+
 const Links = ({ formUserName }) => {
     const {
         allowAccountRecovery,
@@ -316,4 +320,8 @@ const LoginFormContainer = ({ width }) => {
             )}
         </FormContainer>
     )
+}
+
+LoginFormContainer.propTypes = {
+    width: PropTypes.string,
 }

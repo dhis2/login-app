@@ -174,6 +174,7 @@ const LoginConfigProvider = ({ dir, children }) => {
 
 LoginConfigProvider.propTypes = {
     children: PropTypes.node.isRequired,
+    dir: PropTypes.string,
 }
 
 export { LoginConfigProvider }

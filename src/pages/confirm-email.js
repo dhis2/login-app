@@ -1,5 +1,6 @@
 import { useDataMutation, useLoginSettings } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
+import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { BackToLoginButton } from '../components/back-to-login-button.js'
@@ -67,6 +68,10 @@ const ConfirmEmailPage = ({ width }) => {
             </FormContainer>
         </>
     )
+}
+
+ConfirmEmailPage.propTypes = {
+    width: PropTypes.string,
 }
 
 export default ConfirmEmailPage

@@ -95,4 +95,8 @@ const CompleteRegistrationPage = ({ width }) => {
     )
 }
 
+CompleteRegistrationPage.propTypes = {
+    width: PropTypes.string,
+}
+
 export default CompleteRegistrationPage

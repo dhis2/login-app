@@ -1,7 +1,8 @@
 import { useLoginSettings } from '@dhis2/app-runtime'
 import { CssReset, CssVariables } from '@dhis2/ui'
 import parse from 'html-react-parser'
-import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
+import React, { useCallback, useEffect, useState } from 'react'
 import {
     HashRouter,
     Navigate,
@@ -56,11 +57,15 @@ const FormStyling = ({ children }) => (
     </>
 )
 
+FormStyling.propTypes = {
+    children: PropTypes.node,
+}
+
 const LoginRoutes = ({ determineIfOnMainPage }) => {
     const location = useLocation()
     useEffect(() => {
         determineIfOnMainPage(location?.pathname)
-    }, [location])
+    }, [location, determineIfOnMainPage])
     return (
         <Routes>
             <Route path="/" element={<LoginPage />} />
@@ -80,16 +85,23 @@ const LoginRoutes = ({ determineIfOnMainPage }) => {
     )
 }
 
+LoginRoutes.propTypes = {
+    determineIfOnMainPage: PropTypes.func,
+}
+
 const LoginFormStyled = () => {
     const [onMainPage, setOnMainPage] = useState(false)
 
-    const determineIfOnMainPage = (pathname) => {
-        if (pathname === '/') {
-            setOnMainPage(true)
-        } else {
-            setOnMainPage(false)
-        }
-    }
+    const determineIfOnMainPage = useCallback(
+        () => (pathname) => {
+            if (pathname === '/') {
+                setOnMainPage(true)
+            } else {
+                setOnMainPage(false)
+            }
+        },
+        [setOnMainPage]
+    )
 
     return (
         <>

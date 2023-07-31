@@ -225,4 +225,8 @@ const PasswordUpdatePage = ({ width }) => {
     )
 }
 
+PasswordUpdatePage.propTypes = {
+    width: PropTypes.string,
+}
+
 export default PasswordUpdatePage

@@ -215,4 +215,8 @@ const PasswordResetRequestPage = ({ width }) => {
     )
 }
 
+PasswordResetRequestPage.propTypes = {
+    width: PropTypes.string,
+}
+
 export default PasswordResetRequestPage
