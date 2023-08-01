@@ -1,5 +1,14 @@
 import { useLoginSettings } from '@dhis2/app-runtime'
-import { CssReset, CssVariables } from '@dhis2/ui'
+import {
+    CssReset,
+    CssVariables,
+    LoginForm,
+    PasswordResetRequestForm,
+    PasswordUpdateForm,
+    CreateAccountForm,
+    CompleteRegistrationForm,
+    ConfirmEmailForm,
+} from '@dhis2/ui'
 import parse from 'html-react-parser'
 import PropTypes from 'prop-types'
 import React, { useCallback, useEffect, useState } from 'react'
@@ -68,18 +77,21 @@ const LoginRoutes = ({ determineIfOnMainPage }) => {
     }, [location, determineIfOnMainPage])
     return (
         <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/create-account" element={<CreateAccountPage />} />
+            <Route path="/" element={<LoginForm />} />
+            <Route
+                path="/create-account"
+                element={<CreateAccountForm width="460px" />}
+            />
             <Route
                 path="/complete-registration"
-                element={<CompleteRegistrationPage />}
+                element={<CompleteRegistrationForm />}
             />
             <Route
                 path="/reset-password"
-                element={<PasswordResetRequestPage />}
+                element={<PasswordResetRequestForm />}
             />
-            <Route path="/update-password" element={<PasswordUpdatePage />} />
-            <Route path="/confirm-email" element={<ConfirmEmailPage />} />
+            <Route path="/update-password" element={<PasswordUpdateForm />} />
+            <Route path="/confirm-email" element={<ConfirmEmailForm />} />
             <Route path="*" element={<Navigate to="/" />} />
         </Routes>
     )
