@@ -31,17 +31,7 @@ import {
 } from './components/customizable-elements.js'
 import { Loader } from './components/loader.js'
 import i18n from './locales/index.js'
-import {
-    LoginPage,
-    ConfirmEmailPage,
-    CompleteRegistrationPage,
-    CreateAccountPage,
-    PasswordResetRequestPage,
-    PasswordUpdatePage,
-} from './pages/index.js'
-// import { LoginConfigProvider, useLoginConfig } from './providers/index.js'
 import { standard, sidebar, custom, crazy } from './templates/index.js'
-// import { LoginForm } from '@dhis2/ui'
 
 const FormStyling = ({ children }) => (
     <>
