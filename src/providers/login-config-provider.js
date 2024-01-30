@@ -7,9 +7,7 @@ import { LoginConfigContext } from './login-config-context.js'
 
 const query = {
     loginConfig: {
-        // This is generic enpoint but will only return
-        // exchanges a user is allowed to see
-        resource: 'auth/loginConfig',
+        resource: 'loginConfig',
         params: ({ locale }) =>
             locale
                 ? {
@@ -29,9 +27,7 @@ const localStorageLocaleKey = 'dhis2.locale.ui'
 
 const translationsQuery = {
     loginConfig: {
-        // This is generic enpoint but will only return
-        // exchanges a user is allowed to see
-        resource: 'auth/loginConfig',
+        resource: 'loginConfig',
         params: ({ locale }) => ({
             paging: false,
             locale,
@@ -41,33 +37,13 @@ const translationsQuery = {
 
 const translatableValues = [
     'applicationDescription',
-    'applicationFooter',
+    'applicationLeftSideFooter',
+    'applicationRightSideFooter',
     'applicationNotification',
     'applicationTitle',
 ]
 
 // defaults for testing while endpoints are in development
-
-const defaultProviderValues = {
-    applicationDescription:
-        'This is the long application subtitle where there is a lot of information included in the subtitle so it must handle this much information',
-    applicationFooter: 'Application left side footer text',
-    applicationNotification:
-        'this is placeholder for the application notification.',
-    allowAccountRecovery: true,
-    applicationTitle: 'Example application title that could be very long',
-    countryFlag: 'http://localhost:8080/dhis-web-commons/flags/norway.png',
-    useCountryFlag: true,
-    loginPageLogo: 'http://localhost:8080/api/staticContent/logo_front',
-    useLoginPageLogo: true,
-    emailConfigured: true,
-    selfRegistrationEnabled: true,
-    selfRegistrationNoRecaptcha: false,
-    systemUiLocale: 'en',
-    uiLocale: 'en',
-    isRTL: false,
-    htmlTemplate: 'standard',
-}
 
 const defaultLocales = [
     { locale: 'ar', name: 'عربي (Arabic)' },
@@ -77,21 +53,6 @@ const defaultLocales = [
     { locale: 'nb', name: 'Norwegian' },
     { locale: 'es', name: 'Spanish' },
 ]
-
-const sampleTranslations = {
-    fr: {
-        applicationTitle:
-            "Example d'un titre d'applis qui pourrait être très long",
-    },
-    nb: {
-        applicationTitle:
-            'Eksempel på en applikasjonstittel som kunne være veldig lang',
-        applicationDescription:
-            'Dette er den lange applikasjonsundertittelen som inneholder veldig mye informasjon slik at appen må kunne håndtere sånne innholdslengder',
-    },
-}
-
-//
 
 const LoginConfigProvider = ({ children }) => {
     const { data, loading, error } = useDataQuery(query, {
@@ -123,7 +84,6 @@ const LoginConfigProvider = ({ children }) => {
             })
         } catch (e) {
             console.error(e)
-            updatedValues = sampleTranslations[locale] ?? {}
         }
         i18n.changeLanguage(locale)
         const updatedTranslations = translatableValues.reduce(
@@ -152,10 +112,12 @@ const LoginConfigProvider = ({ children }) => {
     }
 
     const providerValue = {
-        ...defaultProviderValues,
+        // ...defaultProviderValues,
         ...data?.loginConfig,
         ...translatedValues,
-        localesUI: data?.localesUI || defaultLocales,
+        localesUI: data?.localesUI ?? defaultLocales,
+        countryFlag:
+            'http://localhost:8080/dhis-web-commons/flags/sierra_leone.png',
         isRTL: i18n.dir() === 'rtl',
         refreshOnTranslation,
     }

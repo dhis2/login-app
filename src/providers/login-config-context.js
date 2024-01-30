@@ -8,14 +8,14 @@ const LoginConfigContext = createContext({
     applicationTitle: 'undefined',
     countryFlag: 'undefined',
     useCountryFlag: false,
-    loginPageLogo: 'undefined',
-    useLoginPageLogo: false,
+    loginPageLogo: null,
     emailConfigured: false,
     selfRegistrationEnabled: false,
     selfRegistrationNoRecaptcha: false,
     uiLocale: 'undefined',
     localesUI: [],
     refreshOnTranslation: 'undefined (function)',
+    defaultLoginPageLogo: './api/staticContent/logo_front',
 })
 
 export { LoginConfigContext }
