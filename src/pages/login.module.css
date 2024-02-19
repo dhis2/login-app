@@ -1,0 +1,18 @@
+.inputField {
+    margin-bottom: var(--spacers-dp8);
+}
+
+.hiddenFields {
+    display: none;
+}
+
+.formButtons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacers-dp8);
+    margin-bottom: var(--spacers-dp16);
+}
+
+.loginButton {
+    width: 100%;
+}

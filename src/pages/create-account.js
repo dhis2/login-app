@@ -52,11 +52,9 @@ const CreateAccountPage = () => {
     }
 
     return (
-        <>
-            <FormContainer title={i18n.t('Create account', { lng: uiLocale })}>
-                <CreateAccountFormWrapper />
-            </FormContainer>
-        </>
+        <FormContainer title={i18n.t('Create account', { lng: uiLocale })}>
+            <CreateAccountFormWrapper />
+        </FormContainer>
     )
 }
 

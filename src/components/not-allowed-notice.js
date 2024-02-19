@@ -6,7 +6,7 @@ import { FormContainer } from './form-container.js'
 import { FormNotice } from './form-notice.js'
 
 export const NotAllowedNotice = ({ uiLocale }) => (
-    <FormContainer width="368x">
+    <FormContainer width="368px">
         <FormNotice error>
             <span>
                 {i18n.t(

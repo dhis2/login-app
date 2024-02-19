@@ -1,0 +1,12 @@
+.formSubtitle {
+    font-size: 14px;
+    line-height: 17px;
+    color: var(--colors-grey700);
+    margin-bottom: var(--spacers-dp16);
+}
+.formSubtitle p {
+    margin: 0 0 var(--spacers-dp8);
+}
+.formSubtitle a {
+    color: var(--colors-grey700);
+}

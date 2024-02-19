@@ -3,16 +3,17 @@ import { ReactFinalForm, InputFieldFF, Button } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState, useRef } from 'react'
 import { useForm } from 'react-final-form'
-import { Link } from 'react-router-dom'
 import {
     ApplicationNotification,
     FormContainer,
     FormNotice,
     FormSubtitle,
+    LoginLinks,
 } from '../components/index.js'
 import { checkIsFormValid, getIsRequired } from '../helpers/index.js'
 import { useLogin } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
+import styles from './login.module.css'
 
 export default function LoginPage() {
     return (
@@ -21,55 +22,6 @@ export default function LoginPage() {
             <ApplicationNotification />
         </>
     )
-}
-
-const Links = ({ formUserName }) => {
-    const {
-        allowAccountRecovery,
-        emailConfigured,
-        selfRegistrationEnabled,
-        uiLocale,
-    } = useLoginConfig()
-
-    return (
-        <>
-            <div className="links">
-                {allowAccountRecovery && emailConfigured && (
-                    <span>
-                        <Link to={`/reset-password?username=${formUserName}`}>
-                            {i18n.t('Forgot password?', { lng: uiLocale })}
-                        </Link>
-                    </span>
-                )}
-                {selfRegistrationEnabled && (
-                    <span>
-                        {i18n.t("Don't have an account?", { lng: uiLocale })}{' '}
-                        <Link to="/create-account">
-                            {i18n.t('Create an account', { lng: uiLocale })}
-                        </Link>
-                    </span>
-                )}
-            </div>
-            <style>
-                {`
-      .links {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacers-dp8);
-      }
-      .links span,
-      .links a {
-        color: var(--colors-grey900);
-        font-size: 14px;
-      }
-    `}
-            </style>
-        </>
-    )
-}
-
-Links.propTypes = {
-    formUserName: PropTypes.string,
 }
 
 const InnerLoginForm = ({
@@ -95,93 +47,76 @@ const InnerLoginForm = ({
         : i18n.t('Log in', { lng: uiLocale })
     const isRequired = getIsRequired(uiLocale)
     return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <div
-                    className={twoFAVerificationRequired ? 'hiddenFields' : ''}
-                >
-                    {/* onChange will not update every change, so may need to use controlled InputField here for username tracking */}
-                    <ReactFinalForm.Field
-                        name="username"
-                        label={i18n.t('Username', { lng: uiLocale })}
-                        component={InputFieldFF}
-                        className={'inputField'}
-                        validate={!formSubmitted ? null : isRequired}
-                        key={formSubmitted ? 1 : 0}
-                        initialFocus={!twoFAVerificationRequired}
-                        onBlur={(e) => {
-                            setFormUserName(e.value)
-                        }}
-                        readOnly={loading}
-                    />
-                    <ReactFinalForm.Field
-                        name="password"
-                        label={i18n.t('Password', { lng: uiLocale })}
-                        type="password"
-                        component={InputFieldFF}
-                        className={'inputField'}
-                        validate={!formSubmitted ? null : isRequired}
-                        key={formSubmitted ? 2 : 3}
-                        readOnly={loading}
-                    />
-                </div>
+        <form onSubmit={handleSubmit}>
+            <div
+                className={
+                    twoFAVerificationRequired ? styles.hiddenFields : null
+                }
+            >
+                {/* onChange will not update every change, so may need to use controlled InputField here for username tracking */}
+                <ReactFinalForm.Field
+                    name="username"
+                    label={i18n.t('Username', { lng: uiLocale })}
+                    component={InputFieldFF}
+                    className={styles.inputField}
+                    validate={!formSubmitted ? null : isRequired}
+                    key={formSubmitted ? 1 : 0}
+                    initialFocus={!twoFAVerificationRequired}
+                    onBlur={(e) => {
+                        setFormUserName(e.value)
+                    }}
+                    readOnly={loading}
+                />
+                <ReactFinalForm.Field
+                    name="password"
+                    label={i18n.t('Password', { lng: uiLocale })}
+                    type="password"
+                    component={InputFieldFF}
+                    className={styles.inputField}
+                    validate={!formSubmitted ? null : isRequired}
+                    key={formSubmitted ? 2 : 3}
+                    readOnly={loading}
+                />
+            </div>
 
-                <div
-                    className={!twoFAVerificationRequired ? 'hiddenFields' : ''}
+            <div
+                className={
+                    !twoFAVerificationRequired ? styles.hiddenFields : ''
+                }
+            >
+                <ReactFinalForm.Field
+                    name="twoFA"
+                    label={i18n.t('Authentication code', { lng: uiLocale })}
+                    component={InputFieldFF}
+                    className={styles.inputField}
+                    initialValue=""
+                    initialFocus={twoFAVerificationRequired}
+                    readOnly={loading}
+                />
+            </div>
+            <div className={styles.formButtons}>
+                <Button
+                    type="submit"
+                    disabled={loading}
+                    className={styles.loginButton}
+                    primary
                 >
-                    <ReactFinalForm.Field
-                        name="twoFA"
-                        label={i18n.t('Authentication code', { lng: uiLocale })}
-                        component={InputFieldFF}
-                        className={'inputField'}
-                        initialValue=""
-                        initialFocus={twoFAVerificationRequired}
-                        readOnly={loading}
-                    />
-                </div>
-                <div className="formButtons">
+                    {loading
+                        ? i18n.t('Logging in', { lng: uiLocale })
+                        : loginButtonText}
+                </Button>
+                {twoFAVerificationRequired && (
                     <Button
-                        type="submit"
+                        secondary
                         disabled={loading}
-                        className="login-btn"
-                        primary
+                        onClick={clearTwoFA}
+                        className={styles.loginButton}
                     >
-                        {loading
-                            ? i18n.t('Logging in', { lng: uiLocale })
-                            : loginButtonText}
+                        {i18n.t('Cancel', { lng: uiLocale })}
                     </Button>
-                    {twoFAVerificationRequired && (
-                        <Button
-                            secondary
-                            disabled={loading}
-                            onClick={clearTwoFA}
-                            className="login-btn"
-                        >
-                            {i18n.t('Cancel', { lng: uiLocale })}
-                        </Button>
-                    )}
-                </div>
-            </form>
-            <style>
-                {`
-        .inputField {
-          margin-bottom: var(--spacers-dp8);
-        }
-        .hiddenFields {
-          display:none;
-        }
-        .formButtons {
-          display: flex;
-          flex-direction: column;
-          gap: var(--spacers-dp8);          
-          margin-bottom: var(--spacers-dp16);
-        }
-        .login-btn {
-          width: 100%;
-        }          
-      `}
-            </style>
-        </>
+                )}
+            </div>
+        </form>
     )
 }
 
@@ -243,33 +178,27 @@ const LoginForm = ({
 
     return (
         <>
-            <div className="form-fields">
-                <div className={'styles.container'}>
-                    {error && (
-                        <FormNotice
-                            title={i18n.t('Incorrect username or password', {
-                                lng: uiLocale,
-                            })}
-                            error={true}
-                        />
-                    )}
-                    <ReactFinalForm.Form onSubmit={handleLogin}>
-                        {({ handleSubmit }) => (
-                            <InnerLoginForm
-                                handleSubmit={handleSubmit}
-                                formSubmitted={formSubmitted}
-                                twoFAVerificationRequired={
-                                    twoFAVerificationRequired
-                                }
-                                cancelTwoFA={cancelTwoFA}
-                                uiLocale={uiLocale}
-                                loading={loading}
-                                setFormUserName={setFormUserName}
-                            />
-                        )}
-                    </ReactFinalForm.Form>
-                </div>
-            </div>
+            {error && (
+                <FormNotice
+                    title={i18n.t('Incorrect username or password', {
+                        lng: uiLocale,
+                    })}
+                    error={true}
+                />
+            )}
+            <ReactFinalForm.Form onSubmit={handleLogin}>
+                {({ handleSubmit }) => (
+                    <InnerLoginForm
+                        handleSubmit={handleSubmit}
+                        formSubmitted={formSubmitted}
+                        twoFAVerificationRequired={twoFAVerificationRequired}
+                        cancelTwoFA={cancelTwoFA}
+                        uiLocale={uiLocale}
+                        loading={loading}
+                        setFormUserName={setFormUserName}
+                    />
+                )}
+            </ReactFinalForm.Form>
         </>
     )
 }
@@ -316,7 +245,7 @@ const LoginFormContainer = () => {
                 uiLocale={uiLocale}
             />
             {!twoFAVerificationRequired && (
-                <Links formUserName={formUserName} />
+                <LoginLinks formUserName={formUserName} />
             )}
         </FormContainer>
     )

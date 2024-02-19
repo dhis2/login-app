@@ -1,0 +1,4 @@
+.appNotification {
+    margin: 0 auto var(--spacers-dp24);
+    max-width: 368px;
+}

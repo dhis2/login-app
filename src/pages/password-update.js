@@ -4,7 +4,7 @@ import { Button, ReactFinalForm, InputFieldFF } from '@dhis2/ui'
 import { composeValidators, dhis2Password } from '@dhis2/ui-forms'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import {
     BackToLoginButton,
     FormContainer,
@@ -15,6 +15,7 @@ import {
 import { getIsRequired } from '../helpers/index.js'
 import { useGetErrorIfNotAllowed } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
+import styles from './password-update.module.css'
 
 const passwordUpdateMutation = {
     resource: 'auth/passwordReset',
@@ -26,67 +27,37 @@ const InnerPasswordUpdateForm = ({ handleSubmit, uiLocale, loading }) => {
     const isRequired = getIsRequired(uiLocale)
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <ReactFinalForm.Field
-                        name="password"
-                        type="password"
-                        label={i18n.t('Password', { lng: uiLocale })}
-                        component={InputFieldFF}
-                        className={'inputField'}
-                        validate={composeValidators(isRequired, dhis2Password)}
-                        initialFocus
-                        readOnly={loading}
-                    />
-                </div>
-                <div className="formButtons">
-                    <Button
-                        type="submit"
-                        disabled={loading}
-                        className="reset-btn"
-                        primary
-                    >
-                        {loading
-                            ? i18n.t('Saving...', { lng: uiLocale })
-                            : i18n.t('Save new password', {
-                                  lng: uiLocale,
-                              })}
-                    </Button>
-                    <Link className="no-underline" to="/">
-                        <Button
-                            secondary
-                            disabled={loading}
-                            className="reset-btn"
-                        >
-                            {i18n.t('Cancel', { lng: uiLocale })}
-                        </Button>
-                    </Link>
-                </div>
-            </form>
-            <style>
-                {`
-        .inputField {
-          margin-bottom: var(--spacers-dp8);
-        }
-        .hiddenFields {
-          display:none;
-        }
-        .formButtons {
-          display: flex;
-          flex-direction: column;
-          gap: var(--spacers-dp8);          
-          margin-bottom: var(--spacers-dp16);
-        }
-        .reset-btn {
-          width: 100%;
-        }
-        .no-underline {
-          text-decoration: none;
-        }
-      `}
-            </style>
-        </>
+        <form onSubmit={handleSubmit}>
+            <div>
+                <ReactFinalForm.Field
+                    name="password"
+                    type="password"
+                    label={i18n.t('Password', { lng: uiLocale })}
+                    component={InputFieldFF}
+                    className={styles.inputField}
+                    validate={composeValidators(isRequired, dhis2Password)}
+                    initialFocus
+                    readOnly={loading}
+                />
+            </div>
+            <div className={styles.formButtons}>
+                <Button
+                    type="submit"
+                    disabled={loading}
+                    className={styles.resetButton}
+                    primary
+                >
+                    {loading
+                        ? i18n.t('Saving...', { lng: uiLocale })
+                        : i18n.t('Save new password', {
+                              lng: uiLocale,
+                          })}
+                </Button>
+                <BackToLoginButton
+                    buttonText={i18n.t('Cancel', { lng: uiLocale })}
+                />
+            </div>
+        </form>
     )
 }
 
@@ -133,10 +104,7 @@ export const PasswordUpdateForm = ({ token, uiLocale }) => {
                                     )}
                                 </span>
                             </FormNotice>
-                            <BackToLoginButton
-                                uiLocale={uiLocale}
-                                fullWidth={true}
-                            />
+                            <BackToLoginButton fullWidth />
                         </>
                     )}
                     {!data && (
@@ -185,46 +153,19 @@ const PasswordUpdatePage = () => {
     }
 
     return (
-        <>
-            <FormContainer
-                width="368px"
-                title={i18n.t('Choose new password', { lng: uiLocale })}
-            >
-                <FormSubtitle>
-                    <p>
-                        {i18n.t(
-                            'Enter the new password for your account below',
-                            { lng: uiLocale }
-                        )}
-                    </p>
-                </FormSubtitle>
-                <PasswordUpdateForm uiLocale={uiLocale} token={token} />
-                <style>
-                    {`
-        .pw-request-form-fields {
-          min-width: 320px;
-          display: flex;
-          flex-direction: column;
-          gap: var(--spacers-dp16);
-        }
-        .inputs {
-          display: flex;
-          flex-direction: column;
-          gap: var(--spacers-dp8);
-          margin-bottom: var(--spacers-dp12);
-        }
-        .form-buttons {
-          display: flex;
-          flex-direction: column;
-          gap: var(--spacers-dp8);
-        }
-        .reset-submit-btn, .reset-cancel-btn {
-          width: 100%;
-        }
-      `}
-                </style>
-            </FormContainer>
-        </>
+        <FormContainer
+            width="368px"
+            title={i18n.t('Choose new password', { lng: uiLocale })}
+        >
+            <FormSubtitle>
+                <p>
+                    {i18n.t('Enter the new password for your account below', {
+                        lng: uiLocale,
+                    })}
+                </p>
+            </FormSubtitle>
+            <PasswordUpdateForm uiLocale={uiLocale} token={token} />
+        </FormContainer>
     )
 }
 

@@ -30,42 +30,40 @@ const ConfirmEmailPage = () => {
     }, [token, email, confirmEmail])
 
     return (
-        <>
-            <FormContainer
-                width="368px"
-                title={i18n.t('Email confirmation', { lng: uiLocale })}
-            >
-                {error && (
-                    <FormNotice
-                        error={true}
-                        title={i18n.t('Could not confirm email', {
-                            lng: uiLocale,
-                        })}
-                    >
-                        <span>
-                            {i18n.t(
-                                'Your link may have expired. Please try again and contact your system administrator if the problem remains.',
-                                { lng: uiLocale }
-                            )}
-                        </span>
-                    </FormNotice>
-                )}
-                {data && (
-                    <FormNotice
-                        valid={true}
-                        title={i18n.t('Email confirmed', { lng: uiLocale })}
-                    >
-                        <span>
-                            {i18n.t(
-                                'Your email is confirmed. You can now use your username and password to log in.',
-                                { lng: uiLocale }
-                            )}
-                        </span>
-                    </FormNotice>
-                )}
-                <BackToLoginButton uiLocale={uiLocale} fullWidth={true} />
-            </FormContainer>
-        </>
+        <FormContainer
+            width="368px"
+            title={i18n.t('Email confirmation', { lng: uiLocale })}
+        >
+            {error && (
+                <FormNotice
+                    error={true}
+                    title={i18n.t('Could not confirm email', {
+                        lng: uiLocale,
+                    })}
+                >
+                    <span>
+                        {i18n.t(
+                            'Your link may have expired. Please try again and contact your system administrator if the problem remains.',
+                            { lng: uiLocale }
+                        )}
+                    </span>
+                </FormNotice>
+            )}
+            {data && (
+                <FormNotice
+                    valid={true}
+                    title={i18n.t('Email confirmed', { lng: uiLocale })}
+                >
+                    <span>
+                        {i18n.t(
+                            'Your email is confirmed. You can now use your username and password to log in.',
+                            { lng: uiLocale }
+                        )}
+                    </span>
+                </FormNotice>
+            )}
+            <BackToLoginButton fullWidth />
+        </FormContainer>
     )
 }
 

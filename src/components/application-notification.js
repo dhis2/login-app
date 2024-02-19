@@ -1,13 +1,14 @@
 import { NoticeBox } from '@dhis2/ui'
 import React from 'react'
 import { useLoginConfig } from '../providers/index.js'
+import styles from './application-notification.module.css'
 
 export const ApplicationNotification = () => {
     const { applicationNotification } = useLoginConfig()
     return (
         <>
             {applicationNotification && (
-                <div className="app-notification">
+                <div className={styles.appNotification}>
                     <NoticeBox>
                         <span
                             dangerouslySetInnerHTML={{
@@ -17,14 +18,6 @@ export const ApplicationNotification = () => {
                     </NoticeBox>
                 </div>
             )}
-            <style>
-                {`
-            .app-notification {
-              margin: 0 auto var(--spacers-dp24);
-              max-width: 368px;
-            }
-          `}
-            </style>
         </>
     )
 }

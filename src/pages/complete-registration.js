@@ -45,7 +45,7 @@ const CompleteRegistrationFormWrapper = ({ uiLocale }) => {
                         )}
                     </span>
                 </FormNotice>
-                <BackToLoginButton uiLocale={uiLocale} />
+                <BackToLoginButton />
             </>
         )
     }
@@ -85,11 +85,9 @@ const CompleteRegistrationPage = () => {
     }
 
     return (
-        <>
-            <FormContainer title={i18n.t('Create account', { lng: uiLocale })}>
-                <CompleteRegistrationFormWrapper uiLocale={uiLocale} />
-            </FormContainer>
-        </>
+        <FormContainer title={i18n.t('Create account', { lng: uiLocale })}>
+            <CompleteRegistrationFormWrapper uiLocale={uiLocale} />
+        </FormContainer>
     )
 }
 
