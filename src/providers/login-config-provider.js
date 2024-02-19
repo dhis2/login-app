@@ -5,33 +5,21 @@ import React, { useEffect, useState } from 'react'
 import { Loader } from '../components/loader.js'
 import { LoginConfigContext } from './login-config-context.js'
 
-const query = {
-    loginConfig: {
-        resource: 'loginConfig',
-        params: ({ locale }) =>
-            locale
-                ? {
-                      paging: false,
-                      locale,
-                  }
-                : {
-                      paging: false,
-                  },
-    },
-    localesUI: {
-        resource: 'locales/ui',
-    },
-}
-
 const localStorageLocaleKey = 'dhis2.locale.ui'
 
-const translationsQuery = {
+const loginConfigQuery = {
     loginConfig: {
         resource: 'loginConfig',
         params: ({ locale }) => ({
             paging: false,
             locale,
         }),
+    },
+}
+
+const localesQuery = {
+    localesUI: {
+        resource: 'locales/ui',
     },
 }
 
@@ -46,18 +34,26 @@ const translatableValues = [
 // defaults for testing while endpoints are in development
 
 const defaultLocales = [
-    { locale: 'ar', name: 'عربي (Arabic)' },
-    { locale: 'zh', name: 'Chinese' },
-    { locale: 'en', name: 'English' },
-    { locale: 'fr', name: 'French' },
-    { locale: 'nb', name: 'Norwegian' },
-    { locale: 'es', name: 'Spanish' },
+    { locale: 'ar', displayName: 'Arabic', name: 'العربية' },
+    { locale: 'en', displayName: 'English', name: 'English' },
+    { locale: 'fr', displayName: 'French', name: 'français' },
+    { locale: 'pt', displayName: 'Portuguese', name: 'português' },
+    { locale: 'es', displayName: 'Spanish', name: 'español' },
 ]
 
 const LoginConfigProvider = ({ children }) => {
-    const { data, loading, error } = useDataQuery(query, {
+    const {
+        data: loginConfigData,
+        loading: loginConfigLoading,
+        error: loginConfigError,
+    } = useDataQuery(loginConfigQuery, {
         variables: { locale: localStorage[localStorageLocaleKey] },
     })
+    const {
+        data: localesData,
+        loading: localesLoading,
+        error: localesError,
+    } = useDataQuery(localesQuery)
     const config = useConfig()
 
     const [translatedValues, setTranslatedValues] = useState()
@@ -66,7 +62,7 @@ const LoginConfigProvider = ({ children }) => {
         // if there is a stored language, set it as i18next language
         const userLanguage =
             localStorage[localStorageLocaleKey] ||
-            data?.loginConfig?.uiLocale ||
+            loginConfigData?.loginConfig?.uiLocale ||
             'en'
         setTranslatedValues({ uiLocale: userLanguage })
         i18n.changeLanguage(userLanguage)
@@ -80,7 +76,7 @@ const LoginConfigProvider = ({ children }) => {
         }
         let updatedValues
         try {
-            updatedValues = await engine.query(translationsQuery, {
+            updatedValues = await engine.query(loginConfigQuery, {
                 variables: { locale },
             })
         } catch (e) {
@@ -102,25 +98,26 @@ const LoginConfigProvider = ({ children }) => {
         localStorage.setItem(localStorageLocaleKey, locale)
     }
 
-    if (loading) {
+    if (loginConfigLoading || localesLoading) {
         return <Loader />
     }
 
-    if (error) {
-        /**
-         * provide an error boundary? or proceed with non-custom login page?
-         */
+    // the app will function without the appearance settings, so just console error
+    if (loginConfigError) {
+        console.error(loginConfigError)
+    }
+
+    if (localesError) {
+        console.error(localesError)
     }
 
     const providerValue = {
         // ...defaultProviderValues,
-        ...data?.loginConfig,
+        ...loginConfigData?.loginConfig,
         ...translatedValues,
-        localesUI: data?.localesUI ?? defaultLocales,
-        countryFlag:
-            'http://localhost:8080/dhis-web-commons/flags/sierra_leone.png',
-        baseUrl: config?.baseUrl,
+        localesUI: localesData?.localesUI ?? defaultLocales,
         isRTL: i18n.dir() === 'rtl',
+        baseUrl: config?.baseUrl,
         refreshOnTranslation,
     }
 
