@@ -8,6 +8,7 @@ import {
 } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React, { useCallback, useState } from 'react'
+import { convertHTML } from '../helpers/index.js'
 import { useLoginConfig } from '../providers/index.js'
 
 const PopupContents = ({ popupHTML }) => {
@@ -20,7 +21,7 @@ const PopupContents = ({ popupHTML }) => {
     }
     return (
         <Modal large position="middle">
-            <ModalContent>{popupHTML}</ModalContent>
+            <ModalContent>{convertHTML(popupHTML)}</ModalContent>
             <ModalActions>
                 <ButtonStrip end>
                     <Button onClick={closePopup} primary>

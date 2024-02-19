@@ -2,6 +2,7 @@ import { useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { SingleSelectField, SingleSelectOption } from '@dhis2/ui'
 import React from 'react'
+import { convertHTML } from '../helpers/index.js'
 import { useLoginConfig } from '../providers/index.js'
 
 export const ApplicationTitle = () => {
@@ -33,7 +34,7 @@ export const Logo = () => {
 export const ApplicationFooter = () => {
     const { applicationLeftSideFooter } = useLoginConfig()
     return applicationLeftSideFooter ? (
-        <span>{applicationLeftSideFooter}</span>
+        <span>{convertHTML(applicationLeftSideFooter)}</span>
     ) : null
 }
 
