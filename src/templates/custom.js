@@ -173,9 +173,10 @@ export const custom = `
 
     <div class='footer'>
       <div>
-        <span id='application-footer'></span>
+        <span id='application-left-footer'></span>
       </div>
       <div class='footer-right'>
+        <span id='application-right-footer'></span>
         <span>Africa CDC</span>
         <div id='language-select'></div>
       </div>

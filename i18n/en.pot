@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2023-03-22T13:27:01.036Z\n"
-"PO-Revision-Date: 2023-03-22T13:27:01.036Z\n"
+"POT-Creation-Date: 2024-02-19T20:01:45.010Z\n"
+"PO-Revision-Date: 2024-02-19T20:01:45.010Z\n"
 
 msgid "Log in details"
 msgstr "Log in details"
@@ -81,8 +81,20 @@ msgstr "Back to log in page"
 msgid "Powered by DHIS2"
 msgstr "Powered by DHIS2"
 
+msgid "Forgot password?"
+msgstr "Forgot password?"
+
+msgid "Don't have an account?"
+msgstr "Don't have an account?"
+
+msgid "Create an account"
+msgstr "Create an account"
+
 msgid "The requested page is not configured for your system"
 msgstr "The requested page is not configured for your system"
+
+msgid "I agree"
+msgstr "I agree"
 
 msgid "This field is required"
 msgstr "This field is required"
@@ -119,15 +131,6 @@ msgid ""
 msgstr ""
 "Your email is confirmed. You can now use your username and password to log "
 "in."
-
-msgid "Forgot password?"
-msgstr "Forgot password?"
-
-msgid "Don't have an account?"
-msgstr "Don't have an account?"
-
-msgid "Create an account"
-msgstr "Create an account"
 
 msgid "Verify and log in"
 msgstr "Verify and log in"

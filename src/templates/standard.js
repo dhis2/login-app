@@ -149,9 +149,10 @@ export const standard = `
         <span class='powered-by-wrapper'>
         <span id='powered-by'></span>        
         </span>
-        <span id='application-footer'></span>
+        <span id='application-left-footer'></span>
       </div>
       <div class="footer-right">
+        <span id='application-right-footer'></span>
         <div id='language-select'></div>
       </div>
     </div>

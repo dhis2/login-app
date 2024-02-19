@@ -31,10 +31,17 @@ export const Logo = () => {
     )
 }
 
-export const ApplicationFooter = () => {
+export const ApplicationLeftFooter = () => {
     const { applicationLeftSideFooter } = useLoginConfig()
     return applicationLeftSideFooter ? (
         <span>{convertHTML(applicationLeftSideFooter)}</span>
+    ) : null
+}
+
+export const ApplicationRightFooter = () => {
+    const { applicationRightSideFooter } = useLoginConfig()
+    return applicationRightSideFooter ? (
+        <span>{convertHTML(applicationRightSideFooter)}</span>
     ) : null
 }
 

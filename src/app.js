@@ -4,7 +4,8 @@ import React from 'react'
 import { HashRouter, Navigate, Routes, Route } from 'react-router-dom'
 import {
     ApplicationDescription,
-    ApplicationFooter,
+    ApplicationLeftFooter,
+    ApplicationRightFooter,
     ApplicationTitle,
     Flag,
     LanguageSelect,
@@ -80,8 +81,12 @@ const options = {
             return <PoweredByDHIS2 />
         }
 
-        if (attribs.id === 'application-footer') {
-            return <ApplicationFooter />
+        if (attribs.id === 'application-left-footer') {
+            return <ApplicationLeftFooter />
+        }
+
+        if (attribs.id === 'application-right-footer') {
+            return <ApplicationRightFooter />
         }
 
         if (attribs.id === 'language-select') {

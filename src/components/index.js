@@ -9,7 +9,7 @@ export {
     ApplicationDescription,
     Flag,
     Logo,
-    ApplicationFooter,
+    ApplicationLeftFooter,
     PoweredByDHIS2,
     LanguageSelect,
 } from './customizable-elements.js'
