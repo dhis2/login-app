@@ -1,4 +1,4 @@
-import { useDataQuery, useDataEngine } from '@dhis2/app-runtime'
+import { useDataQuery, useDataEngine, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
@@ -58,6 +58,7 @@ const LoginConfigProvider = ({ children }) => {
     const { data, loading, error } = useDataQuery(query, {
         variables: { locale: localStorage[localStorageLocaleKey] },
     })
+    const config = useConfig()
 
     const [translatedValues, setTranslatedValues] = useState()
 
@@ -118,6 +119,7 @@ const LoginConfigProvider = ({ children }) => {
         localesUI: data?.localesUI ?? defaultLocales,
         countryFlag:
             'http://localhost:8080/dhis-web-commons/flags/sierra_leone.png',
+        baseUrl: config?.baseUrl,
         isRTL: i18n.dir() === 'rtl',
         refreshOnTranslation,
     }

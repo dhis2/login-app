@@ -203,7 +203,7 @@ const LoginForm = ({
     uiLocale,
 }) => {
     const { login, cancelTwoFA, twoFAVerificationRequired, error, loading } =
-        useLogin({ redirectTo: 'http://www.dhis2.org' })
+        useLogin()
 
     useEffect(() => {
         if (setTwoFAVerificationRequired) {
