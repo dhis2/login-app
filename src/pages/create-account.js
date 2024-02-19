@@ -4,11 +4,11 @@ import React from 'react'
 import {
     CreateAccountForm,
     CREATE_FORM_TYPES,
-} from '../components/account-creation-form.js'
-import { FormContainer } from '../components/form-container.js'
-import { NotAllowedNotice } from '../components/not-allowed-notice.js'
+    FormContainer,
+    NotAllowedNotice,
+} from '../components/index.js'
 import { useGetErrorIfNotAllowed } from '../hooks/index.js'
-import { useLoginConfig } from '../providers/use-login-config.js'
+import { useLoginConfig } from '../providers/index.js'
 
 const selfRegisterMutation = {
     resource: 'auth/register',

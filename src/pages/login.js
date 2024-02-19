@@ -4,13 +4,15 @@ import PropTypes from 'prop-types'
 import React, { useEffect, useState, useRef } from 'react'
 import { useForm } from 'react-final-form'
 import { Link } from 'react-router-dom'
-import { ApplicationNotification } from '../components/application-notification.js'
-import { FormContainer } from '../components/form-container.js'
-import { FormNotice } from '../components/form-notice.js'
-import { FormSubtitle } from '../components/form-subtitle.js'
+import {
+    ApplicationNotification,
+    FormContainer,
+    FormNotice,
+    FormSubtitle,
+} from '../components/index.js'
 import { checkIsFormValid, getIsRequired } from '../helpers/index.js'
 import { useLogin } from '../hooks/index.js'
-import { useLoginConfig } from '../providers/use-login-config.js'
+import { useLoginConfig } from '../providers/index.js'
 
 export default function LoginPage() {
     return (

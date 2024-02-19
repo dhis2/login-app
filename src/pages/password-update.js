@@ -5,14 +5,16 @@ import { composeValidators, dhis2Password } from '@dhis2/ui-forms'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { BackToLoginButton } from '../components/back-to-login-button.js'
-import { FormContainer } from '../components/form-container.js'
-import { FormNotice } from '../components/form-notice.js'
-import { FormSubtitle } from '../components/form-subtitle.js'
-import { NotAllowedNotice } from '../components/not-allowed-notice.js'
-import { getIsRequired } from '../helpers/validators.js'
+import {
+    BackToLoginButton,
+    FormContainer,
+    FormNotice,
+    FormSubtitle,
+    NotAllowedNotice,
+} from '../components/index.js'
+import { getIsRequired } from '../helpers/index.js'
 import { useGetErrorIfNotAllowed } from '../hooks/index.js'
-import { useLoginConfig } from '../providers/use-login-config.js'
+import { useLoginConfig } from '../providers/index.js'
 
 const passwordUpdateMutation = {
     resource: 'auth/passwordReset',

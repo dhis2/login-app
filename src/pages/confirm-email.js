@@ -2,10 +2,12 @@ import { useDataMutation } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import React, { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { BackToLoginButton } from '../components/back-to-login-button.js'
-import { FormContainer } from '../components/form-container.js'
-import { FormNotice } from '../components/form-notice.js'
-import { useLoginConfig } from '../providers/use-login-config.js'
+import {
+    BackToLoginButton,
+    FormContainer,
+    FormNotice,
+} from '../components/index.js'
+import { useLoginConfig } from '../providers/index.js'
 
 const confirmEmailMutation = {
     resource: 'auth/confirmEmailAccount',
