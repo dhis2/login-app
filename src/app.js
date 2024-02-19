@@ -11,6 +11,7 @@ import {
     Logo,
     PoweredByDHIS2,
 } from './components/customizable-elements.js'
+import { Popup } from './components/pop-up.js'
 import {
     LoginPage,
     ConfirmEmailPage,
@@ -25,21 +26,27 @@ import { standard, sidebar, custom } from './templates/index.js'
 
 const LoginRoutes = () => {
     return (
-        <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/create-account" element={<CreateAccountPage />} />
-            <Route
-                path="/complete-registration"
-                element={<CompleteRegistrationPage />}
-            />
-            <Route
-                path="/reset-password"
-                element={<PasswordResetRequestPage />}
-            />
-            <Route path="/update-password" element={<PasswordUpdatePage />} />
-            <Route path="/confirm-email" element={<ConfirmEmailPage />} />
-            <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+        <>
+            <Popup />
+            <Routes>
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/create-account" element={<CreateAccountPage />} />
+                <Route
+                    path="/complete-registration"
+                    element={<CompleteRegistrationPage />}
+                />
+                <Route
+                    path="/reset-password"
+                    element={<PasswordResetRequestPage />}
+                />
+                <Route
+                    path="/update-password"
+                    element={<PasswordUpdatePage />}
+                />
+                <Route path="/confirm-email" element={<ConfirmEmailPage />} />
+                <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+        </>
     )
 }
 
