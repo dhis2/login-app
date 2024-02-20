@@ -139,8 +139,14 @@ const LoginForm = ({
     setTwoFAVerificationRequired,
     uiLocale,
 }) => {
-    const { login, cancelTwoFA, twoFAVerificationRequired, error, loading } =
-        useLogin()
+    const {
+        login,
+        cancelTwoFA,
+        twoFAVerificationRequired,
+        twoFAIncorrect,
+        error,
+        loading,
+    } = useLogin()
 
     useEffect(() => {
         if (setTwoFAVerificationRequired) {
@@ -183,7 +189,15 @@ const LoginForm = ({
                     title={i18n.t('Incorrect username or password', {
                         lng: uiLocale,
                     })}
-                    error={true}
+                    error
+                />
+            )}
+            {twoFAIncorrect && (
+                <FormNotice
+                    title={i18n.t('Incorrect two factor authentication code', {
+                        lng: uiLocale,
+                    })}
+                    error
                 />
             )}
             <ReactFinalForm.Form onSubmit={handleLogin}>
@@ -192,6 +206,7 @@ const LoginForm = ({
                         handleSubmit={handleSubmit}
                         formSubmitted={formSubmitted}
                         twoFAVerificationRequired={twoFAVerificationRequired}
+                        twoFAIncorrect={twoFAIncorrect}
                         cancelTwoFA={cancelTwoFA}
                         uiLocale={uiLocale}
                         loading={loading}
