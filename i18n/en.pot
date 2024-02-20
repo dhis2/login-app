@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2024-02-19T20:01:45.010Z\n"
-"PO-Revision-Date: 2024-02-19T20:01:45.010Z\n"
+"POT-Creation-Date: 2024-02-20T10:58:18.016Z\n"
+"PO-Revision-Date: 2024-02-20T10:58:18.016Z\n"
 
 msgid "Log in details"
 msgstr "Log in details"
@@ -146,6 +146,9 @@ msgstr "Logging in"
 
 msgid "Incorrect username or password"
 msgstr "Incorrect username or password"
+
+msgid "Incorrect two factor authentication code"
+msgstr "Incorrect two factor authentication code"
 
 msgid "Two-factor authentication"
 msgstr "Two-factor authentication"
