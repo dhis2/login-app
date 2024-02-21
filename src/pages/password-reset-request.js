@@ -162,10 +162,7 @@ const PasswordResetRequestPage = () => {
     }
 
     return (
-        <FormContainer
-            width="368px"
-            title={i18n.t('Reset password', { lng: uiLocale })}
-        >
+        <FormContainer title={i18n.t('Reset password', { lng: uiLocale })}>
             <FormSubtitle>
                 <p>
                     {i18n.t(

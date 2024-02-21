@@ -95,23 +95,13 @@ const InnerLoginForm = ({
                 />
             </div>
             <div className={styles.formButtons}>
-                <Button
-                    type="submit"
-                    disabled={loading}
-                    className={styles.loginButton}
-                    primary
-                >
+                <Button type="submit" disabled={loading} primary>
                     {loading
                         ? i18n.t('Logging in', { lng: uiLocale })
                         : loginButtonText}
                 </Button>
                 {twoFAVerificationRequired && (
-                    <Button
-                        secondary
-                        disabled={loading}
-                        onClick={clearTwoFA}
-                        className={styles.loginButton}
-                    >
+                    <Button secondary disabled={loading} onClick={clearTwoFA}>
                         {i18n.t('Cancel', { lng: uiLocale })}
                     </Button>
                 )}
@@ -237,7 +227,6 @@ const LoginFormContainer = () => {
 
     return (
         <FormContainer
-            width="368px"
             title={
                 twoFAVerificationRequired
                     ? i18n.t('Two-factor authentication', { lng: uiLocale })

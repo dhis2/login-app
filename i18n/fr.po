@@ -63,7 +63,7 @@ msgid "Two-factor authentication"
 msgstr "Authentification à deux facteurs"
 
 msgid "Enter the code from your two-factor authentication app to log in."
-msgstr "Saisir le code fourni par votre applis d'authentification pour se connecter."
+msgstr "Saisir le code fourni par votre applis d'authentification pour vous connecter."
 
 msgid "Username or email"
 msgstr "Identifiant ou adresse email"

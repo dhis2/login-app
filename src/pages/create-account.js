@@ -17,9 +17,6 @@ const selfRegisterMutation = {
 }
 
 const CreateAccountFormWrapper = () => {
-    // depends on https://dhis2.atlassian.net/browse/DHIS2-14615
-    const { emailConfigured } = useLoginConfig()
-
     const [resetPassword, { loading, fetching, error, data }] =
         useDataMutation(selfRegisterMutation)
 
@@ -29,7 +26,6 @@ const CreateAccountFormWrapper = () => {
     return (
         <CreateAccountForm
             createType={CREATE_FORM_TYPES.create}
-            emailVerificationOnSuccess={emailConfigured}
             loading={loading || fetching}
             error={error}
             data={data}
@@ -52,7 +48,10 @@ const CreateAccountPage = () => {
     }
 
     return (
-        <FormContainer title={i18n.t('Create account', { lng: uiLocale })}>
+        <FormContainer
+            title={i18n.t('Create account', { lng: uiLocale })}
+            variableWidth
+        >
             <CreateAccountFormWrapper />
         </FormContainer>
     )

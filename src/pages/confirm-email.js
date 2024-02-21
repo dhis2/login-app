@@ -30,10 +30,7 @@ const ConfirmEmailPage = () => {
     }, [token, email, confirmEmail])
 
     return (
-        <FormContainer
-            width="368px"
-            title={i18n.t('Email confirmation', { lng: uiLocale })}
-        >
+        <FormContainer title={i18n.t('Email confirmation', { lng: uiLocale })}>
             {error && (
                 <FormNotice
                     error={true}

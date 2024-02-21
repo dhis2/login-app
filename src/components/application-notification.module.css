@@ -1,4 +1,10 @@
 .appNotification {
-    margin: 0 auto var(--spacers-dp24);
-    max-width: 368px;
+    margin-block-start: var(--form-container-margin-block-start, 0);
+    margin-block-end: var(
+        --form-container-margin-block-end,
+        var(--spacers-dp24)
+    );
+    margin-inline-start: var(--form-container-margin-inline-start, auto);
+    margin-inline-end: var(--form-container-margin-inline-end, auto);
+    width: var(--form-container-default-width, 368px);
 }

@@ -43,6 +43,7 @@ const InnerCreateAccountForm = ({
     uiLocale,
     loading,
     prepopulatedFields,
+    emailConfigured,
 }) => {
     const isRequired = getIsRequired(uiLocale)
     return (
@@ -109,25 +110,20 @@ const InnerCreateAccountForm = ({
                         initialValue={prepopulatedFields?.email}
                         readOnly={loading || Boolean(prepopulatedFields?.email)}
                     />
-                    <ReactFinalForm.Field
-                        name="phoneNumber"
-                        label={i18n.t('Phone number', { lng: uiLocale })}
-                        component={InputFieldFF}
-                        className={styles.inputField}
-                        validate={composeValidators(
-                            isRequired,
-                            internationalPhoneNumber
-                        )}
-                        readOnly={loading}
-                    />
-                    <ReactFinalForm.Field
-                        name="employer"
-                        label={i18n.t('Employer', { lng: uiLocale })}
-                        component={InputFieldFF}
-                        className={styles.inputField}
-                        validate={isRequired}
-                        readOnly={loading}
-                    />
+
+                    {!emailConfigured && (
+                        <ReactFinalForm.Field
+                            name="phoneNumber"
+                            label={i18n.t('Phone number', { lng: uiLocale })}
+                            component={InputFieldFF}
+                            className={styles.inputField}
+                            validate={composeValidators(
+                                isRequired,
+                                internationalPhoneNumber
+                            )}
+                            readOnly={loading}
+                        />
+                    )}
                 </AccountFormSection>
                 <AccountFormSection>Captcha, if applicable</AccountFormSection>
             </div>
@@ -146,6 +142,7 @@ const InnerCreateAccountForm = ({
 }
 
 InnerCreateAccountForm.propTypes = {
+    emailConfigured: PropTypes.bool,
     handleSubmit: PropTypes.func,
     loading: PropTypes.bool,
     prepopulatedFields: PropTypes.object,
@@ -155,14 +152,13 @@ InnerCreateAccountForm.propTypes = {
 export const CreateAccountForm = ({
     createType,
     prepopulatedFields,
-    emailVerificationOnSuccess,
     loading,
     error,
     data,
     handleRegister,
 }) => {
     // depends on https://dhis2.atlassian.net/browse/DHIS2-14615
-    const { applicationTitle, uiLocale } = useLoginConfig()
+    const { applicationTitle, uiLocale, emailConfigured } = useLoginConfig()
 
     useEffect(() => {
         // we should scroll top top of the page when an error is registered, so user sees this
@@ -213,7 +209,7 @@ export const CreateAccountForm = ({
                 )}
                 {data && (
                     <>
-                        {emailVerificationOnSuccess && (
+                        {emailConfigured && (
                             <FormNotice
                                 title={i18n.t('Account created successfully', {
                                     lng: uiLocale,
@@ -228,7 +224,7 @@ export const CreateAccountForm = ({
                                 </span>
                             </FormNotice>
                         )}
-                        {!emailVerificationOnSuccess && (
+                        {!emailConfigured && (
                             <>
                                 <FormNotice
                                     title={i18n.t('Verify your email address', {
@@ -255,6 +251,7 @@ export const CreateAccountForm = ({
                                 uiLocale={uiLocale}
                                 loading={loading}
                                 prepopulatedFields={prepopulatedFields}
+                                emailConfigured={emailConfigured}
                             />
                         )}
                     </ReactFinalForm.Form>
@@ -266,7 +263,6 @@ export const CreateAccountForm = ({
 
 CreateAccountForm.propTypes = {
     createType: PropTypes.string.isRequired,
-    emailVerificationOnSuccess: PropTypes.bool.isRequired,
     handleRegister: PropTypes.func.isRequired,
     data: PropTypes.object,
     error: PropTypes.object,

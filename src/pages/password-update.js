@@ -153,10 +153,7 @@ const PasswordUpdatePage = () => {
     }
 
     return (
-        <FormContainer
-            width="368px"
-            title={i18n.t('Choose new password', { lng: uiLocale })}
-        >
+        <FormContainer title={i18n.t('Choose new password', { lng: uiLocale })}>
             <FormSubtitle>
                 <p>
                     {i18n.t('Enter the new password for your account below', {

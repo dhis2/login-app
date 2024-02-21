@@ -1,6 +1,27 @@
 .formContainer {
-    margin: 0 auto var(--spacers-dp24) auto;
-    padding: var(--spacers-dp24);
+    margin-block-start: var(--form-container-margin-block-start, 0);
+    margin-block-end: var(
+        --form-container-margin-block-end,
+        var(--spacers-dp24)
+    );
+    margin-inline-start: var(--form-container-margin-inline-start, auto);
+    margin-inline-end: var(--form-container-margin-inline-end, auto);
+    padding: var(--form-container-padding, var(--spacers-dp24));
+    background: var(--form-container-background-color, var(--colors-white));
+    border-radius: var(--form-container-box-border-radius, 5px);
+    box-shadow: var(--form-container-box-shadow, var(--elevations-e400));
+    width: var(--form-container-default-width, 368px);
+}
+
+.formContainerVariableWidth {
+    margin-block-start: var(--form-container-margin-block-start, 0);
+    margin-block-end: var(
+        --form-container-margin-block-end,
+        var(--spacers-dp24)
+    );
+    margin-inline-start: var(--form-container-margin-inline-start, auto);
+    margin-inline-end: var(--form-container-margin-inline-end, auto);
+    padding: var(--form-container-padding, var(--spacers-dp24));
     background: var(--form-container-background-color, var(--colors-white));
     border-radius: var(--form-container-box-border-radius, 5px);
     box-shadow: var(--form-container-box-shadow, var(--elevations-e400));
@@ -13,7 +34,8 @@
     color: var(--form-container-font-color, black);
 }
 .formTitle {
-    font-weight: 500;
+    font-size: var(--form-title-font-size, 16px);
+    font-weight: var(--form-title-font-weight, 500);
     margin: 0 0 var(--spacers-dp16);
     color: var(--form-container-title-color, var(--colors-grey900));
 }
