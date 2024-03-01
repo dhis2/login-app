@@ -85,7 +85,7 @@ const LoginConfigProvider = ({ children }) => {
         i18n.changeLanguage(locale)
         const updatedTranslations = translatableValues.reduce(
             (translations, currentTranslationKey) => {
-                if (updatedValues[currentTranslationKey]) {
+                if (updatedValues?.[currentTranslationKey]) {
                     translations[currentTranslationKey] =
                         updatedValues[currentTranslationKey]
                 }
