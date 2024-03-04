@@ -6,5 +6,5 @@
     );
     margin-inline-start: var(--form-container-margin-inline-start, auto);
     margin-inline-end: var(--form-container-margin-inline-end, auto);
-    width: var(--form-container-default-width, 368px);
+    width: var(--form-container-default-width, 350px);
 }

@@ -4,6 +4,7 @@ import { SingleSelectField, SingleSelectOption } from '@dhis2/ui'
 import React from 'react'
 import { convertHTML } from '../helpers/index.js'
 import { useLoginConfig } from '../providers/index.js'
+import { DHIS2Logo } from './dhis2-logo.js'
 
 export const ApplicationTitle = () => {
     const { applicationTitle } = useLoginConfig()
@@ -17,17 +18,36 @@ export const ApplicationDescription = () => {
 
 export const Flag = () => {
     const { countryFlag } = useLoginConfig()
-    return countryFlag ? <img src={countryFlag} alt="flag" /> : null
+    const { baseUrl } = useConfig()
+    const isDev =
+        !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
+
+    return countryFlag ? (
+        <img
+            src={`${
+                isDev ? baseUrl : null
+            }/dhis-web-commons/flags/${countryFlag}.png`}
+            alt="flag"
+        />
+    ) : null
 }
 
 export const Logo = () => {
-    const { loginPageLogo } = useLoginConfig()
+    const { htmlTemplate, loginPageLogo } = useLoginConfig()
     const { baseUrl } = useConfig()
+    const isDev =
+        !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
 
-    return loginPageLogo ? (
-        <img src={loginPageLogo} alt="logo" />
-    ) : (
-        <img src={`${baseUrl}/api/staticContent/logo_front`} alt="logo" />
+    console.log(loginPageLogo, htmlTemplate)
+    if (!loginPageLogo && htmlTemplate === 'sidebar') {
+        return <DHIS2Logo />
+    }
+
+    return (
+        <img
+            src={`${isDev ? baseUrl : null}/api/staticContent/logo_front.png`}
+            alt="logo"
+        />
     )
 }
 

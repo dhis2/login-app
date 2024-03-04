@@ -10,7 +10,7 @@
     background: var(--form-container-background-color, var(--colors-white));
     border-radius: var(--form-container-box-border-radius, 5px);
     box-shadow: var(--form-container-box-shadow, var(--elevations-e400));
-    width: var(--form-container-default-width, 368px);
+    width: var(--form-container-default-width, 350px);
 }
 
 .formContainerVariableWidth {
