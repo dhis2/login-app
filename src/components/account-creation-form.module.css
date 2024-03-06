@@ -15,3 +15,15 @@
 .inputField {
     margin-bottom: var(--spacers-dp8);
 }
+
+.recaptchaWarning {
+    display: flex;
+    align-items: center;
+}
+
+.recaptchaWarningText {
+    color: var(--colors-red500);
+    font-size: 12px;
+    text-align: center;
+    margin-inline-start: var(--spacers-dp8);
+}
