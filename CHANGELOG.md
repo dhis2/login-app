@@ -1,3 +1,10 @@
+## [99.9.10](https://github.com/dhis2/login-app/compare/v99.9.9...v99.9.10) (2024-03-07)
+
+
+### Bug Fixes
+
+* update github action to disable publishing to AppHub ([a29707e](https://github.com/dhis2/login-app/commit/a29707e3d89a6141ae10efdc05a0cbad6d68103b))
+
 # 1.0.0 (2024-03-07)
 
 
