@@ -1,6 +1,6 @@
 import { useDataMutation } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import {
     CreateAccountForm,
     CREATE_FORM_TYPES,
@@ -17,11 +17,26 @@ const selfRegisterMutation = {
 }
 
 const CreateAccountFormWrapper = () => {
-    const [resetPassword, { loading, fetching, error, data }] =
+    const { recaptchaSite } = useLoginConfig()
+    const recaptchaRef = useRef()
+    const [recaptchaError, setRecaptchaError] = useState(false)
+    const [selfRegister, { loading, fetching, error, data }] =
         useDataMutation(selfRegisterMutation)
 
     const handleSelfRegister = (values) => {
-        resetPassword(values)
+        setRecaptchaError(false)
+        const gRecaptchaResponse = recaptchaSite
+            ? recaptchaRef.current.getValue()
+            : null
+        if (recaptchaSite && !gRecaptchaResponse) {
+            setRecaptchaError(true)
+            return
+        }
+        selfRegister(
+            recaptchaSite
+                ? { ...values, 'g-recaptcha-response': gRecaptchaResponse }
+                : values
+        )
     }
     return (
         <CreateAccountForm
@@ -31,6 +46,8 @@ const CreateAccountFormWrapper = () => {
             data={data}
             handleRegister={handleSelfRegister}
             prepopulatedFields={{}}
+            recaptchaRef={recaptchaRef}
+            recaptchaError={recaptchaError}
         />
     )
 }

@@ -1,5 +1,12 @@
 import i18n from '@dhis2/d2-i18n'
-import { ReactFinalForm, InputFieldFF, Button, ButtonStrip } from '@dhis2/ui'
+import {
+    ReactFinalForm,
+    InputFieldFF,
+    Button,
+    ButtonStrip,
+    IconErrorFilled24,
+    colors,
+} from '@dhis2/ui'
 import {
     composeValidators,
     createCharacterLengthRange,
@@ -10,6 +17,7 @@ import {
 } from '@dhis2/ui-forms'
 import PropTypes from 'prop-types'
 import React, { useEffect } from 'react'
+import ReCAPTCHA from 'react-google-recaptcha'
 import { Link } from 'react-router-dom'
 import { BackToLoginButton } from '../components/back-to-login-button.js'
 import { FormNotice } from '../components/form-notice.js'
@@ -38,12 +46,31 @@ AccountFormSection.propTypes = {
     title: PropTypes.string,
 }
 
+const RecaptchaWarning = ({ uiLocale }) => (
+    <div className={styles.recaptchaWarning}>
+        <IconErrorFilled24 color={colors.red500} />
+        <div className={styles.recaptchaWarningText}>
+            {i18n.t(
+                'Please confirm that you are not a robot by checking the checkbox.',
+                { lng: uiLocale }
+            )}
+        </div>
+    </div>
+)
+
+RecaptchaWarning.propTypes = {
+    uiLocale: PropTypes.string,
+}
+
 const InnerCreateAccountForm = ({
     handleSubmit,
     uiLocale,
     loading,
     prepopulatedFields,
     emailConfigured,
+    recaptchaSite,
+    recaptchaRef,
+    recaptchaError,
 }) => {
     const isRequired = getIsRequired(uiLocale)
     return (
@@ -125,7 +152,16 @@ const InnerCreateAccountForm = ({
                         />
                     )}
                 </AccountFormSection>
-                <AccountFormSection>Captcha, if applicable</AccountFormSection>
+                {recaptchaSite && (
+                    <AccountFormSection>
+                        <ReCAPTCHA
+                            ref={recaptchaRef}
+                            sitekey={recaptchaSite}
+                            hl={uiLocale}
+                        />
+                        {recaptchaError && <RecaptchaWarning />}
+                    </AccountFormSection>
+                )}
             </div>
             <ButtonStrip>
                 <Button primary type="submit" disabled={loading}>
@@ -146,6 +182,9 @@ InnerCreateAccountForm.propTypes = {
     handleSubmit: PropTypes.func,
     loading: PropTypes.bool,
     prepopulatedFields: PropTypes.object,
+    recaptchaError: PropTypes.bool,
+    recaptchaRef: PropTypes.node,
+    recaptchaSite: PropTypes.string,
     uiLocale: PropTypes.string,
 }
 
@@ -156,9 +195,12 @@ export const CreateAccountForm = ({
     error,
     data,
     handleRegister,
+    recaptchaRef,
+    recaptchaError,
 }) => {
     // depends on https://dhis2.atlassian.net/browse/DHIS2-14615
-    const { applicationTitle, uiLocale, emailConfigured } = useLoginConfig()
+    const { applicationTitle, uiLocale, emailConfigured, recaptchaSite } =
+        useLoginConfig()
 
     useEffect(() => {
         // we should scroll top top of the page when an error is registered, so user sees this
@@ -209,7 +251,7 @@ export const CreateAccountForm = ({
                 )}
                 {data && (
                     <>
-                        {emailConfigured && (
+                        {!emailConfigured && (
                             <FormNotice
                                 title={i18n.t('Account created successfully', {
                                     lng: uiLocale,
@@ -224,7 +266,7 @@ export const CreateAccountForm = ({
                                 </span>
                             </FormNotice>
                         )}
-                        {!emailConfigured && (
+                        {emailConfigured && (
                             <>
                                 <FormNotice
                                     title={i18n.t('Verify your email address', {
@@ -252,6 +294,9 @@ export const CreateAccountForm = ({
                                 loading={loading}
                                 prepopulatedFields={prepopulatedFields}
                                 emailConfigured={emailConfigured}
+                                recaptchaSite={recaptchaSite}
+                                recaptchaRef={recaptchaRef}
+                                recaptchaError={recaptchaError}
                             />
                         )}
                     </ReactFinalForm.Form>
@@ -268,4 +313,6 @@ CreateAccountForm.propTypes = {
     error: PropTypes.object,
     loading: PropTypes.bool,
     prepopulatedFields: PropTypes.object,
+    recaptchaError: PropTypes.bool,
+    recaptchaRef: PropTypes.node,
 }
