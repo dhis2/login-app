@@ -19,14 +19,10 @@ export const ApplicationDescription = () => {
 export const Flag = () => {
     const { countryFlag } = useLoginConfig()
     const { baseUrl } = useConfig()
-    const isDev =
-        !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
 
     return countryFlag ? (
         <img
-            src={`${
-                isDev ? baseUrl : null
-            }/dhis-web-commons/flags/${countryFlag}.png`}
+            src={`${baseUrl}/dhis-web-commons/flags/${countryFlag}.png`}
             alt="flag"
         />
     ) : null
@@ -35,19 +31,13 @@ export const Flag = () => {
 export const Logo = () => {
     const { htmlTemplate, loginPageLogo } = useLoginConfig()
     const { baseUrl } = useConfig()
-    const isDev =
-        !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
 
-    console.log(loginPageLogo, htmlTemplate)
     if (!loginPageLogo && htmlTemplate === 'sidebar') {
         return <DHIS2Logo />
     }
 
     return (
-        <img
-            src={`${isDev ? baseUrl : null}/api/staticContent/logo_front.png`}
-            alt="logo"
-        />
+        <img src={`${baseUrl}/api/staticContent/logo_front.png`} alt="logo" />
     )
 }
 
