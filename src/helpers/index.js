@@ -1,2 +1,7 @@
 export { checkIsFormValid, getIsRequired } from './validators.js'
-export { convertHTML, removeHTMLTags } from './handleHTML.js'
+export {
+    convertHTML,
+    removeHTMLTags,
+    sanitizeMainHTML,
+    unescapeHTML,
+} from './handleHTML.js'

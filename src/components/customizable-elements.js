@@ -29,10 +29,10 @@ export const Flag = () => {
 }
 
 export const Logo = () => {
-    const { htmlTemplate, loginPageLogo } = useLoginConfig()
+    const { loginPageLayout, loginPageLogo } = useLoginConfig()
     const { baseUrl } = useConfig()
 
-    if (!loginPageLogo && htmlTemplate === 'sidebar') {
+    if (!loginPageLogo && loginPageLayout === 'SIDEBAR') {
         return <DHIS2Logo />
     }
 

@@ -21,10 +21,10 @@
     "dependencies": {
         "@dhis2/app-runtime": "^3.10.2",
         "classnames": "^2.3.2",
+        "dompurify": "^3.0.9",
         "html-react-parser": "^3.0.16",
         "post-robot": "^10.0.46",
         "react-google-recaptcha": "^3.1.0",
-        "react-router-dom": "^6.8.1",
-        "sanitize-html": "^2.11.0"
+        "react-router-dom": "^6.8.1"
     }
 }

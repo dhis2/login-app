@@ -13,6 +13,7 @@ import {
     PoweredByDHIS2,
 } from './components/customizable-elements.js'
 import { Popup } from './components/pop-up.js'
+import { sanitizeMainHTML, unescapeHTML } from './helpers/handleHTML.js'
 import {
     LoginPage,
     ConfirmEmailPage,
@@ -23,7 +24,7 @@ import {
 } from './pages/index.js'
 import { LoginConfigProvider, useLoginConfig } from './providers/index.js'
 import i18n from './locales/index.js' // eslint-disable-line
-import { standard, sidebar, custom } from './templates/index.js'
+import { standard, sidebar } from './templates/index.js'
 
 const LoginRoutes = () => {
     return (
@@ -96,17 +97,17 @@ const options = {
 }
 
 const AppContent = () => {
-    const { htmlTemplate } = useLoginConfig()
+    const { loginPageLayout, loginPageTemplate } = useLoginConfig()
     let html
-    if (htmlTemplate === 'sidebar') {
+    if (loginPageLayout === 'SIDEBAR') {
         html = sidebar
-    } else if (htmlTemplate === 'custom') {
-        html = custom
+    } else if (loginPageLayout === 'CUSTOM') {
+        html = unescapeHTML(loginPageTemplate) ?? standard
     } else {
         html = standard
     }
 
-    return <>{parse(html, options)}</>
+    return <>{parse(sanitizeMainHTML(html), options)}</>
 }
 
 const App = () => {

@@ -2,7 +2,6 @@ export const sidebar = `
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Login app</title>
 		<style>
       :root {
         --form-container-padding: 0px;
