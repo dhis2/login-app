@@ -11,13 +11,13 @@ import { useGetErrorIfNotAllowed } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
 
 const selfRegisterMutation = {
-    resource: 'auth/register',
+    resource: 'auth/registration',
     type: 'create',
     data: (data) => data,
 }
 
 const CreateAccountFormWrapper = () => {
-    const { recaptchaSite } = useLoginConfig()
+    const { selfRegistrationNoRecaptcha } = useLoginConfig()
     const recaptchaRef = useRef()
     const [recaptchaError, setRecaptchaError] = useState(false)
     const [selfRegister, { loading, fetching, error, data }] =
@@ -25,17 +25,17 @@ const CreateAccountFormWrapper = () => {
 
     const handleSelfRegister = (values) => {
         setRecaptchaError(false)
-        const gRecaptchaResponse = recaptchaSite
-            ? recaptchaRef.current.getValue()
-            : null
-        if (recaptchaSite && !gRecaptchaResponse) {
+        const gRecaptchaResponse = selfRegistrationNoRecaptcha
+            ? null
+            : recaptchaRef.current.getValue()
+        if (!selfRegistrationNoRecaptcha && !gRecaptchaResponse) {
             setRecaptchaError(true)
             return
         }
         selfRegister(
-            recaptchaSite
-                ? { ...values, 'g-recaptcha-response': gRecaptchaResponse }
-                : values
+            selfRegistrationNoRecaptcha
+                ? values
+                : { ...values, 'g-recaptcha-response': gRecaptchaResponse }
         )
     }
     return (
