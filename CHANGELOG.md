@@ -1,3 +1,11 @@
+## [99.9.11](https://github.com/dhis2/login-app/compare/v99.9.10...v99.9.11) (2024-03-08)
+
+
+### Bug Fixes
+
+* redirect url ([8ff9d2b](https://github.com/dhis2/login-app/commit/8ff9d2b624fd29dc8b0794eafa5e27f1e60e6c9d))
+* redirect url ([3e292f1](https://github.com/dhis2/login-app/commit/3e292f113597538237fce77a1c8c4a6b8e5151c9))
+
 ## [99.9.10](https://github.com/dhis2/login-app/compare/v99.9.9...v99.9.10) (2024-03-07)
 
 
