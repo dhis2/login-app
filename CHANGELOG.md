@@ -1,3 +1,11 @@
+## [99.9.12](https://github.com/dhis2/login-app/compare/v99.9.11...v99.9.12) (2024-03-08)
+
+
+### Bug Fixes
+
+* update endpoints, add recaptcha to complete-registration ([f8aeb0c](https://github.com/dhis2/login-app/commit/f8aeb0cb91812df89f5dbdd93103bc78ae34c9c8))
+* update endpoints, add recaptcha to complete-registration ([8d7a90c](https://github.com/dhis2/login-app/commit/8d7a90c8dc054cea84978b52fc83489ccd8e6d49))
+
 ## [99.9.11](https://github.com/dhis2/login-app/compare/v99.9.10...v99.9.11) (2024-03-08)
 
 
