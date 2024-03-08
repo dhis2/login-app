@@ -71,6 +71,7 @@ const InnerCreateAccountForm = ({
     recaptchaSite,
     recaptchaRef,
     recaptchaError,
+    selfRegistrationNoRecaptcha,
 }) => {
     const isRequired = getIsRequired(uiLocale)
     return (
@@ -152,7 +153,7 @@ const InnerCreateAccountForm = ({
                         />
                     )}
                 </AccountFormSection>
-                {recaptchaSite && (
+                {!selfRegistrationNoRecaptcha && (
                     <AccountFormSection>
                         <ReCAPTCHA
                             ref={recaptchaRef}
@@ -185,6 +186,7 @@ InnerCreateAccountForm.propTypes = {
     recaptchaError: PropTypes.bool,
     recaptchaRef: PropTypes.node,
     recaptchaSite: PropTypes.string,
+    selfRegistrationNoRecaptcha: PropTypes.bool,
     uiLocale: PropTypes.string,
 }
 
@@ -199,8 +201,13 @@ export const CreateAccountForm = ({
     recaptchaError,
 }) => {
     // depends on https://dhis2.atlassian.net/browse/DHIS2-14615
-    const { applicationTitle, uiLocale, emailConfigured, recaptchaSite } =
-        useLoginConfig()
+    const {
+        applicationTitle,
+        uiLocale,
+        emailConfigured,
+        recaptchaSite,
+        selfRegistrationNoRecaptcha,
+    } = useLoginConfig()
 
     useEffect(() => {
         // we should scroll top top of the page when an error is registered, so user sees this
@@ -297,6 +304,9 @@ export const CreateAccountForm = ({
                                 recaptchaSite={recaptchaSite}
                                 recaptchaRef={recaptchaRef}
                                 recaptchaError={recaptchaError}
+                                selfRegistrationNoRecaptcha={
+                                    selfRegistrationNoRecaptcha
+                                }
                             />
                         )}
                     </ReactFinalForm.Form>

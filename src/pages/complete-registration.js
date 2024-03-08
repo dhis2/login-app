@@ -1,7 +1,7 @@
 import { useDataMutation } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import {
     BackToLoginButton,
@@ -15,14 +15,17 @@ import { useGetErrorIfNotAllowed } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
 
 const selfRegisterMutation = {
-    resource: 'auth/completeRegistration',
+    resource: 'auth/invite',
     type: 'create',
     data: (data) => data,
 }
 
 const CompleteRegistrationFormWrapper = ({ uiLocale }) => {
-    // depends on https://dhis2.atlassian.net/browse/DHIS2-14684
-    const [resetPassword, { loading, fetching, error, data }] =
+    // depends on https://dhis2.atlassian.net/browse/DHIS2-14617
+    const { selfRegistrationNoRecaptcha } = useLoginConfig()
+    const recaptchaRef = useRef()
+    const [recaptchaError, setRecaptchaError] = useState(false)
+    const [completeInvitation, { loading, fetching, error, data }] =
         useDataMutation(selfRegisterMutation)
 
     const [searchParams] = useSearchParams()
@@ -53,7 +56,23 @@ const CompleteRegistrationFormWrapper = ({ uiLocale }) => {
     const prepopulatedFields = { email, username }
 
     const handleCompleteRegistration = (values) => {
-        resetPassword({ ...values, token })
+        setRecaptchaError(false)
+        const gRecaptchaResponse = selfRegistrationNoRecaptcha
+            ? null
+            : recaptchaRef.current.getValue()
+        if (!selfRegistrationNoRecaptcha && !gRecaptchaResponse) {
+            setRecaptchaError(true)
+            return
+        }
+        completeInvitation(
+            selfRegistrationNoRecaptcha
+                ? { ...values, token }
+                : {
+                      ...values,
+                      token,
+                      'g-recaptcha-response': gRecaptchaResponse,
+                  }
+        )
     }
     return (
         <CreateAccountForm
@@ -64,6 +83,8 @@ const CompleteRegistrationFormWrapper = ({ uiLocale }) => {
             data={data}
             handleRegister={handleCompleteRegistration}
             prepopulatedFields={prepopulatedFields}
+            recaptchaRef={recaptchaRef}
+            recaptchaError={recaptchaError}
         />
     )
 }
