@@ -55,7 +55,7 @@ const InnerPasswordResetRequestForm = ({
                 >
                     {loading
                         ? i18n.t('Sending...', { lng: uiLocale })
-                        : i18n.t('Send password reset request form', {
+                        : i18n.t('Send password reset request', {
                               lng: uiLocale,
                           })}
                 </Button>
@@ -102,7 +102,7 @@ export const PasswordResetRequestForm = ({ uiLocale }) => {
                 >
                     <span>
                         {i18n.t(
-                            'The username might be invalid, your account might not allow password reset, or there might be a problem with your account email address.',
+                            'Something went wrong. Please try again later, and contact your system administrator if the problem persists.',
                             { lng: uiLocale }
                         )}
                     </span>
@@ -113,7 +113,7 @@ export const PasswordResetRequestForm = ({ uiLocale }) => {
                     <FormNotice valid={true}>
                         <span>
                             {i18n.t(
-                                "We've sent an email with a password reset link to your registered email address.",
+                                'If the provided username or email is registered in the system, you will soon receive an email with a password reset link.',
                                 { lng: uiLocale }
                             )}
                         </span>

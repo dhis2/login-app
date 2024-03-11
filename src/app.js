@@ -15,7 +15,6 @@ import {
 import { Popup } from './components/pop-up.js'
 import {
     LoginPage,
-    ConfirmEmailPage,
     CompleteRegistrationPage,
     CreateAccountPage,
     PasswordResetRequestPage,
@@ -44,7 +43,6 @@ const LoginRoutes = () => {
                     path="/update-password"
                     element={<PasswordUpdatePage />}
                 />
-                <Route path="/confirm-email" element={<ConfirmEmailPage />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </>

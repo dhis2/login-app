@@ -45,6 +45,9 @@ const InnerLoginForm = ({
     const loginButtonText = twoFAVerificationRequired
         ? i18n.t('Verify and log in', { lng: uiLocale })
         : i18n.t('Log in', { lng: uiLocale })
+    const login2FAButtonText = twoFAVerificationRequired
+        ? i18n.t('Verifying...', { lng: uiLocale })
+        : i18n.t('Logging in...', { lng: uiLocale })
     const isRequired = getIsRequired(uiLocale)
     return (
         <form onSubmit={handleSubmit}>
@@ -96,9 +99,7 @@ const InnerLoginForm = ({
             </div>
             <div className={styles.formButtons}>
                 <Button type="submit" disabled={loading} primary>
-                    {loading
-                        ? i18n.t('Logging in', { lng: uiLocale })
-                        : loginButtonText}
+                    {loading ? login2FAButtonText : loginButtonText}
                 </Button>
                 {twoFAVerificationRequired && (
                     <Button secondary disabled={loading} onClick={clearTwoFA}>
@@ -176,15 +177,25 @@ const LoginForm = ({
         <>
             {error && (
                 <FormNotice
-                    title={i18n.t('Incorrect username or password', {
-                        lng: uiLocale,
-                    })}
+                    title={
+                        error.httpStatusCode >= 500
+                            ? i18n.t('Something went wrong', {
+                                  lng: uiLocale,
+                              })
+                            : i18n.t('Incorrect username or password', {
+                                  lng: uiLocale,
+                              })
+                    }
                     error
-                />
+                >
+                    {!error.httpStatusCode >= 500 && (
+                        <span>{error?.message}</span>
+                    )}
+                </FormNotice>
             )}
             {twoFAIncorrect && (
                 <FormNotice
-                    title={i18n.t('Incorrect two factor authentication code', {
+                    title={i18n.t('Incorrect authentication code', {
                         lng: uiLocale,
                     })}
                     error
