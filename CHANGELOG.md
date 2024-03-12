@@ -1,3 +1,12 @@
+## [99.9.13](https://github.com/dhis2/login-app/compare/v99.9.12...v99.9.13) (2024-03-12)
+
+
+### Bug Fixes
+
+* clean up login config provider ([2cfd2c2](https://github.com/dhis2/login-app/commit/2cfd2c25234af458884bccc91b1833d6c24e9141))
+* miscellaneous clean up ([d028d53](https://github.com/dhis2/login-app/commit/d028d53f5f8a87ecebcbfa41b7fc396fd06314bb))
+* miscellaneous clean up ([c0c5d3c](https://github.com/dhis2/login-app/commit/c0c5d3ce11f8fef28b3e6a902326a431ec2de08c))
+
 ## [99.9.12](https://github.com/dhis2/login-app/compare/v99.9.11...v99.9.12) (2024-03-08)
 
 
