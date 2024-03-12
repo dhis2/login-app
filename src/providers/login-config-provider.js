@@ -112,11 +112,9 @@ const LoginConfigProvider = ({ children }) => {
     }
 
     const providerValue = {
-        // ...defaultProviderValues,
         ...loginConfigData?.loginConfig,
         ...translatedValues,
         localesUI: localesData?.localesUI ?? defaultLocales,
-        isRTL: i18n.dir() === 'rtl',
         baseUrl: config?.baseUrl,
         refreshOnTranslation,
     }
