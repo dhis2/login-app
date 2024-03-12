@@ -22,3 +22,24 @@ export const NotAllowedNotice = ({ uiLocale }) => (
 NotAllowedNotice.propTypes = {
     uiLocale: PropTypes.string,
 }
+
+export const NotAllowedNoticeCreateAccount = ({ uiLocale }) => (
+    <FormContainer>
+        <FormNotice
+            error
+            title={i18n.t('Creating account not available', { lng: uiLocale })}
+        >
+            <span>
+                {i18n.t(
+                    'Contact a system administrator to create an account.',
+                    { lng: uiLocale }
+                )}
+            </span>
+        </FormNotice>
+        <BackToLoginButton />
+    </FormContainer>
+)
+
+NotAllowedNoticeCreateAccount.propTypes = {
+    uiLocale: PropTypes.string,
+}

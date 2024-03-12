@@ -258,37 +258,19 @@ export const CreateAccountForm = ({
                 )}
                 {data && (
                     <>
-                        {!emailConfigured && (
-                            <FormNotice
-                                title={i18n.t('Account created successfully', {
-                                    lng: uiLocale,
-                                })}
-                                valid
-                            >
-                                <span>
-                                    {i18n.t(
-                                        'You can use your username and password to log in.',
-                                        { lng: uiLocale }
-                                    )}
-                                </span>
-                            </FormNotice>
-                        )}
-                        {emailConfigured && (
-                            <>
-                                <FormNotice
-                                    title={i18n.t('Verify your email address', {
-                                        lng: uiLocale,
-                                    })}
-                                >
-                                    <span>
-                                        {i18n.t(
-                                            'Check your email for a link to verify your email address and finish setting up your account.',
-                                            { lng: uiLocale }
-                                        )}
-                                    </span>
-                                </FormNotice>
-                            </>
-                        )}
+                        <FormNotice
+                            title={i18n.t('Account created successfully', {
+                                lng: uiLocale,
+                            })}
+                            valid
+                        >
+                            <span>
+                                {i18n.t(
+                                    'You can use your username and password to log in.',
+                                    { lng: uiLocale }
+                                )}
+                            </span>
+                        </FormNotice>
                         <BackToLoginButton />
                     </>
                 )}

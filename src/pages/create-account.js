@@ -5,7 +5,7 @@ import {
     CreateAccountForm,
     CREATE_FORM_TYPES,
     FormContainer,
-    NotAllowedNotice,
+    NotAllowedNoticeCreateAccount,
 } from '../components/index.js'
 import { useGetErrorIfNotAllowed } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
@@ -61,7 +61,7 @@ const CreateAccountPage = () => {
     )
 
     if (notAllowed) {
-        return <NotAllowedNotice uiLocale={uiLocale} />
+        return <NotAllowedNoticeCreateAccount uiLocale={uiLocale} />
     }
 
     return (

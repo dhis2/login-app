@@ -18,5 +18,8 @@ export { FormNotice } from './form-notice.js'
 export { FormSubtitle } from './form-subtitle.js'
 export { Loader } from './loader.js'
 export { LoginLinks } from './login-links.js'
-export { NotAllowedNotice } from './not-allowed-notice.js'
+export {
+    NotAllowedNotice,
+    NotAllowedNoticeCreateAccount,
+} from './not-allowed-notice.js'
 export { Popup } from './pop-up.js'
