@@ -1,3 +1,11 @@
+## [99.9.15](https://github.com/dhis2/login-app/compare/v99.9.14...v99.9.15) (2024-03-13)
+
+
+### Bug Fixes
+
+* remove html unescaping ([741ab70](https://github.com/dhis2/login-app/commit/741ab7002c5d673c7b88e103c1a48def7d57a068))
+* remove html unescaping ([1744648](https://github.com/dhis2/login-app/commit/1744648031690a4792aec5d026942254ea2d807d))
+
 ## [99.9.14](https://github.com/dhis2/login-app/compare/v99.9.13...v99.9.14) (2024-03-13)
 
 
