@@ -13,7 +13,7 @@ import {
     PoweredByDHIS2,
 } from './components/customizable-elements.js'
 import { Popup } from './components/pop-up.js'
-import { sanitizeMainHTML, unescapeHTML } from './helpers/handleHTML.js'
+import { sanitizeMainHTML } from './helpers/handleHTML.js'
 import {
     LoginPage,
     CompleteRegistrationPage,
@@ -100,7 +100,7 @@ const AppContent = () => {
     if (loginPageLayout === 'SIDEBAR') {
         html = sidebar
     } else if (loginPageLayout === 'CUSTOM') {
-        html = unescapeHTML(loginPageTemplate) ?? standard
+        html = loginPageTemplate ?? standard
     } else {
         html = standard
     }
