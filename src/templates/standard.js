@@ -2,7 +2,6 @@ export const standard = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Login app</title>
     <style>
         :root {
             --form-container-background-color: white;

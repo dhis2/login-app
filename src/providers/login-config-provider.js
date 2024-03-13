@@ -94,8 +94,8 @@ const LoginConfigProvider = ({ children }) => {
             },
             {}
         )
-        setTranslatedValues({ ...updatedTranslations, uiLocale: locale })
-        localStorage.setItem(localStorageLocaleKey, locale)
+        setTranslatedValues({ ...updatedTranslations, uiLocale: locale }),
+            localStorage.setItem(localStorageLocaleKey, locale)
     }
 
     if (loginConfigLoading || localesLoading) {

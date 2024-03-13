@@ -8,12 +8,16 @@ import { DHIS2Logo } from './dhis2-logo.js'
 
 export const ApplicationTitle = () => {
     const { applicationTitle } = useLoginConfig()
-    return applicationTitle ? <span>{applicationTitle}</span> : null
+    return applicationTitle ? (
+        <span>{convertHTML(applicationTitle)}</span>
+    ) : null
 }
 
 export const ApplicationDescription = () => {
     const { applicationDescription } = useLoginConfig()
-    return applicationDescription ? <span>{applicationDescription}</span> : null
+    return applicationDescription ? (
+        <span>{convertHTML(applicationDescription)}</span>
+    ) : null
 }
 
 export const Flag = () => {
@@ -29,10 +33,10 @@ export const Flag = () => {
 }
 
 export const Logo = () => {
-    const { htmlTemplate, loginPageLogo } = useLoginConfig()
+    const { loginPageLayout, loginPageLogo } = useLoginConfig()
     const { baseUrl } = useConfig()
 
-    if (!loginPageLogo && htmlTemplate === 'sidebar') {
+    if (!loginPageLogo && loginPageLayout === 'SIDEBAR') {
         return <DHIS2Logo />
     }
 
