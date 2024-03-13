@@ -1,3 +1,10 @@
+## [99.9.16](https://github.com/dhis2/login-app/compare/v99.9.15...v99.9.16) (2024-03-13)
+
+
+### Bug Fixes
+
+* update app name to match the bundled apps in core ([5e242dc](https://github.com/dhis2/login-app/commit/5e242dcd21829b0048599d1c4091026390bae57e))
+
 ## [99.9.15](https://github.com/dhis2/login-app/compare/v99.9.14...v99.9.15) (2024-03-13)
 
 
