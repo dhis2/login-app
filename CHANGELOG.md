@@ -1,3 +1,12 @@
+## [99.9.14](https://github.com/dhis2/login-app/compare/v99.9.13...v99.9.14) (2024-03-13)
+
+
+### Bug Fixes
+
+* parse html applicationTitle, applicationDescription ([069e39e](https://github.com/dhis2/login-app/commit/069e39e043fd0cb0fde14655649841be338eded9))
+* update html parsing ([18b3d73](https://github.com/dhis2/login-app/commit/18b3d736fe5a1c03adfe1a06ee09d3bb94cd8d66))
+* update html parsing ([cbb9071](https://github.com/dhis2/login-app/commit/cbb9071d7e361ee5b8a02092f3ce8a35bf385f80))
+
 ## [99.9.13](https://github.com/dhis2/login-app/compare/v99.9.12...v99.9.13) (2024-03-12)
 
 
