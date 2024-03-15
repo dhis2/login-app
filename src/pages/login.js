@@ -9,6 +9,7 @@ import {
     FormNotice,
     FormSubtitle,
     LoginLinks,
+    OIDCLoginOptions,
 } from '../components/index.js'
 import { checkIsFormValid, getIsRequired } from '../helpers/index.js'
 import { useLogin } from '../hooks/index.js'
@@ -260,7 +261,10 @@ const LoginFormContainer = () => {
                 uiLocale={uiLocale}
             />
             {!twoFAVerificationRequired && (
-                <LoginLinks formUserName={formUserName} />
+                <>
+                    <LoginLinks formUserName={formUserName} />
+                    <OIDCLoginOptions />
+                </>
             )}
         </FormContainer>
     )
