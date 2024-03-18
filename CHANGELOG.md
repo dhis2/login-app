@@ -1,3 +1,10 @@
+## [99.10.1](https://github.com/dhis2/login-app/compare/v99.10.0...v99.10.1) (2024-03-18)
+
+
+### Bug Fixes
+
+* language clean up ([#11](https://github.com/dhis2/login-app/issues/11)) ([f95fca4](https://github.com/dhis2/login-app/commit/f95fca4869db5d1b545261a4e5121e6446c83300))
+
 # [99.10.0](https://github.com/dhis2/login-app/compare/v99.9.16...v99.10.0) (2024-03-18)
 
 
