@@ -12,7 +12,7 @@ const loginTextStrings = {
 
 const SVGIcon = ({ baseUrl, endpoint }) => (
     <div>
-        <img height="30px" width="30px" src={`${baseUrl}${endpoint}`} />
+        <img height="24px" width="24px" src={`${baseUrl}${endpoint}`} />
     </div>
 )
 
