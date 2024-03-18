@@ -71,6 +71,9 @@ msgstr "Back to log in page"
 msgid "Powered by DHIS2"
 msgstr "Powered by DHIS2"
 
+msgid "Language"
+msgstr "Language"
+
 msgid "Forgot password?"
 msgstr "Forgot password?"
 
@@ -82,6 +85,12 @@ msgstr "Create an account"
 
 msgid "The requested page is not configured for your system"
 msgstr "The requested page is not configured for your system"
+
+msgid "Creating account not available"
+msgstr "Creating account not available"
+
+msgid "Contact a system administrator to create an account."
+msgstr "Contact a system administrator to create an account."
 
 msgid "Creating account not available"
 msgstr "Creating account not available"
@@ -117,6 +126,12 @@ msgstr "Verifying..."
 msgid "Logging in..."
 msgstr "Logging in..."
 
+msgid "Verifying..."
+msgstr "Verifying..."
+
+msgid "Logging in..."
+msgstr "Logging in..."
+
 msgid "Authentication code"
 msgstr "Authentication code"
 
@@ -126,6 +141,8 @@ msgstr "Something went wrong"
 msgid "Incorrect username or password"
 msgstr "Incorrect username or password"
 
+msgid "Incorrect authentication code"
+msgstr "Incorrect authentication code"
 msgid "Incorrect authentication code"
 msgstr "Incorrect authentication code"
 
@@ -141,6 +158,8 @@ msgstr "Username or email"
 msgid "Sending..."
 msgstr "Sending..."
 
+msgid "Send password reset request"
+msgstr "Send password reset request"
 msgid "Send password reset request"
 msgstr "Send password reset request"
 

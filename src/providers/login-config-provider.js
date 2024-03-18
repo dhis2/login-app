@@ -31,8 +31,7 @@ const translatableValues = [
     'applicationTitle',
 ]
 
-// defaults for testing while endpoints are in development
-
+// defaults in case locales/ui fails
 const defaultLocales = [
     { locale: 'ar', displayName: 'Arabic', name: 'العربية' },
     { locale: 'en', displayName: 'English', name: 'English' },
@@ -66,6 +65,7 @@ const LoginConfigProvider = ({ children }) => {
             'en'
         setTranslatedValues({ uiLocale: userLanguage })
         i18n.changeLanguage(userLanguage)
+        document.documentElement.setAttribute('dir', i18n.dir())
     }, []) //eslint-disable-line
 
     const engine = useDataEngine()
@@ -83,6 +83,7 @@ const LoginConfigProvider = ({ children }) => {
             console.error(e)
         }
         i18n.changeLanguage(locale)
+        document.documentElement.setAttribute('dir', i18n.dir())
         const updatedTranslations = translatableValues.reduce(
             (translations, currentTranslationKey) => {
                 if (updatedValues?.loginConfig?.[currentTranslationKey]) {
@@ -115,6 +116,7 @@ const LoginConfigProvider = ({ children }) => {
         ...loginConfigData?.loginConfig,
         ...translatedValues,
         localesUI: localesData?.localesUI ?? defaultLocales,
+        systemLocale: loginConfigData?.loginConfig?.uiLocale ?? 'en',
         baseUrl: config?.baseUrl,
         refreshOnTranslation,
     }
