@@ -1,3 +1,25 @@
+# [99.10.0](https://github.com/dhis2/login-app/compare/v99.9.16...v99.10.0) (2024-03-18)
+
+
+### Features
+
+* add redirect for safe mode ([#14](https://github.com/dhis2/login-app/issues/14)) ([349139d](https://github.com/dhis2/login-app/commit/349139d3cbbcbcd727774b874c2447e08e315f38))
+
+## [99.9.16](https://github.com/dhis2/login-app/compare/v99.9.15...v99.9.16) (2024-03-13)
+
+
+### Bug Fixes
+
+* update app name to match the bundled apps in core ([5e242dc](https://github.com/dhis2/login-app/commit/5e242dcd21829b0048599d1c4091026390bae57e))
+
+## [99.9.15](https://github.com/dhis2/login-app/compare/v99.9.14...v99.9.15) (2024-03-13)
+
+
+### Bug Fixes
+
+* remove html unescaping ([741ab70](https://github.com/dhis2/login-app/commit/741ab7002c5d673c7b88e103c1a48def7d57a068))
+* remove html unescaping ([1744648](https://github.com/dhis2/login-app/commit/1744648031690a4792aec5d026942254ea2d807d))
+
 ## [99.9.14](https://github.com/dhis2/login-app/compare/v99.9.13...v99.9.14) (2024-03-13)
 
 

@@ -13,13 +13,14 @@ import {
     PoweredByDHIS2,
 } from './components/customizable-elements.js'
 import { Popup } from './components/pop-up.js'
-import { sanitizeMainHTML, unescapeHTML } from './helpers/handleHTML.js'
+import { sanitizeMainHTML } from './helpers/handleHTML.js'
 import {
     LoginPage,
     CompleteRegistrationPage,
     CreateAccountPage,
     PasswordResetRequestPage,
     PasswordUpdatePage,
+    SafeModePage,
 } from './pages/index.js'
 import { LoginConfigProvider, useLoginConfig } from './providers/index.js'
 import i18n from './locales/index.js' // eslint-disable-line
@@ -44,6 +45,7 @@ const LoginRoutes = () => {
                     path="/update-password"
                     element={<PasswordUpdatePage />}
                 />
+                <Route path="/safeMode" element={<SafeModePage />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </>
@@ -100,7 +102,7 @@ const AppContent = () => {
     if (loginPageLayout === 'SIDEBAR') {
         html = sidebar
     } else if (loginPageLayout === 'CUSTOM') {
-        html = unescapeHTML(loginPageTemplate) ?? standard
+        html = loginPageTemplate ?? standard
     } else {
         html = standard
     }
