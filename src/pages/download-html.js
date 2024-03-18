@@ -1,8 +1,9 @@
 import i18n from '@dhis2/d2-i18n'
-import { Button, ButtonStrip } from '@dhis2/ui'
+import { Button } from '@dhis2/ui'
 import React from 'react'
 import { FormContainer } from '../components/index.js'
 import { standard, sidebar } from '../templates/index.js'
+import styles from './download-html.module.css'
 
 const downloadHTML = (htmlString, htmlName) => {
     const blob = htmlString
@@ -21,36 +22,35 @@ const downloadHTML = (htmlString, htmlName) => {
 
 const DownloadPage = () => {
     return (
-        <FormContainer>
+        <FormContainer title={i18n.t('HTML Template Download')}>
             <div>
                 <p>
                     {i18n.t(
-                        'Download the HTML templates used for the login app'
-                    )}
-                </p>
-                <p>
-                    {i18n.t(
-                        'If you upload a custom template in the settings app, your template must include the following element `<div id="loginBox" />`'
+                        'You can download the templates used by the login app here. These can be modified and reloaded as custom HTML in the settings app.'
                     )}
                 </p>
                 <p>{i18n.t('Refer to documentation for more details.')}</p>
             </div>
-            <ButtonStrip>
-                <Button
-                    onClick={() => {
-                        downloadHTML(standard, 'standard')
-                    }}
-                >
-                    {i18n.t('Download default template')}
-                </Button>
-                <Button
-                    onClick={() => {
-                        downloadHTML(sidebar, 'sidebar')
-                    }}
-                >
-                    {i18n.t('Download sidebar template')}
-                </Button>
-            </ButtonStrip>
+            <div>
+                <div className={styles.formButtons}>
+                    <Button
+                        onClick={() => {
+                            downloadHTML(standard, 'standard')
+                        }}
+                    >
+                        {i18n.t('Download default template')}
+                    </Button>
+                </div>
+                <div className={styles.formButtons}>
+                    <Button
+                        onClick={() => {
+                            downloadHTML(sidebar, 'sidebar')
+                        }}
+                    >
+                        {i18n.t('Download sidebar template')}
+                    </Button>
+                </div>
+            </div>
         </FormContainer>
     )
 }

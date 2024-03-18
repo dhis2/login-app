@@ -1,0 +1,7 @@
+
+.formButtons {
+    display: flex;
+    flex-direction: var(--form-button-direction, column);
+    gap: var(--spacers-dp8);
+    margin-bottom: var(--spacers-dp16);
+}
