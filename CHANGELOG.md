@@ -1,3 +1,10 @@
+# [99.10.0](https://github.com/dhis2/login-app/compare/v99.9.16...v99.10.0) (2024-03-18)
+
+
+### Features
+
+* add redirect for safe mode ([#14](https://github.com/dhis2/login-app/issues/14)) ([349139d](https://github.com/dhis2/login-app/commit/349139d3cbbcbcd727774b874c2447e08e315f38))
+
 ## [99.9.16](https://github.com/dhis2/login-app/compare/v99.9.15...v99.9.16) (2024-03-13)
 
 
