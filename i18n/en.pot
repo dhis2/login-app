@@ -201,3 +201,10 @@ msgstr "Choose new password"
 
 msgid "Enter the new password for your account below"
 msgstr "Enter the new password for your account below"
+
+msgid ""
+"You should shortly be redirected. If you are not redirected, please click "
+"button."
+msgstr ""
+"You should shortly be redirected. If you are not redirected, please click "
+"button."
