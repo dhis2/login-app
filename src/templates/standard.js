@@ -55,7 +55,7 @@ export const standard = `
           line-height: 28px;
           color: var(--colors-grey050);
       }
-      .application-description-wrapper {
+      .application-introduction-wrapper {
           font-size: 14px;
           line-height: 19px;
           color: var(--colors-grey050);
@@ -129,8 +129,8 @@ export const standard = `
           <div class='application-title-wrapper'>
             <span id='application-title'></span>
           </div>
-          <div class='application-description-wrapper'>
-            <span id='application-description'></span>
+          <div class='application-introduction-wrapper'>
+            <span id='application-introduction'></span>
           </div>                    
           </div>
         </div>

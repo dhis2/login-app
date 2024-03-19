@@ -66,7 +66,7 @@ const options = {
             return <ApplicationTitle />
         }
 
-        if (attribs.id === 'application-description') {
+        if (attribs.id === 'application-introduction') {
             return <ApplicationDescription />
         }
 
