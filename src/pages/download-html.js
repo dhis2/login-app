@@ -29,7 +29,7 @@ const DownloadPage = () => {
                         'You can download the templates used by the login app here. These can be modified and reloaded as custom HTML in the settings app.'
                     )}
                 </p>
-                <p>{i18n.t('Refer to documentation for more details.')}</p>
+                <p>{i18n.t('Refer to the documentation for more details.')}</p>
             </div>
             <div>
                 <div className={styles.formButtons}>
