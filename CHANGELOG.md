@@ -1,3 +1,10 @@
+# [99.11.0](https://github.com/dhis2/login-app/compare/v99.10.1...v99.11.0) (2024-03-19)
+
+
+### Features
+
+* add OIDC Providers into UI ([#15](https://github.com/dhis2/login-app/issues/15)) ([c109315](https://github.com/dhis2/login-app/commit/c109315d91e6f6b4474877bfaa29219600c6a294))
+
 ## [99.10.1](https://github.com/dhis2/login-app/compare/v99.10.0...v99.10.1) (2024-03-18)
 
 
