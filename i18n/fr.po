@@ -35,6 +35,10 @@ msgstr "Créer un compte"
 msgid "Powered by DHIS2"
 msgstr "Propulsé par DHIS2"
 
+
+msgid "Language"
+msgstr "Langue"
+
 msgid "Reset password"
 msgstr "Reinitialiser le mot de passe"
 
@@ -204,3 +208,9 @@ msgstr "Saisir un nouveau de passe"
 
 msgid "Enter the new password for your account below"
 msgstr "Saisir ci-dessous le nouveau de passe pour votre compte"
+
+msgid "Log in with Google"
+msgstr "Se connecter avec Google"
+
+msgid "Log in with Microsoft"
+msgstr "Se connecter avec Microsoft"

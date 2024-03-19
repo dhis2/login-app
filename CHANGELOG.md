@@ -1,3 +1,17 @@
+## [99.10.1](https://github.com/dhis2/login-app/compare/v99.10.0...v99.10.1) (2024-03-18)
+
+
+### Bug Fixes
+
+* language clean up ([#11](https://github.com/dhis2/login-app/issues/11)) ([f95fca4](https://github.com/dhis2/login-app/commit/f95fca4869db5d1b545261a4e5121e6446c83300))
+
+# [99.10.0](https://github.com/dhis2/login-app/compare/v99.9.16...v99.10.0) (2024-03-18)
+
+
+### Features
+
+* add redirect for safe mode ([#14](https://github.com/dhis2/login-app/issues/14)) ([349139d](https://github.com/dhis2/login-app/commit/349139d3cbbcbcd727774b874c2447e08e315f38))
+
 ## [99.9.16](https://github.com/dhis2/login-app/compare/v99.9.15...v99.9.16) (2024-03-13)
 
 

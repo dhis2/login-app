@@ -20,6 +20,7 @@ import {
     CreateAccountPage,
     PasswordResetRequestPage,
     PasswordUpdatePage,
+    SafeModePage,
     DownloadPage,
 } from './pages/index.js'
 import { LoginConfigProvider, useLoginConfig } from './providers/index.js'
@@ -45,6 +46,7 @@ const LoginRoutes = () => {
                     path="/update-password"
                     element={<PasswordUpdatePage />}
                 />
+                <Route path="/safeMode" element={<SafeModePage />} />
                 <Route path="/download" element={<DownloadPage />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
