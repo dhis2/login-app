@@ -35,6 +35,10 @@ msgstr "Créer un compte"
 msgid "Powered by DHIS2"
 msgstr "Propulsé par DHIS2"
 
+
+msgid "Language"
+msgstr "Langue"
+
 msgid "Reset password"
 msgstr "Reinitialiser le mot de passe"
 

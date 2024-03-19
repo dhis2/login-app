@@ -77,12 +77,13 @@ export const PoweredByDHIS2 = () => {
 }
 
 export const LanguageSelect = () => {
-    const { refreshOnTranslation, localesUI, uiLocale } = useLoginConfig()
+    const { refreshOnTranslation, localesUI, uiLocale, systemLocale } =
+        useLoginConfig()
 
     return (
         <SingleSelectField
             dense
-            prefix="Language"
+            prefix={i18n.t('Language', { lng: systemLocale })}
             selected={
                 localesUI.map((l) => l.locale).includes(uiLocale)
                     ? uiLocale
