@@ -23,3 +23,4 @@ export {
     NotAllowedNoticeCreateAccount,
 } from './not-allowed-notice.js'
 export { Popup } from './pop-up.js'
+export { OIDCLoginOptions } from './oidc-login-options.js'
