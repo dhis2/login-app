@@ -1,3 +1,10 @@
+# [99.12.0](https://github.com/dhis2/login-app/compare/v99.11.0...v99.12.0) (2024-03-20)
+
+
+### Features
+
+* enable template download ([#16](https://github.com/dhis2/login-app/issues/16)) ([cae1db3](https://github.com/dhis2/login-app/commit/cae1db3ab451c1a64c35420cee17bd421352348c))
+
 # [99.11.0](https://github.com/dhis2/login-app/compare/v99.10.1...v99.11.0) (2024-03-19)
 
 
