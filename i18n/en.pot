@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2024-03-18T18:33:20.852Z\n"
-"PO-Revision-Date: 2024-03-18T18:33:20.852Z\n"
+"POT-Creation-Date: 2024-03-19T14:31:01.861Z\n"
+"PO-Revision-Date: 2024-03-19T14:31:01.861Z\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr "Please confirm that you are not a robot by checking the checkbox."
@@ -119,6 +119,25 @@ msgid ""
 msgstr ""
 "Information required to process your registration is missing. Please "
 "contact your system administrator."
+
+msgid "HTML Template Download"
+msgstr "HTML Template Download"
+
+msgid ""
+"You can download the templates used by the login app here. These can be "
+"modified and reloaded as custom HTML in the settings app."
+msgstr ""
+"You can download the templates used by the login app here. These can be "
+"modified and reloaded as custom HTML in the settings app."
+
+msgid "Refer to the documentation for more details."
+msgstr "Refer to the documentation for more details."
+
+msgid "Download default template"
+msgstr "Download default template"
+
+msgid "Download sidebar template"
+msgstr "Download sidebar template"
 
 msgid "Verify and log in"
 msgstr "Verify and log in"

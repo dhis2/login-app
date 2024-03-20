@@ -21,6 +21,7 @@ import {
     PasswordResetRequestPage,
     PasswordUpdatePage,
     SafeModePage,
+    DownloadPage,
 } from './pages/index.js'
 import { LoginConfigProvider, useLoginConfig } from './providers/index.js'
 import i18n from './locales/index.js' // eslint-disable-line
@@ -46,6 +47,7 @@ const LoginRoutes = () => {
                     element={<PasswordUpdatePage />}
                 />
                 <Route path="/safeMode" element={<SafeModePage />} />
+                <Route path="/download" element={<DownloadPage />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </>
@@ -66,7 +68,7 @@ const options = {
             return <ApplicationTitle />
         }
 
-        if (attribs.id === 'application-description') {
+        if (attribs.id === 'application-introduction') {
             return <ApplicationDescription />
         }
 

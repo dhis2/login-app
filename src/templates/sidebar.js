@@ -59,7 +59,7 @@ export const sidebar = `
 
       }
 
-      .application-description-wrapper {
+      .application-introduction-wrapper {
         font-size: 16px;
         margin-block-start: 8px;
         margin-block-end: 32px;
@@ -121,8 +121,8 @@ export const sidebar = `
 						<div class='application-title-wrapper'>
 							<span id='application-title'></span>
 						</div>
-						<div class='application-description-wrapper'>
-							<span id='application-description'></span>
+						<div class='application-introduction-wrapper'>
+							<span id='application-introduction'></span>
 						</div>
 					</div>
 					<div class='login-box-wrapper'>
