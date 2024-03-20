@@ -1,3 +1,10 @@
+## [99.12.1](https://github.com/dhis2/login-app/compare/v99.12.0...v99.12.1) (2024-03-20)
+
+
+### Bug Fixes
+
+* update cli-app-scripts ([#17](https://github.com/dhis2/login-app/issues/17)) ([ffddfd9](https://github.com/dhis2/login-app/commit/ffddfd9454e47c47da75cb912907537bd175f6d4))
+
 # [99.12.0](https://github.com/dhis2/login-app/compare/v99.11.0...v99.12.0) (2024-03-20)
 
 
