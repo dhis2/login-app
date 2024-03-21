@@ -1,3 +1,15 @@
+# [100.0.0](https://github.com/dhis2/login-app/compare/v99.12.1...v100.0.0) (2024-03-21)
+
+
+### Features
+
+* publish v100 release ([ba87380](https://github.com/dhis2/login-app/commit/ba873805c291b17eb0e110fd9c015ea8e9a62dfa))
+
+
+### BREAKING CHANGES
+
+* force releasing v100
+
 ## [99.12.1](https://github.com/dhis2/login-app/compare/v99.12.0...v99.12.1) (2024-03-20)
 
 
