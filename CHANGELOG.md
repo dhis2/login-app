@@ -1,3 +1,10 @@
+## [100.0.1](https://github.com/dhis2/login-app/compare/v100.0.0...v100.0.1) (2024-03-21)
+
+
+### Bug Fixes
+
+* publish to apphub ([c69ad4a](https://github.com/dhis2/login-app/commit/c69ad4a0f3889692c5fced5832f315743a65211e))
+
 # [100.0.0](https://github.com/dhis2/login-app/compare/v99.12.1...v100.0.0) (2024-03-21)
 
 
