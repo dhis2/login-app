@@ -1,3 +1,10 @@
+## [100.0.2](https://github.com/dhis2/login-app/compare/v100.0.1...v100.0.2) (2024-03-21)
+
+
+### Bug Fixes
+
+* bump cli-scripts to publish to apphub ([72b5dcd](https://github.com/dhis2/login-app/commit/72b5dcd647847022ae72b2c4c0c7ab8d9f7c75f0))
+
 ## [100.0.1](https://github.com/dhis2/login-app/compare/v100.0.0...v100.0.1) (2024-03-21)
 
 
