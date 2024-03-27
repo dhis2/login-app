@@ -7,6 +7,7 @@ const LOGIN_STATUSES = {
     notEnabled2fa: 'INVALID',
     success: 'SUCCESS',
     secondAttempt2fa: 'second_attempt_incorrect_2fa', // this is internal logic to app
+    success2fa: 'SUCCESS_2fa',
 }
 const invalidTWOFA = [
     LOGIN_STATUSES.incorrect2fa,
@@ -47,13 +48,21 @@ export const useLogin = () => {
             // we need to distinguish between incorrect 2fa on second attempt
             setLoginStatus((prev) =>
                 invalidTWOFA.includes(prev)
-                    ? LOGIN_STATUSES.secondAttempt2fa
+                    ? response.loginStatus === LOGIN_STATUSES.success
+                        ? LOGIN_STATUSES.success2fa
+                        : LOGIN_STATUSES.secondAttempt2fa
                     : response.loginStatus
             )
 
             if (response.loginStatus === LOGIN_STATUSES.success) {
                 const redirectString = getRedirectString({ response, baseUrl })
-                window.location.href = redirectString
+                try {
+                    window.location.href = redirectString
+                } catch (e) {
+                    // if redirect fails, allow users to try again
+                    console.error(e)
+                    setLoginStatus(null)
+                }
             }
         },
         onError: (e) => {
@@ -66,9 +75,16 @@ export const useLogin = () => {
     return {
         login,
         cancelTwoFA,
-        loading: loading || fetching,
+        loading:
+            loading ||
+            fetching ||
+            [LOGIN_STATUSES.success, LOGIN_STATUSES.success2fa].includes(
+                loginStatus
+            ),
         error,
-        twoFAVerificationRequired: invalidTWOFA.includes(loginStatus),
+        twoFAVerificationRequired:
+            invalidTWOFA.includes(loginStatus) ||
+            loginStatus === LOGIN_STATUSES.success2fa,
         twoFAIncorrect: loginStatus === LOGIN_STATUSES.secondAttempt2fa,
         twoFANotEnabled: loginStatus === LOGIN_STATUSES.notEnabled2fa,
     }
