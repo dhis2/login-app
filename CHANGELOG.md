@@ -1,3 +1,10 @@
+## [100.0.3](https://github.com/dhis2/login-app/compare/v100.0.2...v100.0.3) (2024-05-08)
+
+
+### Bug Fixes
+
+* keep button disabled before redirect [DHIS2-17160] ([#22](https://github.com/dhis2/login-app/issues/22)) ([805fdc4](https://github.com/dhis2/login-app/commit/805fdc49153c0bd3a5b011b7885896b352f512d4))
+
 ## [100.0.2](https://github.com/dhis2/login-app/compare/v100.0.1...v100.0.2) (2024-03-21)
 
 
