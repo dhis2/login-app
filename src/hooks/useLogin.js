@@ -56,13 +56,7 @@ export const useLogin = () => {
 
             if (response.loginStatus === LOGIN_STATUSES.success) {
                 const redirectString = getRedirectString({ response, baseUrl })
-                try {
-                    window.location.href = redirectString
-                } catch (e) {
-                    // if redirect fails, allow users to try again
-                    console.error(e)
-                    setLoginStatus(null)
-                }
+                window.location.href = redirectString
             }
         },
         onError: (e) => {
