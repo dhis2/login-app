@@ -98,7 +98,7 @@ const options = {
     },
 }
 
-const AppContent = () => {
+export const AppContent = () => {
     const { loginPageLayout, loginPageTemplate } = useLoginConfig()
     let html
     if (loginPageLayout === 'SIDEBAR') {
