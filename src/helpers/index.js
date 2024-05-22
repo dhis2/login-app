@@ -1,7 +1,3 @@
-export { checkIsFormValid, getIsRequired } from './validators.js'
-export {
-    convertHTML,
-    removeHTMLTags,
-    sanitizeMainHTML,
-    unescapeHTML,
-} from './handleHTML.js'
+export { checkIsLoginFormValid, getIsRequired } from './validators.js'
+export { convertHTML, removeHTMLTags, sanitizeMainHTML } from './handleHTML.js'
+export { redirectTo, getRedirectString } from './redirectHelpers.js'
