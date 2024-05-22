@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import { ReactFinalForm, InputFieldFF, Button } from '@dhis2/ui'
 import PropTypes from 'prop-types'
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { useForm } from 'react-final-form'
 import {
     ApplicationNotification,
@@ -11,7 +11,7 @@ import {
     LoginLinks,
     OIDCLoginOptions,
 } from '../components/index.js'
-import { checkIsFormValid, getIsRequired } from '../helpers/index.js'
+import { checkIsLoginFormValid, getIsRequired } from '../helpers/index.js'
 import { useLogin } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
 import styles from './login.module.css'
@@ -90,6 +90,7 @@ const InnerLoginForm = ({
             >
                 <ReactFinalForm.Field
                     name="twoFA"
+                    data-test="input-twoFA"
                     label={i18n.t('Authentication code', { lng: uiLocale })}
                     component={InputFieldFF}
                     className={styles.inputField}
@@ -127,44 +128,24 @@ InnerLoginForm.propTypes = {
 }
 
 const LoginForm = ({
+    login,
+    cancelTwoFA,
+    twoFAVerificationRequired,
+    twoFAIncorrect,
+    error,
+    loading,
     setFormUserName,
-    setTwoFAVerificationRequired,
     uiLocale,
 }) => {
-    const {
-        login,
-        cancelTwoFA,
-        twoFAVerificationRequired,
-        twoFAIncorrect,
-        error,
-        loading,
-    } = useLogin()
-
-    useEffect(() => {
-        if (setTwoFAVerificationRequired) {
-            setTwoFAVerificationRequired(twoFAVerificationRequired)
-        }
-    }, [twoFAVerificationRequired, setTwoFAVerificationRequired])
-
     const [formSubmitted, setFormSubmitted] = useState(false)
 
     if (!login) {
         return null
     }
-    const isRequired = getIsRequired(uiLocale)
+
     const handleLogin = (values) => {
         setFormSubmitted(true)
-        const validatorsByField = {
-            username: {
-                value: values.username,
-                validator: isRequired,
-            },
-            password: {
-                value: values.password,
-                validator: isRequired,
-            },
-        }
-        if (!checkIsFormValid(validatorsByField)) {
+        if (!checkIsLoginFormValid(values)) {
             return
         }
         login({
@@ -225,15 +206,26 @@ LoginForm.defaultProps = {
 }
 
 LoginForm.propTypes = {
+    cancelTwoFA: PropTypes.func,
+    error: PropTypes.object,
+    loading: PropTypes.bool,
+    login: PropTypes.func,
     setFormUserName: PropTypes.func,
-    setTwoFAVerificationRequired: PropTypes.func,
+    twoFAIncorrect: PropTypes.bool,
+    twoFAVerificationRequired: PropTypes.bool,
     uiLocale: PropTypes.string,
 }
 
 // this is set up this way to isolate styling from login form logic
-const LoginFormContainer = () => {
-    const [twoFAVerificationRequired, setTwoFAVerificationRequired] =
-        useState(false)
+export const LoginFormContainer = () => {
+    const {
+        login,
+        cancelTwoFA,
+        twoFAVerificationRequired,
+        twoFAIncorrect,
+        error,
+        loading,
+    } = useLogin()
     const [formUserName, setFormUserName] = useState('')
     const { uiLocale } = useLoginConfig()
 
@@ -257,8 +249,13 @@ const LoginFormContainer = () => {
             )}
             <LoginForm
                 setFormUserName={setFormUserName}
-                setTwoFAVerificationRequired={setTwoFAVerificationRequired}
                 uiLocale={uiLocale}
+                login={login}
+                cancelTwoFA={cancelTwoFA}
+                twoFAVerificationRequired={twoFAVerificationRequired}
+                twoFAIncorrect={twoFAIncorrect}
+                error={error}
+                loading={loading}
             />
             {!twoFAVerificationRequired && (
                 <>

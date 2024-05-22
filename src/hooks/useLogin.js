@@ -1,5 +1,6 @@
 import { useDataMutation } from '@dhis2/app-runtime'
 import { useState } from 'react'
+import { redirectTo, getRedirectString } from '../helpers/index.js'
 import { useLoginConfig } from '../providers/index.js'
 
 const LOGIN_STATUSES = {
@@ -13,15 +14,6 @@ const invalidTWOFA = [
     LOGIN_STATUSES.incorrect2fa,
     LOGIN_STATUSES.secondAttempt2fa,
 ]
-
-// To be updated based on https://dhis2.atlassian.net/browse/DHIS2-14613
-
-const getRedirectString = ({ response, baseUrl }) => {
-    if (process.env.NODE_ENV === 'development') {
-        return baseUrl + response?.redirectUrl
-    }
-    return response.redirectUrl ? `${response.redirectUrl}` : baseUrl
-}
 
 const loginMutation = {
     resource: 'auth/login',
@@ -42,27 +34,35 @@ export const useLogin = () => {
         setLoginStatus(null)
     }
 
+    const handleSuccessfulLogin = (response) => {
+        setError(null)
+        // we need to distinguish between incorrect 2fa on second attempt
+        setLoginStatus((prev) =>
+            invalidTWOFA.includes(prev)
+                ? response.loginStatus === LOGIN_STATUSES.success
+                    ? LOGIN_STATUSES.success2fa
+                    : LOGIN_STATUSES.secondAttempt2fa
+                : response.loginStatus
+        )
+
+        if (response.loginStatus === LOGIN_STATUSES.success) {
+            const redirectString = getRedirectString({ response, baseUrl })
+            redirectTo(redirectString)
+        }
+    }
+
+    const handleUnsuccessfulLogin = (error) => {
+        console.error(error)
+        setLoginStatus(null)
+        setError(error)
+    }
+
     const [login, { loading, fetching }] = useDataMutation(loginMutation, {
         onComplete: (response) => {
-            setError(null)
-            // we need to distinguish between incorrect 2fa on second attempt
-            setLoginStatus((prev) =>
-                invalidTWOFA.includes(prev)
-                    ? response.loginStatus === LOGIN_STATUSES.success
-                        ? LOGIN_STATUSES.success2fa
-                        : LOGIN_STATUSES.secondAttempt2fa
-                    : response.loginStatus
-            )
-
-            if (response.loginStatus === LOGIN_STATUSES.success) {
-                const redirectString = getRedirectString({ response, baseUrl })
-                window.location.href = redirectString
-            }
+            handleSuccessfulLogin(response)
         },
-        onError: (e) => {
-            console.error(e)
-            setLoginStatus(null)
-            setError(e)
+        onError: (error) => {
+            handleUnsuccessfulLogin(error)
         },
     })
 

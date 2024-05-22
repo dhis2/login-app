@@ -112,18 +112,14 @@ const AppContent = () => {
     return <>{parse(sanitizeMainHTML(html), options)}</>
 }
 
-const App = () => {
-    return (
-        <>
-            <HashRouter>
-                <LoginConfigProvider>
-                    <CssReset />
-                    <CssVariables colors spacers theme elevations />
-                    <AppContent />
-                </LoginConfigProvider>
-            </HashRouter>
-        </>
-    )
-}
+const App = () => (
+    <HashRouter>
+        <LoginConfigProvider>
+            <CssReset />
+            <CssVariables colors spacers theme elevations />
+            <AppContent />
+        </LoginConfigProvider>
+    </HashRouter>
+)
 
 export default App

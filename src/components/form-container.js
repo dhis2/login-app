@@ -10,7 +10,7 @@ export const FormContainer = ({ children, title, variableWidth }) => (
                 : styles.formContainer
         }
     >
-        {title && <p className={styles.formTitle}>{title}</p>}
+        {title && <h3 className={styles.formTitle}>{title}</h3>}
         {children}
     </div>
 )
