@@ -6,7 +6,7 @@ export const useGetErrorIfNotAllowed = (requiredSettings) => {
 
     let notAllowed = false
     for (const setting of requiredSettings) {
-        if (loginConfig[setting] === false) {
+        if (!loginConfig[setting]) {
             notAllowed = true
             break
         }
