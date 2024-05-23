@@ -59,11 +59,11 @@ describe('LoginForm', () => {
 
     it('cancels twofa when cancel is clicked', () => {
         const mockCancelTwoFA = jest.fn()
-        useLogin.mockImplementationOnce(() => ({
+        useLogin.mockReturnValue({
             login: () => {},
             twoFAVerificationRequired: true,
             cancelTwoFA: mockCancelTwoFA,
-        }))
+        })
         render(<LoginFormContainer />)
 
         fireEvent.click(
@@ -76,17 +76,22 @@ describe('LoginForm', () => {
 
     // ideally would check visibility of fields in these states, but not working in tests due to jsdom interpretation of css
     it('has header of "log in" if twoFAVerificationRequired is false', () => {
+        useLogin.mockReturnValue({
+            login: () => {},
+            twoFAVerificationRequired: false,
+            cancelTwoFA: () => {},
+        })
         render(<LoginFormContainer />)
 
         expect(screen.getByRole('heading', { name: /log in/i })).not.toBe(null)
     })
 
     it('has header of "Two-factor authentication" if twoFAVerificationRequired is true', () => {
-        useLogin.mockImplementationOnce(() => ({
+        useLogin.mockReturnValue({
             login: () => {},
             twoFAVerificationRequired: true,
             cancelTwoFA: () => {},
-        }))
+        })
         render(<LoginFormContainer />)
 
         expect(
@@ -95,30 +100,30 @@ describe('LoginForm', () => {
     })
 
     it('shows incorrect username error on 401 error ', () => {
-        useLogin.mockImplementationOnce(() => ({
+        useLogin.mockReturnValue({
             login: () => {},
             twoFAVerificationRequired: false,
             cancelTwoFA: () => {},
             error: { httpStatusCode: 401 },
-        }))
+        })
         render(<LoginFormContainer />)
 
         expect(screen.getByText('Incorrect username or password')).toBeVisible()
     })
 
     it('does not show inputs if login function is not defined ', () => {
-        useLogin.mockImplementationOnce(() => ({ login: null }))
+        useLogin.mockReturnValue({ login: null })
         render(<LoginFormContainer />)
 
         expect(screen.queryAllByRole('textbox')).toHaveLength(0)
     })
 
     it('hides login links and oidc login options if two fa required ', () => {
-        useLogin.mockImplementationOnce(() => ({
+        useLogin.mockReturnValue({
             login: () => {},
             twoFAVerificationRequired: true,
             cancelTwoFA: () => {},
-        }))
+        })
         render(<LoginFormContainer />)
 
         expect(screen.queryByText('LOGIN LINKS')).toBe(null)
@@ -126,11 +131,11 @@ describe('LoginForm', () => {
     })
 
     it('show login links and oidc login options if two fa not (yet) required ', () => {
-        useLogin.mockImplementationOnce(() => ({
+        useLogin.mockReturnValue({
             login: () => {},
             twoFAVerificationRequired: false,
             cancelTwoFA: () => {},
-        }))
+        })
         render(<LoginFormContainer />)
 
         expect(screen.getByText('LOGIN LINKS')).toBeInTheDocument()
