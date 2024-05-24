@@ -46,7 +46,7 @@ const LoginConfigProvider = ({ children }) => {
         loading: loginConfigLoading,
         error: loginConfigError,
     } = useDataQuery(loginConfigQuery, {
-        variables: { locale: localStorage[localStorageLocaleKey] },
+        variables: { locale: localStorage.getItem(localStorageLocaleKey) },
     })
     const {
         data: localesData,
@@ -60,7 +60,7 @@ const LoginConfigProvider = ({ children }) => {
     useEffect(() => {
         // if there is a stored language, set it as i18next language
         const userLanguage =
-            localStorage[localStorageLocaleKey] ||
+            localStorage.getItem(localStorageLocaleKey) ||
             loginConfigData?.loginConfig?.uiLocale ||
             'en'
         setTranslatedValues({ uiLocale: userLanguage })
@@ -84,6 +84,8 @@ const LoginConfigProvider = ({ children }) => {
         }
         i18n.changeLanguage(locale)
         document.documentElement.setAttribute('dir', i18n.dir())
+        // the logic here is wrong as it falls back to previous translations (rather than defaults)
+        // however, the api response will fall back to default system language (so this doesn't cause issues)
         const updatedTranslations = translatableValues.reduce(
             (translations, currentTranslationKey) => {
                 if (updatedValues?.loginConfig?.[currentTranslationKey]) {
