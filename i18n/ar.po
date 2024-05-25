@@ -1,5 +1,27 @@
+# 
+# Translators:
+# Viktor Varland <viktor@dhis2.org>, 2024
+# Philip Larsen Donnelly, 2024
+# Hamza Assada <7amza.it@gmail.com>, 2024
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2024-05-22T10:53:32.505Z\n"
+"PO-Revision-Date: 2024-05-22 09:51+0000\n"
+"Last-Translator: Hamza Assada <7amza.it@gmail.com>, 2024\n"
+"Language-Team: Arabic (https://app.transifex.com/hisp-uio/teams/100509/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+msgid "Please confirm that you are not a robot by checking the checkbox."
+msgstr ""
+
 msgid "Log in details"
-msgstr "تفاصيل تسجيل الدخول"
+msgstr ""
 
 msgid "Username"
 msgstr "اسم المستخدم"
@@ -7,197 +29,200 @@ msgstr "اسم المستخدم"
 msgid "Password"
 msgstr "كلمة المرور"
 
-msgid "Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
-msgstr "8 أحرف كحد أدنى ، حرف كبير واحد على الأقل ، حرف واحد صغير ، رقم واحد ، رمز واحد"
+msgid ""
+"Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
+msgstr ""
 
 msgid "Personal details"
-msgstr "التفاصيل الشخصية"
+msgstr ""
 
 msgid "First name"
-msgstr "الاسم الاول"
+msgstr "الاسم الأول"
 
 msgid "Last name"
-msgstr "الاسم الأخير"
+msgstr "الكنية"
 
 msgid "Email"
-msgstr "البريد الإلكتروني"
+msgstr "بريد إلكتروني"
 
 msgid "Phone number"
 msgstr "رقم الهاتف"
 
-msgid "Employer"
-msgstr "صاحب العمل"
-
 msgid "Creating..."
-msgstr "إنشاء ..."
+msgstr ""
 
 msgid "Create account"
-msgstr "إنشاء حساب"
+msgstr ""
 
 msgid "Cancel"
 msgstr "إلغاء"
 
 msgid "Enter your details below to create a {{- applicationName}} account."
-msgstr "أدخل التفاصيل الخاصة بك أدناه لإنشاء حساب {{- applicationName}}."
+msgstr ""
 
 msgid "Already have an account?"
-msgstr "لديك حساب بالفعل؟"
+msgstr ""
 
 msgid "Log in."
-msgstr "تسجيل الدخول."
+msgstr ""
 
 msgid "Something went wrong, and we could not register your account"
-msgstr "حدث خطأ ما ، ولم نتمكن من تسجيل حسابك"
+msgstr ""
 
 msgid "Account created successfully"
-msgstr "تم إنشاء الحساب بنجاح"
+msgstr ""
 
 msgid "You can use your username and password to log in."
-msgstr "يمكنك استخدام اسم المستخدم وكلمة المرور لتسجيل الدخول."
-
-msgid "Verify your email address"
-msgstr "تحقق من عنوان بريدك الإلكتروني"
-
-msgid ""
-"Check your email for a link to verify your email address and finish setting "
-"up your account."
 msgstr ""
-"Check your email for a link to verify your email address and finish setting "
-"up your account."
 
 msgid "Back to log in page"
-msgstr "العودة إلى صفحة تسجيل الدخول"
+msgstr ""
 
 msgid "Powered by DHIS2"
-msgstr "مدعوم من DHIS2"
+msgstr ""
+
+msgid "Language"
+msgstr "اللغة"
+
+msgid "Forgot password?"
+msgstr "نسيت كلمة المرور؟"
+
+msgid "Don't have an account?"
+msgstr ""
+
+msgid "Create an account"
+msgstr "إنشاء حساب"
 
 msgid "The requested page is not configured for your system"
-msgstr "الصفحة المطلوبة غير مهيأة لنظامك"
+msgstr ""
+
+msgid "Creating account not available"
+msgstr ""
+
+msgid "Contact a system administrator to create an account."
+msgstr ""
+
+msgid "Log in with Google"
+msgstr ""
+
+msgid "Log in with Microsoft"
+msgstr ""
+
+msgid "I agree"
+msgstr ""
 
 msgid "This field is required"
 msgstr "هذا الحقل مطلوب"
 
 msgid "Cannot process registration"
-msgstr "لا يمكن معالجة التسجيل"
+msgstr ""
 
 msgid ""
-"Information required to process your registration is missing. Please "
-"contact your system administrator."
+"Information required to process your registration is missing. Please contact"
+" your system administrator."
 msgstr ""
-"Information required to process your registration is missing. Please "
-"contact your system administrator."
 
-msgid "Email confirmation"
-msgstr "تأكيد البريد الإلكتروني"
-
-msgid "Could not confirm email"
-msgstr "لا يمكن تأكيد البريد الإلكتروني"
+msgid "HTML Template Download"
+msgstr ""
 
 msgid ""
-"Your link may have expired. Please try again and contact your system "
-"administrator if the problem remains."
+"You can download the templates used by the login app here. These can be "
+"modified and reloaded as custom HTML in the settings app."
 msgstr ""
-"Your link may have expired. Please try again and contact your system "
-"administrator if the problem remains."
 
-msgid "Email confirmed"
-msgstr "تم تأكيد البريد الإلكتروني"
-
-msgid ""
-"Your email is confirmed. You can now use your username and password to log "
-"in."
+msgid "Refer to the documentation for more details."
 msgstr ""
-"Your email is confirmed. You can now use your username and password to log "
-"in."
 
-msgid "Forgot password?"
-msgstr "هل نسيت كلمة المرور؟"
+msgid "Download default template"
+msgstr ""
 
-msgid "Don't have an account?"
-msgstr "ليس لديك حساب؟"
-
-msgid "Create an account"
-msgstr "إنشاء حساب"
+msgid "Download sidebar template"
+msgstr ""
 
 msgid "Verify and log in"
-msgstr "تحقق وتسجيل الدخول"
+msgstr ""
 
 msgid "Log in"
-msgstr "تسجيل الدخول"
+msgstr ""
+
+msgid "Verifying..."
+msgstr ""
+
+msgid "Logging in..."
+msgstr ""
 
 msgid "Authentication code"
-msgstr "رمز المصادقة"
+msgstr ""
 
-msgid "Logging in"
-msgstr "تسجيل الدخول"
+msgid "Something went wrong"
+msgstr "حدث خطأ ما"
 
 msgid "Incorrect username or password"
-msgstr "اسم مستخدم أو كلمة مرور غير صحيحة"
+msgstr ""
+
+msgid "Incorrect authentication code"
+msgstr ""
 
 msgid "Two-factor authentication"
-msgstr "المصادقة ذات العاملين"
+msgstr ""
 
 msgid "Enter the code from your two-factor authentication app to log in."
-msgstr "أدخل الرمز من تطبيق المصادقة الثنائية لتسجيل الدخول."
+msgstr ""
 
 msgid "Username or email"
-msgstr "اسم المستخدم أو البريد الإلكتروني"
+msgstr ""
 
 msgid "Sending..."
 msgstr ""
 
-msgid "Send password reset request form"
-msgstr "إرسال نموذج طلب إعادة تعيين كلمة المرور"
+msgid "Send password reset request"
+msgstr ""
 
 msgid "Password reset failed"
-msgstr "فشل إعادة تعيين كلمة المرور"
+msgstr ""
 
 msgid ""
-"The username might be invalid, your account might not allow password reset, "
-"or there might be a problem with your account email address."
+"Something went wrong. Please try again later, and contact your system "
+"administrator if the problem persists."
 msgstr ""
-"The username might be invalid, your account might not allow password reset, "
-"or there might be a problem with your account email address."
 
 msgid ""
-"We've sent an email with a password reset link to your registered email "
-"address."
+"If the provided username or email is registered in the system, you will soon"
+" receive an email with a password reset link."
 msgstr ""
-"We've sent an email with a password reset link to your registered email "
-"address."
 
 msgid "Reset password"
-msgstr "إعادة تعيين كلمة المرور"
+msgstr ""
 
 msgid ""
 "Enter your username below, a link to reset your password will be sent to "
 "your registered e-mail."
 msgstr ""
-"Enter your username below, a link to reset your password will be sent to "
-"your registered e-mail."
 
 msgid "Saving..."
-msgstr "حفظ ..."
+msgstr "يتم الحفظ..."
 
 msgid "Save new password"
-msgstr "احفظ كلمة المرور الجديدة"
+msgstr ""
 
 msgid "New password not saved"
-msgstr "لم يتم حفظ كلمة المرور الجديدة"
+msgstr ""
 
 msgid ""
 "There was a problem saving your password. Try again or contact your system "
 "administrator."
 msgstr ""
-"There was a problem saving your password. Try again or contact your system "
-"administrator."
 
 msgid "New password saved. You can use it to log in to your account."
-msgstr "حفظ كلمة المرور الجديدة. "
+msgstr ""
 
 msgid "Choose new password"
-msgstr "اختر كلمة مرور جديدة"
+msgstr ""
 
 msgid "Enter the new password for your account below"
-msgstr "أدخل كلمة المرور الجديدة لحسابك أدناه"
+msgstr ""
 
+msgid ""
+"You should shortly be redirected. If you are not redirected, please click "
+"redirect button."
+msgstr ""
