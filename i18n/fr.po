@@ -1,88 +1,41 @@
+# 
+# Translators:
+# Karoline Tufte Lien <karoline@dhis2.org>, 2024
+# Yao Selom SAKA (HISP WCA) <ysaka@hispwca.org>, 2024
+# Viktor Varland <viktor@dhis2.org>, 2024
+# Philip Larsen Donnelly, 2024
+# Thomas Zemp, 2024
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2024-05-22T10:53:32.505Z\n"
+"PO-Revision-Date: 2024-05-22 09:51+0000\n"
+"Last-Translator: Thomas Zemp, 2024\n"
+"Language-Team: French (https://app.transifex.com/hisp-uio/teams/100509/fr/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2023-02-20T14:44:22.843Z\n"
-"PO-Revision-Date: 2023-02-20T14:44:22.843Z\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-msgid "Incorrect username or password"
-msgstr "Identifiant ou mot de passe incorrect"
-
-msgid "This field is required"
-msgstr "Ce champ est obligatoire"
-
-msgid "Username"
-msgstr "Identifiant"
-
-msgid "Password"
-msgstr "Mot de passe"
-
-msgid "Log in"
-msgstr "Se connecter"
-
-msgid "Forgot password?"
-msgstr "Mot de passe oublié?"
-
-msgid "Don't have an account?"
-msgstr "Pas de compte?"
-
-msgid "Create an account"
-msgstr "Créer un compte"
-
-msgid "Powered by DHIS2"
-msgstr "Propulsé par DHIS2"
-
-
-msgid "Language"
-msgstr "Langue"
-
-msgid "Reset password"
-msgstr "Reinitialiser le mot de passe"
-
-msgid ""
-"Enter your username below, a link to reset your password will be sent to "
-"your registered e-mail."
-msgstr ""
-"Saisir votre identifiant ci-dessous; un lien sera envoyé a votre adresse email enregistrée"
-
-msgid "Verify and log in"
-msgstr "Vérifier et se connecter"
-
-msgid "Authentication code"
-msgstr "Code d'authentification"
-
-msgid "Logging in"
-msgstr "Se connectant..."
-
-msgid "Cancel"
-msgstr "Annuler"
-
-msgid "Incorrect username or email"
-msgstr "Identifiant ou adresse email incorrect"
-
-msgid "Two-factor authentication"
-msgstr "Authentification à deux facteurs"
-
-msgid "Enter the code from your two-factor authentication app to log in."
-msgstr "Saisir le code fourni par votre applis d'authentification pour vous connecter."
-
-msgid "Username or email"
-msgstr "Identifiant ou adresse email"
-
-msgid "Sending..."
-msgstr "Envoyant..."
-
-msgid "Send password reset request form"
-msgstr "Envoyer fiche d'enquête pour reinitialiser le mot de passe"
+msgid "Please confirm that you are not a robot by checking the checkbox."
+msgstr "Veuillez confirmer que vous n'êtes pas un robot en cochant la case."
 
 msgid "Log in details"
 msgstr "Détails de connexion"
 
-msgid "Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
-msgstr "Au moins 8 caractères, dont 1 lettre majuscule, 1 lettre miniscule, 1 chiffre, 1 symbole"
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid ""
+"Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
+msgstr ""
+"Au minimum 8 caractères, dont 1 majuscule, 1 miniscule, 1 chiffre, 1 "
+"symbole. "
 
 msgid "Personal details"
 msgstr "Détails personnels"
@@ -91,126 +44,214 @@ msgid "First name"
 msgstr "Prénom"
 
 msgid "Last name"
-msgstr "Nom"
+msgstr "Nom de famille"
 
 msgid "Email"
-msgstr "Adresse email"
+msgstr "Adresse e-mail"
 
 msgid "Phone number"
 msgstr "Numéro de téléphone"
 
-msgid "Employer"
-msgstr "Employeur"
+msgid "Creating..."
+msgstr "En cours de création..."
 
 msgid "Create account"
 msgstr "Créer un compte"
 
-msgid "Creating..."
-msgstr "Création en cours..."
+msgid "Cancel"
+msgstr "Annuler"
 
 msgid "Enter your details below to create a {{- applicationName}} account."
-msgstr "Saisir vos détails ci-dessous pour créer un compte sur {{- applicationName}}."
+msgstr ""
+"Veuillez saisir vos coordonnées ci-dessous pour créer un compte {{- "
+"applicationName}}."
 
 msgid "Already have an account?"
 msgstr "Avez-vous déjà un compte?"
 
 msgid "Log in."
-msgstr "Connectez-vous."
+msgstr "Se connecter."
 
 msgid "Something went wrong, and we could not register your account"
-msgstr "Un problème s'est produit, et nous n'avons pas réussi à créer votre compte."
-
-msgid "Verify your email address"
-msgstr "Vérifiez votre adresse email"
-
-msgid ""
-"Check your email for a link to verify your email address and finish setting "
-"up your account."
 msgstr ""
-"Consultez vos mails pour un lien pour vérifier votre adresse email et finir "
-"la création de votre compte."
+"Un problème s'est produit, et nous n'avons pas réussi à créer votre compte."
 
 msgid "Account created successfully"
-msgstr "Votre compte a été créé"
+msgstr "Compte créé avec succès."
 
 msgid "You can use your username and password to log in."
-msgstr "Vous pouvez utiliser votre identifiant et mot de passe pour vous connecter."
+msgstr ""
+"Vous pouvez utiliser votre nom d'utilisateur et votre mot de passe pour vous"
+" connecter."
 
 msgid "Back to log in page"
-msgstr "Retourner à la page de connexion"
+msgstr "Retour à la page de connexion"
 
-msgid "Cannot process registration"
-msgstr "L'enregistrement n'est pas possible"
+msgid "Powered by DHIS2"
+msgstr "Propulsé par DHIS2"
 
-msgid ""
-"Information required to process your registration is missing. Please "
-"contact your system administrator."
+msgid "Language"
+msgstr "Langue"
+
+msgid "Forgot password?"
+msgstr "Mot de passe oublié?"
+
+msgid "Don't have an account?"
+msgstr "Vous n'avez pas de compte?"
+
+msgid "Create an account"
+msgstr "Créer un compte"
+
+msgid "The requested page is not configured for your system"
 msgstr ""
-"Ils manquent des détails nécéssaires pour l'engregistrement. Veuillez contacter l'administrater du système."
+"La page que vous avez demandée n'est pas configurée pour votre système"
 
-msgid "Email confirmation"
-msgstr "Vérification d'adresse email"
+msgid "Creating account not available"
+msgstr "La création des comptes n'est pas disponible"
 
-msgid "Could not confirm email"
-msgstr "La vérification de l'adresse email n'a pas réussi"
-
-msgid ""
-"Your link may have expired. Please try again and contact your system "
-"administrator if the problem remains."
-msgstr ""
-"Le lien a peut-être expiré. Veuillez essayer de nouveau ou contacter l'administrateur du système"
-
-msgid "Email confirmed"
-msgstr "Adresse email vérifiée"
-
-msgid ""
-"Your email is confirmed. You can now use your username and password to log "
-"in."
-msgstr ""
-"Votre adresse email a été vérifiée. Vous pouvez maintenant utilizer votre identifiant et mot de passe pour vous connecter. "
-
-
-msgid "Password reset failed"
-msgstr "La reinitialisation du mot de passe n'a pas réussi"
-
-msgid ""
-"The username might be invalid, your account might not allow password reset, "
-"or there might be a problem with your account email address."
-msgstr ""
-"L'identifiant peut être invalide, votre system peut ne pas permettre la reinitialisation des mots de passes "
-"ou il y a peut-être un problème avec votre adresse email."
-
-msgid ""
-"We've sent an email with a password reset link to your registered email "
-"address."
-msgstr ""
-"Nous avons envoyé un lien pour reinitialiser votre mote de passe à votre adresse email "
-"enregistrée."
-
-msgid "Save new password"
-msgstr "Enregistrer nouveau mot de passe"
-
-msgid "New password not saved"
-msgstr "Le nouveau mot de passe n'a pas été enregistré"
-
-msgid ""
-"There was a problem saving your password. Try again or contact your system "
-"administrator."
-msgstr ""
-"Il y'a eu un problème avec l'enregistrement de votre mot de passe. Veuillez essayer de nouveau ou "
-"contacter votre administrateur du système."
-
-msgid "New password saved. You can use it to log in to your account."
-msgstr "Nouveau mot de passe enregistré. Vous pouvez l'utiliser pour vous connecter."
-
-msgid "Choose new password"
-msgstr "Saisir un nouveau de passe"
-
-msgid "Enter the new password for your account below"
-msgstr "Saisir ci-dessous le nouveau de passe pour votre compte"
+msgid "Contact a system administrator to create an account."
+msgstr "Contacter un administrateur système pour créer un compte."
 
 msgid "Log in with Google"
 msgstr "Se connecter avec Google"
 
 msgid "Log in with Microsoft"
 msgstr "Se connecter avec Microsoft"
+
+msgid "I agree"
+msgstr "Je suis d'accord"
+
+msgid "This field is required"
+msgstr "Ce champs est requis"
+
+msgid "Cannot process registration"
+msgstr "Impossible de traiter l'inscription"
+
+msgid ""
+"Information required to process your registration is missing. Please contact"
+" your system administrator."
+msgstr ""
+"Il manque les informations nécessaires pour traiter votre inscription. "
+"Veuillez contacter un administrateur système."
+
+msgid "HTML Template Download"
+msgstr "Téléchargement du modèle HTML"
+
+msgid ""
+"You can download the templates used by the login app here. These can be "
+"modified and reloaded as custom HTML in the settings app."
+msgstr ""
+"Vous pouvez ici télécharger les modèles HTML utilisés par l'applis de "
+"connexion. Vous pouvez modifier ceux-ci et ensuite les téléverser sous forme"
+" de fichiers d'HTML personnalisés dans l'applis de paramètres du système."
+
+msgid "Refer to the documentation for more details."
+msgstr "Veuillez consulter la documentation pour plus de détails."
+
+msgid "Download default template"
+msgstr "Télécharger le modèle standard"
+
+msgid "Download sidebar template"
+msgstr "Télécharger le modèle avec barre latérale"
+
+msgid "Verify and log in"
+msgstr "Vérifier et se connecter"
+
+msgid "Log in"
+msgstr "Se connecter"
+
+msgid "Verifying..."
+msgstr "En cours de vérification..."
+
+msgid "Logging in..."
+msgstr "En cours de connecter..."
+
+msgid "Authentication code"
+msgstr "Code d'authentification"
+
+msgid "Something went wrong"
+msgstr "Un problème s'est produit"
+
+msgid "Incorrect username or password"
+msgstr "Nom d'utilisateur ou mot de passe incorrect"
+
+msgid "Incorrect authentication code"
+msgstr "Code d'authentification incorrect"
+
+msgid "Two-factor authentication"
+msgstr "Authentification à deux facteurs "
+
+msgid "Enter the code from your two-factor authentication app to log in."
+msgstr ""
+"Saisissez le code de votre application d'authentification à deux facteurs "
+"pour vous connecter"
+
+msgid "Username or email"
+msgstr "Nom d'utilisateur or adresse e-mail"
+
+msgid "Sending..."
+msgstr "En cours d'envoyer..."
+
+msgid "Send password reset request"
+msgstr "Envoyer une demande de réinitialisation de mot de passe"
+
+msgid "Password reset failed"
+msgstr "Echec de la réinitialisation du mot de passe"
+
+msgid ""
+"Something went wrong. Please try again later, and contact your system "
+"administrator if the problem persists."
+msgstr ""
+"Un problème s'est produit. Veuillez réessayer plus tard et contacter votre "
+"administrateur système si le problème persiste."
+
+msgid ""
+"If the provided username or email is registered in the system, you will soon"
+" receive an email with a password reset link."
+msgstr ""
+"Si le nom d'utilisateur ou adresse e-mail est enregistré dans le système, "
+"vous recevrez dans quelques instants un mail avec un lien pour réinitialiser"
+" votre mot de passe."
+
+msgid "Reset password"
+msgstr "Réinitialiser le mot de passe"
+
+msgid ""
+"Enter your username below, a link to reset your password will be sent to "
+"your registered e-mail."
+msgstr ""
+"Saisissez ci-dessous votre nom d'utilisateur et un lien pour réinitialiser "
+"votre mot de passe sera envoyé à votre adresse e-mail enregistrée."
+
+msgid "Saving..."
+msgstr "En cours d'enregistrer..."
+
+msgid "Save new password"
+msgstr "Enregistrer un nouveau mot de passe"
+
+msgid "New password not saved"
+msgstr "Le nouveau mot de passe n'est pas enregistré"
+
+msgid ""
+"There was a problem saving your password. Try again or contact your system "
+"administrator."
+msgstr ""
+"Un problème est survenu lors de l'enregistrement de votre mot de passe. "
+"Veuillez réessayer plus tard ou contacter votre administrateur système."
+
+msgid "New password saved. You can use it to log in to your account."
+msgstr ""
+"Nouveau mot de passe enregistré. Vous pouvez l'utiliser pour vous connecter."
+
+msgid "Choose new password"
+msgstr "Saisir un nouveau mot de passe"
+
+msgid "Enter the new password for your account below"
+msgstr "Saisir ci-dessous le nouveau mot de passe pour votre compte"
+
+msgid ""
+"You should shortly be redirected. If you are not redirected, please click "
+"redirect button."
+msgstr ""
+"L'application vous redirigera bientôt. Si l'application vous ne redirige "
+"pas, veuillez cliquer sur le bouton de redirection."

@@ -1,20 +1,19 @@
 # 
 # Translators:
-# Caroline Hesthagen Holen <caroline@devotta.no>, 2024
-# Karoline Tufte Lien <karoline@dhis2.org>, 2024
+# Jaime Bosque <jaime.bosque@dhis2.org>, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2024-05-22T10:53:32.505Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Karoline Tufte Lien <karoline@dhis2.org>, 2024\n"
-"Language-Team: Norwegian Bokmål (https://app.transifex.com/hisp-uio/teams/100509/nb/)\n"
+"Last-Translator: Jaime Bosque <jaime.bosque@dhis2.org>, 2024\n"
+"Language-Team: Spanish (Latin America) (https://app.transifex.com/hisp-uio/teams/100509/es_419/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nb\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es_419\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr ""
@@ -23,10 +22,10 @@ msgid "Log in details"
 msgstr ""
 
 msgid "Username"
-msgstr "Brukernavn"
+msgstr "Nombre de usuario"
 
 msgid "Password"
-msgstr "Passord"
+msgstr "Contraseña"
 
 msgid ""
 "Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
@@ -36,16 +35,16 @@ msgid "Personal details"
 msgstr ""
 
 msgid "First name"
-msgstr "Fornavn"
+msgstr ""
 
 msgid "Last name"
-msgstr "Etternavn"
+msgstr ""
 
 msgid "Email"
-msgstr "E-post"
+msgstr ""
 
 msgid "Phone number"
-msgstr "Telefonnummer"
+msgstr ""
 
 msgid "Creating..."
 msgstr ""
@@ -54,7 +53,7 @@ msgid "Create account"
 msgstr ""
 
 msgid "Cancel"
-msgstr "Avbryt"
+msgstr "Cancelar"
 
 msgid "Enter your details below to create a {{- applicationName}} account."
 msgstr ""
@@ -81,16 +80,16 @@ msgid "Powered by DHIS2"
 msgstr ""
 
 msgid "Language"
-msgstr "Språk"
+msgstr "Idioma"
 
 msgid "Forgot password?"
-msgstr "Glemt passord?"
+msgstr ""
 
 msgid "Don't have an account?"
 msgstr ""
 
 msgid "Create an account"
-msgstr "Opprett en konto"
+msgstr ""
 
 msgid "The requested page is not configured for your system"
 msgstr ""
@@ -111,7 +110,7 @@ msgid "I agree"
 msgstr ""
 
 msgid "This field is required"
-msgstr "Dette er et påkrevd felt"
+msgstr ""
 
 msgid "Cannot process registration"
 msgstr ""
@@ -154,7 +153,7 @@ msgid "Authentication code"
 msgstr ""
 
 msgid "Something went wrong"
-msgstr "Noe gikk galt"
+msgstr "Algo ha ido mal"
 
 msgid "Incorrect username or password"
 msgstr ""
