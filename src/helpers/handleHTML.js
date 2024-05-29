@@ -1,12 +1,6 @@
 import * as DOMPurify from 'dompurify'
 import parse from 'html-react-parser'
 
-export const unescapeHTML = (html) => {
-    const parser = new DOMParser()
-    const dom = parser.parseFromString(html, 'text/html')
-    return dom?.body?.textContent
-}
-
 export const removeHTMLTags = (text) => text.replace(/(<([^>]+)>)/gi, '')
 
 export const sanitizeMainHTML = (html) =>
