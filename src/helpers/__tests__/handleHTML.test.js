@@ -43,13 +43,3 @@ describe('removeHTMLTags', () => {
         expect(removeHTMLTags(before)).toBe(after)
     })
 })
-
-// export const removeHTMLTags = (text) => text.replace(/(<([^>]+)>)/gi, '')
-
-// export const sanitizeMainHTML = (html) =>
-//     DOMPurify.sanitize(html, {
-//         FORCE_BODY: true,
-//         ADD_TAGS: ['style', 'iframe'],
-//     })
-
-// export const convertHTML = (html) => parse(DOMPurify.sanitize(html))
