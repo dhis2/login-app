@@ -6,7 +6,7 @@ describe('checkIsLoginFormValid', () => {
             checkIsLoginFormValid({ username: 'some', password: 'thing' })
         ).toBe(true)
     }),
-        it('returns false if username and password do not values', () => {
+        it('returns false if username and password do not have values', () => {
             expect(
                 checkIsLoginFormValid({ username: null, password: null })
             ).toBe(false)
