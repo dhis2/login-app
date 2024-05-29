@@ -18,7 +18,13 @@ export const LoginLinks = ({ formUserName }) => {
             <div className={styles.links}>
                 {allowAccountRecovery && emailConfigured && (
                     <span>
-                        <Link to={`/reset-password?username=${formUserName}`}>
+                        <Link
+                            to={
+                                formUserName
+                                    ? `/reset-password?username=${formUserName}`
+                                    : `/reset-password`
+                            }
+                        >
                             {i18n.t('Forgot password?', { lng: uiLocale })}
                         </Link>
                     </span>

@@ -1,8 +1,16 @@
+import i18n from '@dhis2/d2-i18n'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { useLoginConfig } from '../../providers/use-login-config.js'
-import { LanguageSelect } from '../customizable-elements.js'
+import {
+    ApplicationDescription,
+    ApplicationLeftFooter,
+    ApplicationRightFooter,
+    ApplicationTitle,
+    LanguageSelect,
+    PoweredByDHIS2,
+} from '../customizable-elements.js'
 
 const mockRefreshOnTranslation = jest.fn()
 
@@ -45,5 +53,65 @@ describe('LanguageSelect', () => {
         await user.click(screen.getByText('Wolof làkk — Wolof'))
         expect(mockRefreshOnTranslation).toHaveBeenCalled()
         expect(mockRefreshOnTranslation).toHaveBeenCalledWith({ locale: 'wo' })
+    })
+})
+
+describe('ApplicationTitle', () => {
+    it('shows value from useLoginConfig', () => {
+        useLoginConfig.mockReturnValue({
+            applicationTitle: 'Little Red Riding Hood',
+        })
+        render(<ApplicationTitle />)
+        expect(screen.getByText('Little Red Riding Hood')).toBeInTheDocument()
+    })
+})
+
+describe('ApplicationDescription', () => {
+    it('shows value from useLoginConfig', () => {
+        useLoginConfig.mockReturnValue({
+            applicationDescription:
+                'Wolf eats grandmother; grandaugther gets house',
+        })
+        render(<ApplicationDescription />)
+        expect(
+            screen.getByText('Wolf eats grandmother; grandaugther gets house')
+        ).toBeInTheDocument()
+    })
+})
+
+describe('ApplicationLeftFooter', () => {
+    it('shows value from useLoginConfig', () => {
+        useLoginConfig.mockReturnValue({
+            applicationLeftSideFooter: 'This way home',
+        })
+        render(<ApplicationLeftFooter />)
+        expect(screen.getByText('This way home')).toBeInTheDocument()
+    })
+})
+
+describe('ApplicationRightFooter', () => {
+    it('shows value from useLoginConfig', () => {
+        useLoginConfig.mockReturnValue({
+            applicationRightSideFooter: "That way to grandma's",
+        })
+        render(<ApplicationRightFooter />)
+        expect(screen.getByText("That way to grandma's")).toBeInTheDocument()
+    })
+})
+
+describe('PoweredByDHIS2', () => {
+    it('displays in translation', () => {
+        useLoginConfig.mockReturnValue({
+            uiLocale: 'id',
+        })
+        const i18Spy = jest
+            .spyOn(i18n, 't')
+            .mockReturnValue('Dipersembahkan oleh DHIS2')
+        render(<PoweredByDHIS2 />)
+        expect(i18Spy).toHaveBeenCalled()
+        expect(i18Spy).toHaveBeenCalledWith('Powered by DHIS2', { lng: 'id' })
+        expect(
+            screen.getByText('Dipersembahkan oleh DHIS2')
+        ).toBeInTheDocument()
     })
 })

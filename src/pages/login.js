@@ -90,7 +90,6 @@ const InnerLoginForm = ({
             >
                 <ReactFinalForm.Field
                     name="twoFA"
-                    data-test="input-twoFA"
                     label={i18n.t('Authentication code', { lng: uiLocale })}
                     component={InputFieldFF}
                     className={styles.inputField}

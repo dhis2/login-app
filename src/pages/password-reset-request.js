@@ -71,7 +71,7 @@ const InnerPasswordResetRequestForm = ({
 InnerPasswordResetRequestForm.propTypes = {
     formSubmitted: PropTypes.bool,
     handleSubmit: PropTypes.func,
-    isRequired: PropTypes.func,
+    isRequired: PropTypes.bool,
     loading: PropTypes.bool,
     uiLocale: PropTypes.string,
 }
