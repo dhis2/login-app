@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { checkIsLoginFormValid } from '../../helpers/validators.js'
 import { useLogin } from '../../hooks/useLogin.js'
@@ -57,6 +58,58 @@ describe('LoginForm', () => {
         expect(mockLogin).not.toHaveBeenCalled()
     })
 
+    it('calls login function with username and password inputs provided by user', async () => {
+        const user = userEvent.setup()
+
+        checkIsLoginFormValid.mockImplementation(() => true)
+        render(<LoginFormContainer />)
+
+        await user.type(screen.getByLabelText('Username'), 'KiKi')
+        await user.type(screen.getByLabelText('Password'), 'DeliveryService')
+        await user.click(screen.getByRole('button'))
+
+        expect(mockLogin).toHaveBeenCalled()
+        expect(mockLogin).toHaveBeenCalledWith({
+            password: 'DeliveryService',
+            twoFA: '',
+            username: 'KiKi',
+        })
+    })
+
+    it('calls login function with username, password, and twofa inputs provided by user', async () => {
+        const user = userEvent.setup()
+        useLogin.mockReturnValue({
+            login: mockLogin,
+            twoFAVerificationRequired: true,
+            cancelTwoFA: () => {},
+        })
+
+        checkIsLoginFormValid.mockImplementation(() => true)
+        render(<LoginFormContainer />)
+
+        // populate form with username + password (this would need to be done )
+        fireEvent.change(screen.getByLabelText('Username'), {
+            target: { value: 'Tintin' },
+        })
+        fireEvent.change(screen.getByLabelText('Password'), {
+            target: { value: 'Milou' },
+        })
+
+        await user.type(screen.getByLabelText('Authentication code'), '123456')
+        await user.click(
+            screen.getByRole('button', {
+                name: /log in/i,
+            })
+        )
+
+        expect(mockLogin).toHaveBeenCalled()
+        expect(mockLogin).toHaveBeenCalledWith({
+            password: 'Milou',
+            twoFA: '123456',
+            username: 'Tintin',
+        })
+    })
+
     it('cancels twofa when cancel is clicked', () => {
         const mockCancelTwoFA = jest.fn()
         useLogin.mockReturnValue({
@@ -72,6 +125,43 @@ describe('LoginForm', () => {
             })
         )
         expect(mockCancelTwoFA).toHaveBeenCalled()
+    })
+
+    it('clears twoFA and password fields when twoFA is cancelled ', async () => {
+        const user = userEvent.setup()
+        const mockCancelTwoFA = jest.fn()
+        useLogin.mockReturnValue({
+            login: () => {},
+            twoFAVerificationRequired: true,
+            cancelTwoFA: mockCancelTwoFA,
+        })
+        render(<LoginFormContainer />)
+        // populate form with username + password (this would need to be done )
+        fireEvent.change(screen.getByLabelText('Username'), {
+            target: { value: 'Bastian' },
+        })
+        fireEvent.change(screen.getByLabelText('Password'), {
+            target: { value: 'Kardemomme' },
+        })
+        await user.click(screen.getByRole('button', { name: /log in/i }))
+        await user.type(screen.getByLabelText('Authentication code'), '123456')
+        await user.click(screen.getByRole('button', { name: /cancel/i }))
+
+        expect(screen.getByLabelText('Username')).toHaveValue('Bastian')
+        expect(screen.getByLabelText('Authentication code')).toHaveValue('')
+        expect(screen.getByLabelText('Password')).toHaveValue('')
+    })
+
+    it('log in button is disabled if in loading state', async () => {
+        useLogin.mockReturnValue({
+            login: () => {},
+            twoFAVerificationRequired: false,
+            cancelTwoFA: () => {},
+            loading: true,
+        })
+        render(<LoginFormContainer />)
+        expect(screen.getByRole('button')).toBeDisabled()
+        expect(screen.getByText('Logging in...')).toBeInTheDocument()
     })
 
     // ideally would check visibility of fields in these states, but not working in tests due to jsdom interpretation of css

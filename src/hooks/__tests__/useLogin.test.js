@@ -13,10 +13,34 @@ jest.mock('../../helpers/redirectHelpers.js', () => ({
 }))
 
 describe('useLogin', () => {
-    it('loads', () => {
+    it('returns a login function', () => {
         const { result } = renderHook(() => useLogin())
         expect(result.current).toHaveProperty('login')
         expect(typeof result.current.login).toBe('function')
+    })
+
+    it('has a login mutation that points to auth/login', () => {
+        useDataMutation.mockImplementationOnce((mutation) => [
+            mutation.resource,
+            { loading: false },
+        ])
+        const { result } = renderHook(() => useLogin())
+        expect(result.current.login).toBe('auth/login')
+    })
+
+    it('redirects after receiving SUCCESS', async () => {
+        useDataMutation.mockImplementation((mutation, options) => [
+            () => {
+                options.onComplete({ loginStatus: 'SUCCESS' })
+            },
+            { loading: false },
+        ])
+
+        const { result } = renderHook(() => useLogin())
+        expect(result.current.loading).toBe(false)
+        act(() => result.current.login())
+        expect(result.current.loading).toBe(true)
+        expect(redirectTo).toHaveBeenCalled()
     })
 
     it('redirects after receiving SUCCESS', async () => {
