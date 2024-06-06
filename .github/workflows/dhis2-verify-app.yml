@@ -103,7 +103,7 @@ jobs:
               run: yarn d2-app-scripts i18n generate
 
             - name: Test
-              run: yarn test
+              run: yarn test --coverage
 
             - name: Upload coverage reports to Codecov
               uses: codecov/codecov-action@v4.0.1
