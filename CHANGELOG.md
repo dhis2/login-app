@@ -1,3 +1,10 @@
+## [100.0.5](https://github.com/dhis2/login-app/compare/v100.0.4...v100.0.5) (2024-06-13)
+
+
+### Bug Fixes
+
+* **deps:** bump dompurify from 3.0.9 to 3.1.5 ([#28](https://github.com/dhis2/login-app/issues/28)) ([0b652ef](https://github.com/dhis2/login-app/commit/0b652efc29f5422bbc696dbf138975464ecd0e73))
+
 ## [100.0.4](https://github.com/dhis2/login-app/compare/v100.0.3...v100.0.4) (2024-05-26)
 
 
