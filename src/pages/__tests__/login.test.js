@@ -194,11 +194,42 @@ describe('LoginForm', () => {
             login: () => {},
             twoFAVerificationRequired: false,
             cancelTwoFA: () => {},
-            error: { httpStatusCode: 401 },
+            error: { details: { httpStatusCode: 401 } },
         })
         render(<LoginFormContainer />)
 
         expect(screen.getByText('Incorrect username or password')).toBeVisible()
+    })
+
+    it('shows something went wrong on error if 501 error, with message ', () => {
+        useLogin.mockReturnValue({
+            login: () => {},
+            twoFAVerificationRequired: false,
+            cancelTwoFA: () => {},
+            error: {
+                details: { httpStatusCode: 501 },
+                message: 'Sorry about that',
+            },
+        })
+        render(<LoginFormContainer />)
+
+        expect(screen.getByText('Something went wrong')).toBeVisible()
+        expect(screen.getByText('Sorry about that')).toBeVisible()
+    })
+
+    it('shows something went wrong if status code is not defined by error', () => {
+        useLogin.mockReturnValue({
+            login: () => {},
+            twoFAVerificationRequired: false,
+            cancelTwoFA: () => {},
+            error: { message: "I'm not a teapot, I'm an error message" },
+        })
+        render(<LoginFormContainer />)
+
+        expect(screen.getByText('Something went wrong')).toBeVisible()
+        expect(
+            screen.getByText("I'm not a teapot, I'm an error message")
+        ).toBeVisible()
     })
 
     it('does not show inputs if login function is not defined ', () => {
