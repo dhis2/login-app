@@ -1,3 +1,10 @@
+## [100.0.7](https://github.com/dhis2/login-app/compare/v100.0.6...v100.0.7) (2024-06-25)
+
+
+### Bug Fixes
+
+* error messages based on status code [DHIS2-17433] ([#30](https://github.com/dhis2/login-app/issues/30)) ([dcb89a7](https://github.com/dhis2/login-app/commit/dcb89a7fba237090a1cfcfb8240c0a48e3db2ef0))
+
 ## [100.0.6](https://github.com/dhis2/login-app/compare/v100.0.5...v100.0.6) (2024-06-16)
 
 
