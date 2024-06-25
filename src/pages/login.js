@@ -159,7 +159,8 @@ const LoginForm = ({
             {error && (
                 <FormNotice
                     title={
-                        error.httpStatusCode >= 500
+                        !error?.details?.httpStatusCode ||
+                        error.details.httpStatusCode >= 500
                             ? i18n.t('Something went wrong', {
                                   lng: uiLocale,
                               })
@@ -169,7 +170,8 @@ const LoginForm = ({
                     }
                     error
                 >
-                    {!error.httpStatusCode >= 500 && (
+                    {(!error?.details?.httpStatusCode ||
+                        error.details.httpStatusCode >= 500) && (
                         <span>{error?.message}</span>
                     )}
                 </FormNotice>
