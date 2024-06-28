@@ -40,7 +40,7 @@ const defaultLocales = [
     { locale: 'es', displayName: 'Spanish', name: 'español' },
 ]
 
-const LoginConfigProvider = ({ children }) => {
+const LoginConfigProvider = ({ initialLocation, children }) => {
     const {
         data: loginConfigData,
         loading: loginConfigLoading,
@@ -54,6 +54,21 @@ const LoginConfigProvider = ({ children }) => {
         error: localesError,
     } = useDataQuery(localesQuery)
     const config = useConfig()
+
+    const initialHashExtension = initialLocation?.split('#')?.[1]?.substring(1)
+    const loginHashLocations = [
+        'create-account',
+        'complete-registration',
+        'reset-password',
+        'update-password',
+        'safeMode',
+        'download',
+    ]
+    const hashRedirect = loginHashLocations.some((excludedLocation) =>
+        initialHashExtension?.startsWith(excludedLocation)
+    )
+        ? undefined
+        : initialHashExtension
 
     const [translatedValues, setTranslatedValues] = useState()
 
@@ -116,6 +131,7 @@ const LoginConfigProvider = ({ children }) => {
 
     const providerValue = {
         ...loginConfigData?.loginConfig,
+        hashRedirect,
         ...translatedValues,
         localesUI: localesData?.localesUI ?? defaultLocales,
         systemLocale: loginConfigData?.loginConfig?.uiLocale ?? 'en',
@@ -132,6 +148,7 @@ const LoginConfigProvider = ({ children }) => {
 
 LoginConfigProvider.propTypes = {
     children: PropTypes.node.isRequired,
+    initialLocation: PropTypes.string,
 }
 
 export { LoginConfigProvider }
