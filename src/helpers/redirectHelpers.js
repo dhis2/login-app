@@ -1,13 +1,9 @@
 export const getRedirectString = ({ response, baseUrl, hashRedirect }) => {
     if (process.env.NODE_ENV === 'development') {
-        return (
-            baseUrl +
-            response?.redirectUrl +
-            (hashRedirect ? `#/${hashRedirect}` : '')
-        )
+        return baseUrl + response?.redirectUrl + (hashRedirect ?? '')
     }
     return response.redirectUrl
-        ? `${response.redirectUrl}${hashRedirect ? '#/' + hashRedirect : ''}`
+        ? `${response.redirectUrl}${hashRedirect ?? ''}`
         : baseUrl
 }
 

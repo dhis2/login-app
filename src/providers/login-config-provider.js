@@ -3,6 +3,7 @@ import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import { Loader } from '../components/loader.js'
+import { getHashFromLocation } from '../helpers/index.js'
 import { LoginConfigContext } from './login-config-context.js'
 
 const localStorageLocaleKey = 'dhis2.locale.ui'
@@ -55,20 +56,7 @@ const LoginConfigProvider = ({ initialLocation, children }) => {
     } = useDataQuery(localesQuery)
     const config = useConfig()
 
-    const initialHashExtension = initialLocation?.split('#')?.[1]?.substring(1)
-    const loginHashLocations = [
-        'create-account',
-        'complete-registration',
-        'reset-password',
-        'update-password',
-        'safeMode',
-        'download',
-    ]
-    const hashRedirect = loginHashLocations.some((excludedLocation) =>
-        initialHashExtension?.startsWith(excludedLocation)
-    )
-        ? undefined
-        : initialHashExtension
+    const hashRedirect = getHashFromLocation(initialLocation)
 
     const [translatedValues, setTranslatedValues] = useState()
 
