@@ -1,4 +1,3 @@
-
 .formButtons {
     display: flex;
     flex-direction: var(--form-button-direction, column);
