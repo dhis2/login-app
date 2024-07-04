@@ -8,7 +8,6 @@ import {
     colors,
 } from '@dhis2/ui'
 import {
-    composeValidators,
     createCharacterLengthRange,
     dhis2Password,
     dhis2Username,
@@ -22,7 +21,11 @@ import { Link } from 'react-router-dom'
 import { BackToLoginButton } from '../components/back-to-login-button.js'
 import { FormNotice } from '../components/form-notice.js'
 import { FormSubtitle } from '../components/form-subtitle.js'
-import { getIsRequired, removeHTMLTags } from '../helpers/index.js'
+import {
+    getIsRequired,
+    removeHTMLTags,
+    composeAndTranslateValidators,
+} from '../helpers/index.js'
 import { useLoginConfig } from '../providers/index.js'
 import styles from './account-creation-form.module.css'
 
@@ -85,7 +88,10 @@ const InnerCreateAccountForm = ({
                         label={i18n.t('Username', { lng: uiLocale })}
                         component={InputFieldFF}
                         className={styles.inputField}
-                        validate={composeValidators(isRequired, dhis2Username)}
+                        validate={composeAndTranslateValidators(
+                            isRequired,
+                            dhis2Username
+                        )}
                         initialValue={prepopulatedFields?.username}
                         readOnly={
                             loading || Boolean(prepopulatedFields?.username)
@@ -96,7 +102,10 @@ const InnerCreateAccountForm = ({
                         label={i18n.t('Password', { lng: uiLocale })}
                         component={InputFieldFF}
                         className={styles.inputField}
-                        validate={composeValidators(isRequired, dhis2Password)}
+                        validate={composeAndTranslateValidators(
+                            isRequired,
+                            dhis2Password
+                        )}
                         type="password"
                         readOnly={loading}
                         helpText={i18n.t(
@@ -112,7 +121,7 @@ const InnerCreateAccountForm = ({
                         label={i18n.t('First name', { lng: uiLocale })}
                         component={InputFieldFF}
                         className={styles.inputField}
-                        validate={composeValidators(
+                        validate={composeAndTranslateValidators(
                             isRequired,
                             createCharacterLengthRange(2, 160)
                         )}
@@ -123,7 +132,7 @@ const InnerCreateAccountForm = ({
                         label={i18n.t('Last name', { lng: uiLocale })}
                         component={InputFieldFF}
                         className={styles.inputField}
-                        validate={composeValidators(
+                        validate={composeAndTranslateValidators(
                             isRequired,
                             createCharacterLengthRange(2, 160)
                         )}
@@ -134,7 +143,10 @@ const InnerCreateAccountForm = ({
                         label={i18n.t('Email', { lng: uiLocale })}
                         component={InputFieldFF}
                         className={styles.inputField}
-                        validate={composeValidators(isRequired, email)}
+                        validate={composeAndTranslateValidators(
+                            isRequired,
+                            email
+                        )}
                         initialValue={prepopulatedFields?.email}
                         readOnly={loading || Boolean(prepopulatedFields?.email)}
                     />
@@ -145,7 +157,7 @@ const InnerCreateAccountForm = ({
                             label={i18n.t('Phone number', { lng: uiLocale })}
                             component={InputFieldFF}
                             className={styles.inputField}
-                            validate={composeValidators(
+                            validate={composeAndTranslateValidators(
                                 isRequired,
                                 internationalPhoneNumber
                             )}

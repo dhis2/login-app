@@ -22,3 +22,12 @@ export const checkIsLoginFormValid = (values) => {
     }
     return true
 }
+
+export const composeAndTranslateValidators = (...validators) => {
+    return (...args) => {
+        return validators.reduce(
+            (error, validator) => error || i18n.t(validator(...args)),
+            undefined
+        )
+    }
+}

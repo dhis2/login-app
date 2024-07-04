@@ -1,7 +1,7 @@
 import { useDataMutation } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { Button, ReactFinalForm, InputFieldFF } from '@dhis2/ui'
-import { composeValidators, dhis2Password } from '@dhis2/ui-forms'
+import { dhis2Password } from '@dhis2/ui-forms'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
@@ -12,7 +12,10 @@ import {
     FormSubtitle,
     NotAllowedNotice,
 } from '../components/index.js'
-import { getIsRequired } from '../helpers/index.js'
+import {
+    getIsRequired,
+    composeAndTranslateValidators,
+} from '../helpers/index.js'
 import { useGetErrorIfNotAllowed } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
 import styles from './password-update.module.css'
@@ -35,7 +38,10 @@ const InnerPasswordUpdateForm = ({ handleSubmit, uiLocale, loading }) => {
                     label={i18n.t('Password', { lng: uiLocale })}
                     component={InputFieldFF}
                     className={styles.inputField}
-                    validate={composeValidators(isRequired, dhis2Password)}
+                    validate={composeAndTranslateValidators(
+                        isRequired,
+                        dhis2Password
+                    )}
                     initialFocus
                     readOnly={loading}
                 />
