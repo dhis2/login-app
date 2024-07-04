@@ -46,26 +46,26 @@ AccountFormSection.propTypes = {
     title: PropTypes.string,
 }
 
-const RecaptchaWarning = ({ uiLocale }) => (
+const RecaptchaWarning = ({ lngs }) => (
     <div className={styles.recaptchaWarning}>
         <IconErrorFilled24 color={colors.red500} />
         <div className={styles.recaptchaWarningText}>
             {i18n.t(
                 'Please confirm that you are not a robot by checking the checkbox.',
-                { lng: uiLocale }
+                { lngs }
             )}
         </div>
     </div>
 )
 
 RecaptchaWarning.propTypes = {
-    uiLocale: PropTypes.string,
+    lngs: PropTypes.arrayOf(PropTypes.string),
 }
 
 const InnerCreateAccountForm = ({
     handleSubmit,
-    uiLocale,
     loading,
+    lngs,
     prepopulatedFields,
     emailConfigured,
     recaptchaSite,
@@ -73,16 +73,14 @@ const InnerCreateAccountForm = ({
     recaptchaError,
     selfRegistrationNoRecaptcha,
 }) => {
-    const isRequired = getIsRequired(uiLocale)
+    const isRequired = getIsRequired(lngs?.[0])
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <AccountFormSection
-                    title={i18n.t('Log in details', { lng: uiLocale })}
-                >
+                <AccountFormSection title={i18n.t('Log in details', { lngs })}>
                     <ReactFinalForm.Field
                         name="username"
-                        label={i18n.t('Username', { lng: uiLocale })}
+                        label={i18n.t('Username', { lngs })}
                         component={InputFieldFF}
                         className={styles.inputField}
                         validate={composeValidators(isRequired, dhis2Username)}
@@ -93,7 +91,7 @@ const InnerCreateAccountForm = ({
                     />
                     <ReactFinalForm.Field
                         name="password"
-                        label={i18n.t('Password', { lng: uiLocale })}
+                        label={i18n.t('Password', { lngs })}
                         component={InputFieldFF}
                         className={styles.inputField}
                         validate={composeValidators(isRequired, dhis2Password)}
@@ -105,11 +103,11 @@ const InnerCreateAccountForm = ({
                     />
                 </AccountFormSection>
                 <AccountFormSection
-                    title={i18n.t('Personal details', { lng: uiLocale })}
+                    title={i18n.t('Personal details', { lngs })}
                 >
                     <ReactFinalForm.Field
                         name="firstName"
-                        label={i18n.t('First name', { lng: uiLocale })}
+                        label={i18n.t('First name', { lngs })}
                         component={InputFieldFF}
                         className={styles.inputField}
                         validate={composeValidators(
@@ -120,7 +118,7 @@ const InnerCreateAccountForm = ({
                     />
                     <ReactFinalForm.Field
                         name="surname"
-                        label={i18n.t('Last name', { lng: uiLocale })}
+                        label={i18n.t('Last name', { lngs })}
                         component={InputFieldFF}
                         className={styles.inputField}
                         validate={composeValidators(
@@ -131,7 +129,7 @@ const InnerCreateAccountForm = ({
                     />
                     <ReactFinalForm.Field
                         name="email"
-                        label={i18n.t('Email', { lng: uiLocale })}
+                        label={i18n.t('Email', { lngs })}
                         component={InputFieldFF}
                         className={styles.inputField}
                         validate={composeValidators(isRequired, email)}
@@ -142,7 +140,7 @@ const InnerCreateAccountForm = ({
                     {!emailConfigured && (
                         <ReactFinalForm.Field
                             name="phoneNumber"
-                            label={i18n.t('Phone number', { lng: uiLocale })}
+                            label={i18n.t('Phone number', { lngs })}
                             component={InputFieldFF}
                             className={styles.inputField}
                             validate={composeValidators(
@@ -158,7 +156,7 @@ const InnerCreateAccountForm = ({
                         <ReCAPTCHA
                             ref={recaptchaRef}
                             sitekey={recaptchaSite}
-                            hl={uiLocale}
+                            hl={lngs?.[0] ?? 'en'}
                         />
                         {recaptchaError && <RecaptchaWarning />}
                     </AccountFormSection>
@@ -167,12 +165,10 @@ const InnerCreateAccountForm = ({
             <ButtonStrip>
                 <Button primary type="submit" disabled={loading}>
                     {loading
-                        ? i18n.t('Creating...', { lng: uiLocale })
-                        : i18n.t('Create account', { lng: uiLocale })}
+                        ? i18n.t('Creating...', { lngs })
+                        : i18n.t('Create account', { lngs })}
                 </Button>
-                <BackToLoginButton
-                    buttonText={i18n.t('Cancel', { lng: uiLocale })}
-                />
+                <BackToLoginButton buttonText={i18n.t('Cancel', { lngs })} />
             </ButtonStrip>
         </form>
     )
@@ -181,13 +177,13 @@ const InnerCreateAccountForm = ({
 InnerCreateAccountForm.propTypes = {
     emailConfigured: PropTypes.bool,
     handleSubmit: PropTypes.func,
+    lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
     prepopulatedFields: PropTypes.object,
     recaptchaError: PropTypes.bool,
     recaptchaRef: PropTypes.node,
     recaptchaSite: PropTypes.string,
     selfRegistrationNoRecaptcha: PropTypes.bool,
-    uiLocale: PropTypes.string,
 }
 
 export const CreateAccountForm = ({
@@ -203,7 +199,7 @@ export const CreateAccountForm = ({
     // depends on https://dhis2.atlassian.net/browse/DHIS2-14615
     const {
         applicationTitle,
-        uiLocale,
+        lngs,
         emailConfigured,
         recaptchaSite,
         selfRegistrationNoRecaptcha,
@@ -225,7 +221,7 @@ export const CreateAccountForm = ({
                         {i18n.t(
                             'Enter your details below to create a {{- applicationName}} account.',
                             {
-                                lng: uiLocale,
+                                lngs,
                                 applicationName:
                                     removeHTMLTags(applicationTitle),
                             }
@@ -234,11 +230,9 @@ export const CreateAccountForm = ({
                     {createType === CREATE_FORM_TYPES.create && (
                         <p>
                             {i18n.t('Already have an account?', {
-                                lng: uiLocale,
+                                lngs,
                             })}{' '}
-                            <Link to="/">
-                                {i18n.t('Log in.', { lng: uiLocale })}
-                            </Link>
+                            <Link to="/">{i18n.t('Log in.', { lngs })}</Link>
                         </p>
                     )}
                 </FormSubtitle>
@@ -249,7 +243,7 @@ export const CreateAccountForm = ({
                     <FormNotice
                         title={i18n.t(
                             'Something went wrong, and we could not register your account',
-                            { lng: uiLocale }
+                            { lngs }
                         )}
                         error={true}
                     >
@@ -260,14 +254,14 @@ export const CreateAccountForm = ({
                     <>
                         <FormNotice
                             title={i18n.t('Account created successfully', {
-                                lng: uiLocale,
+                                lngs,
                             })}
                             valid
                         >
                             <span>
                                 {i18n.t(
                                     'You can use your username and password to log in.',
-                                    { lng: uiLocale }
+                                    { lngs }
                                 )}
                             </span>
                         </FormNotice>
@@ -279,7 +273,7 @@ export const CreateAccountForm = ({
                         {({ handleSubmit }) => (
                             <InnerCreateAccountForm
                                 handleSubmit={handleSubmit}
-                                uiLocale={uiLocale}
+                                lngs={lngs}
                                 loading={loading}
                                 prepopulatedFields={prepopulatedFields}
                                 emailConfigured={emailConfigured}

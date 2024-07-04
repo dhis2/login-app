@@ -6,7 +6,7 @@ import { useLoginConfig } from '../providers/index.js'
 const SAFE_MODE_ENDPOINT = 'dhis-web-commons/security/login.action'
 
 const SafeModePage = () => {
-    const { baseUrl, uiLocale } = useLoginConfig()
+    const { baseUrl, lngs } = useLoginConfig()
     const safeURL = `${baseUrl}/${SAFE_MODE_ENDPOINT}`
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const SafeModePage = () => {
             <p>
                 {i18n.t(
                     'You should shortly be redirected. If you are not redirected, please click redirect button.',
-                    { lng: uiLocale }
+                    { lngs }
                 )}
             </p>
             <div>

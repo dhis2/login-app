@@ -23,8 +23,8 @@ const passwordUpdateMutation = {
     data: (data) => ({ ...data }),
 }
 
-const InnerPasswordUpdateForm = ({ handleSubmit, uiLocale, loading }) => {
-    const isRequired = getIsRequired(uiLocale)
+const InnerPasswordUpdateForm = ({ handleSubmit, lngs, loading }) => {
+    const isRequired = getIsRequired(lngs?.[0])
 
     return (
         <form onSubmit={handleSubmit}>
@@ -32,7 +32,7 @@ const InnerPasswordUpdateForm = ({ handleSubmit, uiLocale, loading }) => {
                 <ReactFinalForm.Field
                     name="password"
                     type="password"
-                    label={i18n.t('Password', { lng: uiLocale })}
+                    label={i18n.t('Password', { lngs })}
                     component={InputFieldFF}
                     className={styles.inputField}
                     validate={composeValidators(isRequired, dhis2Password)}
@@ -48,14 +48,12 @@ const InnerPasswordUpdateForm = ({ handleSubmit, uiLocale, loading }) => {
                     primary
                 >
                     {loading
-                        ? i18n.t('Saving...', { lng: uiLocale })
+                        ? i18n.t('Saving...', { lngs })
                         : i18n.t('Save new password', {
-                              lng: uiLocale,
+                              lngs,
                           })}
                 </Button>
-                <BackToLoginButton
-                    buttonText={i18n.t('Cancel', { lng: uiLocale })}
-                />
+                <BackToLoginButton buttonText={i18n.t('Cancel', { lngs })} />
             </div>
         </form>
     )
@@ -63,11 +61,11 @@ const InnerPasswordUpdateForm = ({ handleSubmit, uiLocale, loading }) => {
 
 InnerPasswordUpdateForm.propTypes = {
     handleSubmit: PropTypes.func,
+    lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
-    uiLocale: PropTypes.string,
 }
 
-export const PasswordUpdateForm = ({ token, uiLocale }) => {
+export const PasswordUpdateForm = ({ token, lngs }) => {
     // depends on https://dhis2.atlassian.net/browse/DHIS2-14618
     const [updatePassword, { loading, fetching, error, data }] =
         useDataMutation(passwordUpdateMutation)
@@ -82,14 +80,14 @@ export const PasswordUpdateForm = ({ token, uiLocale }) => {
                     {error && (
                         <FormNotice
                             title={i18n.t('New password not saved', {
-                                lng: uiLocale,
+                                lngs,
                             })}
                             error={true}
                         >
                             <span>
                                 {i18n.t(
                                     'There was a problem saving your password. Try again or contact your system administrator.',
-                                    { lng: uiLocale }
+                                    { lngs }
                                 )}
                             </span>
                         </FormNotice>
@@ -100,7 +98,7 @@ export const PasswordUpdateForm = ({ token, uiLocale }) => {
                                 <span>
                                     {i18n.t(
                                         'New password saved. You can use it to log in to your account.',
-                                        { lng: uiLocale }
+                                        { lngs }
                                     )}
                                 </span>
                             </FormNotice>
@@ -112,7 +110,7 @@ export const PasswordUpdateForm = ({ token, uiLocale }) => {
                             {({ handleSubmit }) => (
                                 <InnerPasswordUpdateForm
                                     handleSubmit={handleSubmit}
-                                    uiLocale={uiLocale}
+                                    lngs={lngs}
                                     loading={loading || fetching}
                                 />
                             )}
@@ -125,12 +123,12 @@ export const PasswordUpdateForm = ({ token, uiLocale }) => {
 }
 
 PasswordUpdateForm.defaultProps = {
-    uiLocale: 'en',
+    lngs: ['en'],
 }
 
 PasswordUpdateForm.propTypes = {
+    lngs: PropTypes.arrayOf(PropTypes.string),
     token: PropTypes.string,
-    uiLocale: PropTypes.string,
 }
 
 // presumably these would need to be allowed
@@ -140,7 +138,7 @@ const requiredPropsForPasswordReset = [
 ]
 
 const PasswordUpdatePage = () => {
-    const { uiLocale } = useLoginConfig()
+    const { lngs } = useLoginConfig()
     const [searchParams] = useSearchParams()
     const token = searchParams.get('token') || ''
     // display error if token is invalid?
@@ -149,19 +147,19 @@ const PasswordUpdatePage = () => {
     )
 
     if (notAllowed) {
-        return <NotAllowedNotice uiLocale={uiLocale} />
+        return <NotAllowedNotice lngs={lngs} />
     }
 
     return (
-        <FormContainer title={i18n.t('Choose new password', { lng: uiLocale })}>
+        <FormContainer title={i18n.t('Choose new password', { lngs })}>
             <FormSubtitle>
                 <p>
                     {i18n.t('Enter the new password for your account below', {
-                        lng: uiLocale,
+                        lngs,
                     })}
                 </p>
             </FormSubtitle>
-            <PasswordUpdateForm uiLocale={uiLocale} token={token} />
+            <PasswordUpdateForm lngs={lngs} token={token} />
         </FormContainer>
     )
 }

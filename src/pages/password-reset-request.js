@@ -26,7 +26,7 @@ const InnerPasswordResetRequestForm = ({
     handleSubmit,
     formSubmitted,
     isRequired,
-    uiLocale,
+    lngs,
     loading,
 }) => {
     const [params] = useSearchParams()
@@ -36,7 +36,7 @@ const InnerPasswordResetRequestForm = ({
             <div>
                 <ReactFinalForm.Field
                     name="emailOrUsername"
-                    label={i18n.t('Username or email', { lng: uiLocale })}
+                    label={i18n.t('Username or email', { lngs })}
                     component={InputFieldFF}
                     className={styles.inputField}
                     validate={!formSubmitted ? null : isRequired}
@@ -54,14 +54,14 @@ const InnerPasswordResetRequestForm = ({
                     primary
                 >
                     {loading
-                        ? i18n.t('Sending...', { lng: uiLocale })
+                        ? i18n.t('Sending...', { lngs })
                         : i18n.t('Send password reset request', {
-                              lng: uiLocale,
+                              lngs,
                           })}
                 </Button>
                 <BackToLoginButton
                     fullWidth
-                    buttonText={i18n.t('Cancel', { lng: uiLocale })}
+                    buttonText={i18n.t('Cancel', { lngs })}
                 />
             </div>
         </form>
@@ -72,16 +72,16 @@ InnerPasswordResetRequestForm.propTypes = {
     formSubmitted: PropTypes.bool,
     handleSubmit: PropTypes.func,
     isRequired: PropTypes.bool,
+    lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
-    uiLocale: PropTypes.string,
 }
 
-export const PasswordResetRequestForm = ({ uiLocale }) => {
+export const PasswordResetRequestForm = ({ lngs }) => {
     // depends on https://dhis2.atlassian.net/browse/DHIS2-14618
     const [resetPasswordRequest, { loading, fetching, error, data }] =
         useDataMutation(passwordResetRequestMutation)
     const [formSubmitted, setFormSubmitted] = useState(false)
-    const isRequired = getIsRequired(uiLocale)
+    const isRequired = getIsRequired(lngs?.[0])
 
     const handlePasswordResetRequest = (values) => {
         setFormSubmitted(true)
@@ -96,14 +96,14 @@ export const PasswordResetRequestForm = ({ uiLocale }) => {
             {error && (
                 <FormNotice
                     title={i18n.t('Password reset failed', {
-                        lng: uiLocale,
+                        lngs,
                     })}
                     error={true}
                 >
                     <span>
                         {i18n.t(
                             'Something went wrong. Please try again later, and contact your system administrator if the problem persists.',
-                            { lng: uiLocale }
+                            { lngs }
                         )}
                     </span>
                 </FormNotice>
@@ -114,7 +114,7 @@ export const PasswordResetRequestForm = ({ uiLocale }) => {
                         <span>
                             {i18n.t(
                                 'If the provided username or email is registered in the system, you will soon receive an email with a password reset link.',
-                                { lng: uiLocale }
+                                { lngs }
                             )}
                         </span>
                     </FormNotice>
@@ -128,7 +128,7 @@ export const PasswordResetRequestForm = ({ uiLocale }) => {
                             handleSubmit={handleSubmit}
                             formSubmitted={formSubmitted}
                             isRequired={isRequired}
-                            uiLocale={uiLocale}
+                            lngs={lngs}
                             loading={loading || fetching}
                         />
                     )}
@@ -139,11 +139,11 @@ export const PasswordResetRequestForm = ({ uiLocale }) => {
 }
 
 PasswordResetRequestForm.defaultProps = {
-    uiLocale: 'en',
+    lngs: ['en'],
 }
 
 PasswordResetRequestForm.propTypes = {
-    uiLocale: PropTypes.string,
+    lngs: PropTypes.arrayOf(PropTypes.string),
 }
 
 const requiredPropsForPasswordReset = [
@@ -152,26 +152,26 @@ const requiredPropsForPasswordReset = [
 ]
 
 const PasswordResetRequestPage = () => {
-    const { uiLocale } = useLoginConfig()
+    const { lngs } = useLoginConfig()
     const { notAllowed } = useGetErrorIfNotAllowed(
         requiredPropsForPasswordReset
     )
 
     if (notAllowed) {
-        return <NotAllowedNotice uiLocale={uiLocale} />
+        return <NotAllowedNotice lngs={lngs} />
     }
 
     return (
-        <FormContainer title={i18n.t('Reset password', { lng: uiLocale })}>
+        <FormContainer title={i18n.t('Reset password', { lngs })}>
             <FormSubtitle>
                 <p>
                     {i18n.t(
                         'Enter your username below, a link to reset your password will be sent to your registered e-mail.',
-                        { lng: uiLocale }
+                        { lngs }
                     )}
                 </p>
             </FormSubtitle>
-            <PasswordResetRequestForm uiLocale={uiLocale} />
+            <PasswordResetRequestForm lngs={lngs} />
         </FormContainer>
     )
 }

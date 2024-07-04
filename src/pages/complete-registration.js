@@ -20,7 +20,7 @@ const selfRegisterMutation = {
     data: (data) => data,
 }
 
-const CompleteRegistrationFormWrapper = ({ uiLocale }) => {
+const CompleteRegistrationFormWrapper = ({ lngs }) => {
     // depends on https://dhis2.atlassian.net/browse/DHIS2-14617
     const { selfRegistrationNoRecaptcha } = useLoginConfig()
     const recaptchaRef = useRef()
@@ -39,7 +39,7 @@ const CompleteRegistrationFormWrapper = ({ uiLocale }) => {
                 <FormNotice
                     error={true}
                     title={i18n.t('Cannot process registration', {
-                        lng: uiLocale,
+                        lngs,
                     })}
                 >
                     <span>
@@ -90,24 +90,24 @@ const CompleteRegistrationFormWrapper = ({ uiLocale }) => {
 }
 
 CompleteRegistrationFormWrapper.propTypes = {
-    uiLocale: PropTypes.string,
+    lngs: PropTypes.arrayOf(PropTypes.string),
 }
 
 const requiredPropsForCreateAccount = ['emailConfigured']
 
 const CompleteRegistrationPage = () => {
-    const { uiLocale } = useLoginConfig()
+    const { lngs } = useLoginConfig()
     const { notAllowed } = useGetErrorIfNotAllowed(
         requiredPropsForCreateAccount
     )
 
     if (notAllowed) {
-        return <NotAllowedNotice uiLocale={uiLocale} />
+        return <NotAllowedNotice lngs={lngs} />
     }
 
     return (
-        <FormContainer title={i18n.t('Create account', { lng: uiLocale })}>
-            <CompleteRegistrationFormWrapper uiLocale={uiLocale} />
+        <FormContainer title={i18n.t('Create account', { lngs })}>
+            <CompleteRegistrationFormWrapper lngs={lngs} />
         </FormContainer>
     )
 }

@@ -55,20 +55,17 @@ const CreateAccountFormWrapper = () => {
 const requiredPropsForCreateAccount = ['selfRegistrationEnabled']
 
 const CreateAccountPage = () => {
-    const { uiLocale } = useLoginConfig()
+    const { lngs } = useLoginConfig()
     const { notAllowed } = useGetErrorIfNotAllowed(
         requiredPropsForCreateAccount
     )
 
     if (notAllowed) {
-        return <NotAllowedNoticeCreateAccount uiLocale={uiLocale} />
+        return <NotAllowedNoticeCreateAccount lngs={lngs} />
     }
 
     return (
-        <FormContainer
-            title={i18n.t('Create account', { lng: uiLocale })}
-            variableWidth
-        >
+        <FormContainer title={i18n.t('Create account', { lngs })} variableWidth>
             <CreateAccountFormWrapper />
         </FormContainer>
     )

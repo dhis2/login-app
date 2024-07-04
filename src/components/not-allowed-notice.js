@@ -5,13 +5,13 @@ import { BackToLoginButton } from './back-to-login-button.js'
 import { FormContainer } from './form-container.js'
 import { FormNotice } from './form-notice.js'
 
-export const NotAllowedNotice = ({ uiLocale }) => (
+export const NotAllowedNotice = ({ lngs }) => (
     <FormContainer>
         <FormNotice error>
             <span>
                 {i18n.t(
                     'The requested page is not configured for your system',
-                    { lng: uiLocale }
+                    { lngs }
                 )}
             </span>
         </FormNotice>
@@ -20,19 +20,19 @@ export const NotAllowedNotice = ({ uiLocale }) => (
 )
 
 NotAllowedNotice.propTypes = {
-    uiLocale: PropTypes.string,
+    lngs: PropTypes.arrayOf(PropTypes.string),
 }
 
-export const NotAllowedNoticeCreateAccount = ({ uiLocale }) => (
+export const NotAllowedNoticeCreateAccount = ({ lngs }) => (
     <FormContainer>
         <FormNotice
             error
-            title={i18n.t('Creating account not available', { lng: uiLocale })}
+            title={i18n.t('Creating account not available', { lngs })}
         >
             <span>
                 {i18n.t(
                     'Contact a system administrator to create an account.',
-                    { lng: uiLocale }
+                    { lngs }
                 )}
             </span>
         </FormNotice>
@@ -41,5 +41,5 @@ export const NotAllowedNoticeCreateAccount = ({ uiLocale }) => (
 )
 
 NotAllowedNoticeCreateAccount.propTypes = {
-    uiLocale: PropTypes.string,
+    lngs: PropTypes.arrayOf(PropTypes.string),
 }

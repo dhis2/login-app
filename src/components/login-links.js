@@ -10,7 +10,7 @@ export const LoginLinks = ({ formUserName }) => {
         allowAccountRecovery,
         emailConfigured,
         selfRegistrationEnabled,
-        uiLocale,
+        lngs,
     } = useLoginConfig()
 
     return (
@@ -25,15 +25,15 @@ export const LoginLinks = ({ formUserName }) => {
                                     : `/reset-password`
                             }
                         >
-                            {i18n.t('Forgot password?', { lng: uiLocale })}
+                            {i18n.t('Forgot password?', { lngs })}
                         </Link>
                     </span>
                 )}
                 {selfRegistrationEnabled && (
                     <span>
-                        {i18n.t("Don't have an account?", { lng: uiLocale })}{' '}
+                        {i18n.t("Don't have an account?", { lngs })}{' '}
                         <Link to="/create-account">
-                            {i18n.t('Create an account', { lng: uiLocale })}
+                            {i18n.t('Create an account', { lngs })}
                         </Link>
                     </span>
                 )}
