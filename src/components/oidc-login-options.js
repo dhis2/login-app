@@ -26,7 +26,7 @@ const redirectToOIDC = ({ baseUrl, endpoint }) => {
 }
 
 export const OIDCLoginOptions = () => {
-    const { oidcProviders, baseUrl, uiLocale } = useLoginConfig()
+    const { oidcProviders, baseUrl, lngs } = useLoginConfig()
     if (!(oidcProviders?.length > 0)) {
         return null
     }
@@ -42,7 +42,7 @@ export const OIDCLoginOptions = () => {
                 >
                     {loginTextStrings[oidc?.loginText]
                         ? i18n.t(loginTextStrings[oidc.loginText], {
-                              lng: uiLocale,
+                              lngs,
                           })
                         : oidc?.loginText}
                 </Button>
