@@ -41,4 +41,14 @@ describe('getRedirectString', () => {
         })
         expect(redirectString).toBe('path/toHere')
     })
+
+    it('includes hashRedirect if provided', () => {
+        // Set the variables
+        const redirectString = getRedirectString({
+            response: { redirectUrl: 'somewhere' },
+            baseUrl: 'path/',
+            hashRedirect: '#/withHash=true',
+        })
+        expect(redirectString).toBe('somewhere#/withHash=true')
+    })
 })
