@@ -60,7 +60,7 @@ export const ApplicationRightFooter = () => {
 }
 
 export const PoweredByDHIS2 = () => {
-    const { uiLocale } = useLoginConfig()
+    const { lngs } = useLoginConfig()
     return (
         <span>
             <bdi>
@@ -69,7 +69,7 @@ export const PoweredByDHIS2 = () => {
                     rel="noopener noreferrer"
                     target="_blank"
                 >
-                    {i18n.t('Powered by DHIS2', { lng: uiLocale })}
+                    {i18n.t('Powered by DHIS2', { lngs })}
                 </a>
             </bdi>
         </span>

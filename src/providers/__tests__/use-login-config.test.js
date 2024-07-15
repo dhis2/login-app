@@ -91,17 +91,19 @@ describe('useAppContext', () => {
     })
 
     // note: system language is English by default (if not provided by api)
-    it('updates uiLocale on translation, keeps systemLocale unchanged ', async () => {
+    it('updates uiLocale and lngs (with fallback language) on translation, keeps systemLocale unchanged ', async () => {
         const { result, waitForNextUpdate } = renderHook(
             () => useLoginConfig(),
             { wrapper }
         )
         expect(result.current.systemLocale).toBe('en')
         expect(result.current.uiLocale).toBe('en')
-        result.current.refreshOnTranslation({ locale: 'nb' })
+        expect(result.current.lngs).toEqual(['en'])
+        result.current.refreshOnTranslation({ locale: 'pt_BR' })
         await waitForNextUpdate()
         expect(result.current.systemLocale).toBe('en')
-        expect(result.current.uiLocale).toBe('nb')
+        expect(result.current.uiLocale).toBe('pt_BR')
+        expect(result.current.lngs).toEqual(['pt_BR', 'pt'])
     })
 
     it('updates translatable values on translation', async () => {
@@ -176,6 +178,21 @@ describe('useAppContext', () => {
         await waitForNextUpdate()
         expect(document.dir).toBe('rtl')
         result.current.refreshOnTranslation({ locale: 'fr' })
+        await waitForNextUpdate()
+        expect(document.dir).toBe('ltr')
+    })
+
+    it('updates document direction on refreshOnTranslation (if applicable) and handles locales', async () => {
+        const { result, waitForNextUpdate } = renderHook(
+            () => useLoginConfig(),
+            { wrapper }
+        )
+        // uiLocale is 'en' by default, hence dir is 'ltr'
+        expect(document.dir).toBe('ltr')
+        result.current.refreshOnTranslation({ locale: 'fa_IR' })
+        await waitForNextUpdate()
+        expect(document.dir).toBe('rtl')
+        result.current.refreshOnTranslation({ locale: 'fr_CA' })
         await waitForNextUpdate()
         expect(document.dir).toBe('ltr')
     })

@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 
-export const getIsRequired = (uiLocale) => (val) =>
-    val ? undefined : i18n.t('This field is required', { lng: uiLocale })
+export const getIsRequired = (lng) => (val) =>
+    val ? undefined : i18n.t('This field is required', { lng })
 
 export const checkIsLoginFormValid = (values) => {
     const isRequired = getIsRequired('en') // 'en' because we do not need the actual translation for validation test

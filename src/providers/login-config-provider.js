@@ -3,7 +3,11 @@ import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import { Loader } from '../components/loader.js'
-import { getHashFromLocation } from '../helpers/index.js'
+import {
+    getHashFromLocation,
+    parseLocale,
+    getLngsArray,
+} from '../helpers/index.js'
 import { LoginConfigContext } from './login-config-context.js'
 
 const localStorageLocaleKey = 'dhis2.locale.ui'
@@ -66,8 +70,13 @@ const LoginConfigProvider = ({ initialLocation, children }) => {
             localStorage.getItem(localStorageLocaleKey) ||
             loginConfigData?.loginConfig?.uiLocale ||
             'en'
-        setTranslatedValues({ uiLocale: userLanguage })
-        i18n.changeLanguage(userLanguage)
+
+        setTranslatedValues({
+            uiLocale: userLanguage,
+            lngs: getLngsArray(userLanguage),
+        })
+        // direction will not be recognized if using a java-format locale code
+        i18n.changeLanguage(parseLocale(userLanguage))
         document.documentElement.setAttribute('dir', i18n.dir())
     }, []) //eslint-disable-line
 
@@ -85,8 +94,11 @@ const LoginConfigProvider = ({ initialLocation, children }) => {
         } catch (e) {
             console.error(e)
         }
-        i18n.changeLanguage(locale)
+        // direction will not be recognized if using a java-format locale code
+        i18n.changeLanguage(parseLocale(locale))
+
         document.documentElement.setAttribute('dir', i18n.dir())
+
         // the logic here is wrong as it falls back to previous translations (rather than defaults)
         // however, the api response will fall back to default system language (so this doesn't cause issues)
         const updatedTranslations = translatableValues.reduce(
@@ -100,7 +112,11 @@ const LoginConfigProvider = ({ initialLocation, children }) => {
             },
             {}
         )
-        setTranslatedValues({ ...updatedTranslations, uiLocale: locale }),
+        setTranslatedValues({
+            ...updatedTranslations,
+            uiLocale: locale,
+            lngs: getLngsArray(locale),
+        }),
             localStorage.setItem(localStorageLocaleKey, locale)
     }
 

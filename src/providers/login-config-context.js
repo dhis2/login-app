@@ -17,6 +17,7 @@ const LoginConfigContext = createContext({
     refreshOnTranslation: 'undefined (function)',
     defaultLoginPageLogo: './api/staticContent/logo_front',
     hashRedirect: undefined,
+    lngs: ['en'],
 })
 
 export { LoginConfigContext }

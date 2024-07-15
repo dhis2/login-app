@@ -30,7 +30,7 @@ const InnerLoginForm = ({
     formSubmitted,
     twoFAVerificationRequired,
     cancelTwoFA,
-    uiLocale,
+    lngs,
     loading,
     setFormUserName,
 }) => {
@@ -44,12 +44,12 @@ const InnerLoginForm = ({
         ref?.current?.focus()
     }
     const loginButtonText = twoFAVerificationRequired
-        ? i18n.t('Verify and log in', { lng: uiLocale })
-        : i18n.t('Log in', { lng: uiLocale })
+        ? i18n.t('Verify and log in', { lngs })
+        : i18n.t('Log in', { lngs })
     const login2FAButtonText = twoFAVerificationRequired
-        ? i18n.t('Verifying...', { lng: uiLocale })
-        : i18n.t('Logging in...', { lng: uiLocale })
-    const isRequired = getIsRequired(uiLocale)
+        ? i18n.t('Verifying...', { lngs })
+        : i18n.t('Logging in...', { lngs })
+    const isRequired = getIsRequired(lngs[0])
     return (
         <form onSubmit={handleSubmit}>
             <div
@@ -60,7 +60,7 @@ const InnerLoginForm = ({
                 {/* onChange will not update every change, so may need to use controlled InputField here for username tracking */}
                 <ReactFinalForm.Field
                     name="username"
-                    label={i18n.t('Username', { lng: uiLocale })}
+                    label={i18n.t('Username', { lngs })}
                     component={InputFieldFF}
                     className={styles.inputField}
                     validate={!formSubmitted ? null : isRequired}
@@ -73,7 +73,7 @@ const InnerLoginForm = ({
                 />
                 <ReactFinalForm.Field
                     name="password"
-                    label={i18n.t('Password', { lng: uiLocale })}
+                    label={i18n.t('Password', { lngs })}
                     type="password"
                     component={InputFieldFF}
                     className={styles.inputField}
@@ -90,7 +90,7 @@ const InnerLoginForm = ({
             >
                 <ReactFinalForm.Field
                     name="twoFA"
-                    label={i18n.t('Authentication code', { lng: uiLocale })}
+                    label={i18n.t('Authentication code', { lngs })}
                     component={InputFieldFF}
                     className={styles.inputField}
                     initialValue=""
@@ -104,7 +104,7 @@ const InnerLoginForm = ({
                 </Button>
                 {twoFAVerificationRequired && (
                     <Button secondary disabled={loading} onClick={clearTwoFA}>
-                        {i18n.t('Cancel', { lng: uiLocale })}
+                        {i18n.t('Cancel', { lngs })}
                     </Button>
                 )}
             </div>
@@ -113,7 +113,7 @@ const InnerLoginForm = ({
 }
 
 InnerLoginForm.defaultProps = {
-    uiLocale: 'en',
+    lngs: ['en'],
 }
 
 InnerLoginForm.propTypes = {
@@ -121,9 +121,9 @@ InnerLoginForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     twoFAVerificationRequired: PropTypes.bool.isRequired,
     formSubmitted: PropTypes.bool,
+    lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
     setFormUserName: PropTypes.func,
-    uiLocale: PropTypes.string,
 }
 
 const LoginForm = ({
@@ -134,7 +134,7 @@ const LoginForm = ({
     error,
     loading,
     setFormUserName,
-    uiLocale,
+    lngs,
 }) => {
     const [formSubmitted, setFormSubmitted] = useState(false)
 
@@ -162,10 +162,10 @@ const LoginForm = ({
                         !error?.details?.httpStatusCode ||
                         error.details.httpStatusCode >= 500
                             ? i18n.t('Something went wrong', {
-                                  lng: uiLocale,
+                                  lngs,
                               })
                             : i18n.t('Incorrect username or password', {
-                                  lng: uiLocale,
+                                  lngs,
                               })
                     }
                     error
@@ -179,7 +179,7 @@ const LoginForm = ({
             {twoFAIncorrect && (
                 <FormNotice
                     title={i18n.t('Incorrect authentication code', {
-                        lng: uiLocale,
+                        lngs,
                     })}
                     error
                 />
@@ -192,7 +192,7 @@ const LoginForm = ({
                         twoFAVerificationRequired={twoFAVerificationRequired}
                         twoFAIncorrect={twoFAIncorrect}
                         cancelTwoFA={cancelTwoFA}
-                        uiLocale={uiLocale}
+                        lngs={lngs}
                         loading={loading}
                         setFormUserName={setFormUserName}
                     />
@@ -203,18 +203,18 @@ const LoginForm = ({
 }
 
 LoginForm.defaultProps = {
-    uiLocale: 'en',
+    lngs: ['en'],
 }
 
 LoginForm.propTypes = {
     cancelTwoFA: PropTypes.func,
     error: PropTypes.object,
+    lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
     login: PropTypes.func,
     setFormUserName: PropTypes.func,
     twoFAIncorrect: PropTypes.bool,
     twoFAVerificationRequired: PropTypes.bool,
-    uiLocale: PropTypes.string,
 }
 
 // this is set up this way to isolate styling from login form logic
@@ -228,14 +228,14 @@ export const LoginFormContainer = () => {
         loading,
     } = useLogin()
     const [formUserName, setFormUserName] = useState('')
-    const { uiLocale } = useLoginConfig()
+    const { lngs } = useLoginConfig()
 
     return (
         <FormContainer
             title={
                 twoFAVerificationRequired
-                    ? i18n.t('Two-factor authentication', { lng: uiLocale })
-                    : i18n.t('Log in', { lng: uiLocale })
+                    ? i18n.t('Two-factor authentication', { lngs })
+                    : i18n.t('Log in', { lngs })
             }
         >
             {twoFAVerificationRequired && (
@@ -243,14 +243,14 @@ export const LoginFormContainer = () => {
                     <p>
                         {i18n.t(
                             'Enter the code from your two-factor authentication app to log in.',
-                            { lng: uiLocale }
+                            { lngs }
                         )}
                     </p>
                 </FormSubtitle>
             )}
             <LoginForm
                 setFormUserName={setFormUserName}
-                uiLocale={uiLocale}
+                lngs={lngs}
                 login={login}
                 cancelTwoFA={cancelTwoFA}
                 twoFAVerificationRequired={twoFAVerificationRequired}

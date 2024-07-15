@@ -102,14 +102,16 @@ describe('ApplicationRightFooter', () => {
 describe('PoweredByDHIS2', () => {
     it('displays in translation', () => {
         useLoginConfig.mockReturnValue({
-            uiLocale: 'id',
+            lngs: ['id', 'en'],
         })
         const i18Spy = jest
             .spyOn(i18n, 't')
             .mockReturnValue('Dipersembahkan oleh DHIS2')
         render(<PoweredByDHIS2 />)
         expect(i18Spy).toHaveBeenCalled()
-        expect(i18Spy).toHaveBeenCalledWith('Powered by DHIS2', { lng: 'id' })
+        expect(i18Spy).toHaveBeenCalledWith('Powered by DHIS2', {
+            lngs: ['id', 'en'],
+        })
         expect(
             screen.getByText('Dipersembahkan oleh DHIS2')
         ).toBeInTheDocument()
