@@ -1,3 +1,10 @@
+# [100.1.0](https://github.com/dhis2/login-app/compare/v100.0.7...v100.1.0) (2024-07-11)
+
+
+### Features
+
+* pass hash path with redirect [DHIS2-17629] ([#32](https://github.com/dhis2/login-app/issues/32)) ([b8236a9](https://github.com/dhis2/login-app/commit/b8236a96dd1902349d6a9bbaa7ee06f0f90f5304))
+
 ## [100.0.7](https://github.com/dhis2/login-app/compare/v100.0.6...v100.0.7) (2024-06-25)
 
 

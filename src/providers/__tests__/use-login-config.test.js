@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { renderHook } from '@testing-library/react-hooks'
 import React from 'react'
 import { LoginConfigProvider } from '../login-config-provider.js'
@@ -67,6 +68,15 @@ describe('useAppContext', () => {
     const wrapper = ({ children }) => (
         <LoginConfigProvider>{children}</LoginConfigProvider>
     )
+
+    const createWrapperWithLocation = ({ initialLocation }) => {
+        const WrapperWithLocation = ({ children }) => (
+            <LoginConfigProvider initialLocation={initialLocation}>
+                {children}
+            </LoginConfigProvider>
+        )
+        return WrapperWithLocation
+    }
 
     afterEach(() => {
         jest.clearAllMocks()
@@ -194,5 +204,20 @@ describe('useAppContext', () => {
         expect(result.current.applicationTitle).toBe(
             'Guía del autoestopista DHIS2'
         )
+    })
+
+    it('has hashRedirect location as undefined by default', () => {
+        const { result } = renderHook(() => useLoginConfig(), { wrapper })
+        expect(result.current.hashRedirect).toBe(undefined)
+    })
+
+    it('has hashRedirect determined provided window location', () => {
+        const { result } = renderHook(() => useLoginConfig(), {
+            wrapper: createWrapperWithLocation({
+                initialLocation:
+                    'https://myInstance.org/path/to/myApp/#/hashpath',
+            }),
+        })
+        expect(result.current.hashRedirect).toBe('#/hashpath')
     })
 })

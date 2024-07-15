@@ -3,7 +3,11 @@ import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import { Loader } from '../components/loader.js'
-import { parseLocale, getLngsArray } from '../helpers/index.js'
+import {
+    getHashFromLocation,
+    parseLocale,
+    getLngsArray,
+} from '../helpers/index.js'
 import { LoginConfigContext } from './login-config-context.js'
 
 const localStorageLocaleKey = 'dhis2.locale.ui'
@@ -41,7 +45,7 @@ const defaultLocales = [
     { locale: 'es', displayName: 'Spanish', name: 'español' },
 ]
 
-const LoginConfigProvider = ({ children }) => {
+const LoginConfigProvider = ({ initialLocation, children }) => {
     const {
         data: loginConfigData,
         loading: loginConfigLoading,
@@ -55,6 +59,8 @@ const LoginConfigProvider = ({ children }) => {
         error: localesError,
     } = useDataQuery(localesQuery)
     const config = useConfig()
+
+    const hashRedirect = getHashFromLocation(initialLocation)
 
     const [translatedValues, setTranslatedValues] = useState()
 
@@ -129,6 +135,7 @@ const LoginConfigProvider = ({ children }) => {
 
     const providerValue = {
         ...loginConfigData?.loginConfig,
+        hashRedirect,
         ...translatedValues,
         localesUI: localesData?.localesUI ?? defaultLocales,
         systemLocale: loginConfigData?.loginConfig?.uiLocale ?? 'en',
@@ -145,6 +152,7 @@ const LoginConfigProvider = ({ children }) => {
 
 LoginConfigProvider.propTypes = {
     children: PropTypes.node.isRequired,
+    initialLocation: PropTypes.string,
 }
 
 export { LoginConfigProvider }

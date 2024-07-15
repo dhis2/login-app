@@ -25,7 +25,7 @@ const loginMutation = {
 }
 
 export const useLogin = () => {
-    const { baseUrl } = useLoginConfig()
+    const { baseUrl, hashRedirect } = useLoginConfig()
     const [loginStatus, setLoginStatus] = useState(null)
     const [error, setError] = useState(null)
 
@@ -46,7 +46,11 @@ export const useLogin = () => {
         )
 
         if (response.loginStatus === LOGIN_STATUSES.success) {
-            const redirectString = getRedirectString({ response, baseUrl })
+            const redirectString = getRedirectString({
+                response,
+                baseUrl,
+                hashRedirect,
+            })
             redirectTo(redirectString)
         }
     }

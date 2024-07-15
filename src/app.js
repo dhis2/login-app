@@ -114,7 +114,7 @@ export const AppContent = () => {
 
 const App = () => (
     <HashRouter>
-        <LoginConfigProvider>
+        <LoginConfigProvider initialLocation={window?.location?.href}>
             <CssReset />
             <CssVariables colors spacers theme elevations />
             <AppContent />
