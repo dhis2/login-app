@@ -1,3 +1,10 @@
+## [100.1.1](https://github.com/dhis2/login-app/compare/v100.1.0...v100.1.1) (2024-07-15)
+
+
+### Bug Fixes
+
+* fall back to overall language [DHIS2-17696] ([#33](https://github.com/dhis2/login-app/issues/33)) ([401a3ec](https://github.com/dhis2/login-app/commit/401a3ec43472daa3da91e90027ce24c983b83eaa))
+
 # [100.1.0](https://github.com/dhis2/login-app/compare/v100.0.7...v100.1.0) (2024-07-11)
 
 
