@@ -1,3 +1,10 @@
+## [100.1.2](https://github.com/dhis2/login-app/compare/v100.1.1...v100.1.2) (2024-07-16)
+
+
+### Bug Fixes
+
+* translate validator errors ([#34](https://github.com/dhis2/login-app/issues/34)) ([e584937](https://github.com/dhis2/login-app/commit/e584937138ee84a4933417a8f6e7246383172332))
+
 ## [100.1.1](https://github.com/dhis2/login-app/compare/v100.1.0...v100.1.1) (2024-07-15)
 
 
