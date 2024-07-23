@@ -3,6 +3,7 @@ import { ReactFinalForm, InputFieldFF, Button } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React, { useState, useRef } from 'react'
 import { useForm } from 'react-final-form'
+import { Link } from 'react-router-dom'
 import {
     ApplicationNotification,
     FormContainer,
@@ -119,11 +120,11 @@ InnerLoginForm.defaultProps = {
 InnerLoginForm.propTypes = {
     cancelTwoFA: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-    twoFAVerificationRequired: PropTypes.bool.isRequired,
     formSubmitted: PropTypes.bool,
     lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
     setFormUserName: PropTypes.func,
+    twoFAVerificationRequired: PropTypes.bool,
 }
 
 const LoginForm = ({
@@ -131,6 +132,9 @@ const LoginForm = ({
     cancelTwoFA,
     twoFAVerificationRequired,
     twoFAIncorrect,
+    accountInaccessible,
+    passwordExpired,
+    passwordResetEnabled,
     error,
     loading,
     setFormUserName,
@@ -184,6 +188,34 @@ const LoginForm = ({
                     error
                 />
             )}
+            {passwordExpired && (
+                <FormNotice
+                    title={i18n.t('Password expired', {
+                        lngs,
+                    })}
+                    error
+                >
+                    {passwordResetEnabled ? (
+                        <Link to="/reset-password">
+                            {i18n.t(
+                                'You can reset your from the password reset page.'
+                            )}
+                        </Link>
+                    ) : (
+                        i18n.t('Contact your system administrator.')
+                    )}
+                </FormNotice>
+            )}
+            {accountInaccessible && (
+                <FormNotice
+                    title={i18n.t('Account not accessible', {
+                        lngs,
+                    })}
+                    error
+                >
+                    {i18n.t('Contact your system administrator.')}
+                </FormNotice>
+            )}
             <ReactFinalForm.Form onSubmit={handleLogin}>
                 {({ handleSubmit }) => (
                     <InnerLoginForm
@@ -207,11 +239,14 @@ LoginForm.defaultProps = {
 }
 
 LoginForm.propTypes = {
+    accountInaccessible: PropTypes.bool,
     cancelTwoFA: PropTypes.func,
     error: PropTypes.object,
     lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
     login: PropTypes.func,
+    passwordExpired: PropTypes.bool,
+    passwordResetEnabled: PropTypes.bool,
     setFormUserName: PropTypes.func,
     twoFAIncorrect: PropTypes.bool,
     twoFAVerificationRequired: PropTypes.bool,
@@ -224,11 +259,13 @@ export const LoginFormContainer = () => {
         cancelTwoFA,
         twoFAVerificationRequired,
         twoFAIncorrect,
+        accountInaccessible,
+        passwordExpired,
         error,
         loading,
     } = useLogin()
     const [formUserName, setFormUserName] = useState('')
-    const { lngs } = useLoginConfig()
+    const { lngs, allowAccountRecovery, emailConfigured } = useLoginConfig()
 
     return (
         <FormContainer
@@ -255,6 +292,9 @@ export const LoginFormContainer = () => {
                 cancelTwoFA={cancelTwoFA}
                 twoFAVerificationRequired={twoFAVerificationRequired}
                 twoFAIncorrect={twoFAIncorrect}
+                accountInaccessible={accountInaccessible}
+                passwordExpired={passwordExpired}
+                passwordResetEnabled={allowAccountRecovery && emailConfigured}
                 error={error}
                 loading={loading}
             />
