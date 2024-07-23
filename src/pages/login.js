@@ -135,6 +135,7 @@ const LoginForm = ({
     accountInaccessible,
     passwordExpired,
     passwordResetEnabled,
+    unknownStatus,
     error,
     loading,
     setFormUserName,
@@ -216,6 +217,16 @@ const LoginForm = ({
                     {i18n.t('Contact your system administrator.')}
                 </FormNotice>
             )}
+            {unknownStatus && (
+                <FormNotice
+                    title={i18n.t('Something went wrong', {
+                        lngs,
+                    })}
+                    error
+                >
+                    {i18n.t('Contact your system administrator.')}
+                </FormNotice>
+            )}
             <ReactFinalForm.Form onSubmit={handleLogin}>
                 {({ handleSubmit }) => (
                     <InnerLoginForm
@@ -250,6 +261,7 @@ LoginForm.propTypes = {
     setFormUserName: PropTypes.func,
     twoFAIncorrect: PropTypes.bool,
     twoFAVerificationRequired: PropTypes.bool,
+    unknownStatus: PropTypes.bool,
 }
 
 // this is set up this way to isolate styling from login form logic
@@ -261,6 +273,7 @@ export const LoginFormContainer = () => {
         twoFAIncorrect,
         accountInaccessible,
         passwordExpired,
+        unknownStatus,
         error,
         loading,
     } = useLogin()
@@ -295,6 +308,7 @@ export const LoginFormContainer = () => {
                 accountInaccessible={accountInaccessible}
                 passwordExpired={passwordExpired}
                 passwordResetEnabled={allowAccountRecovery && emailConfigured}
+                unknownStatus={unknownStatus}
                 error={error}
                 loading={loading}
             />

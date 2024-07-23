@@ -355,4 +355,19 @@ describe('LoginForm', () => {
             screen.getByText('Contact your system administrator.')
         ).toBeInTheDocument()
     })
+
+    it('Shows Something went wrong if unknownStatus is true', () => {
+        useLogin.mockReturnValue({
+            login: () => {},
+            unknownStatus: true,
+            cancelTwoFA: () => {},
+        })
+
+        render(<LoginFormContainer />)
+
+        expect(screen.getByText('Something went wrong')).toBeInTheDocument()
+        expect(
+            screen.getByText('Contact your system administrator.')
+        ).toBeInTheDocument()
+    })
 })

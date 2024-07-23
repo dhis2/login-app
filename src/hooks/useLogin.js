@@ -96,5 +96,8 @@ export const useLogin = () => {
         twoFANotEnabled: loginStatus === LOGIN_STATUSES.notEnabled2fa,
         passwordExpired: loginStatus === LOGIN_STATUSES.passwordExpired,
         accountInaccessible: inaccessibleAccountStatuses.includes(loginStatus),
+        unknownStatus:
+            loginStatus !== null &&
+            !Object.values(LOGIN_STATUSES).includes(loginStatus),
     }
 }
