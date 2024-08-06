@@ -50,7 +50,7 @@ const LoginErrors = ({
                 }
                 error
             >
-                {(!error?.details?.httpStatusCode ||
+                {(!error.details?.httpStatusCode ||
                     error.details.httpStatusCode >= 500) && (
                     <span>{error?.message}</span>
                 )}
