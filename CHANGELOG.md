@@ -1,3 +1,10 @@
+## [100.1.4](https://github.com/dhis2/login-app/compare/v100.1.3...v100.1.4) (2024-08-07)
+
+
+### Bug Fixes
+
+* handle missing login statuses [DHIS2-17773] ([#35](https://github.com/dhis2/login-app/issues/35)) ([e26d78b](https://github.com/dhis2/login-app/commit/e26d78b332608707b8f0f4ea6ab064f91c44ff07))
+
 ## [100.1.3](https://github.com/dhis2/login-app/compare/v100.1.2...v100.1.3) (2024-07-24)
 
 
