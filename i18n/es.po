@@ -1,17 +1,17 @@
 # 
 # Translators:
 # Pablo Del Médico, 2024
-# Enzo Nicolas Rossi <enzo@dhis2.org>, 2024
 # Milagros Rodríguez, 2024
 # Viktor Varland <viktor@dhis2.org>, 2024
 # Philip Larsen Donnelly, 2024
+# Enzo Nicolas Rossi <enzo@dhis2.org>, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2024-05-22T10:53:32.505Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Philip Larsen Donnelly, 2024\n"
+"Last-Translator: Enzo Nicolas Rossi <enzo@dhis2.org>, 2024\n"
 "Language-Team: Spanish (https://app.transifex.com/hisp-uio/teams/100509/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,10 +20,10 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
-msgstr ""
+msgstr "Confirme que no es un robot marcando la casilla de verificación."
 
 msgid "Log in details"
-msgstr ""
+msgstr "Datos de acceso"
 
 msgid "Username"
 msgstr "Nombre de usuario"
@@ -34,9 +34,10 @@ msgstr "Contraseña"
 msgid ""
 "Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
 msgstr ""
+"Mínimo 8 caracteres, al menos 1 mayúscula, 1 minúscula, 1 número, 1 símbolo"
 
 msgid "Personal details"
-msgstr ""
+msgstr "Datos personales"
 
 msgid "First name"
 msgstr "Nombre"
@@ -51,37 +52,39 @@ msgid "Phone number"
 msgstr "Número de teléfono"
 
 msgid "Creating..."
-msgstr ""
+msgstr "Creando..."
 
 msgid "Create account"
-msgstr ""
+msgstr "Crear una cuenta"
 
 msgid "Cancel"
 msgstr "Cancelar"
 
 msgid "Enter your details below to create a {{- applicationName}} account."
 msgstr ""
+"Introduce tus datos a continuación para crear una cuenta {{- "
+"applicationName}}."
 
 msgid "Already have an account?"
-msgstr ""
+msgstr "¿Ya tiene una cuenta?"
 
 msgid "Log in."
-msgstr ""
+msgstr "Iniciar sesión."
 
 msgid "Something went wrong, and we could not register your account"
-msgstr ""
+msgstr "Algo salió mal y no pudimos registrar su cuenta"
 
 msgid "Account created successfully"
-msgstr ""
+msgstr "Cuenta creada correctamente"
 
 msgid "You can use your username and password to log in."
-msgstr ""
+msgstr "Puede utilizar su nombre de usuario y contraseña para conectarse."
 
 msgid "Back to log in page"
-msgstr ""
+msgstr "Volver a la página de inicio de sesión"
 
 msgid "Powered by DHIS2"
-msgstr ""
+msgstr "Desarrollado por DHIS2"
 
 msgid "Language"
 msgstr "Idioma"
@@ -90,108 +93,121 @@ msgid "Forgot password?"
 msgstr "¿Has olvidado tu contraseña?"
 
 msgid "Don't have an account?"
-msgstr ""
+msgstr "¿No tiene cuenta?"
 
 msgid "Create an account"
 msgstr "Crear una cuenta"
 
 msgid "The requested page is not configured for your system"
-msgstr ""
+msgstr "La página solicitada no está configurada para su sistema"
 
 msgid "Creating account not available"
-msgstr ""
+msgstr "Creación de cuenta no disponible"
 
 msgid "Contact a system administrator to create an account."
 msgstr ""
+"Póngase en contacto con un administrador del sistema para crear una cuenta."
 
 msgid "Log in with Google"
-msgstr ""
+msgstr "Iniciar sesión con Google"
 
 msgid "Log in with Microsoft"
-msgstr ""
+msgstr "Iniciar sesión con Microsoft"
 
 msgid "I agree"
-msgstr ""
+msgstr "Estoy de acuerdo"
 
 msgid "This field is required"
 msgstr "Este campo es obligatorio"
 
 msgid "Cannot process registration"
-msgstr ""
+msgstr "No se puede procesar el registro"
 
 msgid ""
 "Information required to process your registration is missing. Please contact"
 " your system administrator."
 msgstr ""
+"Falta información necesaria para procesar su registro. Póngase en contacto "
+"con el administrador del sistema."
 
 msgid "HTML Template Download"
-msgstr ""
+msgstr "Plantilla HTML Descargar"
 
 msgid ""
 "You can download the templates used by the login app here. These can be "
 "modified and reloaded as custom HTML in the settings app."
 msgstr ""
+"Puede descargar las plantillas utilizadas por la aplicación de inicio de "
+"sesión aquí. Se pueden modificar y volver a cargar como HTML personalizado "
+"en la aplicación de configuración."
 
 msgid "Refer to the documentation for more details."
-msgstr ""
+msgstr "Consulte la documentación para más detalles."
 
 msgid "Download default template"
-msgstr ""
+msgstr "Descargar plantilla por defecto"
 
 msgid "Download sidebar template"
-msgstr ""
+msgstr "Descargar plantilla de barra lateral"
 
 msgid "Verify and log in"
-msgstr ""
+msgstr "Verificar e iniciar sesión"
 
 msgid "Log in"
-msgstr ""
+msgstr "Conectarse"
 
 msgid "Verifying..."
-msgstr ""
+msgstr "Verificando..."
 
 msgid "Logging in..."
-msgstr ""
+msgstr "Iniciando sesión..."
 
 msgid "Authentication code"
-msgstr ""
+msgstr "Código de autenticación"
 
 msgid "Something went wrong"
 msgstr "Algo ha salido mal"
 
 msgid "Incorrect username or password"
-msgstr ""
+msgstr "Nombre de usuario o contraseña incorrectos"
 
 msgid "Incorrect authentication code"
-msgstr ""
+msgstr "Código de autenticación incorrecto"
 
 msgid "Two-factor authentication"
-msgstr ""
+msgstr "Autenticación de dos factores"
 
 msgid "Enter the code from your two-factor authentication app to log in."
 msgstr ""
+"Introduce el código de tu aplicación de autenticación de dos factores para "
+"iniciar sesión."
 
 msgid "Username or email"
-msgstr ""
+msgstr "Nombre de usuario o correo electrónico"
 
 msgid "Sending..."
-msgstr ""
+msgstr "Enviando..."
 
 msgid "Send password reset request"
-msgstr ""
+msgstr "Enviar solicitud de restablecimiento de contraseña"
 
 msgid "Password reset failed"
-msgstr ""
+msgstr "Error al restablecer la contraseña"
 
 msgid ""
 "Something went wrong. Please try again later, and contact your system "
 "administrator if the problem persists."
 msgstr ""
+"Algo ha ido mal. Vuelva a intentarlo más tarde y póngase en contacto con el "
+"administrador del sistema si el problema persiste."
 
 msgid ""
 "If the provided username or email is registered in the system, you will soon"
 " receive an email with a password reset link."
 msgstr ""
+"Si el nombre de usuario o la dirección de correo electrónico facilitados "
+"están registrados en el sistema, en breve recibirá un correo electrónico con"
+" un enlace para restablecer la contraseña."
 
 msgid "Reset password"
 msgstr "Restablecer la contraseña"
@@ -200,31 +216,37 @@ msgid ""
 "Enter your username below, a link to reset your password will be sent to "
 "your registered e-mail."
 msgstr ""
+"Introduzca su nombre de usuario a continuación, un enlace para restablecer "
+"su contraseña será enviado a su correo electrónico registrado."
 
 msgid "Saving..."
 msgstr "Guardando..."
 
 msgid "Save new password"
-msgstr ""
+msgstr "Guardar nueva contraseña"
 
 msgid "New password not saved"
-msgstr ""
+msgstr "No se guarda la nueva contraseña"
 
 msgid ""
 "There was a problem saving your password. Try again or contact your system "
 "administrator."
 msgstr ""
+"Ha habido un problema al guardar tu contraseña. Inténtalo de nuevo o ponte "
+"en contacto con el administrador del sistema."
 
 msgid "New password saved. You can use it to log in to your account."
-msgstr ""
+msgstr "Nueva contraseña guardada. Puede utilizarla para acceder a su cuenta."
 
 msgid "Choose new password"
-msgstr ""
+msgstr "Elegir nueva contraseña"
 
 msgid "Enter the new password for your account below"
-msgstr ""
+msgstr "Introduzca a continuación la nueva contraseña de su cuenta"
 
 msgid ""
 "You should shortly be redirected. If you are not redirected, please click "
 "redirect button."
 msgstr ""
+"En breve debería ser redirigido. Si no se le redirige, haga clic en el botón"
+" de redirección."

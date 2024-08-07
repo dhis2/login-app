@@ -16,10 +16,10 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
-msgstr ""
+msgstr "Илтимос, робот эмаслигингизни тасдиқлаш учун катакчани белгиланг."
 
 msgid "Log in details"
-msgstr ""
+msgstr "Тизимга кириш тафсилотлари"
 
 msgid "Username"
 msgstr "Фойдаланувчи исми"
@@ -30,9 +30,11 @@ msgstr "Пароль"
 msgid ""
 "Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
 msgstr ""
+"Ками билан 8 та белги киритинг. Камида 1 босма ҳарф, камида 1 та ёзма ҳарф, "
+"камида 1 та рақам, камида 1 та белги"
 
 msgid "Personal details"
-msgstr ""
+msgstr "Шахсий маълумотлар"
 
 msgid "First name"
 msgstr "Исм"
@@ -47,37 +49,40 @@ msgid "Phone number"
 msgstr "Телефон рақами"
 
 msgid "Creating..."
-msgstr ""
+msgstr "Яратилмоқда..."
 
 msgid "Create account"
-msgstr ""
+msgstr "Аккаунт яратиш"
 
 msgid "Cancel"
 msgstr "Бекор қилиш"
 
 msgid "Enter your details below to create a {{- applicationName}} account."
 msgstr ""
+"{{- applicationName}} аккаунтни яратиш учун қуйидаги маълумотларни киритинг."
 
 msgid "Already have an account?"
-msgstr ""
+msgstr "Аккаунтингиз борми?"
 
 msgid "Log in."
-msgstr ""
+msgstr "Кириш."
 
 msgid "Something went wrong, and we could not register your account"
 msgstr ""
+"Қандайдир хатолик мавжуд, ва биз сизнинг аккаунтингизни рўйхатга ола олмадик"
 
 msgid "Account created successfully"
-msgstr ""
+msgstr "Аккаунт муваффақиятли яратилди"
 
 msgid "You can use your username and password to log in."
 msgstr ""
+"Аккаунтга кириш учун фойдаланувчи номи ва паролдан фойланишингиз мумкин"
 
 msgid "Back to log in page"
-msgstr ""
+msgstr "Кириш саҳифасига қайтиш"
 
 msgid "Powered by DHIS2"
-msgstr ""
+msgstr "DHIS2 томонидан ишлаб чиқилган"
 
 msgid "Language"
 msgstr "Тил"
@@ -86,141 +91,158 @@ msgid "Forgot password?"
 msgstr "Паролни унутдингизми?"
 
 msgid "Don't have an account?"
-msgstr ""
+msgstr "Сиз аккаунт мавжуд эмасми?"
 
 msgid "Create an account"
 msgstr "Аккаунт яратиш"
 
 msgid "The requested page is not configured for your system"
-msgstr ""
+msgstr "Сўралган саҳифа тиимда созланмаган"
 
 msgid "Creating account not available"
-msgstr ""
+msgstr "Аккаунт яратиш имконсиз"
 
 msgid "Contact a system administrator to create an account."
-msgstr ""
+msgstr "Аккаунт яратиш учун тизим администраторига мурожаат қилинг"
 
 msgid "Log in with Google"
-msgstr ""
+msgstr "Google орқали кириш"
 
 msgid "Log in with Microsoft"
-msgstr ""
+msgstr "Microsoft орқали кириш"
 
 msgid "I agree"
-msgstr ""
+msgstr "Мен рози"
 
 msgid "This field is required"
 msgstr "Ушбу қатор тўлдирилиши шарт"
 
 msgid "Cannot process registration"
-msgstr ""
+msgstr "Рўйхатдан ўтишни амалга ошириб бўлмайди"
 
 msgid ""
 "Information required to process your registration is missing. Please contact"
 " your system administrator."
 msgstr ""
+"Рўйхатдан ўтиш учун зарур бўлган маълумотлар киритилмаган. Илтимос, тизим "
+"администраторига мурожаат қилинг."
 
 msgid "HTML Template Download"
-msgstr ""
+msgstr "HTML шаблон юклаб олиш"
 
 msgid ""
 "You can download the templates used by the login app here. These can be "
 "modified and reloaded as custom HTML in the settings app."
 msgstr ""
+"Кириш иловаси орқали шаблон юклай олмайсиз. Улар созламалар иловасида махсус"
+" HTML сифати ўзгартирилиши ва қайта юкланиши мумкин."
 
 msgid "Refer to the documentation for more details."
-msgstr ""
+msgstr "Батафсил маълумот учун тизим ҳужжатларига қаранг."
 
 msgid "Download default template"
-msgstr ""
+msgstr "Стандарт шаблонни юклаб олиш"
 
 msgid "Download sidebar template"
-msgstr ""
+msgstr "Ён панель шаблонини юклаб олиш"
 
 msgid "Verify and log in"
-msgstr ""
+msgstr "Тасдиқланг ва тизимга киринг"
 
 msgid "Log in"
-msgstr ""
+msgstr "Кириш"
 
 msgid "Verifying..."
-msgstr ""
+msgstr "Тасдиқлаш..."
 
 msgid "Logging in..."
-msgstr ""
+msgstr "Кириш..."
 
 msgid "Authentication code"
-msgstr ""
+msgstr "Аутентификация коди"
 
 msgid "Something went wrong"
 msgstr "Нимадир нотўғри бажарилди"
 
 msgid "Incorrect username or password"
-msgstr ""
+msgstr "Фойдаланувчи номи ёки пароль хато"
 
 msgid "Incorrect authentication code"
-msgstr ""
+msgstr "Аутентификация коди хато"
 
 msgid "Two-factor authentication"
-msgstr ""
+msgstr "Икки-факторли аутентификация"
 
 msgid "Enter the code from your two-factor authentication app to log in."
 msgstr ""
+"Тизимга кириш учун аутентификация иловасидан иккинчи фактор кодини киритинг"
 
 msgid "Username or email"
-msgstr ""
+msgstr "Фойдаланувчи номи ёки электрон манзил"
 
 msgid "Sending..."
-msgstr ""
+msgstr "Юборилмоқда..."
 
 msgid "Send password reset request"
-msgstr ""
+msgstr "Паролни тиклаш сўровини юбориш"
 
 msgid "Password reset failed"
-msgstr ""
+msgstr "Паролни тиклаш сўрови амалга ошмади"
 
 msgid ""
 "Something went wrong. Please try again later, and contact your system "
 "administrator if the problem persists."
 msgstr ""
+"Хатолик келиб чиқди. Илтимос, кейинроқ қайта уриниб кўринг ва муаммо давом "
+"этса, тизим администраторига мурожаат қилинг."
 
 msgid ""
 "If the provided username or email is registered in the system, you will soon"
 " receive an email with a password reset link."
 msgstr ""
+"Агар тақдим этилган фойдаланувчи номи ёки электрон почта манзили тизимда "
+"рўйхатдан ўтган бўлса, сиз тез орада паролни тиклаш ҳаволаси билан электрон "
+"почта хабарини оласиз."
 
 msgid "Reset password"
-msgstr ""
+msgstr "Паролни тиклаш"
 
 msgid ""
 "Enter your username below, a link to reset your password will be sent to "
 "your registered e-mail."
 msgstr ""
+"Қуйида фойдаланувчи носини киритинг. Паролни тиклаш ҳаволаси электрон почта "
+"манзилига юборилади, агарда рўйхатдан ўтган бўлсангиз."
 
 msgid "Saving..."
 msgstr "Сақланмоқда..."
 
 msgid "Save new password"
-msgstr ""
+msgstr "Янги паролни сақлаш"
 
 msgid "New password not saved"
-msgstr ""
+msgstr "Янги пароль сақланмади"
 
 msgid ""
 "There was a problem saving your password. Try again or contact your system "
 "administrator."
 msgstr ""
+"Паролни сақлашда муаммо юз берди. Қайта уриниб кўринг ёки тизим "
+"администраторига мурожаат қилинг."
 
 msgid "New password saved. You can use it to log in to your account."
 msgstr ""
+"Янги пароль сақланди. Аккаунтга кириш учун ундан фойдаланишингиз мумкин."
 
 msgid "Choose new password"
-msgstr ""
+msgstr "Янги паролни танланг"
 
 msgid "Enter the new password for your account below"
-msgstr ""
+msgstr "Аккаунтингизнинг янги паролини қуйида киритинг"
 
 msgid ""
 "You should shortly be redirected. If you are not redirected, please click "
 "redirect button."
 msgstr ""
+"Тез орада қайта йўналтириласиз. Агар йўналтирилмаган бўлсангиз, қайта "
+"йўналтириш тугмасини босинг."

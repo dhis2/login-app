@@ -1,3 +1,10 @@
+## [100.1.3](https://github.com/dhis2/login-app/compare/v100.1.2...v100.1.3) (2024-07-24)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (main) ([bdfbfef](https://github.com/dhis2/login-app/commit/bdfbfef508a023ad0874556548d533eee728cfd0))
+
 ## [100.1.2](https://github.com/dhis2/login-app/compare/v100.1.1...v100.1.2) (2024-07-16)
 
 
