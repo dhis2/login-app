@@ -9,10 +9,19 @@ const LOGIN_STATUSES = {
     success: 'SUCCESS',
     secondAttempt2fa: 'second_attempt_incorrect_2fa', // this is internal logic to app
     success2fa: 'SUCCESS_2fa',
+    passwordExpired: 'PASSWORD_EXPIRED',
+    accountDisabled: 'ACCOUNT_DISABLED',
+    accountLocked: 'ACCOUNT_LOCKED',
+    accountExpired: 'ACCOUNT_EXPIRED',
 }
 const invalidTWOFA = [
     LOGIN_STATUSES.incorrect2fa,
     LOGIN_STATUSES.secondAttempt2fa,
+]
+const inaccessibleAccountStatuses = [
+    LOGIN_STATUSES.accountDisabled,
+    LOGIN_STATUSES.accountLocked,
+    LOGIN_STATUSES.accountExpired,
 ]
 
 const loginMutation = {
@@ -85,5 +94,10 @@ export const useLogin = () => {
             loginStatus === LOGIN_STATUSES.success2fa,
         twoFAIncorrect: loginStatus === LOGIN_STATUSES.secondAttempt2fa,
         twoFANotEnabled: loginStatus === LOGIN_STATUSES.notEnabled2fa,
+        passwordExpired: loginStatus === LOGIN_STATUSES.passwordExpired,
+        accountInaccessible: inaccessibleAccountStatuses.includes(loginStatus),
+        unknownStatus:
+            loginStatus !== null &&
+            !Object.values(LOGIN_STATUSES).includes(loginStatus),
     }
 }

@@ -1,8 +1,10 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
+import { MemoryRouter } from 'react-router-dom'
 import { checkIsLoginFormValid } from '../../helpers/validators.js'
 import { useLogin } from '../../hooks/useLogin.js'
+import { useLoginConfig } from '../../providers/use-login-config.js'
 import { LoginFormContainer } from '../login.js'
 
 jest.mock('../../helpers/validators.js', () => ({
@@ -17,6 +19,15 @@ jest.mock('../../hooks/useLogin.js', () => ({
         login: mockLogin,
         cancelTwoFA: () => {},
         twoFAVerificationRequired: false,
+        passwordExpired: false,
+        accountInaccessible: false,
+    })),
+}))
+
+jest.mock('../../providers/use-login-config.js', () => ({
+    useLoginConfig: jest.fn(() => ({
+        allowAccountRecovery: false,
+        emailConfigured: false,
     })),
 }))
 
@@ -261,5 +272,102 @@ describe('LoginForm', () => {
 
         expect(screen.getByText('LOGIN LINKS')).toBeInTheDocument()
         expect(screen.getByText('OIDC LOGIN OPTIONS')).toBeInTheDocument()
+    })
+
+    it('Shows link to password-reset page if passwordExpired and allowAccountRecovery and emailConfigured are true', () => {
+        useLogin.mockReturnValue({
+            login: () => {},
+            passwordExpired: true,
+            cancelTwoFA: () => {},
+        })
+        useLoginConfig.mockReturnValueOnce({
+            allowAccountRecovery: true,
+            emailConfigured: true,
+        })
+        // needs MemoryRouter because link is from react-router-dom
+        render(
+            <MemoryRouter>
+                <LoginFormContainer />
+            </MemoryRouter>
+        )
+
+        expect(screen.getByText('Password expired')).toBeInTheDocument()
+        expect(
+            screen.getByRole('link', {
+                name: 'You can reset your from the password reset page.',
+            })
+        ).toHaveAttribute('href', '/reset-password')
+    })
+
+    it('Shows password expired but no link to password-reset page if passwordExpired and allowAccountRecovery is false', () => {
+        useLogin.mockReturnValue({
+            login: () => {},
+            passwordExpired: true,
+            cancelTwoFA: () => {},
+        })
+        useLoginConfig.mockReturnValueOnce({
+            allowAccountRecovery: false,
+            emailConfigured: true,
+        })
+
+        render(<LoginFormContainer />)
+
+        expect(screen.getByText('Password expired')).toBeInTheDocument()
+        expect(
+            screen.queryByRole('link', {
+                name: 'You can reset your from the password reset page.',
+            })
+        ).not.toBeInTheDocument()
+    })
+
+    it('Shows password expired but no link to password-reset page if passwordExpired and emailConfigured is false', () => {
+        useLogin.mockReturnValue({
+            login: () => {},
+            passwordExpired: true,
+            cancelTwoFA: () => {},
+        })
+        useLoginConfig.mockReturnValueOnce({
+            allowAccountRecovery: true,
+            emailConfigured: false,
+        })
+
+        render(<LoginFormContainer />)
+
+        expect(screen.getByText('Password expired')).toBeInTheDocument()
+        expect(
+            screen.queryByRole('link', {
+                name: 'You can reset your from the password reset page.',
+            })
+        ).not.toBeInTheDocument()
+    })
+
+    it('Shows Account not accessible if accountInaccessible is true', () => {
+        useLogin.mockReturnValue({
+            login: () => {},
+            accountInaccessible: true,
+            cancelTwoFA: () => {},
+        })
+
+        render(<LoginFormContainer />)
+
+        expect(screen.getByText('Account not accessible')).toBeInTheDocument()
+        expect(
+            screen.getByText('Contact your system administrator.')
+        ).toBeInTheDocument()
+    })
+
+    it('Shows Something went wrong if unknownStatus is true', () => {
+        useLogin.mockReturnValue({
+            login: () => {},
+            unknownStatus: true,
+            cancelTwoFA: () => {},
+        })
+
+        render(<LoginFormContainer />)
+
+        expect(screen.getByText('Something went wrong')).toBeInTheDocument()
+        expect(
+            screen.getByText('Contact your system administrator.')
+        ).toBeInTheDocument()
     })
 })

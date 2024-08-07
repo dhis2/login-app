@@ -3,6 +3,7 @@ import { ReactFinalForm, InputFieldFF, Button } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React, { useState, useRef } from 'react'
 import { useForm } from 'react-final-form'
+import { Link } from 'react-router-dom'
 import {
     ApplicationNotification,
     FormContainer,
@@ -23,6 +24,105 @@ export default function LoginPage() {
             <ApplicationNotification />
         </>
     )
+}
+
+const LoginErrors = ({
+    lngs,
+    error,
+    twoFAIncorrect,
+    passwordExpired,
+    passwordResetEnabled,
+    accountInaccessible,
+    unknownStatus,
+}) => {
+    if (error) {
+        return (
+            <FormNotice
+                title={
+                    !error?.details?.httpStatusCode ||
+                    error.details.httpStatusCode >= 500
+                        ? i18n.t('Something went wrong', {
+                              lngs,
+                          })
+                        : i18n.t('Incorrect username or password', {
+                              lngs,
+                          })
+                }
+                error
+            >
+                {(!error.details?.httpStatusCode ||
+                    error.details.httpStatusCode >= 500) && (
+                    <span>{error?.message}</span>
+                )}
+            </FormNotice>
+        )
+    }
+
+    if (twoFAIncorrect) {
+        return (
+            <FormNotice
+                title={i18n.t('Incorrect authentication code', {
+                    lngs,
+                })}
+                error
+            />
+        )
+    }
+    if (passwordExpired) {
+        return (
+            <FormNotice
+                title={i18n.t('Password expired', {
+                    lngs,
+                })}
+                error
+            >
+                {passwordResetEnabled ? (
+                    <Link to="/reset-password">
+                        {i18n.t(
+                            'You can reset your from the password reset page.'
+                        )}
+                    </Link>
+                ) : (
+                    i18n.t('Contact your system administrator.')
+                )}
+            </FormNotice>
+        )
+    }
+    if (accountInaccessible) {
+        return (
+            <FormNotice
+                title={i18n.t('Account not accessible', {
+                    lngs,
+                })}
+                error
+            >
+                {i18n.t('Contact your system administrator.')}
+            </FormNotice>
+        )
+    }
+    if (unknownStatus) {
+        return (
+            <FormNotice
+                title={i18n.t('Something went wrong', {
+                    lngs,
+                })}
+                error
+            >
+                {i18n.t('Contact your system administrator.')}
+            </FormNotice>
+        )
+    }
+    return null
+}
+
+LoginErrors.propTypes = {
+    accountInaccessible: PropTypes.bool,
+    error: PropTypes.object,
+    lngs: PropTypes.arrayOf(PropTypes.string),
+    passwordExpired: PropTypes.bool,
+    passwordResetEnabled: PropTypes.bool,
+    twoFAIncorrect: PropTypes.bool,
+    unknownStatus: PropTypes.bool,
 }
 
 const InnerLoginForm = ({
@@ -119,11 +219,11 @@ InnerLoginForm.defaultProps = {
 InnerLoginForm.propTypes = {
     cancelTwoFA: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-    twoFAVerificationRequired: PropTypes.bool.isRequired,
     formSubmitted: PropTypes.bool,
     lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
     setFormUserName: PropTypes.func,
+    twoFAVerificationRequired: PropTypes.bool,
 }
 
 const LoginForm = ({
@@ -131,6 +231,10 @@ const LoginForm = ({
     cancelTwoFA,
     twoFAVerificationRequired,
     twoFAIncorrect,
+    accountInaccessible,
+    passwordExpired,
+    passwordResetEnabled,
+    unknownStatus,
     error,
     loading,
     setFormUserName,
@@ -156,34 +260,16 @@ const LoginForm = ({
 
     return (
         <>
-            {error && (
-                <FormNotice
-                    title={
-                        !error?.details?.httpStatusCode ||
-                        error.details.httpStatusCode >= 500
-                            ? i18n.t('Something went wrong', {
-                                  lngs,
-                              })
-                            : i18n.t('Incorrect username or password', {
-                                  lngs,
-                              })
-                    }
-                    error
-                >
-                    {(!error?.details?.httpStatusCode ||
-                        error.details.httpStatusCode >= 500) && (
-                        <span>{error?.message}</span>
-                    )}
-                </FormNotice>
-            )}
-            {twoFAIncorrect && (
-                <FormNotice
-                    title={i18n.t('Incorrect authentication code', {
-                        lngs,
-                    })}
-                    error
-                />
-            )}
+            <LoginErrors
+                lngs={lngs}
+                error={error}
+                twoFAIncorrect={twoFAIncorrect}
+                passwordExpired={passwordExpired}
+                passwordResetEnabled={passwordResetEnabled}
+                accountInaccessible={accountInaccessible}
+                unknownStatus={unknownStatus}
+            />
+
             <ReactFinalForm.Form onSubmit={handleLogin}>
                 {({ handleSubmit }) => (
                     <InnerLoginForm
@@ -207,14 +293,18 @@ LoginForm.defaultProps = {
 }
 
 LoginForm.propTypes = {
+    accountInaccessible: PropTypes.bool,
     cancelTwoFA: PropTypes.func,
     error: PropTypes.object,
     lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
     login: PropTypes.func,
+    passwordExpired: PropTypes.bool,
+    passwordResetEnabled: PropTypes.bool,
     setFormUserName: PropTypes.func,
     twoFAIncorrect: PropTypes.bool,
     twoFAVerificationRequired: PropTypes.bool,
+    unknownStatus: PropTypes.bool,
 }
 
 // this is set up this way to isolate styling from login form logic
@@ -224,11 +314,14 @@ export const LoginFormContainer = () => {
         cancelTwoFA,
         twoFAVerificationRequired,
         twoFAIncorrect,
+        accountInaccessible,
+        passwordExpired,
+        unknownStatus,
         error,
         loading,
     } = useLogin()
     const [formUserName, setFormUserName] = useState('')
-    const { lngs } = useLoginConfig()
+    const { lngs, allowAccountRecovery, emailConfigured } = useLoginConfig()
 
     return (
         <FormContainer
@@ -255,6 +348,10 @@ export const LoginFormContainer = () => {
                 cancelTwoFA={cancelTwoFA}
                 twoFAVerificationRequired={twoFAVerificationRequired}
                 twoFAIncorrect={twoFAIncorrect}
+                accountInaccessible={accountInaccessible}
+                passwordExpired={passwordExpired}
+                passwordResetEnabled={allowAccountRecovery && emailConfigured}
+                unknownStatus={unknownStatus}
                 error={error}
                 loading={loading}
             />

@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2024-03-19T14:31:01.861Z\n"
-"PO-Revision-Date: 2024-03-19T14:31:01.861Z\n"
+"POT-Creation-Date: 2024-07-23T11:23:34.551Z\n"
+"PO-Revision-Date: 2024-07-23T11:23:34.551Z\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr "Please confirm that you are not a robot by checking the checkbox."
@@ -98,12 +98,6 @@ msgstr "Log in with Google"
 msgid "Log in with Microsoft"
 msgstr "Log in with Microsoft"
 
-msgid "Creating account not available"
-msgstr "Creating account not available"
-
-msgid "Contact a system administrator to create an account."
-msgstr "Contact a system administrator to create an account."
-
 msgid "I agree"
 msgstr "I agree"
 
@@ -139,6 +133,27 @@ msgstr "Download default template"
 msgid "Download sidebar template"
 msgstr "Download sidebar template"
 
+msgid "Something went wrong"
+msgstr "Something went wrong"
+
+msgid "Incorrect username or password"
+msgstr "Incorrect username or password"
+
+msgid "Incorrect authentication code"
+msgstr "Incorrect authentication code"
+
+msgid "Password expired"
+msgstr "Password expired"
+
+msgid "You can reset your from the password reset page."
+msgstr "You can reset your from the password reset page."
+
+msgid "Contact your system administrator."
+msgstr "Contact your system administrator."
+
+msgid "Account not accessible"
+msgstr "Account not accessible"
+
 msgid "Verify and log in"
 msgstr "Verify and log in"
 
@@ -151,25 +166,8 @@ msgstr "Verifying..."
 msgid "Logging in..."
 msgstr "Logging in..."
 
-msgid "Verifying..."
-msgstr "Verifying..."
-
-msgid "Logging in..."
-msgstr "Logging in..."
-
 msgid "Authentication code"
 msgstr "Authentication code"
-
-msgid "Something went wrong"
-msgstr "Something went wrong"
-
-msgid "Incorrect username or password"
-msgstr "Incorrect username or password"
-
-msgid "Incorrect authentication code"
-msgstr "Incorrect authentication code"
-msgid "Incorrect authentication code"
-msgstr "Incorrect authentication code"
 
 msgid "Two-factor authentication"
 msgstr "Two-factor authentication"
@@ -183,8 +181,6 @@ msgstr "Username or email"
 msgid "Sending..."
 msgstr "Sending..."
 
-msgid "Send password reset request"
-msgstr "Send password reset request"
 msgid "Send password reset request"
 msgstr "Send password reset request"
 
