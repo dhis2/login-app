@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-05-22T10:53:32.505Z\n"
+"POT-Creation-Date: 2024-07-23T11:23:34.551Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
 "Last-Translator: Jiří Podhorecký, 2024\n"
 "Language-Team: Czech (https://app.transifex.com/hisp-uio/teams/100509/cs/)\n"
@@ -16,10 +16,10 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
-msgstr ""
+msgstr "Zaškrtnutím políčka potvrďte, že nejste robot."
 
 msgid "Log in details"
-msgstr ""
+msgstr "Přihlašovací údaje"
 
 msgid "Username"
 msgstr "Uživatelské jméno"
@@ -30,9 +30,11 @@ msgstr "Heslo"
 msgid ""
 "Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
 msgstr ""
+"Minimálně 8 znaků, alespoň 1 velké písmeno, 1 malé písmeno, 1 číslo, 1 "
+"symbol."
 
 msgid "Personal details"
-msgstr ""
+msgstr "Osobní údaje"
 
 msgid "First name"
 msgstr "Jméno"
@@ -47,37 +49,37 @@ msgid "Phone number"
 msgstr "Telefonní číslo"
 
 msgid "Creating..."
-msgstr ""
+msgstr "Vytváření..."
 
 msgid "Create account"
-msgstr ""
+msgstr "Vytvořit účet"
 
 msgid "Cancel"
 msgstr "Zrušit"
 
 msgid "Enter your details below to create a {{- applicationName}} account."
-msgstr ""
+msgstr "Zadejte své údaje níže a vytvořte si účet {{- applicationName}}."
 
 msgid "Already have an account?"
-msgstr ""
+msgstr "Už máte účet?"
 
 msgid "Log in."
-msgstr ""
+msgstr "Přihlaste se."
 
 msgid "Something went wrong, and we could not register your account"
-msgstr ""
+msgstr "Něco se pokazilo a váš účet se nám nepodařilo zaregistrovat."
 
 msgid "Account created successfully"
-msgstr ""
+msgstr "Účet byl úspěšně vytvořen"
 
 msgid "You can use your username and password to log in."
-msgstr ""
+msgstr "K přihlášení můžete použít své uživatelské jméno a heslo."
 
 msgid "Back to log in page"
-msgstr ""
+msgstr "Zpět na přihlašovací stránku"
 
 msgid "Powered by DHIS2"
-msgstr ""
+msgstr "Běží na DHIS2"
 
 msgid "Language"
 msgstr "Jazyk"
@@ -86,108 +88,128 @@ msgid "Forgot password?"
 msgstr "Zapomenuté heslo?"
 
 msgid "Don't have an account?"
-msgstr ""
+msgstr "Nemáte účet?"
 
 msgid "Create an account"
 msgstr "Vytvořit účet"
 
 msgid "The requested page is not configured for your system"
-msgstr ""
+msgstr "Požadovaná stránka není nakonfigurována pro váš systém."
 
 msgid "Creating account not available"
-msgstr ""
+msgstr "Vytvoření účtu není k dispozici"
 
 msgid "Contact a system administrator to create an account."
-msgstr ""
+msgstr "Pro vytvoření účtu se obraťte na správce systému."
 
 msgid "Log in with Google"
-msgstr ""
+msgstr "Přihlášení pomocí služby Google"
 
 msgid "Log in with Microsoft"
-msgstr ""
+msgstr "Přihlášení pomocí služby Microsoft"
 
 msgid "I agree"
-msgstr ""
+msgstr "Souhlasím"
 
 msgid "This field is required"
 msgstr "Toto pole je povinné"
 
 msgid "Cannot process registration"
-msgstr ""
+msgstr "Nelze zpracovat registraci"
 
 msgid ""
 "Information required to process your registration is missing. Please contact"
 " your system administrator."
 msgstr ""
+"Chybí informace potřebné ke zpracování vaší registrace. Obraťte se na "
+"správce systému."
 
 msgid "HTML Template Download"
-msgstr ""
+msgstr "HTML šablona ke stažení"
 
 msgid ""
 "You can download the templates used by the login app here. These can be "
 "modified and reloaded as custom HTML in the settings app."
 msgstr ""
+"Šablony používané v přihlašovací aplikaci si můžete stáhnout zde. Ty lze "
+"upravit a znovu načíst jako vlastní HTML v aplikaci nastavení."
 
 msgid "Refer to the documentation for more details."
-msgstr ""
+msgstr "Další podrobnosti naleznete v dokumentaci."
 
 msgid "Download default template"
-msgstr ""
+msgstr "Stáhnout výchozí šablonu"
 
 msgid "Download sidebar template"
-msgstr ""
-
-msgid "Verify and log in"
-msgstr ""
-
-msgid "Log in"
-msgstr ""
-
-msgid "Verifying..."
-msgstr ""
-
-msgid "Logging in..."
-msgstr ""
-
-msgid "Authentication code"
-msgstr ""
+msgstr "Stáhnout šablonu postranního panelu"
 
 msgid "Something went wrong"
 msgstr "Něco se pokazilo"
 
 msgid "Incorrect username or password"
-msgstr ""
+msgstr "Nesprávné uživatelské jméno nebo heslo"
 
 msgid "Incorrect authentication code"
+msgstr "Nesprávný ověřovací kód"
+
+msgid "Password expired"
 msgstr ""
+
+msgid "You can reset your from the password reset page."
+msgstr ""
+
+msgid "Contact your system administrator."
+msgstr ""
+
+msgid "Account not accessible"
+msgstr ""
+
+msgid "Verify and log in"
+msgstr "Ověření a přihlášení"
+
+msgid "Log in"
+msgstr "Přihlášení"
+
+msgid "Verifying..."
+msgstr "Ověřování..."
+
+msgid "Logging in..."
+msgstr "Přihlášování..."
+
+msgid "Authentication code"
+msgstr "Ověřovací kód"
 
 msgid "Two-factor authentication"
-msgstr ""
+msgstr "Dvoufaktorové ověřování"
 
 msgid "Enter the code from your two-factor authentication app to log in."
-msgstr ""
+msgstr "Zadejte kód z aplikace dvoufaktorového ověřování a přihlaste se."
 
 msgid "Username or email"
-msgstr ""
+msgstr "Uživatelské jméno nebo e-mail"
 
 msgid "Sending..."
-msgstr ""
+msgstr "Odeslání..."
 
 msgid "Send password reset request"
-msgstr ""
+msgstr "Odeslání žádosti o resetování hesla"
 
 msgid "Password reset failed"
-msgstr ""
+msgstr "Obnovení hesla se nezdařilo"
 
 msgid ""
 "Something went wrong. Please try again later, and contact your system "
 "administrator if the problem persists."
 msgstr ""
+"Něco se pokazilo. Zkuste to prosím později, a pokud problém přetrvává, "
+"kontaktujte správce systému."
 
 msgid ""
 "If the provided username or email is registered in the system, you will soon"
 " receive an email with a password reset link."
 msgstr ""
+"Pokud je zadané uživatelské jméno nebo e-mail zaregistrováno v systému, brzy"
+" obdržíte e-mail s odkazem na obnovení hesla."
 
 msgid "Reset password"
 msgstr "Obnovit heslo"
@@ -196,31 +218,37 @@ msgid ""
 "Enter your username below, a link to reset your password will be sent to "
 "your registered e-mail."
 msgstr ""
+"Níže zadejte své uživatelské jméno a na váš registrovaný e-mail vám bude "
+"zaslán odkaz pro obnovení hesla."
 
 msgid "Saving..."
 msgstr "Ukládání..."
 
 msgid "Save new password"
-msgstr ""
+msgstr "Uložit nové heslo"
 
 msgid "New password not saved"
-msgstr ""
+msgstr "Nové heslo není uloženo"
 
 msgid ""
 "There was a problem saving your password. Try again or contact your system "
 "administrator."
 msgstr ""
+"Při ukládání hesla došlo k problému. Zkuste to znovu nebo se obraťte na "
+"správce systému."
 
 msgid "New password saved. You can use it to log in to your account."
-msgstr ""
+msgstr "Nové heslo uloženo. Můžete se jím přihlásit ke svému účtu."
 
 msgid "Choose new password"
-msgstr ""
+msgstr "Vyberte nové heslo"
 
 msgid "Enter the new password for your account below"
-msgstr ""
+msgstr "Níže zadejte nové heslo k účtu"
 
 msgid ""
 "You should shortly be redirected. If you are not redirected, please click "
 "redirect button."
 msgstr ""
+"Zanedlouho byste měli být přesměrováni. Pokud nejste přesměrováni, klikněte "
+"na tlačítko přesměrování."
