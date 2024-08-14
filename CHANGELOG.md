@@ -1,3 +1,10 @@
+## [100.1.6](https://github.com/dhis2/login-app/compare/v100.1.5...v100.1.6) (2024-08-14)
+
+
+### Bug Fixes
+
+* correct for unnecessary horizontal side bar [DHIS2-17138] ([#40](https://github.com/dhis2/login-app/issues/40)) ([fedeef4](https://github.com/dhis2/login-app/commit/fedeef4c8c14f5fd104c531fb4bd215eae80b4b6))
+
 ## [100.1.5](https://github.com/dhis2/login-app/compare/v100.1.4...v100.1.5) (2024-08-14)
 
 
