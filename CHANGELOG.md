@@ -1,3 +1,11 @@
+## [100.1.5](https://github.com/dhis2/login-app/compare/v100.1.4...v100.1.5) (2024-08-14)
+
+
+### Bug Fixes
+
+* trigger updated release logic ([bcb7a4b](https://github.com/dhis2/login-app/commit/bcb7a4b82f2967f57b934ccc2cf34aeb9de571fc))
+* **translations:** sync translations from transifex (main) ([6b16eeb](https://github.com/dhis2/login-app/commit/6b16eeb63bd7f44afc96061fd8c477e886458af7))
+
 ## [100.1.4](https://github.com/dhis2/login-app/compare/v100.1.3...v100.1.4) (2024-08-07)
 
 
