@@ -19,7 +19,8 @@ export const standard = `
 		    display: flex;
 		    flex-direction: column;
 		    height: 100vh;
-		    width: 100vw; 		    
+		    width: 100vw;
+		    max-width: 100%;
 		}
         .heading {
             display: flex;
