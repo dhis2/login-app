@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-05-22T10:53:32.505Z\n"
+"POT-Creation-Date: 2024-07-23T11:23:34.551Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
 "Last-Translator: easylin <lin_xd@126.com>, 2024\n"
 "Language-Team: Chinese (https://app.transifex.com/hisp-uio/teams/100509/zh/)\n"
@@ -140,6 +140,27 @@ msgstr "下载默认模板"
 msgid "Download sidebar template"
 msgstr "下载侧边栏模板"
 
+msgid "Something went wrong"
+msgstr "出问题了"
+
+msgid "Incorrect username or password"
+msgstr "用户名或密码不正确"
+
+msgid "Incorrect authentication code"
+msgstr "验证码不正确"
+
+msgid "Password expired"
+msgstr "密码已过期"
+
+msgid "You can reset your from the password reset page."
+msgstr "您可以从密码重置页面重置密码。"
+
+msgid "Contact your system administrator."
+msgstr "请联系您的系统管理员。"
+
+msgid "Account not accessible"
+msgstr "无法访问帐户"
+
 msgid "Verify and log in"
 msgstr "验证并登录"
 
@@ -154,15 +175,6 @@ msgstr "登录..."
 
 msgid "Authentication code"
 msgstr "验证码"
-
-msgid "Something went wrong"
-msgstr "出问题了"
-
-msgid "Incorrect username or password"
-msgstr "用户名或密码不正确"
-
-msgid "Incorrect authentication code"
-msgstr "验证码不正确"
 
 msgid "Two-factor authentication"
 msgstr "双因素认证"
