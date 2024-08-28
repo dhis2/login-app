@@ -79,7 +79,7 @@ const LoginErrors = ({
                 {passwordResetEnabled ? (
                     <Link to="/reset-password">
                         {i18n.t(
-                            'You can reset your from the password reset page.'
+                            'You can reset your password from the password reset page.'
                         )}
                     </Link>
                 ) : (
