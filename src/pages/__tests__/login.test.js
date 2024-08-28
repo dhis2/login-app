@@ -294,7 +294,7 @@ describe('LoginForm', () => {
         expect(screen.getByText('Password expired')).toBeInTheDocument()
         expect(
             screen.getByRole('link', {
-                name: 'You can reset your from the password reset page.',
+                name: 'You can reset your password from the password reset page.',
             })
         ).toHaveAttribute('href', '/reset-password')
     })
@@ -315,7 +315,7 @@ describe('LoginForm', () => {
         expect(screen.getByText('Password expired')).toBeInTheDocument()
         expect(
             screen.queryByRole('link', {
-                name: 'You can reset your from the password reset page.',
+                name: 'You can reset your password from the password reset page.',
             })
         ).not.toBeInTheDocument()
     })
@@ -336,7 +336,7 @@ describe('LoginForm', () => {
         expect(screen.getByText('Password expired')).toBeInTheDocument()
         expect(
             screen.queryByRole('link', {
-                name: 'You can reset your from the password reset page.',
+                name: 'You can reset your password from the password reset page.',
             })
         ).not.toBeInTheDocument()
     })
