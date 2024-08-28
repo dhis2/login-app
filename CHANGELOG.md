@@ -1,3 +1,10 @@
+## [100.1.9](https://github.com/dhis2/login-app/compare/v100.1.8...v100.1.9) (2024-08-28)
+
+
+### Bug Fixes
+
+* password reset error text [DHIS2-17960] ([#45](https://github.com/dhis2/login-app/issues/45)) ([ca03b25](https://github.com/dhis2/login-app/commit/ca03b25fc56cfdcf46e8803a2a848700b51b4fcb))
+
 ## [100.1.8](https://github.com/dhis2/login-app/compare/v100.1.7...v100.1.8) (2024-08-25)
 
 
