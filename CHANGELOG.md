@@ -1,3 +1,10 @@
+## [100.1.12](https://github.com/dhis2/login-app/compare/v100.1.11...v100.1.12) (2024-10-02)
+
+
+### Bug Fixes
+
+* fix ref in workflow concurrency ([e2333fe](https://github.com/dhis2/login-app/commit/e2333fe337e85e72a3ff3e3766be81ff111e4a19))
+
 ## [100.1.11](https://github.com/dhis2/login-app/compare/v100.1.10...v100.1.11) (2024-10-02)
 
 
