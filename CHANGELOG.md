@@ -1,3 +1,10 @@
+## [100.1.11](https://github.com/dhis2/login-app/compare/v100.1.10...v100.1.11) (2024-10-02)
+
+
+### Bug Fixes
+
+* revert test repo settings update ([2ed3f7a](https://github.com/dhis2/login-app/commit/2ed3f7a4573f2cfd3e4dd6058b4e6bb44048b54e))
+
 ## [100.1.10](https://github.com/dhis2/login-app/compare/v100.1.9...v100.1.10) (2024-10-02)
 
 
