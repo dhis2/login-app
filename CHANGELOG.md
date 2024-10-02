@@ -1,3 +1,11 @@
+## [100.1.10](https://github.com/dhis2/login-app/compare/v100.1.9...v100.1.10) (2024-10-02)
+
+
+### Bug Fixes
+
+* handle undefined apiVersion from api/loginConfig ([LIBS-683] [#49](https://github.com/dhis2/login-app/issues/49)) ([c30055a](https://github.com/dhis2/login-app/commit/c30055a94a60191729017a5dad5fc70bed6aa3d4))
+* test repo settings update ([d1cbe83](https://github.com/dhis2/login-app/commit/d1cbe83f896f5d6a11c09c84d7077428a4af9215))
+
 ## [100.1.9](https://github.com/dhis2/login-app/compare/v100.1.8...v100.1.9) (2024-08-28)
 
 
