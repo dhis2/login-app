@@ -1,14 +1,14 @@
 # 
 # Translators:
 # Charel van den Elsen, 2024
-# Rica Zamora Duchateau, 2024
+# Rica, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-05-22T10:53:32.505Z\n"
+"POT-Creation-Date: 2024-08-28T07:47:39.528Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Rica Zamora Duchateau, 2024\n"
+"Last-Translator: Rica, 2024\n"
 "Language-Team: Dutch (https://app.transifex.com/hisp-uio/teams/100509/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,9 +18,11 @@ msgstr ""
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr ""
+"Bevestig a.u.b. dat je niet een robot bent door het selectievakje aan te "
+"vinken."
 
 msgid "Log in details"
-msgstr ""
+msgstr "Inloggegevens"
 
 msgid "Username"
 msgstr "Gebruikersnaam"
@@ -31,15 +33,17 @@ msgstr "Wachtwoord"
 msgid ""
 "Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
 msgstr ""
+"Minimum 8 karakters, ten minsten 1 hoofdletter, 1 kleine letter, 1 nummer, 1"
+" symbool"
 
 msgid "Personal details"
-msgstr ""
+msgstr "Persoonlijke gegevens"
 
 msgid "First name"
 msgstr "Voornaam"
 
 msgid "Last name"
-msgstr ""
+msgstr "Achternaam"
 
 msgid "Email"
 msgstr "Emailadres"
@@ -48,180 +52,215 @@ msgid "Phone number"
 msgstr "Telefoonnummer"
 
 msgid "Creating..."
-msgstr ""
+msgstr "Aan het aanmaken..."
 
 msgid "Create account"
-msgstr ""
+msgstr "Account aanmaken"
 
 msgid "Cancel"
 msgstr "Annuleren"
 
 msgid "Enter your details below to create a {{- applicationName}} account."
 msgstr ""
+"Voeg je gegevens onderaan toe om een {{- applicationName}} account aan te "
+"maken."
 
 msgid "Already have an account?"
-msgstr ""
+msgstr "Heb je al een account?"
 
 msgid "Log in."
-msgstr ""
+msgstr "Inloggen."
 
 msgid "Something went wrong, and we could not register your account"
-msgstr ""
+msgstr "Er is iets foutgelopen, en we konden jouw account niet registreren."
 
 msgid "Account created successfully"
-msgstr ""
+msgstr "Account succesvol aangemaakt"
 
 msgid "You can use your username and password to log in."
-msgstr ""
+msgstr "Je kan jouw gebruikersnaam en wachtwoord gebruiken om in te loggen."
 
 msgid "Back to log in page"
-msgstr ""
+msgstr "Terug naar inlogpagina"
 
 msgid "Powered by DHIS2"
-msgstr ""
+msgstr "Aangedreven door DHIS2"
 
 msgid "Language"
 msgstr "Taal"
 
 msgid "Forgot password?"
-msgstr ""
+msgstr "Wachtwoord vergeten?"
 
 msgid "Don't have an account?"
-msgstr ""
+msgstr "Heb je geen account?"
 
 msgid "Create an account"
-msgstr ""
+msgstr "Account aanmaken"
 
 msgid "The requested page is not configured for your system"
-msgstr ""
+msgstr "De gevraagde pagina is niet geconfigureerd voor jouw systeem"
 
 msgid "Creating account not available"
-msgstr ""
+msgstr "Account aanmaken niet beschikbaar"
 
 msgid "Contact a system administrator to create an account."
-msgstr ""
+msgstr "Contacteer een systeembeheerder om een account aan te maken."
 
 msgid "Log in with Google"
-msgstr ""
+msgstr "InIoggen met Google"
 
 msgid "Log in with Microsoft"
-msgstr ""
+msgstr "Inloggen met Microsoft"
 
 msgid "I agree"
-msgstr ""
+msgstr "Ik ga akkoord"
 
 msgid "This field is required"
 msgstr "Dit veld is verplicht."
 
 msgid "Cannot process registration"
-msgstr ""
+msgstr "Kan inschrijving niet verwerken"
 
 msgid ""
 "Information required to process your registration is missing. Please contact"
 " your system administrator."
 msgstr ""
+"Er ontbreekt informatie vereist om jouw inschrijving te verwerken. "
+"Contacteer a.u.b. jouw systeembeheerder."
 
 msgid "HTML Template Download"
-msgstr ""
+msgstr "HTML-sjabloondownload"
 
 msgid ""
 "You can download the templates used by the login app here. These can be "
 "modified and reloaded as custom HTML in the settings app."
 msgstr ""
+"Je kan de sjablonen die door de inlog-app gebruikt worden hier downloaden. "
+"Deze kunnen gewijzigd en herladen worden als aangepaste HTML in de "
+"installingsapp. "
 
 msgid "Refer to the documentation for more details."
-msgstr ""
+msgstr "Verwijs naar de documentatie voor meer details."
 
 msgid "Download default template"
-msgstr ""
+msgstr "Download standaardsjabloon"
 
 msgid "Download sidebar template"
-msgstr ""
-
-msgid "Verify and log in"
-msgstr ""
-
-msgid "Log in"
-msgstr ""
-
-msgid "Verifying..."
-msgstr ""
-
-msgid "Logging in..."
-msgstr ""
-
-msgid "Authentication code"
-msgstr ""
+msgstr "Download sjabloon voor zijbalk"
 
 msgid "Something went wrong"
 msgstr "Er is iets fout gegaan"
 
 msgid "Incorrect username or password"
-msgstr ""
+msgstr "Foute gebruikersnaam of wachtwoord"
 
 msgid "Incorrect authentication code"
+msgstr "Foute authenticatiecode"
+
+msgid "Password expired"
+msgstr "Wachtwoord vervallen"
+
+msgid "You can reset your password from the password reset page."
 msgstr ""
+"Je kan jouw wachtwoord opnieuw installen vanuit het pagina voor het opnieuw "
+"instellen van het wachtwoord."
+
+msgid "Contact your system administrator."
+msgstr "Contacteer jouw systeembeheerder"
+
+msgid "Account not accessible"
+msgstr "Account niet bereikbaar"
+
+msgid "Verify and log in"
+msgstr "Verifiëren en inloggen"
+
+msgid "Log in"
+msgstr "Inloggen"
+
+msgid "Verifying..."
+msgstr "Aan het verifiëren..."
+
+msgid "Logging in..."
+msgstr "Aan het inloggen..."
+
+msgid "Authentication code"
+msgstr "Authenticatiecode"
 
 msgid "Two-factor authentication"
-msgstr ""
+msgstr "Twee-factorauthenticatie"
 
 msgid "Enter the code from your two-factor authentication app to log in."
 msgstr ""
+"Voeg de code van jouw twee-factorauthenticatie-app toe om in te loggen."
 
 msgid "Username or email"
-msgstr ""
+msgstr "Gebruikersnaam of email"
 
 msgid "Sending..."
-msgstr ""
+msgstr "Aan het versturen..."
 
 msgid "Send password reset request"
-msgstr ""
+msgstr "Verstuur verzoek om wachtwoord opnieuw in te stellen"
 
 msgid "Password reset failed"
-msgstr ""
+msgstr "Wachtwoord opnieuw instellen mislukt"
 
 msgid ""
 "Something went wrong. Please try again later, and contact your system "
 "administrator if the problem persists."
 msgstr ""
+"Er is iets fout gelopen. Probeer later a.u.b. opnieuw, en contacteer jouw "
+"systeembeheerder als het probleem er blijft."
 
 msgid ""
 "If the provided username or email is registered in the system, you will soon"
 " receive an email with a password reset link."
 msgstr ""
+"Als de ingegeven gebruikersnaam of wachtwoord in het systeem is "
+"geregistreerd, zal je binnenkort een email ontvangen met een link om je "
+"wachtwoord opnieuw in te stellen."
 
 msgid "Reset password"
-msgstr ""
+msgstr "Wachtwoord opnieuw instellen"
 
 msgid ""
 "Enter your username below, a link to reset your password will be sent to "
 "your registered e-mail."
 msgstr ""
+"Voeg je gebruikersnaam onderaan in, een link om je wachtwoord opnieuw in te "
+"stellen zal naar jouw geregisteerde email gestuurd worden."
 
 msgid "Saving..."
 msgstr "Opslaan..."
 
 msgid "Save new password"
-msgstr ""
+msgstr "Sla nieuw wachtwoord op"
 
 msgid "New password not saved"
-msgstr ""
+msgstr "Nieuw wachtwoord niet opgeslagen"
 
 msgid ""
 "There was a problem saving your password. Try again or contact your system "
 "administrator."
 msgstr ""
+"Er was een probleem bij het opslaan van jouw wachtwoord. Probeer opnieuw of "
+"contacteer jouw systeembeheerder."
 
 msgid "New password saved. You can use it to log in to your account."
 msgstr ""
+"Nieuw paswoord opgeslagen. Je kan het gebruiken om in te loggen in jouw "
+"account."
 
 msgid "Choose new password"
-msgstr ""
+msgstr "Kies een nieuw wachtwoord"
 
 msgid "Enter the new password for your account below"
-msgstr ""
+msgstr "Voeg onderaan het nieuwe wachtwoord voor jouw account toe"
 
 msgid ""
 "You should shortly be redirected. If you are not redirected, please click "
 "redirect button."
 msgstr ""
+"Je zal binnekort worden omgeleid. Als je niet omgeleid wordt, klik a.u.b. op"
+" de omleidknop."
