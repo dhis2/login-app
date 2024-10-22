@@ -2,7 +2,7 @@ import { useDataQuery, useDataEngine, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
-import { Loader } from '../components/loader.js'
+import { Loader } from '../components/loader.jsx'
 import {
     getHashFromLocation,
     parseLocale,

@@ -10,7 +10,7 @@ import {
     ApplicationTitle,
     LanguageSelect,
     PoweredByDHIS2,
-} from '../customizable-elements.js'
+} from '../customizable-elements.jsx'
 
 const mockRefreshOnTranslation = jest.fn()
 

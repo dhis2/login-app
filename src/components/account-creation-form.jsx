@@ -18,9 +18,9 @@ import PropTypes from 'prop-types'
 import React, { useEffect } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { Link } from 'react-router-dom'
-import { BackToLoginButton } from '../components/back-to-login-button.js'
-import { FormNotice } from '../components/form-notice.js'
-import { FormSubtitle } from '../components/form-subtitle.js'
+import { BackToLoginButton } from '../components/back-to-login-button.jsx'
+import { FormNotice } from '../components/form-notice.jsx'
+import { FormSubtitle } from '../components/form-subtitle.jsx'
 import {
     getIsRequired,
     removeHTMLTags,
