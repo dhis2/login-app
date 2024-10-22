@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 import React from 'react'
 import { LoginConfigProvider } from '../login-config-provider.jsx'
 import { useLoginConfig } from '../use-login-config.js'
