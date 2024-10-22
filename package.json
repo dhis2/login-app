@@ -1,52 +1,53 @@
 {
-    "name": "login-app",
-    "version": "100.1.14",
-    "description": "",
-    "license": "BSD-3-Clause",
-    "private": true,
-    "scripts": {
-        "build": "d2-app-scripts build",
-        "start": "d2-app-scripts start",
-        "test": "d2-app-scripts test",
-        "deploy": "d2-app-scripts deploy",
-        "format": "d2-style apply",
-        "format:staged": "d2-style apply --staged",
-        "lint": "d2-style check",
-        "lint:staged": "d2-style check --staged"
-    },
-    "devDependencies": {
-        "@dhis2/cli-app-scripts": "^12.0.0-alpha.19",
-        "@dhis2/cli-style": "^10.7.4",
-        "@dhis2/ui": "^9.11.8",
-        "@testing-library/jest-dom": "^6.4.6",
-        "@testing-library/react-hooks": "^8.0.1",
-        "@testing-library/user-event": "^14.5.2",
-        "enzyme": "^3.11.0",
-        "enzyme-adapter-react-16": "^1.15.8",
-        "jest-extended": "^4.0.2"
-    },
-    "jest": {
-        "collectCoverageFrom": [
-            "**/*.{js,jsx,ts,tsx}",
-            "!<rootDir>/node_modules/",
-            "!<rootDir>/*.ts",
-            "!<rootDir>/coverage/**/*.*"
-        ],
-        "coverageThreshold": {
-            "global": {
-                "branches": 60,
-                "functions": 55,
-                "lines": 55,
-                "statements": 55
-            }
-        }
-    },
-    "dependencies": {
-        "classnames": "^2.3.2",
-        "dompurify": "^3.1.5",
-        "html-react-parser": "^5.1.10",
-        "post-robot": "^10.0.46",
-        "react-google-recaptcha": "^3.1.0",
-        "react-router-dom": "^6.24.0"
+  "name": "login-app",
+  "version": "100.1.14",
+  "description": "",
+  "license": "BSD-3-Clause",
+  "private": true,
+  "scripts": {
+    "build": "d2-app-scripts build",
+    "start": "d2-app-scripts start",
+    "test": "d2-app-scripts test",
+    "deploy": "d2-app-scripts deploy",
+    "format": "d2-style apply",
+    "format:staged": "d2-style apply --staged",
+    "lint": "d2-style check",
+    "lint:staged": "d2-style check --staged"
+  },
+  "devDependencies": {
+    "@dhis2/cli-app-scripts": "^12.0.0-alpha.19",
+    "@dhis2/cli-style": "^10.7.4",
+    "@dhis2/ui": "^9.11.8",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react-hooks": "^8.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.8",
+    "jest-extended": "^4.0.2"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/*.ts",
+      "!<rootDir>/coverage/**/*.*"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 60,
+        "functions": 55,
+        "lines": 55,
+        "statements": 55
+      }
     }
+  },
+  "dependencies": {
+    "classnames": "^2.3.2",
+    "dompurify": "^3.1.5",
+    "html-react-parser": "^5.1.10",
+    "package.json": "^2.0.1",
+    "post-robot": "^10.0.46",
+    "react-google-recaptcha": "^3.1.0",
+    "react-router-dom": "^6.24.0"
+  }
 }
