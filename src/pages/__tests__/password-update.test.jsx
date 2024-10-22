@@ -6,7 +6,7 @@ import { useLoginConfig } from '../../providers/use-login-config.js'
 import { renderWithRouter } from '../../test-utils/render-with-router.jsx'
 import PasswordUpdatePage from '../password-update.jsx'
 
-jest.mock('../../components/not-allowed-notice.js', () => ({
+jest.mock('../../components/not-allowed-notice.jsx', () => ({
     NotAllowedNotice: () => <div>NOT ALLOWED</div>,
 }))
 
