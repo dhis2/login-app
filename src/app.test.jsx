@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react'
 import React from 'react'
-import { AppContent } from './app.js'
+import { AppContent } from './app.jsx'
 import { useLoginConfig } from './providers/use-login-config.js'
 import { renderWithRouter } from './test-utils/index.js'
 

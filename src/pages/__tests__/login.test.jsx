@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom'
 import { checkIsLoginFormValid } from '../../helpers/validators.js'
 import { useLogin } from '../../hooks/useLogin.js'
 import { useLoginConfig } from '../../providers/use-login-config.js'
-import { LoginFormContainer } from '../login.js'
+import { LoginFormContainer } from '../login.jsx'
 
 jest.mock('../../helpers/validators.js', () => ({
     getIsRequired: () => () => null,
