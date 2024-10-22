@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { renderHook } from '@testing-library/react-hooks'
 import React from 'react'
-import { LoginConfigProvider } from '../login-config-provider.js'
+import { LoginConfigProvider } from '../login-config-provider.jsx'
 import { useLoginConfig } from '../use-login-config.js'
 
 const mockEngineQuery = jest.fn()

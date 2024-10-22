@@ -3,19 +3,18 @@ import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { useLoginConfig } from '../../providers/use-login-config.js'
-import { renderWithRouter } from '../../test-utils/render-with-router.js'
-import PasswordUpdatePage from '../password-update.js'
+import { renderWithRouter } from '../../test-utils/render-with-router.jsx'
+import PasswordResetRequestPage from '../password-reset-request.jsx'
 
 jest.mock('../../components/not-allowed-notice.js', () => ({
     NotAllowedNotice: () => <div>NOT ALLOWED</div>,
 }))
 
-const mockParamsGet = jest.fn((param) => {
-    if (param === 'token') {
-        return 'subway'
-    }
-    return null
-})
+jest.mock('../../components/back-to-login-button.js', () => ({
+    BackToLoginButton: () => <div>BACK_TO_LOGIN</div>,
+}))
+
+const mockParamsGet = jest.fn()
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual('react-router-dom'),
@@ -40,62 +39,57 @@ jest.mock('../../providers/use-login-config.js', () => ({
     useLoginConfig: jest.fn(),
 }))
 
-describe('PasswordUpdateForm', () => {
+describe('PasswordResetRequestPage', () => {
     afterEach(() => {
         jest.clearAllMocks()
     })
 
-    it('has mutation that points to auth/passwordReset', () => {
+    it('shows back to login button if page is available', () => {
         useLoginConfig.mockReturnValue({
             allowAccountRecovery: true,
             emailConfigured: true,
         })
-        renderWithRouter(<PasswordUpdatePage />)
+        renderWithRouter(<PasswordResetRequestPage />)
+
+        expect(screen.getByText('BACK_TO_LOGIN')).toBeInTheDocument()
+    })
+
+    it('has mutation that points to auth/forgotPassword', () => {
+        useLoginConfig.mockReturnValue({
+            allowAccountRecovery: true,
+            emailConfigured: true,
+        })
+        renderWithRouter(<PasswordResetRequestPage />)
 
         expect(useDataMutation).toHaveBeenCalledWith(
-            expect.objectContaining({ resource: 'auth/passwordReset' })
+            expect.objectContaining({ resource: 'auth/forgotPassword' })
         )
     })
 
-    it('calls mutation with valid password and token from url parameter', async () => {
+    it('calls mutation when reset password is clicked', async () => {
         const user = userEvent.setup()
+        mockParamsGet.mockReturnValue(null)
+
         useLoginConfig.mockReturnValue({
             allowAccountRecovery: true,
             emailConfigured: true,
         })
-        renderWithRouter(<PasswordUpdatePage />)
-
-        await user.type(screen.getByLabelText('Password'), 'V3ry_$ecure_')
-        await user.click(
-            screen.getByRole('button', {
-                name: /save new password/i,
-            })
-        )
-        expect(mockMutate).toHaveBeenCalled()
-        expect(mockMutate).toHaveBeenCalledWith({
-            newPassword: 'V3ry_$ecure_',
-            token: 'subway',
-        })
-    })
-
-    it('does not call mutation when reset password is clicked if password input has invalid password', async () => {
-        const user = userEvent.setup()
-        useLoginConfig.mockReturnValue({
-            allowAccountRecovery: true,
-            emailConfigured: true,
-        })
-        renderWithRouter(<PasswordUpdatePage />)
+        renderWithRouter(<PasswordResetRequestPage />)
 
         await user.type(
-            screen.getByLabelText('Password'),
-            'does not meet requirements'
+            screen.getByLabelText('Username or email'),
+            'Snorkmaiden'
         )
         await user.click(
             screen.getByRole('button', {
-                name: /save new password/i,
+                name: /send password reset/i,
             })
         )
-        expect(mockMutate).not.toHaveBeenCalled()
+
+        expect(mockMutate).toHaveBeenCalled()
+        expect(mockMutate).toHaveBeenCalledWith({
+            emailOrUsername: 'Snorkmaiden',
+        })
     })
 
     it('displays not allowed notice if allowAccountRecovery:false', async () => {
@@ -103,7 +97,7 @@ describe('PasswordUpdateForm', () => {
             allowAccountRecovery: false,
             emailConfigured: true,
         })
-        renderWithRouter(<PasswordUpdatePage />)
+        renderWithRouter(<PasswordResetRequestPage />)
         expect(screen.getByText('NOT ALLOWED')).toBeInTheDocument()
     })
 
@@ -112,8 +106,21 @@ describe('PasswordUpdateForm', () => {
             allowAccountRecovery: true,
             emailConfigured: false,
         })
-        renderWithRouter(<PasswordUpdatePage />)
+        renderWithRouter(<PasswordResetRequestPage />)
         expect(screen.getByText('NOT ALLOWED')).toBeInTheDocument()
+    })
+
+    it('populates url from username parameters if one is provide', () => {
+        mockParamsGet.mockReturnValue('lakris')
+        useLoginConfig.mockReturnValue({
+            allowAccountRecovery: true,
+            emailConfigured: true,
+        })
+        renderWithRouter(<PasswordResetRequestPage />)
+        expect(screen.getByDisplayValue('lakris')).toHaveAttribute(
+            'id',
+            'emailOrUsername'
+        )
     })
 
     it('displays error message if error returned from mutation', async () => {
@@ -125,8 +132,8 @@ describe('PasswordUpdateForm', () => {
             () => {},
             { error: new Error('some random error') },
         ])
-        renderWithRouter(<PasswordUpdatePage />)
-        expect(screen.getByText(/new password not saved/i)).toBeInTheDocument()
+        renderWithRouter(<PasswordResetRequestPage />)
+        expect(screen.getByText(/password reset failed/i)).toBeInTheDocument()
     })
 
     it('displays message about email sent if mutation succeeeds', async () => {
@@ -135,7 +142,9 @@ describe('PasswordUpdateForm', () => {
             emailConfigured: true,
         })
         useDataMutation.mockReturnValue([() => {}, { data: { success: true } }])
-        renderWithRouter(<PasswordUpdatePage />)
-        expect(screen.getByText(/New password saved/i)).toBeInTheDocument()
+        renderWithRouter(<PasswordResetRequestPage />)
+        expect(
+            screen.getByText(/you will soon receive an email/i)
+        ).toBeInTheDocument()
     })
 })
