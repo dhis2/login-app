@@ -15,13 +15,14 @@
         "lint:staged": "d2-style check --staged"
     },
     "devDependencies": {
-        "@dhis2/cli-app-scripts": "^11.7.2",
+        "@cfaester/enzyme-adapter-react-18": "^0.8.0",
+        "@dhis2/cli-app-scripts": "^12.0.0-alpha.19",
         "@dhis2/cli-style": "^10.7.4",
-        "@testing-library/jest-dom": "^6.4.6",
-        "@testing-library/react-hooks": "^8.0.1",
+        "@dhis2/ui": "^9.11.8",
+        "@testing-library/jest-dom": "^6.6.2",
         "@testing-library/user-event": "^14.5.2",
         "enzyme": "^3.11.0",
-        "enzyme-adapter-react-16": "^1.15.8",
+        "identity-obj-proxy": "^3.0.0",
         "jest-extended": "^4.0.2"
     },
     "jest": {
@@ -41,9 +42,11 @@
         }
     },
     "dependencies": {
+        "@testing-library/react": "^16.0.1",
         "classnames": "^2.3.2",
         "dompurify": "^3.1.5",
         "html-react-parser": "^5.1.10",
+        "package.json": "^2.0.1",
         "post-robot": "^10.0.46",
         "react-google-recaptcha": "^3.1.0",
         "react-router-dom": "^6.24.0"

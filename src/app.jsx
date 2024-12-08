@@ -11,8 +11,8 @@ import {
     LanguageSelect,
     Logo,
     PoweredByDHIS2,
-} from './components/customizable-elements.js'
-import { Popup } from './components/pop-up.js'
+} from './components/customizable-elements.jsx'
+import { Popup } from './components/pop-up.jsx'
 import { sanitizeMainHTML } from './helpers/handleHTML.js'
 import {
     LoginPage,
