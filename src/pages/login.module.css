@@ -12,9 +12,3 @@
     gap: var(--spacers-dp8);
     margin-bottom: var(--spacers-dp16);
 }
-
-.card {
-    padding: 40px;
-    border-radius: var(--spacers-dp8);
-    background-color: white !important;
-}
