@@ -1,6 +1,6 @@
+import i18n from '@dhis2/d2-i18n'
 import { NoticeBox } from '@dhis2/ui'
 import React from 'react'
-import i18n from '@dhis2/d2-i18n'
 import { FormContainer } from '../components/index.js'
 import { useLoginConfig } from '../providers/index.js'
 
