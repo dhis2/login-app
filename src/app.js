@@ -18,6 +18,8 @@ import {
     LoginPage,
     CompleteRegistrationPage,
     CreateAccountPage,
+    EmailVerificationFailure,
+    EmailVerificationSuccess,
     PasswordResetRequestPage,
     PasswordUpdatePage,
     SafeModePage,
@@ -34,6 +36,14 @@ const LoginRoutes = () => {
             <Routes>
                 <Route path="/" element={<LoginPage />} />
                 <Route path="/create-account" element={<CreateAccountPage />} />
+                <Route
+                    path="/email-verification-success"
+                    element={<EmailVerificationSuccess />}
+                />
+                <Route
+                    path="/email-verification-failure"
+                    element={<EmailVerificationFailure />}
+                />
                 <Route
                     path="/complete-registration"
                     element={<CompleteRegistrationPage />}
