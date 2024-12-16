@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2024-08-28T07:47:39.528Z\n"
-"PO-Revision-Date: 2024-08-28T07:47:39.528Z\n"
+"POT-Creation-Date: 2024-12-10T15:02:03.384Z\n"
+"PO-Revision-Date: 2024-12-10T15:02:03.387Z\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr "Please confirm that you are not a robot by checking the checkbox."
@@ -132,6 +132,12 @@ msgstr "Download default template"
 
 msgid "Download sidebar template"
 msgstr "Download sidebar template"
+
+msgid "Email Verification Failed"
+msgstr "Email Verification Failed"
+
+msgid "Email confirmed"
+msgstr "Email confirmed"
 
 msgid "Something went wrong"
 msgstr "Something went wrong"

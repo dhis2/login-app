@@ -6,10 +6,11 @@ import { useLoginConfig } from '../providers/index.js'
 
 function EmailVerificationSuccess() {
     const { lngs } = useLoginConfig()
+
     return (
         <FormContainer title={i18n.t('Email confirmed', { lngs })}>
-            <NoticeBox valid title="Your email has been confirmed.">
-                You can now close this page.
+            <NoticeBox valid title={i18n.t('Your email has been confirmed.')}>
+                {i18n.t('You can now close this page.')}
             </NoticeBox>
         </FormContainer>
     )

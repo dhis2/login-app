@@ -6,11 +6,13 @@ import { useLoginConfig } from '../providers/index.js'
 
 function EmailVerificationFailure() {
     const { lngs } = useLoginConfig()
+
     return (
         <FormContainer title={i18n.t('Email Verification Failed', { lngs })}>
-            <NoticeBox error title="Unable to verify your email">
-                The verification link is invalid or has expired. Please request
-                a new verification email.
+            <NoticeBox error title={i18n.t('Unable to verify your email')}>
+                {i18n.t(
+                    'The verification link is invalid or has expired. Please request a new verification email.'
+                )}
             </NoticeBox>
         </FormContainer>
     )
