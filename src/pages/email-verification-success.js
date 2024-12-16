@@ -9,8 +9,11 @@ function EmailVerificationSuccess() {
 
     return (
         <FormContainer title={i18n.t('Email confirmed', { lngs })}>
-            <NoticeBox valid title={i18n.t('Your email has been confirmed.')}>
-                {i18n.t('You can now close this page.')}
+            <NoticeBox
+                valid
+                title={i18n.t('Your email has been confirmed.', { lngs })}
+            >
+                {i18n.t('You can now close this page.', { lngs })}
             </NoticeBox>
         </FormContainer>
     )

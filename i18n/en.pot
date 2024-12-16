@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2024-12-10T15:02:03.384Z\n"
-"PO-Revision-Date: 2024-12-10T15:02:03.387Z\n"
+"POT-Creation-Date: 2024-12-16T14:17:34.112Z\n"
+"PO-Revision-Date: 2024-12-16T14:17:34.112Z\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr "Please confirm that you are not a robot by checking the checkbox."
@@ -136,8 +136,24 @@ msgstr "Download sidebar template"
 msgid "Email Verification Failed"
 msgstr "Email Verification Failed"
 
+msgid "Unable to verify your email"
+msgstr "Unable to verify your email"
+
+msgid ""
+"The verification link is invalid or has expired. Please request a new "
+"verification email."
+msgstr ""
+"The verification link is invalid or has expired. Please request a new "
+"verification email."
+
 msgid "Email confirmed"
 msgstr "Email confirmed"
+
+msgid "Your email has been confirmed."
+msgstr "Your email has been confirmed."
+
+msgid "You can now close this page."
+msgstr "You can now close this page."
 
 msgid "Something went wrong"
 msgstr "Something went wrong"

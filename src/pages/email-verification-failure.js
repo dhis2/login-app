@@ -9,9 +9,13 @@ function EmailVerificationFailure() {
 
     return (
         <FormContainer title={i18n.t('Email Verification Failed', { lngs })}>
-            <NoticeBox error title={i18n.t('Unable to verify your email')}>
+            <NoticeBox
+                error
+                title={i18n.t('Unable to verify your email', { lngs })}
+            >
                 {i18n.t(
-                    'The verification link is invalid or has expired. Please request a new verification email.'
+                    'The verification link is invalid or has expired. Please request a new verification email.',
+                    { lngs }
                 )}
             </NoticeBox>
         </FormContainer>
