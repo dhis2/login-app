@@ -1,3 +1,15 @@
+# [100.2.0](https://github.com/dhis2/login-app/compare/v100.1.15...v100.2.0) (2024-12-16)
+
+
+### Bug Fixes
+
+* use form container component for styling consistency ([c74a4ca](https://github.com/dhis2/login-app/commit/c74a4ca08f102e8f8c27065e079a066315577a7d))
+
+
+### Features
+
+* add email verification pages ([916dac3](https://github.com/dhis2/login-app/commit/916dac36a03ade4a05383af0be454517a165ed8c))
+
 ## [100.1.15](https://github.com/dhis2/login-app/compare/v100.1.14...v100.1.15) (2024-12-08)
 
 
