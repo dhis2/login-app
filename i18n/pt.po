@@ -4,13 +4,14 @@
 # Sheila André <sandre@saudigitus.org>, 2024
 # Viktor Varland <viktor@dhis2.org>, 2024
 # Philip Larsen Donnelly, 2024
+# Helton Dias, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-05-22T10:53:32.505Z\n"
+"POT-Creation-Date: 2024-08-28T07:47:39.528Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Philip Larsen Donnelly, 2024\n"
+"Last-Translator: Helton Dias, 2024\n"
 "Language-Team: Portuguese (https://app.transifex.com/hisp-uio/teams/100509/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -140,6 +141,27 @@ msgstr ""
 msgid "Download sidebar template"
 msgstr ""
 
+msgid "Something went wrong"
+msgstr "Ocorreu algo de errado"
+
+msgid "Incorrect username or password"
+msgstr ""
+
+msgid "Incorrect authentication code"
+msgstr ""
+
+msgid "Password expired"
+msgstr ""
+
+msgid "You can reset your password from the password reset page."
+msgstr ""
+
+msgid "Contact your system administrator."
+msgstr ""
+
+msgid "Account not accessible"
+msgstr ""
+
 msgid "Verify and log in"
 msgstr ""
 
@@ -153,15 +175,6 @@ msgid "Logging in..."
 msgstr ""
 
 msgid "Authentication code"
-msgstr ""
-
-msgid "Something went wrong"
-msgstr "Ocorreu algo de errado"
-
-msgid "Incorrect username or password"
-msgstr ""
-
-msgid "Incorrect authentication code"
 msgstr ""
 
 msgid "Two-factor authentication"
@@ -201,7 +214,7 @@ msgid ""
 msgstr ""
 
 msgid "Saving..."
-msgstr ""
+msgstr "Salvando..."
 
 msgid "Save new password"
 msgstr ""
