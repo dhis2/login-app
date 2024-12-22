@@ -3,13 +3,14 @@
 # Viktor Varland <viktor@dhis2.org>, 2024
 # Thuy Nguyen <thuynguyen@hispvietnam.org>, 2024
 # Philip Larsen Donnelly, 2024
+# Em Le <em.hispvietnam@gmail.com>, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-05-22T10:53:32.505Z\n"
+"POT-Creation-Date: 2024-12-16T14:17:34.112Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Philip Larsen Donnelly, 2024\n"
+"Last-Translator: Em Le <em.hispvietnam@gmail.com>, 2024\n"
 "Language-Team: Vietnamese (https://app.transifex.com/hisp-uio/teams/100509/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,9 +20,10 @@ msgstr ""
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr ""
+"Vui lòng xác nhận bạn không phải là người máy bằng cách đánh dấu vào ô kiểm."
 
 msgid "Log in details"
-msgstr ""
+msgstr "Chi tiết đăng nhập"
 
 msgid "Username"
 msgstr "Tên đăng nhập"
@@ -31,16 +33,16 @@ msgstr "Mật khẩu"
 
 msgid ""
 "Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
-msgstr ""
+msgstr "Tối thiểu 8 ký tự, ít nhất 1 chữ hoa, 1 chữ thường, 1 số, 1 ký hiệu"
 
 msgid "Personal details"
-msgstr ""
+msgstr "Thông tin cá nhân"
 
 msgid "First name"
 msgstr "Tên"
 
 msgid "Last name"
-msgstr "Tên họ"
+msgstr "Họ"
 
 msgid "Email"
 msgstr "Thư điện tử"
@@ -49,37 +51,39 @@ msgid "Phone number"
 msgstr "Số điện thoại"
 
 msgid "Creating..."
-msgstr ""
+msgstr "Đang tạo..."
 
 msgid "Create account"
-msgstr ""
+msgstr "Tạo tài khoản"
 
 msgid "Cancel"
 msgstr "Hủy"
 
 msgid "Enter your details below to create a {{- applicationName}} account."
 msgstr ""
+"Nhập thông tin chi tiết vào bên dưới để tạo một tài khoản {{- "
+"applicationName}}"
 
 msgid "Already have an account?"
-msgstr ""
+msgstr "Đã có tài khoản?"
 
 msgid "Log in."
-msgstr ""
+msgstr "Đăng nhập."
 
 msgid "Something went wrong, and we could not register your account"
-msgstr ""
+msgstr "Có gì đó không ổn và chúng tôi không thể đăng ký tài khoản của bạn"
 
 msgid "Account created successfully"
-msgstr ""
+msgstr "Tài khoản đã được tạo thành công"
 
 msgid "You can use your username and password to log in."
-msgstr ""
+msgstr "Bạn có thể sử dụng tên người dùng và mật khẩu để đăng nhập."
 
 msgid "Back to log in page"
-msgstr ""
+msgstr "Quay lại trang đăng nhập"
 
 msgid "Powered by DHIS2"
-msgstr ""
+msgstr "Được hỗ trợ bởi DHIS2"
 
 msgid "Language"
 msgstr "Ngôn ngữ"
@@ -88,141 +92,190 @@ msgid "Forgot password?"
 msgstr "Quên mật khẩu?"
 
 msgid "Don't have an account?"
-msgstr ""
+msgstr "Bạn chưa có tài khoản?"
 
 msgid "Create an account"
 msgstr "Tạo tài khoản mới"
 
 msgid "The requested page is not configured for your system"
-msgstr ""
+msgstr "Trang được yêu cầu không được cấu hình cho hệ thống của bạn"
 
 msgid "Creating account not available"
-msgstr ""
+msgstr "Tạo tài khoản không khả dụng"
 
 msgid "Contact a system administrator to create an account."
-msgstr ""
+msgstr "Liên hệ với quản trị viên hệ thống để tạo tài khoản."
 
 msgid "Log in with Google"
-msgstr ""
+msgstr "Đăng nhập bằng Google"
 
 msgid "Log in with Microsoft"
-msgstr ""
+msgstr "Đăng nhập bằng Microsoft"
 
 msgid "I agree"
-msgstr ""
+msgstr "Tôi đồng ý"
 
 msgid "This field is required"
-msgstr "Trường này yêu cầu"
+msgstr "Trường này là bắt buộc"
 
 msgid "Cannot process registration"
-msgstr ""
+msgstr "Không thể xử lý đăng ký"
 
 msgid ""
 "Information required to process your registration is missing. Please contact"
 " your system administrator."
 msgstr ""
+"Thiếu thông tin cần thiết để xử lý đăng ký của bạn. Vui lòng liên hệ với "
+"quản trị viên hệ thống của bạn."
 
 msgid "HTML Template Download"
-msgstr ""
+msgstr "Tải xuống mẫu HTML"
 
 msgid ""
 "You can download the templates used by the login app here. These can be "
 "modified and reloaded as custom HTML in the settings app."
 msgstr ""
+"Bạn có thể tải xuống các mẫu được ứng dụng đăng nhập sử dụng tại đây. Chúng "
+"có thể được sửa đổi và tải lại dưới dạng HTML tùy chỉnh trong ứng dụng cài "
+"đặt."
 
 msgid "Refer to the documentation for more details."
-msgstr ""
+msgstr "Tham khảo tài liệu để biết thêm chi tiết."
 
 msgid "Download default template"
-msgstr ""
+msgstr "Tải xuống mẫu mặc định"
 
 msgid "Download sidebar template"
+msgstr "Tải xuống mẫu thanh bên"
+
+msgid "Email Verification Failed"
 msgstr ""
 
-msgid "Verify and log in"
+msgid "Unable to verify your email"
 msgstr ""
 
-msgid "Log in"
+msgid ""
+"The verification link is invalid or has expired. Please request a new "
+"verification email."
 msgstr ""
 
-msgid "Verifying..."
+msgid "Email confirmed"
 msgstr ""
 
-msgid "Logging in..."
+msgid "Your email has been confirmed."
 msgstr ""
 
-msgid "Authentication code"
+msgid "You can now close this page."
 msgstr ""
 
 msgid "Something went wrong"
 msgstr "Có gì đó không đúng"
 
 msgid "Incorrect username or password"
-msgstr ""
+msgstr "Tên người dùng hoặc mật khẩu không đúng"
 
 msgid "Incorrect authentication code"
-msgstr ""
+msgstr "Mã xác thực không đúng"
+
+msgid "Password expired"
+msgstr "Mật khẩu đã hết hạn"
+
+msgid "You can reset your password from the password reset page."
+msgstr "Bạn có thể đặt lại mật khẩu từ trang đặt lại mật khẩu."
+
+msgid "Contact your system administrator."
+msgstr "Liên hệ với quản trị viên hệ thống của bạn."
+
+msgid "Account not accessible"
+msgstr "Tài khoản không thể truy cập"
+
+msgid "Verify and log in"
+msgstr "Xác minh và đăng nhập"
+
+msgid "Log in"
+msgstr "Đăng nhập"
+
+msgid "Verifying..."
+msgstr "Đang xác minh..."
+
+msgid "Logging in..."
+msgstr "Đang đăng nhập..."
+
+msgid "Authentication code"
+msgstr "Mã xác thực"
 
 msgid "Two-factor authentication"
-msgstr ""
+msgstr "Xác thực 2 yếu tố"
 
 msgid "Enter the code from your two-factor authentication app to log in."
-msgstr ""
+msgstr "Nhập mã từ ứng dụng xác thực hai yếu tố của bạn để đăng nhập."
 
 msgid "Username or email"
-msgstr ""
+msgstr "Tên người dùng hoặc email"
 
 msgid "Sending..."
-msgstr ""
+msgstr "Đang gửi..."
 
 msgid "Send password reset request"
-msgstr ""
+msgstr "Gửi yêu cầu đặt lại mật khẩu"
 
 msgid "Password reset failed"
-msgstr ""
+msgstr "Đặt lại mật khẩu không thành công"
 
 msgid ""
 "Something went wrong. Please try again later, and contact your system "
 "administrator if the problem persists."
 msgstr ""
+"Có lỗi xảy ra. Vui lòng thử lại sau và liên hệ với quản trị viên hệ thống "
+"của bạn nếu sự cố vẫn tiếp diễn."
 
 msgid ""
 "If the provided username or email is registered in the system, you will soon"
 " receive an email with a password reset link."
 msgstr ""
+"Nếu tên người dùng hoặc email được cung cấp đã được đăng ký trong hệ thống, "
+"bạn sẽ sớm nhận được email có liên kết đặt lại mật khẩu."
 
 msgid "Reset password"
-msgstr ""
+msgstr "Đặt lại mật khẩu"
 
 msgid ""
 "Enter your username below, a link to reset your password will be sent to "
 "your registered e-mail."
 msgstr ""
+"Nhập tên người dùng của bạn bên dưới, một liên kết để đặt lại mật khẩu sẽ "
+"được gửi đến email đã đăng ký của bạn."
 
 msgid "Saving..."
-msgstr ""
+msgstr "Đang lưu..."
 
 msgid "Save new password"
-msgstr ""
+msgstr "Lưu mật khẩu mới"
 
 msgid "New password not saved"
-msgstr ""
+msgstr "Mật khẩu mới chưa được lưu"
 
 msgid ""
 "There was a problem saving your password. Try again or contact your system "
 "administrator."
 msgstr ""
+"Đã xảy ra sự cố khi lưu mật khẩu của bạn. Hãy thử lại hoặc liên hệ với quản "
+"trị viên hệ thống của bạn."
 
 msgid "New password saved. You can use it to log in to your account."
 msgstr ""
+"Đã lưu mật khẩu mới. Bạn có thể sử dụng mật khẩu này để đăng nhập vào tài "
+"khoản của mình."
 
 msgid "Choose new password"
-msgstr ""
+msgstr "Chọn mật khẩu mới"
 
 msgid "Enter the new password for your account below"
-msgstr ""
+msgstr "Nhập mật khẩu mới cho tài khoản của bạn bên dưới"
 
 msgid ""
 "You should shortly be redirected. If you are not redirected, please click "
 "redirect button."
 msgstr ""
+"Bạn sẽ sớm được chuyển hướng. Nếu bạn không được chuyển hướng, vui lòng nhấp"
+" vào nút chuyển hướng."
