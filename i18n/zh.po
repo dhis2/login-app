@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-08-28T07:47:39.528Z\n"
+"POT-Creation-Date: 2024-12-16T14:17:34.112Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
 "Last-Translator: easylin <lin_xd@126.com>, 2024\n"
 "Language-Team: Chinese (https://app.transifex.com/hisp-uio/teams/100509/zh/)\n"
@@ -104,10 +104,10 @@ msgid "Contact a system administrator to create an account."
 msgstr "请联系系统管理员创建账户。"
 
 msgid "Log in with Google"
-msgstr "使用 Google 登录"
+msgstr "使用 Google 账号登录"
 
 msgid "Log in with Microsoft"
-msgstr "使用 Microsoft 登录"
+msgstr "使用 Microsoft 账号登录"
 
 msgid "I agree"
 msgstr "我同意"
@@ -140,6 +140,26 @@ msgstr "下载默认模板"
 msgid "Download sidebar template"
 msgstr "下载侧边栏模板"
 
+msgid "Email Verification Failed"
+msgstr "电子邮件验证失败"
+
+msgid "Unable to verify your email"
+msgstr "无法验证您的电子邮件"
+
+msgid ""
+"The verification link is invalid or has expired. Please request a new "
+"verification email."
+msgstr "验证链接无效或已过期。请申请新的验证电子邮件。"
+
+msgid "Email confirmed"
+msgstr "电子邮件已确认"
+
+msgid "Your email has been confirmed."
+msgstr "您的电子邮件已被确认。"
+
+msgid "You can now close this page."
+msgstr "现在您可以关闭此页面。"
+
 msgid "Something went wrong"
 msgstr "出问题了"
 
@@ -153,7 +173,7 @@ msgid "Password expired"
 msgstr "密码已过期"
 
 msgid "You can reset your password from the password reset page."
-msgstr ""
+msgstr "您可以从密码重置页面重置密码。"
 
 msgid "Contact your system administrator."
 msgstr "请联系您的系统管理员。"
@@ -162,7 +182,7 @@ msgid "Account not accessible"
 msgstr "无法访问帐户"
 
 msgid "Verify and log in"
-msgstr "验证并登录"
+msgstr "确认并登录"
 
 msgid "Log in"
 msgstr "登录"
