@@ -1,7 +1,13 @@
 import { useDataMutation } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import { Button, ReactFinalForm, InputFieldFF } from '@dhis2/ui'
-import { dhis2Password } from '@dhis2/ui-forms'
+import {
+    Button,
+    ReactFinalForm,
+    InputFieldFF,
+    createPattern,
+    dhis2Password,
+} from '@dhis2/ui'
+// import { dhis2Password } from '@dhis2/ui-forms'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
@@ -16,7 +22,7 @@ import {
     getIsRequired,
     composeAndTranslateValidators,
 } from '../helpers/index.js'
-import { useGetErrorIfNotAllowed } from '../hooks/index.js'
+import { useGetErrorIfNotAllowed, useFeatureToggle } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
 import styles from './password-update.module.css'
 
@@ -27,6 +33,18 @@ const passwordUpdateMutation = {
 }
 
 const InnerPasswordUpdateForm = ({ handleSubmit, lngs, loading }) => {
+    const { validatePasswordWithRegex } = useFeatureToggle()
+    const { minPasswordLength, maxPasswordLength, passwordValidationPattern } =
+        useLoginConfig()
+    const passwordRegex = new RegExp(passwordValidationPattern)
+    const passwordRegExValidator = createPattern(
+        passwordRegex,
+        i18n.t(
+            'Password should be between {{minPasswordLength}} and {{maxPasswordLength}} characters long, with at least one lowercase character, one uppercase character, one number, and one special character.',
+            { minPasswordLength, maxPasswordLength }
+        )
+    )
+
     const isRequired = getIsRequired(lngs?.[0])
 
     return (
@@ -40,7 +58,9 @@ const InnerPasswordUpdateForm = ({ handleSubmit, lngs, loading }) => {
                     className={styles.inputField}
                     validate={composeAndTranslateValidators(
                         isRequired,
-                        dhis2Password
+                        validatePasswordWithRegex
+                            ? passwordRegExValidator
+                            : dhis2Password
                     )}
                     initialFocus
                     readOnly={loading}

@@ -2,12 +2,17 @@ import { useDataMutation } from '@dhis2/app-runtime'
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
+import { useFeatureToggle } from '../../hooks/useFeatureToggle.js'
 import { useLoginConfig } from '../../providers/use-login-config.js'
 import { renderWithRouter } from '../../test-utils/render-with-router.js'
 import PasswordUpdatePage from '../password-update.js'
 
 jest.mock('../../components/not-allowed-notice.js', () => ({
     NotAllowedNotice: () => <div>NOT ALLOWED</div>,
+}))
+
+jest.mock('../../hooks/useFeatureToggle.js', () => ({
+    useFeatureToggle: jest.fn(),
 }))
 
 const mockParamsGet = jest.fn((param) => {
@@ -45,11 +50,72 @@ describe('PasswordUpdateForm', () => {
         jest.clearAllMocks()
     })
 
+    it('uses old ui validator and dhis2 validator message if regex validation is not toggled', async () => {
+        const user = userEvent.setup()
+        useLoginConfig.mockReturnValue({
+            allowAccountRecovery: true,
+            emailConfigured: true,
+        })
+        useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
+        renderWithRouter(<PasswordUpdatePage />)
+
+        await user.type(
+            screen.getByLabelText('Password'),
+            'does not meet requirements[TAB]'
+        )
+        expect(
+            screen.queryByText(
+                'Password should contain at least one UPPERCASE letter'
+            )
+        ).toBeInTheDocument()
+    })
+
+    it('uses old ui validator and dhis2 validator message if regex validation is not toggled', async () => {
+        const user = userEvent.setup()
+        useLoginConfig.mockReturnValue({
+            allowAccountRecovery: true,
+            emailConfigured: true,
+        })
+        useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
+        renderWithRouter(<PasswordUpdatePage />)
+
+        await user.type(
+            screen.getByLabelText('Password'),
+            'does not meet requirements[TAB]'
+        )
+        expect(
+            screen.queryByText(
+                'Password should contain at least one UPPERCASE letter'
+            )
+        ).toBeInTheDocument()
+    })
+
+    it('uses new validator with dhis2 validator message if regex validation is not toggled', async () => {
+        const user = userEvent.setup()
+        useLoginConfig.mockReturnValue({
+            allowAccountRecovery: true,
+            emailConfigured: true,
+        })
+        useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
+        renderWithRouter(<PasswordUpdatePage />)
+
+        await user.type(
+            screen.getByLabelText('Password'),
+            'does not meet requirements[TAB]'
+        )
+        expect(
+            screen.queryByText(
+                'Password should contain at least one UPPERCASE letter'
+            )
+        ).toBeInTheDocument()
+    })
+
     it('has mutation that points to auth/passwordReset', () => {
         useLoginConfig.mockReturnValue({
             allowAccountRecovery: true,
             emailConfigured: true,
         })
+        useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
         renderWithRouter(<PasswordUpdatePage />)
 
         expect(useDataMutation).toHaveBeenCalledWith(
@@ -63,6 +129,7 @@ describe('PasswordUpdateForm', () => {
             allowAccountRecovery: true,
             emailConfigured: true,
         })
+        useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
         renderWithRouter(<PasswordUpdatePage />)
 
         await user.type(screen.getByLabelText('Password'), 'V3ry_$ecure_')
@@ -84,6 +151,7 @@ describe('PasswordUpdateForm', () => {
             allowAccountRecovery: true,
             emailConfigured: true,
         })
+        useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
         renderWithRouter(<PasswordUpdatePage />)
 
         await user.type(
@@ -103,6 +171,7 @@ describe('PasswordUpdateForm', () => {
             allowAccountRecovery: false,
             emailConfigured: true,
         })
+        useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
         renderWithRouter(<PasswordUpdatePage />)
         expect(screen.getByText('NOT ALLOWED')).toBeInTheDocument()
     })
@@ -112,6 +181,7 @@ describe('PasswordUpdateForm', () => {
             allowAccountRecovery: true,
             emailConfigured: false,
         })
+        useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
         renderWithRouter(<PasswordUpdatePage />)
         expect(screen.getByText('NOT ALLOWED')).toBeInTheDocument()
     })
@@ -121,6 +191,7 @@ describe('PasswordUpdateForm', () => {
             allowAccountRecovery: true,
             emailConfigured: true,
         })
+        useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
         useDataMutation.mockReturnValue([
             () => {},
             { error: new Error('some random error') },
@@ -134,6 +205,7 @@ describe('PasswordUpdateForm', () => {
             allowAccountRecovery: true,
             emailConfigured: true,
         })
+        useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
         useDataMutation.mockReturnValue([() => {}, { data: { success: true } }])
         renderWithRouter(<PasswordUpdatePage />)
         expect(screen.getByText(/New password saved/i)).toBeInTheDocument()
