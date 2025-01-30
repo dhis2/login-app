@@ -34,9 +34,10 @@ const passwordUpdateMutation = {
 
 const InnerPasswordUpdateForm = ({ handleSubmit, lngs, loading }) => {
     const { validatePasswordWithRegex } = useFeatureToggle()
-    const { minPasswordLength, maxPasswordLength, passwordValidationPattern } =
-        useLoginConfig()
-    const passwordRegex = new RegExp(passwordValidationPattern)
+    const { minPasswordLength, maxPasswordLength } = useLoginConfig()
+    const passwordRegex = new RegExp(
+        `^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[\\W_])[A-Za-z\\d\\W_]{${minPasswordLength},${maxPasswordLength}}$`
+    )
     const passwordRegExValidator = createPattern(
         passwordRegex,
         i18n.t(

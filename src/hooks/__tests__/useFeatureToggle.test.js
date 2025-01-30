@@ -15,26 +15,18 @@ jest.mock('../../providers/use-login-config.js', () => ({
 /* eslint-disable max-params */
 describe('useFeatureToggle', () => {
     it.each([
-        [false, '41', '3', '7', '^OnlyThisAllowed$'],
-        [false, '42', '3', '7', undefined],
-        [true, '42', '3.3', '7', '^OnlyThisAllowed$'],
-        [false, '42', '3', undefined, '^OnlyThisAllowed$'],
-        [false, '42', undefined, '5', '^OnlyThisAllowed$'],
-        [true, '42', '3', '7', '^OnlyThisAllowed$'],
+        [false, '41', '3', '7'],
+        [true, '42', '3', '7'],
+        [true, '42', '3.3', '7'],
+        [false, '42', '3', undefined],
+        [false, '42', undefined, '5'],
     ])(
-        'evaluates to %b request with api version %s, minPasswordLength %s, maxPasswordLength %s, passwordValidationPattern %s',
-        async (
-            outcome,
-            apiVersion,
-            minPasswordLength,
-            maxPasswordLength,
-            passwordValidationPattern
-        ) => {
+        'evaluates to %b request with api version %s, minPasswordLength %s, maxPasswordLength %s',
+        async (outcome, apiVersion, minPasswordLength, maxPasswordLength) => {
             useConfig.mockReturnValue({ apiVersion })
             useLoginConfig.mockReturnValue({
                 minPasswordLength,
                 maxPasswordLength,
-                passwordValidationPattern,
             })
             const { result } = renderHook(() => useFeatureToggle())
             expect(result.current).toHaveProperty('validatePasswordWithRegex')
