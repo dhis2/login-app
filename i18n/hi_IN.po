@@ -1,0 +1,258 @@
+# 
+# Translators:
+# Siddharth Agarwal, 2025
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2024-12-16T14:17:34.112Z\n"
+"PO-Revision-Date: 2024-05-22 09:51+0000\n"
+"Last-Translator: Siddharth Agarwal, 2025\n"
+"Language-Team: Hindi (India) (https://app.transifex.com/hisp-uio/teams/100509/hi_IN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hi_IN\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Please confirm that you are not a robot by checking the checkbox."
+msgstr ""
+
+msgid "Log in details"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid ""
+"Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
+msgstr ""
+
+msgid "Personal details"
+msgstr ""
+
+msgid "First name"
+msgstr ""
+
+msgid "Last name"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Phone number"
+msgstr "फ़ोन नंबर"
+
+msgid "Creating..."
+msgstr ""
+
+msgid "Create account"
+msgstr ""
+
+msgid "Cancel"
+msgstr "रद्द करें"
+
+msgid "Enter your details below to create a {{- applicationName}} account."
+msgstr ""
+
+msgid "Already have an account?"
+msgstr ""
+
+msgid "Log in."
+msgstr ""
+
+msgid "Something went wrong, and we could not register your account"
+msgstr ""
+
+msgid "Account created successfully"
+msgstr ""
+
+msgid "You can use your username and password to log in."
+msgstr ""
+
+msgid "Back to log in page"
+msgstr ""
+
+msgid "Powered by DHIS2"
+msgstr ""
+
+msgid "Language"
+msgstr "भाषा"
+
+msgid "Forgot password?"
+msgstr ""
+
+msgid "Don't have an account?"
+msgstr ""
+
+msgid "Create an account"
+msgstr ""
+
+msgid "The requested page is not configured for your system"
+msgstr ""
+
+msgid "Creating account not available"
+msgstr ""
+
+msgid "Contact a system administrator to create an account."
+msgstr ""
+
+msgid "Log in with Google"
+msgstr ""
+
+msgid "Log in with Microsoft"
+msgstr ""
+
+msgid "I agree"
+msgstr ""
+
+msgid "This field is required"
+msgstr ""
+
+msgid "Cannot process registration"
+msgstr ""
+
+msgid ""
+"Information required to process your registration is missing. Please contact"
+" your system administrator."
+msgstr ""
+
+msgid "HTML Template Download"
+msgstr ""
+
+msgid ""
+"You can download the templates used by the login app here. These can be "
+"modified and reloaded as custom HTML in the settings app."
+msgstr ""
+
+msgid "Refer to the documentation for more details."
+msgstr ""
+
+msgid "Download default template"
+msgstr ""
+
+msgid "Download sidebar template"
+msgstr ""
+
+msgid "Email Verification Failed"
+msgstr ""
+
+msgid "Unable to verify your email"
+msgstr ""
+
+msgid ""
+"The verification link is invalid or has expired. Please request a new "
+"verification email."
+msgstr ""
+
+msgid "Email confirmed"
+msgstr ""
+
+msgid "Your email has been confirmed."
+msgstr ""
+
+msgid "You can now close this page."
+msgstr ""
+
+msgid "Something went wrong"
+msgstr "कुछ गलत हुआ"
+
+msgid "Incorrect username or password"
+msgstr ""
+
+msgid "Incorrect authentication code"
+msgstr ""
+
+msgid "Password expired"
+msgstr ""
+
+msgid "You can reset your password from the password reset page."
+msgstr ""
+
+msgid "Contact your system administrator."
+msgstr ""
+
+msgid "Account not accessible"
+msgstr ""
+
+msgid "Verify and log in"
+msgstr ""
+
+msgid "Log in"
+msgstr ""
+
+msgid "Verifying..."
+msgstr ""
+
+msgid "Logging in..."
+msgstr ""
+
+msgid "Authentication code"
+msgstr ""
+
+msgid "Two-factor authentication"
+msgstr ""
+
+msgid "Enter the code from your two-factor authentication app to log in."
+msgstr ""
+
+msgid "Username or email"
+msgstr ""
+
+msgid "Sending..."
+msgstr ""
+
+msgid "Send password reset request"
+msgstr ""
+
+msgid "Password reset failed"
+msgstr ""
+
+msgid ""
+"Something went wrong. Please try again later, and contact your system "
+"administrator if the problem persists."
+msgstr ""
+
+msgid ""
+"If the provided username or email is registered in the system, you will soon"
+" receive an email with a password reset link."
+msgstr ""
+
+msgid "Reset password"
+msgstr ""
+
+msgid ""
+"Enter your username below, a link to reset your password will be sent to "
+"your registered e-mail."
+msgstr ""
+
+msgid "Saving..."
+msgstr ""
+
+msgid "Save new password"
+msgstr ""
+
+msgid "New password not saved"
+msgstr ""
+
+msgid ""
+"There was a problem saving your password. Try again or contact your system "
+"administrator."
+msgstr ""
+
+msgid "New password saved. You can use it to log in to your account."
+msgstr ""
+
+msgid "Choose new password"
+msgstr ""
+
+msgid "Enter the new password for your account below"
+msgstr ""
+
+msgid ""
+"You should shortly be redirected. If you are not redirected, please click "
+"redirect button."
+msgstr ""
