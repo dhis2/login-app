@@ -1,3 +1,10 @@
+## [100.2.3](https://github.com/dhis2/login-app/compare/v100.2.2...v100.2.3) (2025-02-04)
+
+
+### Bug Fixes
+
+* harmonize password validation with backend [DHIS2-15704] ([#61](https://github.com/dhis2/login-app/issues/61)) ([c87611a](https://github.com/dhis2/login-app/commit/c87611ade06dd61b70194c2f667fb6b0abd4a936))
+
 ## [100.2.2](https://github.com/dhis2/login-app/compare/v100.2.1...v100.2.2) (2025-02-04)
 
 
