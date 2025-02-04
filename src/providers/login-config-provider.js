@@ -135,6 +135,16 @@ const LoginConfigProvider = ({ initialLocation, children }) => {
 
     const providerValue = {
         ...loginConfigData?.loginConfig,
+        minPasswordLength: Number.isInteger(
+            Number(loginConfigData?.loginConfig?.minPasswordLength)
+        )
+            ? loginConfigData?.loginConfig?.minPasswordLength
+            : 8,
+        maxPasswordLength: Number.isInteger(
+            Number(loginConfigData?.loginConfig?.maxPasswordLength)
+        )
+            ? loginConfigData?.loginConfig?.maxPasswordLength
+            : 72,
         hashRedirect,
         ...translatedValues,
         localesUI: localesData?.localesUI ?? defaultLocales,

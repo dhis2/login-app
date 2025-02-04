@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useDataQuery } from '@dhis2/app-runtime'
 import { renderHook } from '@testing-library/react-hooks'
 import React from 'react'
 import { LoginConfigProvider } from '../login-config-provider.js'
@@ -219,5 +220,38 @@ describe('useAppContext', () => {
             }),
         })
         expect(result.current.hashRedirect).toBe('#/hashpath')
+    })
+
+    it('falls back to default values for min/max password length if none provided', () => {
+        const { result } = renderHook(() => useLoginConfig(), { wrapper })
+        expect(result.current.minPasswordLength).toBe(8)
+        expect(result.current.maxPasswordLength).toBe(72)
+    })
+
+    it('falls back to default min/max password length if invalid values are provided', () => {
+        useDataQuery.mockReturnValue({
+            data: {
+                loginConfig: {
+                    minPasswordLength: 4.7,
+                    maxPasswordLength: 'cat',
+                },
+            },
+        })
+        const { result } = renderHook(() => useLoginConfig(), { wrapper })
+        expect(result.current.minPasswordLength).toBe(8)
+        expect(result.current.maxPasswordLength).toBe(72)
+    })
+
+    it('uses valid min/max password length if those are provided', () => {
+        useDataQuery.mockReturnValue({
+            data: {
+                loginConfig: { minPasswordLength: 4, maxPasswordLength: 55 },
+                loading: false,
+                error: null,
+            },
+        })
+        const { result } = renderHook(() => useLoginConfig(), { wrapper })
+        expect(result.current.minPasswordLength).toBe(4)
+        expect(result.current.maxPasswordLength).toBe(55)
     })
 })
