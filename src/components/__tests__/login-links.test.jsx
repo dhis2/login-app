@@ -1,8 +1,8 @@
 import { screen } from '@testing-library/react'
 import React from 'react'
 import { useLoginConfig } from '../../providers/use-login-config.js'
-import { renderWithRouter } from '../../test-utils/render-with-router.js'
-import { LoginLinks } from '../login-links.js'
+import { renderWithRouter } from '../../test-utils/render-with-router.jsx'
+import { LoginLinks } from '../login-links.jsx'
 
 jest.mock('../../providers/use-login-config.js', () => ({
     useLoginConfig: jest.fn(),

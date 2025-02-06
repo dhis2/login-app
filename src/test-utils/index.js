@@ -1,1 +1,1 @@
-export { renderWithRouter } from './render-with-router.js'
+export { renderWithRouter } from './render-with-router.jsx'

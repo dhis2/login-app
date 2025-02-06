@@ -7,7 +7,7 @@ const config = {
     coreApp: true,
     minDHIS2Version: '2.41',
     entryPoints: {
-        app: './src/app.js',
+        app: './src/app.jsx',
     },
 }
 

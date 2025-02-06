@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
-import LoginPage from '../login.js'
+import LoginPage from '../login.jsx'
 
 const getCustomData = (statusMessage) => ({
     'auth/login': { loginStatus: statusMessage },
