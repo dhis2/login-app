@@ -1,6 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import { useLoginConfig } from '../../providers/use-login-config.js'
 import {

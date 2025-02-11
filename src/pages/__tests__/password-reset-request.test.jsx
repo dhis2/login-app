@@ -1,6 +1,6 @@
 import { useDataMutation } from '@dhis2/app-runtime'
 import { screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import { useLoginConfig } from '../../providers/use-login-config.js'
 import { renderWithRouter } from '../../test-utils/render-with-router.jsx'
