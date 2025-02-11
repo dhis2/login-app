@@ -3,7 +3,12 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './form-notice.module.css'
 
-export const FormNotice = ({ title, error = false, valid = false, children }) => (
+export const FormNotice = ({
+    title,
+    error = false,
+    valid = false,
+    children,
+}) => (
     <div className={styles.formError}>
         <NoticeBox valid={valid} error={error} title={title}>
             {children}
