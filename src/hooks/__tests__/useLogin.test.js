@@ -1,5 +1,5 @@
 import { useDataMutation } from '@dhis2/app-runtime'
-import { act, renderHook } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react'
 import { redirectTo } from '../../helpers/redirectHelpers.js'
 import { useLogin } from '../useLogin.js'
 

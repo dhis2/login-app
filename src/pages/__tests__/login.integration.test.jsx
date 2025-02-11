@@ -1,5 +1,5 @@
 import { CustomDataProvider } from '@dhis2/app-runtime'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -10,14 +10,11 @@ const getCustomData = (statusMessage) => ({
     'auth/login': { loginStatus: statusMessage },
 })
 
-const login = async ({ user }) => {
-    fireEvent.change(screen.getByLabelText('Username'), {
-        target: { value: 'Fl@klypa.no' },
-    })
-    fireEvent.change(screen.getByLabelText('Password'), {
-        target: { value: 'SolanOgLudvig' },
-    })
-    await user.click(screen.getByRole('button', { name: /log in/i }))
+const login = async () => {
+    await userEvent.type(screen.getByLabelText('Username'), 'Fl@klypa.no')
+    await userEvent.type(screen.getByLabelText('Password'), 'SolanOgLudvig')
+
+    await userEvent.click(screen.getByRole('button', { name: /log in/i }))
 }
 
 const Wrapper = ({ statusMessage, children }) => (
@@ -40,13 +37,12 @@ describe('LoginForm', () => {
     })
 
     it('shows password expired messages if status is PASSWORD_EXPIRED', async () => {
-        const user = userEvent.setup()
         render(
             <Wrapper statusMessage={'PASSWORD_EXPIRED'}>
                 <LoginPage />
             </Wrapper>
         )
-        await login({ user })
+        await login()
 
         expect(screen.getByText('Password expired')).toBeInTheDocument()
         expect(
@@ -55,13 +51,12 @@ describe('LoginForm', () => {
     })
 
     it('shows account not accessible message if status is ACCOUNT_DISABLED', async () => {
-        const user = userEvent.setup()
         render(
             <Wrapper statusMessage={'ACCOUNT_DISABLED'}>
                 <LoginPage />
             </Wrapper>
         )
-        await login({ user })
+        await login()
 
         expect(screen.getByText('Account not accessible')).toBeInTheDocument()
         expect(
@@ -70,13 +65,12 @@ describe('LoginForm', () => {
     })
 
     it('shows account not accessible message if status is ACCOUNT_LOCKED', async () => {
-        const user = userEvent.setup()
         render(
             <Wrapper statusMessage={'ACCOUNT_LOCKED'}>
                 <LoginPage />
             </Wrapper>
         )
-        await login({ user })
+        await login()
 
         expect(screen.getByText('Account not accessible')).toBeInTheDocument()
         expect(
@@ -85,13 +79,12 @@ describe('LoginForm', () => {
     })
 
     it('shows account not accessible message if status is ACCOUNT_EXPIRED', async () => {
-        const user = userEvent.setup()
         render(
             <Wrapper statusMessage={'ACCOUNT_EXPIRED'}>
                 <LoginPage />
             </Wrapper>
         )
-        await login({ user })
+        await login()
 
         expect(screen.getByText('Account not accessible')).toBeInTheDocument()
         expect(
