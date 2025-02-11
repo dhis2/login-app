@@ -125,12 +125,14 @@ LoginErrors.propTypes = {
     unknownStatus: PropTypes.bool,
 }
 
+// Set prop default here to be a stable reference
+const defaultLngs = ['en']
 const InnerLoginForm = ({
     handleSubmit,
     formSubmitted,
     twoFAVerificationRequired,
     cancelTwoFA,
-    lngs,
+    lngs = defaultLngs,
     loading,
     setFormUserName,
 }) => {
@@ -212,10 +214,6 @@ const InnerLoginForm = ({
     )
 }
 
-InnerLoginForm.defaultProps = {
-    lngs: ['en'],
-}
-
 InnerLoginForm.propTypes = {
     cancelTwoFA: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
@@ -238,7 +236,7 @@ const LoginForm = ({
     error,
     loading,
     setFormUserName,
-    lngs,
+    lngs = defaultLngs,
 }) => {
     const [formSubmitted, setFormSubmitted] = useState(false)
 
@@ -286,10 +284,6 @@ const LoginForm = ({
             </ReactFinalForm.Form>
         </>
     )
-}
-
-LoginForm.defaultProps = {
-    lngs: ['en'],
 }
 
 LoginForm.propTypes = {

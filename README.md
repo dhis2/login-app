@@ -1,3 +1,4 @@
+![React 18](https://img.shields.io/badge/react-18-blue)
 [![codecov](https://codecov.io/gh/dhis2/login-app/graph/badge.svg?token=3RL8FV6K0L)](https://codecov.io/gh/dhis2/login-app)
 
 This project was bootstrapped with [DHIS2 Application Platform](https://github.com/dhis2/app-platform).
