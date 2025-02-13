@@ -1,4 +1,4 @@
-import { useDataMutation } from '@DHIS2 Community of Practice/app-runtime'
+import { useDataMutation } from '@dhis2/app-runtime'
 import { useState } from 'react'
 import { redirectTo, getRedirectString } from '../helpers/index.js'
 import { useLoginConfig } from '../providers/index.js'
