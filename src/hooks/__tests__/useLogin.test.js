@@ -43,10 +43,12 @@ describe('useLogin', () => {
         expect(redirectTo).toHaveBeenCalled()
     })
 
-    it('sets twoFAVerificationRequired to true first time after receiving INCORRECT_TWO_FACTOR_CODE ', async () => {
+    it('sets twoFAVerificationRequired to true first time after receiving INCORRECT_TWO_FACTOR_CODE_TOTP ', async () => {
         useDataMutation.mockImplementation((mutation, options) => [
             () => {
-                options.onComplete({ loginStatus: 'INCORRECT_TWO_FACTOR_CODE' })
+                options.onComplete({
+                    loginStatus: 'INCORRECT_TWO_FACTOR_CODE_TOTP',
+                })
             },
             { loading: false },
         ])
@@ -58,10 +60,12 @@ describe('useLogin', () => {
         expect(result.current.twoFAVerificationRequired).toBe(true)
     })
 
-    it('sets twoFAIncorrect to true second time after receiving INCORRECT_TWO_FACTOR_CODE ', async () => {
+    it('sets twoFAIncorrect to true second time after receiving INCORRECT_TWO_FACTOR_CODE_TOTP ', async () => {
         useDataMutation.mockImplementation((mutation, options) => [
             () => {
-                options.onComplete({ loginStatus: 'INCORRECT_TWO_FACTOR_CODE' })
+                options.onComplete({
+                    loginStatus: 'INCORRECT_TWO_FACTOR_CODE_TOTP',
+                })
             },
             { loading: false },
         ])
@@ -77,10 +81,72 @@ describe('useLogin', () => {
         expect(result.current.twoFAIncorrect).toBe(true)
     })
 
-    it('clears information about twoFA status if cancelTwoFA is called ', async () => {
+    it('clears information about twoFA status if cancelTwoFAEmail is called ', async () => {
         useDataMutation.mockImplementation((mutation, options) => [
             () => {
-                options.onComplete({ loginStatus: 'INCORRECT_TWO_FACTOR_CODE' })
+                options.onComplete({
+                    loginStatus: 'INCORRECT_TWO_FACTOR_CODE_TOTP',
+                })
+            },
+            { loading: false },
+        ])
+
+        const { result } = renderHook(() => useLogin())
+        expect(result.current.loading).toBe(false)
+        act(() => {
+            result.current.login()
+            result.current.login()
+            result.current.cancelTwoFA()
+        })
+        expect(result.current.loading).toBe(false)
+        expect(result.current.twoFAVerificationRequired).toBe(false)
+        expect(result.current.twoFAIncorrect).toBe(false)
+    })
+
+    it('sets twoFAVerificationRequired to true first time after receiving INCORRECT_TWO_FACTOR_CODE_EMAIL ', async () => {
+        useDataMutation.mockImplementation((mutation, options) => [
+            () => {
+                options.onComplete({
+                    loginStatus: 'INCORRECT_TWO_FACTOR_CODE_EMAIL',
+                })
+            },
+            { loading: false },
+        ])
+
+        const { result } = renderHook(() => useLogin())
+        expect(result.current.loading).toBe(false)
+        act(() => result.current.login())
+        expect(result.current.loading).toBe(false)
+        expect(result.current.twoFAVerificationRequired).toBe(true)
+    })
+
+    it('sets twoFAIncorrect to true second time after receiving INCORRECT_TWO_FACTOR_CODE_EMAIL ', async () => {
+        useDataMutation.mockImplementation((mutation, options) => [
+            () => {
+                options.onComplete({
+                    loginStatus: 'INCORRECT_TWO_FACTOR_CODE_EMAIL',
+                })
+            },
+            { loading: false },
+        ])
+
+        const { result } = renderHook(() => useLogin())
+        expect(result.current.loading).toBe(false)
+        act(() => {
+            result.current.login()
+            result.current.login()
+        })
+        expect(result.current.loading).toBe(false)
+        expect(result.current.twoFAVerificationRequired).toBe(true)
+        expect(result.current.twoFAIncorrect).toBe(true)
+    })
+
+    it('clears information about twoFA status if cancelTwoFAEmail is called ', async () => {
+        useDataMutation.mockImplementation((mutation, options) => [
+            () => {
+                options.onComplete({
+                    loginStatus: 'INCORRECT_TWO_FACTOR_CODE_EMAIL',
+                })
             },
             { loading: false },
         ])
