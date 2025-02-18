@@ -4,7 +4,8 @@ import { redirectTo, getRedirectString } from '../helpers/index.js'
 import { useLoginConfig } from '../providers/index.js'
 
 const LOGIN_STATUSES = {
-    incorrect2fa: 'INCORRECT_TWO_FACTOR_CODE',
+    incorrect2faEmail: 'INCORRECT_TWO_FACTOR_CODE_EMAIL',
+    incorrect2faTOTP: 'INCORRECT_TWO_FACTOR_CODE_TOTP',
     notEnabled2fa: 'INVALID',
     success: 'SUCCESS',
     secondAttempt2fa: 'second_attempt_incorrect_2fa', // this is internal logic to app
@@ -15,7 +16,8 @@ const LOGIN_STATUSES = {
     accountExpired: 'ACCOUNT_EXPIRED',
 }
 const invalidTWOFA = [
-    LOGIN_STATUSES.incorrect2fa,
+    LOGIN_STATUSES.incorrect2faEmail,
+    LOGIN_STATUSES.incorrect2faTOTP,
     LOGIN_STATUSES.secondAttempt2fa,
 ]
 const inaccessibleAccountStatuses = [
@@ -92,6 +94,10 @@ export const useLogin = () => {
         twoFAVerificationRequired:
             invalidTWOFA.includes(loginStatus) ||
             loginStatus === LOGIN_STATUSES.success2fa,
+        OTPtwoFAVerificationRequired:
+            loginStatus === LOGIN_STATUSES.incorrect2faTOTP,
+        emailtwoFAVerificationRequired:
+            loginStatus === LOGIN_STATUSES.incorrect2faEmail,
         twoFAIncorrect: loginStatus === LOGIN_STATUSES.secondAttempt2fa,
         twoFANotEnabled: loginStatus === LOGIN_STATUSES.notEnabled2fa,
         passwordExpired: loginStatus === LOGIN_STATUSES.passwordExpired,

@@ -129,11 +129,22 @@ const InnerLoginForm = ({
     handleSubmit,
     formSubmitted,
     twoFAVerificationRequired,
+    emailtwoFAVerificationRequired,
     cancelTwoFA,
     lngs,
     loading,
     setFormUserName,
 }) => {
+    const [isResendDisabled, setIsResendDisabled] = useState(false)
+
+    const resendCode = () => {
+        setIsResendDisabled(true)
+        handleSubmit()
+        setTimeout(() => {
+            setIsResendDisabled(false)
+        }, 30000)
+    }
+
     const form = useForm()
     const ref = useRef()
     const clearTwoFA = () => {
@@ -150,6 +161,7 @@ const InnerLoginForm = ({
         ? i18n.t('Verifying...', { lngs })
         : i18n.t('Logging in...', { lngs })
     const isRequired = getIsRequired(lngs[0])
+
     return (
         <form onSubmit={handleSubmit}>
             <div
@@ -202,6 +214,16 @@ const InnerLoginForm = ({
                 <Button type="submit" disabled={loading} primary>
                     {loading ? login2FAButtonText : loginButtonText}
                 </Button>
+                {emailtwoFAVerificationRequired && (
+                    <Button
+                        secondary
+                        disabled={isResendDisabled || loading}
+                        type="button"
+                        onClick={resendCode}
+                    >
+                        {i18n.t('Resend Code', { lngs })}
+                    </Button>
+                )}
                 {twoFAVerificationRequired && (
                     <Button secondary disabled={loading} onClick={clearTwoFA}>
                         {i18n.t('Cancel', { lngs })}
@@ -219,6 +241,7 @@ InnerLoginForm.defaultProps = {
 InnerLoginForm.propTypes = {
     cancelTwoFA: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
+    emailtwoFAVerificationRequired: PropTypes.bool,
     formSubmitted: PropTypes.bool,
     lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
@@ -230,6 +253,7 @@ const LoginForm = ({
     login,
     cancelTwoFA,
     twoFAVerificationRequired,
+    emailtwoFAVerificationRequired,
     twoFAIncorrect,
     accountInaccessible,
     passwordExpired,
@@ -276,6 +300,9 @@ const LoginForm = ({
                         handleSubmit={handleSubmit}
                         formSubmitted={formSubmitted}
                         twoFAVerificationRequired={twoFAVerificationRequired}
+                        emailtwoFAVerificationRequired={
+                            emailtwoFAVerificationRequired
+                        }
                         twoFAIncorrect={twoFAIncorrect}
                         cancelTwoFA={cancelTwoFA}
                         lngs={lngs}
@@ -295,6 +322,7 @@ LoginForm.defaultProps = {
 LoginForm.propTypes = {
     accountInaccessible: PropTypes.bool,
     cancelTwoFA: PropTypes.func,
+    emailtwoFAVerificationRequired: PropTypes.bool,
     error: PropTypes.object,
     lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
@@ -313,6 +341,8 @@ export const LoginFormContainer = () => {
         login,
         cancelTwoFA,
         twoFAVerificationRequired,
+        OTPtwoFAVerificationRequired,
+        emailtwoFAVerificationRequired,
         twoFAIncorrect,
         accountInaccessible,
         passwordExpired,
@@ -331,11 +361,21 @@ export const LoginFormContainer = () => {
                     : i18n.t('Log in', { lngs })
             }
         >
-            {twoFAVerificationRequired && (
+            {OTPtwoFAVerificationRequired && (
                 <FormSubtitle>
                     <p>
                         {i18n.t(
                             'Enter the code from your two-factor authentication app to log in.',
+                            { lngs }
+                        )}
+                    </p>
+                </FormSubtitle>
+            )}
+            {emailtwoFAVerificationRequired && (
+                <FormSubtitle>
+                    <p>
+                        {i18n.t(
+                            'We have sent you an email with your authentication code, enter it below to log in',
                             { lngs }
                         )}
                     </p>
@@ -347,6 +387,7 @@ export const LoginFormContainer = () => {
                 login={login}
                 cancelTwoFA={cancelTwoFA}
                 twoFAVerificationRequired={twoFAVerificationRequired}
+                emailtwoFAVerificationRequired={emailtwoFAVerificationRequired}
                 twoFAIncorrect={twoFAIncorrect}
                 accountInaccessible={accountInaccessible}
                 passwordExpired={passwordExpired}
