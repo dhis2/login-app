@@ -1,3 +1,10 @@
+## [100.2.5](https://github.com/dhis2/login-app/compare/v100.2.4...v100.2.5) (2025-02-18)
+
+
+### Bug Fixes
+
+* password logic account creation [DHIS2-15704] ([#64](https://github.com/dhis2/login-app/issues/64)) ([e2ee975](https://github.com/dhis2/login-app/commit/e2ee975e78024937952e3cbb0e8770c1f7021141))
+
 ## [100.2.4](https://github.com/dhis2/login-app/compare/v100.2.3...v100.2.4) (2025-02-16)
 
 
