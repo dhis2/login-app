@@ -4,7 +4,8 @@ import { redirectTo, getRedirectString } from '../helpers/index.js'
 import { useLoginConfig } from '../providers/index.js'
 
 const LOGIN_STATUSES = {
-    incorrect2faEmail: 'INCORRECT_TWO_FACTOR_CODE_EMAIL',
+    incorrect2fa: 'INCORRECT_TWO_FACTOR_CODE',
+    incorrect2faEmail: 'EMAIL_TWO_FACTOR_CODE_SENT',
     incorrect2faTOTP: 'INCORRECT_TWO_FACTOR_CODE_TOTP',
     notEnabled2fa: 'INVALID',
     success: 'SUCCESS',
