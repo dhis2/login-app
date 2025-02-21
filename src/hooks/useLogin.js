@@ -10,6 +10,8 @@ const LOGIN_STATUSES = {
     notEnabled2fa: 'INVALID',
     success: 'SUCCESS',
     secondAttempt2fa: 'second_attempt_incorrect_2fa', // this is internal logic to app
+    secondAttempt2faEmail: 'second_attempt_incorrect_2fa_email',
+    secondAttempt2faTOTP: 'second_attempt_incorrect_2fa_OTP',
     success2fa: 'SUCCESS_2fa',
     passwordExpired: 'PASSWORD_EXPIRED',
     accountDisabled: 'ACCOUNT_DISABLED',
@@ -20,6 +22,8 @@ const invalidTWOFA = [
     LOGIN_STATUSES.incorrect2faEmail,
     LOGIN_STATUSES.incorrect2faTOTP,
     LOGIN_STATUSES.secondAttempt2fa,
+    LOGIN_STATUSES.secondAttempt2faTOTP,
+    LOGIN_STATUSES.secondAttempt2faEmail,
 ]
 const inaccessibleAccountStatuses = [
     LOGIN_STATUSES.accountDisabled,
@@ -48,14 +52,16 @@ export const useLogin = () => {
 
     const handleSuccessfulLogin = (response) => {
         setError(null)
-        // we need to distinguish between incorrect 2fa on second attempt
-        setLoginStatus((prev) =>
-            invalidTWOFA.includes(prev)
-                ? response.loginStatus === LOGIN_STATUSES.success
-                    ? LOGIN_STATUSES.success2fa
-                    : LOGIN_STATUSES.secondAttempt2fa
-                : response.loginStatus
-        )
+        // Check if login status is either second attempt email or second attempt TOTP
+        setLoginStatus((prev) => {
+            if (response.loginStatus === LOGIN_STATUSES.incorrect2faEmail) {
+                return LOGIN_STATUSES.secondAttempt2faEmail
+            }
+            if (response.loginStatus === LOGIN_STATUSES.incorrect2faTOTP) {
+                return LOGIN_STATUSES.secondAttempt2faTOTP
+            }
+            return response.loginStatus
+        })
 
         if (response.loginStatus === LOGIN_STATUSES.success) {
             const redirectString = getRedirectString({
@@ -82,6 +88,7 @@ export const useLogin = () => {
         },
     })
 
+    console.log({ loginStatus })
     return {
         login,
         cancelTwoFA,
@@ -99,7 +106,11 @@ export const useLogin = () => {
             loginStatus === LOGIN_STATUSES.incorrect2faTOTP,
         emailtwoFAVerificationRequired:
             loginStatus === LOGIN_STATUSES.incorrect2faEmail,
-        twoFAIncorrect: loginStatus === LOGIN_STATUSES.secondAttempt2fa,
+        twoFAIncorrect:
+            loginStatus === LOGIN_STATUSES.secondAttempt2fa ||
+            loginStatus === LOGIN_STATUSES.secondAttempt2faTOTP,
+        emailTwoFAIncorrect:
+            loginStatus === LOGIN_STATUSES.secondAttempt2faEmail,
         twoFANotEnabled: loginStatus === LOGIN_STATUSES.notEnabled2fa,
         passwordExpired: loginStatus === LOGIN_STATUSES.passwordExpired,
         accountInaccessible: inaccessibleAccountStatuses.includes(loginStatus),

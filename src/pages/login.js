@@ -34,7 +34,6 @@ const LoginErrors = ({
     passwordResetEnabled,
     accountInaccessible,
     unknownStatus,
-    resetButtonPressed,
 }) => {
     if (error) {
         return (
@@ -59,7 +58,7 @@ const LoginErrors = ({
         )
     }
 
-    if (twoFAIncorrect && !resetButtonPressed) {
+    if (twoFAIncorrect) {
         return (
             <FormNotice
                 title={i18n.t('Incorrect authentication code', { lngs })}
@@ -130,17 +129,15 @@ const InnerLoginForm = ({
     formSubmitted,
     twoFAVerificationRequired,
     emailtwoFAVerificationRequired,
+    emailTwoFAIncorrect,
     cancelTwoFA,
     lngs,
     loading,
     setFormUserName,
-    setResetButtonPressed,
-    resetButtonPressed,
 }) => {
     const [isResendDisabled, setIsResendDisabled] = useState(false)
 
     const resendCode = () => {
-        setResetButtonPressed(true)
         setIsResendDisabled(true)
         handleSubmit()
         setTimeout(() => {
@@ -216,7 +213,7 @@ const InnerLoginForm = ({
                 <Button type="submit" disabled={loading} primary>
                     {loading ? login2FAButtonText : loginButtonText}
                 </Button>
-                {(resetButtonPressed || emailtwoFAVerificationRequired) && (
+                {(emailtwoFAVerificationRequired || emailTwoFAIncorrect) && (
                     <Button
                         secondary
                         disabled={isResendDisabled || loading}
@@ -260,6 +257,7 @@ const LoginForm = ({
     twoFAVerificationRequired,
     emailtwoFAVerificationRequired,
     twoFAIncorrect,
+    emailTwoFAIncorrect,
     accountInaccessible,
     passwordExpired,
     passwordResetEnabled,
@@ -270,7 +268,6 @@ const LoginForm = ({
     lngs,
 }) => {
     const [formSubmitted, setFormSubmitted] = useState(false)
-    const [resetButtonPressed, setResetButtonPressed] = useState(false)
 
     if (!login) {
         return null
@@ -298,7 +295,7 @@ const LoginForm = ({
                 passwordResetEnabled={passwordResetEnabled}
                 accountInaccessible={accountInaccessible}
                 unknownStatus={unknownStatus}
-                resetButtonPressed={resetButtonPressed}
+                emailTwoFAIncorrect={emailTwoFAIncorrect}
             />
 
             <ReactFinalForm.Form onSubmit={handleLogin}>
@@ -310,13 +307,12 @@ const LoginForm = ({
                         emailtwoFAVerificationRequired={
                             emailtwoFAVerificationRequired
                         }
+                        emailTwoFAIncorrect={emailTwoFAIncorrect}
                         twoFAIncorrect={twoFAIncorrect}
                         cancelTwoFA={cancelTwoFA}
                         lngs={lngs}
                         loading={loading}
                         setFormUserName={setFormUserName}
-                        setResetButtonPressed={setResetButtonPressed}
-                        resetButtonPressed={resetButtonPressed}
                     />
                 )}
             </ReactFinalForm.Form>
@@ -352,6 +348,7 @@ export const LoginFormContainer = () => {
         twoFAVerificationRequired,
         OTPtwoFAVerificationRequired,
         emailtwoFAVerificationRequired,
+        emailTwoFAIncorrect,
         twoFAIncorrect,
         accountInaccessible,
         passwordExpired,
@@ -370,7 +367,7 @@ export const LoginFormContainer = () => {
                     : i18n.t('Log in', { lngs })
             }
         >
-            {OTPtwoFAVerificationRequired && (
+            {(OTPtwoFAVerificationRequired || twoFAIncorrect) && (
                 <FormSubtitle>
                     <p>
                         {i18n.t(
@@ -380,7 +377,7 @@ export const LoginFormContainer = () => {
                     </p>
                 </FormSubtitle>
             )}
-            {emailtwoFAVerificationRequired && (
+            {(emailtwoFAVerificationRequired || emailTwoFAIncorrect) && (
                 <FormSubtitle>
                     <p>
                         {i18n.t(
@@ -398,6 +395,7 @@ export const LoginFormContainer = () => {
                 twoFAVerificationRequired={twoFAVerificationRequired}
                 emailtwoFAVerificationRequired={emailtwoFAVerificationRequired}
                 twoFAIncorrect={twoFAIncorrect}
+                emailTwoFAIncorrect={emailTwoFAIncorrect}
                 accountInaccessible={accountInaccessible}
                 passwordExpired={passwordExpired}
                 passwordResetEnabled={allowAccountRecovery && emailConfigured}
