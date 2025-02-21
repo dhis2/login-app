@@ -120,6 +120,7 @@ LoginErrors.propTypes = {
     lngs: PropTypes.arrayOf(PropTypes.string),
     passwordExpired: PropTypes.bool,
     passwordResetEnabled: PropTypes.bool,
+    resetButtonPressed: PropTypes.bool,
     twoFAIncorrect: PropTypes.bool,
     unknownStatus: PropTypes.bool,
 }
@@ -247,7 +248,9 @@ InnerLoginForm.propTypes = {
     formSubmitted: PropTypes.bool,
     lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
+    resetButtonPressed: PropTypes.bool,
     setFormUserName: PropTypes.func,
+    setResetButtonPressed: PropTypes.func,
     twoFAVerificationRequired: PropTypes.bool,
 }
 
