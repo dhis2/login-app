@@ -106,8 +106,6 @@ export const useLogin = () => {
         },
     })
 
-    console.log({ loginStatus })
-
     return {
         login,
         cancelTwoFA,
