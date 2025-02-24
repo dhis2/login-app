@@ -87,8 +87,7 @@ export const useLogin = () => {
             handleUnsuccessfulLogin(error)
         },
     })
-
-    console.log({ loginStatus })
+    
     return {
         login,
         cancelTwoFA,
