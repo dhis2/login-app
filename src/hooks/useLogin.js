@@ -61,10 +61,16 @@ export const useLogin = () => {
                 ) {
                     return LOGIN_STATUSES.secondAttempt2faEmail
                 }
-                if (prev === LOGIN_STATUSES.incorrect2fa) {
+                if (
+                    prev === LOGIN_STATUSES.incorrect2fa ||
+                    prev === LOGIN_STATUSES.secondAttempt2fa
+                ) {
                     return LOGIN_STATUSES.secondAttempt2fa
                 }
-                if (prev === LOGIN_STATUSES.incorrect2faTOTP) {
+                if (
+                    prev === LOGIN_STATUSES.incorrect2faTOTP ||
+                    prev === LOGIN_STATUSES.secondAttempt2faTOTP
+                ) {
                     return LOGIN_STATUSES.secondAttempt2faTOTP
                 }
                 if (response.loginStatus === LOGIN_STATUSES.success) {
