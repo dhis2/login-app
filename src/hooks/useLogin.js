@@ -53,7 +53,7 @@ export const useLogin = () => {
     const handleSuccessfulLogin = (response) => {
         setError(null)
         // Check if login status is either second attempt email or second attempt TOTP
-        setLoginStatus((prev) => {
+        setLoginStatus(() => {
             if (response.loginStatus === LOGIN_STATUSES.incorrect2faEmail) {
                 return LOGIN_STATUSES.secondAttempt2faEmail
             }
@@ -87,7 +87,7 @@ export const useLogin = () => {
             handleUnsuccessfulLogin(error)
         },
     })
-    
+
     return {
         login,
         cancelTwoFA,

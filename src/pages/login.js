@@ -119,7 +119,6 @@ LoginErrors.propTypes = {
     lngs: PropTypes.arrayOf(PropTypes.string),
     passwordExpired: PropTypes.bool,
     passwordResetEnabled: PropTypes.bool,
-    resetButtonPressed: PropTypes.bool,
     twoFAIncorrect: PropTypes.bool,
     unknownStatus: PropTypes.bool,
 }
@@ -241,13 +240,12 @@ InnerLoginForm.defaultProps = {
 InnerLoginForm.propTypes = {
     cancelTwoFA: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
+    emailTwoFAIncorrect: PropTypes.bool,
     emailtwoFAVerificationRequired: PropTypes.bool,
     formSubmitted: PropTypes.bool,
     lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
-    resetButtonPressed: PropTypes.bool,
     setFormUserName: PropTypes.func,
-    setResetButtonPressed: PropTypes.func,
     twoFAVerificationRequired: PropTypes.bool,
 }
 
@@ -327,6 +325,7 @@ LoginForm.defaultProps = {
 LoginForm.propTypes = {
     accountInaccessible: PropTypes.bool,
     cancelTwoFA: PropTypes.func,
+    emailTwoFAIncorrect: PropTypes.bool,
     emailtwoFAVerificationRequired: PropTypes.bool,
     error: PropTypes.object,
     lngs: PropTypes.arrayOf(PropTypes.string),
