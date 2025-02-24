@@ -55,7 +55,10 @@ export const useLogin = () => {
         setError(null)
         setLoginStatus((prev) => {
             if (invalidTWOFA.includes(prev)) {
-                if (prev === LOGIN_STATUSES.incorrect2faEmail) {
+                if (
+                    prev === LOGIN_STATUSES.incorrect2faEmail ||
+                    prev === LOGIN_STATUSES.secondAttempt2faEmail
+                ) {
                     return LOGIN_STATUSES.secondAttempt2faEmail
                 }
                 if (prev === LOGIN_STATUSES.incorrect2fa) {
