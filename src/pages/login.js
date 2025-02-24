@@ -62,7 +62,7 @@ const LoginErrors = ({
         return (
             <FormNotice
                 title={i18n.t('Incorrect authentication code', { lngs })}
-                warn
+                error
             />
         )
     }
@@ -293,7 +293,6 @@ const LoginForm = ({
                 passwordResetEnabled={passwordResetEnabled}
                 accountInaccessible={accountInaccessible}
                 unknownStatus={unknownStatus}
-                emailTwoFAIncorrect={emailTwoFAIncorrect}
             />
 
             <ReactFinalForm.Form onSubmit={handleLogin}>

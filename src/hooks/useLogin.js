@@ -19,6 +19,7 @@ const LOGIN_STATUSES = {
     accountExpired: 'ACCOUNT_EXPIRED',
 }
 const invalidTWOFA = [
+    LOGIN_STATUSES.incorrect2fa,
     LOGIN_STATUSES.incorrect2faEmail,
     LOGIN_STATUSES.incorrect2faTOTP,
     LOGIN_STATUSES.secondAttempt2fa,
@@ -52,14 +53,23 @@ export const useLogin = () => {
 
     const handleSuccessfulLogin = (response) => {
         setError(null)
-        // Check if login status is either second attempt email or second attempt TOTP
-        setLoginStatus(() => {
-            if (response.loginStatus === LOGIN_STATUSES.incorrect2faEmail) {
-                return LOGIN_STATUSES.secondAttempt2faEmail
+        setLoginStatus((prev) => {
+            if (invalidTWOFA.includes(prev)) {
+                if (prev === LOGIN_STATUSES.incorrect2faEmail) {
+                    return LOGIN_STATUSES.secondAttempt2faEmail
+                }
+                if (prev === LOGIN_STATUSES.incorrect2fa) {
+                    return LOGIN_STATUSES.secondAttempt2fa
+                }
+                if (prev === LOGIN_STATUSES.incorrect2faTOTP) {
+                    return LOGIN_STATUSES.secondAttempt2faTOTP
+                }
+
+                return response.loginStatus === LOGIN_STATUSES.success
+                    ? LOGIN_STATUSES.success2fa
+                    : LOGIN_STATUSES.secondAttempt2fa
             }
-            if (response.loginStatus === LOGIN_STATUSES.incorrect2faTOTP) {
-                return LOGIN_STATUSES.secondAttempt2faTOTP
-            }
+
             return response.loginStatus
         })
 
@@ -87,6 +97,8 @@ export const useLogin = () => {
             handleUnsuccessfulLogin(error)
         },
     })
+
+    console.log({ loginStatus })
 
     return {
         login,
