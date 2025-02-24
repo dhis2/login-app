@@ -103,11 +103,11 @@ describe('useLogin', () => {
         expect(result.current.twoFAIncorrect).toBe(false)
     })
 
-    it('sets twoFAVerificationRequired to true first time after receiving INCORRECT_TWO_FACTOR_CODE_EMAIL ', async () => {
+    it('sets twoFAVerificationRequired to true first time after receiving EMAIL_TWO_FACTOR_CODE_SENT ', async () => {
         useDataMutation.mockImplementation((mutation, options) => [
             () => {
                 options.onComplete({
-                    loginStatus: 'INCORRECT_TWO_FACTOR_CODE_EMAIL',
+                    loginStatus: 'EMAIL_TWO_FACTOR_CODE_SENT',
                 })
             },
             { loading: false },
@@ -120,11 +120,11 @@ describe('useLogin', () => {
         expect(result.current.twoFAVerificationRequired).toBe(true)
     })
 
-    it('sets twoFAIncorrect to true second time after receiving INCORRECT_TWO_FACTOR_CODE_EMAIL ', async () => {
+    it('sets emailTwoFAIncorrect to true second time after receiving EMAIL_TWO_FACTOR_CODE_SENT ', async () => {
         useDataMutation.mockImplementation((mutation, options) => [
             () => {
                 options.onComplete({
-                    loginStatus: 'INCORRECT_TWO_FACTOR_CODE_EMAIL',
+                    loginStatus: 'EMAIL_TWO_FACTOR_CODE_SENT',
                 })
             },
             { loading: false },
@@ -138,14 +138,14 @@ describe('useLogin', () => {
         })
         expect(result.current.loading).toBe(false)
         expect(result.current.twoFAVerificationRequired).toBe(true)
-        expect(result.current.twoFAIncorrect).toBe(true)
+        expect(result.current.emailTwoFAIncorrect).toBe(true)
     })
 
     it('clears information about twoFA status if cancelTwoFAEmail is called ', async () => {
         useDataMutation.mockImplementation((mutation, options) => [
             () => {
                 options.onComplete({
-                    loginStatus: 'INCORRECT_TWO_FACTOR_CODE_EMAIL',
+                    loginStatus: 'EMAIL_TWO_FACTOR_CODE_SENT',
                 })
             },
             { loading: false },
