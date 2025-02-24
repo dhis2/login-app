@@ -64,10 +64,9 @@ export const useLogin = () => {
                 if (prev === LOGIN_STATUSES.incorrect2faTOTP) {
                     return LOGIN_STATUSES.secondAttempt2faTOTP
                 }
-
-                return response.loginStatus === LOGIN_STATUSES.success
-                    ? LOGIN_STATUSES.success2fa
-                    : LOGIN_STATUSES.secondAttempt2fa
+                if (response.loginStatus === LOGIN_STATUSES.success) {
+                    return LOGIN_STATUSES.success2fa
+                }
             }
 
             return response.loginStatus
