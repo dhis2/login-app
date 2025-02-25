@@ -36,6 +36,7 @@ const LoginErrors = ({
     unknownStatus,
     emailTwoFAIncorrect,
     isResetButtonPressed,
+    incorrect2FAEmail
 }) => {
     if (error) {
         return (
@@ -60,7 +61,7 @@ const LoginErrors = ({
         )
     }
 
-    if (twoFAIncorrect) {
+    if (twoFAIncorrect || incorrect2FAEmail ) {
         return (
             <FormNotice
                 title={i18n.t('Incorrect authentication code', { lngs })}
@@ -270,6 +271,7 @@ const LoginForm = ({
     cancelTwoFA,
     twoFAVerificationRequired,
     emailtwoFAVerificationRequired,
+    incorrect2FAEmail,
     twoFAIncorrect,
     emailTwoFAIncorrect,
     accountInaccessible,
@@ -312,6 +314,7 @@ const LoginForm = ({
                 unknownStatus={unknownStatus}
                 emailTwoFAIncorrect={emailTwoFAIncorrect}
                 isResetButtonPressed={isResetButtonPressed}
+                incorrect2FAEmail={incorrect2FAEmail}
             />
 
             <ReactFinalForm.Form onSubmit={handleLogin}>
@@ -366,6 +369,7 @@ export const LoginFormContainer = () => {
         twoFAVerificationRequired,
         OTPtwoFAVerificationRequired,
         emailtwoFAVerificationRequired,
+        incorrect2FAEmail,
         emailTwoFAIncorrect,
         twoFAIncorrect,
         accountInaccessible,
@@ -412,6 +416,7 @@ export const LoginFormContainer = () => {
                 cancelTwoFA={cancelTwoFA}
                 twoFAVerificationRequired={twoFAVerificationRequired}
                 emailtwoFAVerificationRequired={emailtwoFAVerificationRequired}
+                incorrect2FAEmail={incorrect2FAEmail}
                 twoFAIncorrect={twoFAIncorrect}
                 emailTwoFAIncorrect={emailTwoFAIncorrect}
                 accountInaccessible={accountInaccessible}
