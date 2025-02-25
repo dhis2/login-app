@@ -5,7 +5,7 @@ import { useLoginConfig } from '../providers/index.js'
 
 const LOGIN_STATUSES = {
     incorrect2fa: 'INCORRECT_TWO_FACTOR_CODE',
-    incorrect2faEmail: 'EMAIL_TWO_FACTOR_CODE_SENT',
+    send2faEmail: 'EMAIL_TWO_FACTOR_CODE_SENT',
     incorrect2faTOTP: 'INCORRECT_TWO_FACTOR_CODE_TOTP',
     notEnabled2fa: 'INVALID',
     success: 'SUCCESS',
@@ -20,7 +20,7 @@ const LOGIN_STATUSES = {
 }
 const invalidTWOFA = [
     LOGIN_STATUSES.incorrect2fa,
-    LOGIN_STATUSES.incorrect2faEmail,
+    LOGIN_STATUSES.send2faEmail,
     LOGIN_STATUSES.incorrect2faTOTP,
     LOGIN_STATUSES.secondAttempt2fa,
     LOGIN_STATUSES.secondAttempt2faTOTP,
@@ -59,7 +59,7 @@ export const useLogin = () => {
                     return LOGIN_STATUSES.success2fa
                 }
                 if (
-                    prev === LOGIN_STATUSES.incorrect2faEmail ||
+                    prev === LOGIN_STATUSES.send2faEmail ||
                     prev === LOGIN_STATUSES.secondAttempt2faEmail
                 ) {
                     return LOGIN_STATUSES.secondAttempt2faEmail
@@ -122,7 +122,7 @@ export const useLogin = () => {
         OTPtwoFAVerificationRequired:
             loginStatus === LOGIN_STATUSES.incorrect2faTOTP,
         emailtwoFAVerificationRequired:
-            loginStatus === LOGIN_STATUSES.incorrect2faEmail,
+            loginStatus === LOGIN_STATUSES.send2faEmail,
         twoFAIncorrect:
             loginStatus === LOGIN_STATUSES.secondAttempt2fa ||
             loginStatus === LOGIN_STATUSES.secondAttempt2faTOTP,
