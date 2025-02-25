@@ -7,6 +7,7 @@ const LOGIN_STATUSES = {
     incorrect2fa: 'INCORRECT_TWO_FACTOR_CODE',
     send2faEmail: 'EMAIL_TWO_FACTOR_CODE_SENT',
     incorrect2faTOTP: 'INCORRECT_TWO_FACTOR_CODE_TOTP',
+    incorrect2faEmail: 'INCORRECT_TWO_FACTOR_CODE_EMAIL',
     notEnabled2fa: 'INVALID',
     success: 'SUCCESS',
     secondAttempt2fa: 'second_attempt_incorrect_2fa', // this is internal logic to app
@@ -57,6 +58,9 @@ export const useLogin = () => {
             if (invalidTWOFA.includes(prev)) {
                 if (response.loginStatus === LOGIN_STATUSES.success) {
                     return LOGIN_STATUSES.success2fa
+                }
+                if (response.loginStatus === LOGIN_STATUSES.incorrect2faEmail) {
+                    return response.loginStatus
                 }
                 if (
                     prev === LOGIN_STATUSES.send2faEmail ||
@@ -123,6 +127,8 @@ export const useLogin = () => {
             loginStatus === LOGIN_STATUSES.incorrect2faTOTP,
         emailtwoFAVerificationRequired:
             loginStatus === LOGIN_STATUSES.send2faEmail,
+        incorrect2FAEmail:
+            loginStatus === LOGIN_STATUSES.incorrect2faEmail,
         twoFAIncorrect:
             loginStatus === LOGIN_STATUSES.secondAttempt2fa ||
             loginStatus === LOGIN_STATUSES.secondAttempt2faTOTP,
