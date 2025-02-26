@@ -23,6 +23,7 @@ const LOGIN_STATUSES = {
 const invalidTWOFA = [
     LOGIN_STATUSES.incorrect2fa,
     LOGIN_STATUSES.send2faEmail,
+    LOGIN_STATUSES.incorrect2faEmail,
     LOGIN_STATUSES.incorrect2faTOTP,
     LOGIN_STATUSES.secondAttempt2fa,
     LOGIN_STATUSES.secondAttempt2faTOTP,
@@ -60,14 +61,10 @@ export const useLogin = () => {
                 if (response.loginStatus === LOGIN_STATUSES.success) {
                     return LOGIN_STATUSES.success2fa
                 }
-                if (
-                    prev === LOGIN_STATUSES.incorrect2faEmail
-                ) {
+                if (response.loginStatus === LOGIN_STATUSES.incorrect2faEmail) {
                     return LOGIN_STATUSES.second2faEmail
                 }
-                if (
-                    prev === LOGIN_STATUSES.send2faEmail
-                ) {
+                if (prev === LOGIN_STATUSES.send2faEmail) {
                     return LOGIN_STATUSES.secondAttempt2faEmail
                 }
                 if (
@@ -126,16 +123,18 @@ export const useLogin = () => {
             invalidTWOFA.includes(loginStatus) ||
             loginStatus === LOGIN_STATUSES.success2fa,
         OTPtwoFAVerificationRequired:
-            loginStatus === LOGIN_STATUSES.incorrect2faTOTP,
+            loginStatus === LOGIN_STATUSES.incorrect2faTOTP ||
+            loginStatus === LOGIN_STATUSES.incorrect2fa,
         emailtwoFAVerificationRequired:
-            loginStatus === LOGIN_STATUSES.send2faEmail,
-        incorrect2FAEmail: loginStatus === LOGIN_STATUSES.second2faEmail,
+            loginStatus === LOGIN_STATUSES.send2faEmail ||
+            loginStatus === LOGIN_STATUSES.incorrect2faEmail,
         twoFAIncorrect:
             loginStatus === LOGIN_STATUSES.secondAttempt2fa ||
             loginStatus === LOGIN_STATUSES.secondAttempt2faTOTP,
         emailTwoFAIncorrect:
             loginStatus === LOGIN_STATUSES.secondAttempt2faEmail ||
             loginStatus === LOGIN_STATUSES.second2faEmail,
+            second2faEmail: loginStatus === LOGIN_STATUSES.second2faEmail,
         twoFANotEnabled: loginStatus === LOGIN_STATUSES.notEnabled2fa,
         passwordExpired: loginStatus === LOGIN_STATUSES.passwordExpired,
         accountInaccessible: inaccessibleAccountStatuses.includes(loginStatus),

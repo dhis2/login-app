@@ -36,7 +36,7 @@ const LoginErrors = ({
     unknownStatus,
     emailTwoFAIncorrect,
     isResetButtonPressed,
-    incorrect2FAEmail
+    second2faEmail,
 }) => {
     if (error) {
         return (
@@ -61,7 +61,7 @@ const LoginErrors = ({
         )
     }
 
-    if (twoFAIncorrect || incorrect2FAEmail ) {
+    if (twoFAIncorrect) {
         return (
             <FormNotice
                 title={i18n.t('Incorrect authentication code', { lngs })}
@@ -69,7 +69,7 @@ const LoginErrors = ({
             />
         )
     }
-    if (emailTwoFAIncorrect && !isResetButtonPressed) {
+    if (second2faEmail) {
         return (
             <FormNotice
                 title={i18n.t('Incorrect authentication code', { lngs })}
@@ -147,13 +147,11 @@ const InnerLoginForm = ({
     lngs,
     loading,
     setFormUserName,
-    setIsResetButtonPressed,
 }) => {
     const [isResendDisabled, setIsResendDisabled] = useState(false)
 
     const resendCode = () => {
         setIsResendDisabled(true)
-        setIsResetButtonPressed(true)
         handleSubmit()
         setTimeout(() => {
             setIsResendDisabled(false)
@@ -228,7 +226,7 @@ const InnerLoginForm = ({
                 <Button type="submit" disabled={loading} primary>
                     {loading ? login2FAButtonText : loginButtonText}
                 </Button>
-                {(emailtwoFAVerificationRequired || emailTwoFAIncorrect) && (
+                {(emailtwoFAVerificationRequired) && (
                     <Button
                         secondary
                         disabled={isResendDisabled || loading}
@@ -271,7 +269,6 @@ const LoginForm = ({
     cancelTwoFA,
     twoFAVerificationRequired,
     emailtwoFAVerificationRequired,
-    incorrect2FAEmail,
     twoFAIncorrect,
     emailTwoFAIncorrect,
     accountInaccessible,
@@ -282,9 +279,9 @@ const LoginForm = ({
     loading,
     setFormUserName,
     lngs,
+    second2faEmail,
 }) => {
     const [formSubmitted, setFormSubmitted] = useState(false)
-    const [isResetButtonPressed, setIsResetButtonPressed] = useState(false)
 
     if (!login) {
         return null
@@ -312,9 +309,7 @@ const LoginForm = ({
                 passwordResetEnabled={passwordResetEnabled}
                 accountInaccessible={accountInaccessible}
                 unknownStatus={unknownStatus}
-                emailTwoFAIncorrect={emailTwoFAIncorrect}
-                isResetButtonPressed={isResetButtonPressed}
-                incorrect2FAEmail={incorrect2FAEmail}
+                second2faEmail={second2faEmail}
             />
 
             <ReactFinalForm.Form onSubmit={handleLogin}>
@@ -332,7 +327,6 @@ const LoginForm = ({
                         lngs={lngs}
                         loading={loading}
                         setFormUserName={setFormUserName}
-                        setIsResetButtonPressed={setIsResetButtonPressed}
                     />
                 )}
             </ReactFinalForm.Form>
@@ -369,7 +363,6 @@ export const LoginFormContainer = () => {
         twoFAVerificationRequired,
         OTPtwoFAVerificationRequired,
         emailtwoFAVerificationRequired,
-        incorrect2FAEmail,
         emailTwoFAIncorrect,
         twoFAIncorrect,
         accountInaccessible,
@@ -416,7 +409,6 @@ export const LoginFormContainer = () => {
                 cancelTwoFA={cancelTwoFA}
                 twoFAVerificationRequired={twoFAVerificationRequired}
                 emailtwoFAVerificationRequired={emailtwoFAVerificationRequired}
-                incorrect2FAEmail={incorrect2FAEmail}
                 twoFAIncorrect={twoFAIncorrect}
                 emailTwoFAIncorrect={emailTwoFAIncorrect}
                 accountInaccessible={accountInaccessible}
@@ -425,6 +417,7 @@ export const LoginFormContainer = () => {
                 unknownStatus={unknownStatus}
                 error={error}
                 loading={loading}
+                second2faEmail={emailTwoFAIncorrect}
             />
             {!twoFAVerificationRequired && (
                 <>
