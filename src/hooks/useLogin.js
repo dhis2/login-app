@@ -55,33 +55,41 @@ export const useLogin = () => {
 
     const handleSuccessfulLogin = (response) => {
         setError(null)
+
         setLoginStatus((prev) => {
-            if (response.loginStatus === LOGIN_STATUSES.success) {
-                return LOGIN_STATUSES.success2fa
+            const {
+                success,
+                success2fa,
+                resend2faEmail,
+                secondAttempt2faEmail,
+                incorrect2fa,
+                secondAttempt2fa,
+                incorrect2faTOTP,
+                secondAttempt2faTOTP,
+            } = LOGIN_STATUSES
+
+            if (
+                !invalidTWOFA.includes(prev) &&
+                response.loginStatus === success
+            ) {
+                return success
             }
 
             if (invalidTWOFA.includes(prev)) {
-                if (response.loginStatus === LOGIN_STATUSES.success) {
-                    return LOGIN_STATUSES.success2fa
+                if (response.loginStatus === success) {
+                    return success2fa
                 }
-                if (
-                    prev === LOGIN_STATUSES.resend2faEmail ||
-                    prev === LOGIN_STATUSES.secondAttempt2faEmail
-                ) {
-                    return LOGIN_STATUSES.secondAttempt2faEmail
+
+                const secondAttemptMap = {
+                    [resend2faEmail]: secondAttempt2faEmail,
+                    [secondAttempt2faEmail]: secondAttempt2faEmail,
+                    [incorrect2fa]: secondAttempt2fa,
+                    [secondAttempt2fa]: secondAttempt2fa,
+                    [incorrect2faTOTP]: secondAttempt2faTOTP,
+                    [secondAttempt2faTOTP]: secondAttempt2faTOTP,
                 }
-                if (
-                    prev === LOGIN_STATUSES.incorrect2fa ||
-                    prev === LOGIN_STATUSES.secondAttempt2fa
-                ) {
-                    return LOGIN_STATUSES.secondAttempt2fa
-                }
-                if (
-                    prev === LOGIN_STATUSES.incorrect2faTOTP ||
-                    prev === LOGIN_STATUSES.secondAttempt2faTOTP
-                ) {
-                    return LOGIN_STATUSES.secondAttempt2faTOTP
-                }
+
+                return secondAttemptMap[prev] || response.loginStatus
             }
 
             return response.loginStatus
