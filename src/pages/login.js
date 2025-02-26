@@ -36,7 +36,6 @@ const LoginErrors = ({
     unknownStatus,
     emailTwoFAIncorrect,
     isResetButtonPressed,
-    second2faEmail,
 }) => {
     if (error) {
         return (
@@ -69,7 +68,7 @@ const LoginErrors = ({
             />
         )
     }
-    if (second2faEmail) {
+    if (emailTwoFAIncorrect && !isResetButtonPressed) {
         return (
             <FormNotice
                 title={i18n.t('Incorrect authentication code', { lngs })}
@@ -147,15 +146,22 @@ const InnerLoginForm = ({
     lngs,
     loading,
     setFormUserName,
+    setIsResetButtonPressed,
 }) => {
     const [isResendDisabled, setIsResendDisabled] = useState(false)
 
     const resendCode = () => {
         setIsResendDisabled(true)
+        form.change('twoFA', undefined)
+        setIsResetButtonPressed(true)
         handleSubmit()
         setTimeout(() => {
             setIsResendDisabled(false)
         }, 30000)
+    }
+    const verify = () => {
+        setIsResetButtonPressed(false)
+        handleSubmit()
     }
     const form = useForm()
     const ref = useRef()
@@ -223,14 +229,13 @@ const InnerLoginForm = ({
                 />
             </div>
             <div className={styles.formButtons}>
-                <Button type="submit" disabled={loading} primary>
+                <Button onClick={verify} disabled={loading} primary>
                     {loading ? login2FAButtonText : loginButtonText}
                 </Button>
-                {(emailtwoFAVerificationRequired) && (
+                {(emailtwoFAVerificationRequired || emailTwoFAIncorrect) && (
                     <Button
                         secondary
                         disabled={isResendDisabled || loading}
-                        type="button"
                         onClick={resendCode}
                     >
                         {i18n.t('Resend Code', { lngs })}
@@ -279,9 +284,9 @@ const LoginForm = ({
     loading,
     setFormUserName,
     lngs,
-    second2faEmail,
 }) => {
     const [formSubmitted, setFormSubmitted] = useState(false)
+    const [isResetButtonPressed, setIsResetButtonPressed] = useState(false)
 
     if (!login) {
         return null
@@ -289,6 +294,7 @@ const LoginForm = ({
 
     const handleLogin = (values) => {
         setFormSubmitted(true)
+
         if (!checkIsLoginFormValid(values)) {
             return
         }
@@ -309,7 +315,8 @@ const LoginForm = ({
                 passwordResetEnabled={passwordResetEnabled}
                 accountInaccessible={accountInaccessible}
                 unknownStatus={unknownStatus}
-                second2faEmail={second2faEmail}
+                emailTwoFAIncorrect={emailTwoFAIncorrect}
+                isResetButtonPressed={isResetButtonPressed}
             />
 
             <ReactFinalForm.Form onSubmit={handleLogin}>
@@ -327,6 +334,7 @@ const LoginForm = ({
                         lngs={lngs}
                         loading={loading}
                         setFormUserName={setFormUserName}
+                        setIsResetButtonPressed={setIsResetButtonPressed}
                     />
                 )}
             </ReactFinalForm.Form>
@@ -417,7 +425,6 @@ export const LoginFormContainer = () => {
                 unknownStatus={unknownStatus}
                 error={error}
                 loading={loading}
-                second2faEmail={emailTwoFAIncorrect}
             />
             {!twoFAVerificationRequired && (
                 <>
