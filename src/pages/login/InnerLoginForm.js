@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
-import { Button, InputFieldFF, ReactFinalForm } from '@dhis2/ui'
+import { Button, InputFieldFF, ReactFinalForm, Tooltip } from '@dhis2/ui'
 import PropTypes from 'prop-types'
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { useForm } from 'react-final-form'
 import { getIsRequired } from '../../helpers/index.js'
 import styles from '../login.module.css'
@@ -18,6 +18,14 @@ export const InnerLoginForm = ({
     setIsResetButtonPressed,
 }) => {
     const [isResendDisabled, setIsResendDisabled] = useState(false)
+    useEffect(() => {
+        if (isResendDisabled) {
+            const timer = setTimeout(() => {
+                setIsResendDisabled(false)
+            }, 30000)
+            return () => clearTimeout(timer)
+        }
+    }, [isResendDisabled])
 
     const resendCode = () => {
         setIsResendDisabled(true)
@@ -98,7 +106,12 @@ export const InnerLoginForm = ({
                 />
             </div>
             <div className={styles.formButtons}>
-                <Button type="submit" onClick={verify} disabled={loading} primary>
+                <Button
+                    type="submit"
+                    onClick={verify}
+                    disabled={loading}
+                    primary
+                >
                     {loading ? login2FAButtonText : loginButtonText}
                 </Button>
                 {showResentCode && (
@@ -107,7 +120,15 @@ export const InnerLoginForm = ({
                         disabled={isResendDisabled || loading}
                         onClick={resendCode}
                     >
-                        {i18n.t('Resend Code', { lngs })}
+                        <Tooltip
+                            content={
+                                isResendDisabled
+                                    ? 'You must wait 30 seconds before requesting a new code'
+                                    : ''
+                            }
+                        >
+                            {i18n.t('Resend Code', { lngs })}
+                        </Tooltip>
                     </Button>
                 )}
 

@@ -23,23 +23,27 @@ export const LoginForm = ({
 }) => {
     const [formSubmitted, setFormSubmitted] = useState(false)
     const [isResetButtonPressed, setIsResetButtonPressed] = useState(false)
+    const [twoFAError, setTwoFAError] = useState(false)
 
     if (!login) {
         return null
     }
 
     const handleLogin = (values) => {
-        setFormSubmitted(true)
-
-        if (!checkIsLoginFormValid(values)) {
-            return
+        setFormSubmitted(true);
+        if (!checkIsLoginFormValid(values) || (twoFAVerificationRequired && !values.twoFA)) {
+            setTwoFAError(true);
+            return;
         }
+        setTwoFAError(false);
         login({
             username: values.username,
             password: values.password,
             twoFA: values.twoFA,
-        })
-    }
+        });
+    };
+    
+    
 
     return (
         <>
@@ -53,6 +57,7 @@ export const LoginForm = ({
                 unknownStatus={unknownStatus}
                 emailTwoFAIncorrect={emailTwoFAIncorrect}
                 isResetButtonPressed={isResetButtonPressed}
+                twoFAError={twoFAError}
             />
 
             <ReactFinalForm.Form onSubmit={handleLogin}>
