@@ -17,24 +17,27 @@ export const InnerLoginForm = ({
     setFormUserName,
     setIsResetButtonPressed,
 }) => {
-    const [isResendDisabled, setIsResendDisabled] = useState(true)
+    const [isResendDisabled, setIsResendDisabled] = useState(false)
 
     useEffect(() => {
+        setIsResendDisabled(true)
         const timer = setTimeout(() => {
             setIsResendDisabled(false)
         }, 30000)
         return () => clearTimeout(timer)
     }, [])
 
-    const resendCode = () => {
+    const resendCode = async() => {
+        setIsResetButtonPressed(true)
         setIsResendDisabled(true)
         form.change('twoFA', undefined)
-        setIsResetButtonPressed(true)
-        handleSubmit()
+
+        await handleSubmit()
         setTimeout(() => {
             setIsResendDisabled(false)
         }, 30000)
     }
+
     const verify = () => {
         setIsResetButtonPressed(false)
         handleSubmit()
@@ -118,9 +121,14 @@ export const InnerLoginForm = ({
                         secondary
                         disabled={isResendDisabled || loading}
                         onClick={resendCode}
+                        loading={loading}
                     >
                         {isResendDisabled ? (
-                            <Tooltip content={'You must wait 30 seconds before requesting a new code'}>
+                            <Tooltip
+                                content={
+                                    'You must wait 30 seconds before requesting a new code'
+                                }
+                            >
                                 {i18n.t('Resend Code', { lngs })}
                             </Tooltip>
                         ) : (

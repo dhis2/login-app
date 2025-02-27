@@ -17,6 +17,7 @@ export const LoginForm = ({
     passwordResetEnabled,
     unknownStatus,
     error,
+    setError,
     loading,
     setFormUserName,
     lngs,
