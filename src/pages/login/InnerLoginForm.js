@@ -98,7 +98,7 @@ export const InnerLoginForm = ({
                 />
             </div>
             <div className={styles.formButtons}>
-                <Button onClick={verify} disabled={loading} primary>
+                <Button type="submit" onClick={verify} disabled={loading} primary>
                     {loading ? login2FAButtonText : loginButtonText}
                 </Button>
                 {showResentCode && (
