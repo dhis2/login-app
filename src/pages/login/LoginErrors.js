@@ -14,7 +14,7 @@ export const LoginErrors = ({
     unknownStatus,
     emailTwoFAIncorrect,
     isResetButtonPressed,
-    twoFAError
+    twoFAError,
 }) => {
     if (error) {
         return (
@@ -44,10 +44,8 @@ export const LoginErrors = ({
             <FormNotice
                 title={i18n.t('Authentication code is required', { lngs })}
                 error
-            >
-                {i18n.t('Please enter the authentication code to proceed.')}
-            </FormNotice>
-        );
+            />
+        )
     }
 
     if (twoFAIncorrect) {

@@ -30,20 +30,24 @@ export const LoginForm = ({
     }
 
     const handleLogin = (values) => {
-        setFormSubmitted(true);
-        if (!checkIsLoginFormValid(values) || (twoFAVerificationRequired && !values.twoFA)) {
-            setTwoFAError(true);
-            return;
+        setFormSubmitted(true)
+        if (
+            !checkIsLoginFormValid(values) ||
+            (twoFAVerificationRequired &&
+                !values.twoFA &&
+                !isResetButtonPressed)
+        ) {
+            setTwoFAError(true)
+            return
         }
-        setTwoFAError(false);
+
+        setTwoFAError(false)
         login({
             username: values.username,
             password: values.password,
             twoFA: values.twoFA,
-        });
-    };
-    
-    
+        })
+    }
 
     return (
         <>

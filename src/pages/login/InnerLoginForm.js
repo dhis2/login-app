@@ -17,15 +17,14 @@ export const InnerLoginForm = ({
     setFormUserName,
     setIsResetButtonPressed,
 }) => {
-    const [isResendDisabled, setIsResendDisabled] = useState(false)
+    const [isResendDisabled, setIsResendDisabled] = useState(true)
+
     useEffect(() => {
-        if (isResendDisabled) {
-            const timer = setTimeout(() => {
-                setIsResendDisabled(false)
-            }, 30000)
-            return () => clearTimeout(timer)
-        }
-    }, [isResendDisabled])
+        const timer = setTimeout(() => {
+            setIsResendDisabled(false)
+        }, 30000)
+        return () => clearTimeout(timer)
+    }, [])
 
     const resendCode = () => {
         setIsResendDisabled(true)
@@ -120,15 +119,13 @@ export const InnerLoginForm = ({
                         disabled={isResendDisabled || loading}
                         onClick={resendCode}
                     >
-                        <Tooltip
-                            content={
-                                isResendDisabled
-                                    ? 'You must wait 30 seconds before requesting a new code'
-                                    : ''
-                            }
-                        >
-                            {i18n.t('Resend Code', { lngs })}
-                        </Tooltip>
+                        {isResendDisabled ? (
+                            <Tooltip content={'You must wait 30 seconds before requesting a new code'}>
+                                {i18n.t('Resend Code', { lngs })}
+                            </Tooltip>
+                        ) : (
+                            i18n.t('Resend Code', { lngs })
+                        )}
                     </Button>
                 )}
 
