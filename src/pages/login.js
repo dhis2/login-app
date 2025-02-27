@@ -61,7 +61,7 @@ export const LoginFormContainer = () => {
                 <FormSubtitle>
                     <p>
                         {i18n.t(
-                            'We have sent you an email with your authentication code, enter it below to log in',
+                            'We have sent you an email with your authentication code. Enter it below to log in.',
                             { lngs }
                         )}
                     </p>
