@@ -17,7 +17,6 @@ export const LoginForm = ({
     passwordResetEnabled,
     unknownStatus,
     error,
-    setError,
     loading,
     setFormUserName,
     lngs,
@@ -31,6 +30,7 @@ export const LoginForm = ({
     }
 
     const handleLogin = (values) => {
+        console.log(isResetButtonPressed, 'isResetButtonPressed')
         setFormSubmitted(true)
         if (
             !checkIsLoginFormValid(values) ||

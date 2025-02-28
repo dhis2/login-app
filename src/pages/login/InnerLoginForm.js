@@ -27,10 +27,13 @@ export const InnerLoginForm = ({
         return () => clearTimeout(timer)
     }, [])
 
-    const resendCode = async() => {
+    const resendCode = async () => {
         setIsResetButtonPressed(true)
         setIsResendDisabled(true)
         form.change('twoFA', undefined)
+
+        // Wait for the state update to complete
+        await new Promise((resolve) => setTimeout(resolve, 0))
 
         await handleSubmit()
         setTimeout(() => {

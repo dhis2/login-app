@@ -120,7 +120,7 @@ LoginErrors.propTypes = {
     lngs: PropTypes.arrayOf(PropTypes.string),
     passwordExpired: PropTypes.bool,
     passwordResetEnabled: PropTypes.bool,
-    twoFAIncorrect: PropTypes.bool,
     twoFAError: PropTypes.bool,
+    twoFAIncorrect: PropTypes.bool,
     unknownStatus: PropTypes.bool,
 }
