@@ -27,24 +27,6 @@ export const InnerLoginForm = ({
         return () => clearTimeout(timer)
     }, [])
 
-    const resendCode = async () => {
-        setIsResetButtonPressed(true)
-        setIsResendDisabled(true)
-        form.change('twoFA', undefined)
-
-        // Wait for the state update to complete
-        await new Promise((resolve) => setTimeout(resolve, 0))
-
-        await handleSubmit()
-        setTimeout(() => {
-            setIsResendDisabled(false)
-        }, 30000)
-    }
-
-    const verify = () => {
-        setIsResetButtonPressed(false)
-        handleSubmit()
-    }
     const form = useForm()
     const ref = useRef()
     const clearTwoFA = () => {
@@ -61,6 +43,25 @@ export const InnerLoginForm = ({
         ? i18n.t('Verifying...', { lngs })
         : i18n.t('Logging in...', { lngs })
     const isRequired = getIsRequired(lngs[0])
+
+    const verify = () => {
+        setIsResetButtonPressed(false)
+        handleSubmit()
+    }
+
+    const resendCode = async () => {
+        setIsResetButtonPressed(true)
+        setIsResendDisabled(true)
+        form.change('twoFA', undefined)
+
+        // Wait for the state update to complete
+        await new Promise((resolve) => setTimeout(resolve, 0))
+
+        await handleSubmit()
+        setTimeout(() => {
+            setIsResendDisabled(false)
+        }, 30000)
+    }
 
     return (
         <form onSubmit={handleSubmit}>
