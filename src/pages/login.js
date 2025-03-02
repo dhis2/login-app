@@ -35,6 +35,11 @@ export const LoginFormContainer = () => {
         unknownStatus,
         error,
         loading,
+        isResendDisabled,
+        setIsResendDisabled,
+        resendCode,
+        isResetButtonPressed,
+        setIsResetButtonPressed,
     } = useLogin()
     const [formUserName, setFormUserName] = useState('')
     const { lngs, allowAccountRecovery, emailConfigured } = useLoginConfig()
@@ -82,6 +87,11 @@ export const LoginFormContainer = () => {
                 unknownStatus={unknownStatus}
                 error={error}
                 loading={loading}
+                isResendDisabled={isResendDisabled}
+                setIsResendDisabled={setIsResendDisabled}
+                resendCode={resendCode}
+                isResetButtonPressed={isResetButtonPressed}
+                setIsResetButtonPressed={setIsResetButtonPressed}
             />
             {!twoFAVerificationRequired && (
                 <>

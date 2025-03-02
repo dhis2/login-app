@@ -1,7 +1,7 @@
 import i18n from '@dhis2/d2-i18n'
 import { Button, InputFieldFF, ReactFinalForm, Tooltip } from '@dhis2/ui'
 import PropTypes from 'prop-types'
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { useForm } from 'react-final-form'
 import { getIsRequired } from '../../helpers/index.js'
 import styles from '../login.module.css'
@@ -16,9 +16,10 @@ export const InnerLoginForm = ({
     loading,
     setFormUserName,
     setIsResetButtonPressed,
+    isResendDisabled,
+    setIsResendDisabled,
+    resendCode,
 }) => {
-    const [isResendDisabled, setIsResendDisabled] = useState(false)
-
     useEffect(() => {
         setIsResendDisabled(true)
         const timer = setTimeout(() => {
@@ -47,20 +48,6 @@ export const InnerLoginForm = ({
     const verify = () => {
         setIsResetButtonPressed(false)
         handleSubmit()
-    }
-
-    const resendCode = async () => {
-        setIsResetButtonPressed(true)
-        setIsResendDisabled(true)
-        form.change('twoFA', undefined)
-
-        // Wait for the state update to complete
-        await new Promise((resolve) => setTimeout(resolve, 0))
-
-        await handleSubmit()
-        setTimeout(() => {
-            setIsResendDisabled(false)
-        }, 30000)
     }
 
     return (
@@ -124,7 +111,7 @@ export const InnerLoginForm = ({
                     <Button
                         secondary
                         disabled={isResendDisabled || loading}
-                        onClick={resendCode}
+                        onClick={() => resendCode(form, handleSubmit)}
                         loading={loading}
                     >
                         {isResendDisabled ? (
@@ -159,9 +146,12 @@ InnerLoginForm.propTypes = {
     cancelTwoFA: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     formSubmitted: PropTypes.bool,
+    isResendDisabled: PropTypes.bool,
     lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
+    resendCode: PropTypes.func,
     setFormUserName: PropTypes.func,
+    setIsResendDisabled: PropTypes.func,
     setIsResetButtonPressed: PropTypes.func,
     showResentCode: PropTypes.bool,
     twoFAVerificationRequired: PropTypes.bool,

@@ -20,9 +20,13 @@ export const LoginForm = ({
     loading,
     setFormUserName,
     lngs,
+    isResendDisabled,
+    setIsResendDisabled,
+    resendCode,
+    isResetButtonPressed,
+    setIsResetButtonPressed,
 }) => {
     const [formSubmitted, setFormSubmitted] = useState(false)
-    const [isResetButtonPressed, setIsResetButtonPressed] = useState(false)
     const [twoFAError, setTwoFAError] = useState(false)
 
     if (!login) {
@@ -80,6 +84,9 @@ export const LoginForm = ({
                         loading={loading}
                         setFormUserName={setFormUserName}
                         setIsResetButtonPressed={setIsResetButtonPressed}
+                        isResendDisabled={isResendDisabled}
+                        setIsResendDisabled={setIsResendDisabled}
+                        resendCode={resendCode}
                     />
                 )}
             </ReactFinalForm.Form>
@@ -97,12 +104,17 @@ LoginForm.propTypes = {
     emailTwoFAIncorrect: PropTypes.bool,
     emailtwoFAVerificationRequired: PropTypes.bool,
     error: PropTypes.object,
+    isResendDisabled: PropTypes.bool,
+    isResetButtonPressed: PropTypes.bool,
     lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
     login: PropTypes.func,
     passwordExpired: PropTypes.bool,
     passwordResetEnabled: PropTypes.bool,
+    resendCode: PropTypes.func,
     setFormUserName: PropTypes.func,
+    setIsResendDisabled: PropTypes.func,
+    setIsResetButtonPressed: PropTypes.func,
     twoFAIncorrect: PropTypes.bool,
     twoFAVerificationRequired: PropTypes.bool,
     unknownStatus: PropTypes.bool,

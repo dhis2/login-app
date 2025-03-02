@@ -47,10 +47,26 @@ export const useLogin = () => {
     const { baseUrl, hashRedirect } = useLoginConfig()
     const [loginStatus, setLoginStatus] = useState(null)
     const [error, setError] = useState(null)
+    const [isResendDisabled, setIsResendDisabled] = useState(false)
+    const [isResetButtonPressed, setIsResetButtonPressed] = useState(false)
 
     const cancelTwoFA = () => {
         setError(null)
         setLoginStatus(null)
+    }
+
+    const resendCode = async (form, handleSubmit) => {
+        setIsResetButtonPressed(true)
+        setIsResendDisabled(true)
+        form.change('twoFA', undefined)
+
+        // Wait for the state update to complete
+        await new Promise((resolve) => setTimeout(resolve, 0))
+
+        await handleSubmit()
+        setTimeout(() => {
+            setIsResendDisabled(false)
+        }, 30000)
     }
 
     const handleSuccessfulLogin = (response) => {
@@ -130,6 +146,11 @@ export const useLogin = () => {
                 loginStatus
             ),
         error,
+        isResendDisabled,
+        setIsResendDisabled,
+        resendCode,
+        isResetButtonPressed,
+        setIsResetButtonPressed,
         twoFAVerificationRequired:
             invalidTWOFA.includes(loginStatus) ||
             loginStatus === LOGIN_STATUSES.success2fa,
