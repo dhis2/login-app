@@ -19,7 +19,7 @@ export const LoginForm = ({
     error,
     loading,
     setFormUserName,
-    lngs,
+    lngs = ['en'],
 }) => {
     const [formSubmitted, setFormSubmitted] = useState(false)
     const [isResetButtonPressed, setIsResetButtonPressed] = useState(false)
@@ -84,10 +84,6 @@ export const LoginForm = ({
             </ReactFinalForm.Form>
         </>
     )
-}
-
-LoginForm.defaultProps = {
-    lngs: ['en'],
 }
 
 LoginForm.propTypes = {

@@ -12,7 +12,7 @@ export const InnerLoginForm = ({
     twoFAVerificationRequired,
     showResentCode,
     cancelTwoFA,
-    lngs,
+    lngs = ['en'],
     loading,
     setFormUserName,
     setIsResetButtonPressed,
@@ -125,10 +125,6 @@ export const InnerLoginForm = ({
             </div>
         </form>
     )
-}
-
-InnerLoginForm.defaultProps = {
-    lngs: ['en'],
 }
 
 InnerLoginForm.propTypes = {

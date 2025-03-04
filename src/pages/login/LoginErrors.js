@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { FormNotice } from '../../components/index.js'
 
 export const LoginErrors = ({
-    lngs,
+    lngs = ['en'],
     error,
     twoFAIncorrect,
     passwordExpired,
