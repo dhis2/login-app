@@ -98,7 +98,12 @@ export const InnerLoginForm = ({
                 />
             </div>
             <div className={styles.formButtons}>
-                <Button onClick={verify} disabled={loading} primary>
+                <Button
+                    type="submit"
+                    onClick={verify}
+                    disabled={loading}
+                    primary
+                >
                     {loading ? login2FAButtonText : loginButtonText}
                 </Button>
                 {showResentCode && (
@@ -106,6 +111,7 @@ export const InnerLoginForm = ({
                         secondary
                         disabled={isResendDisabled || loading}
                         onClick={resendCode}
+                        loading={loading}
                     >
                         {i18n.t('Resend Code', { lngs })}
                     </Button>

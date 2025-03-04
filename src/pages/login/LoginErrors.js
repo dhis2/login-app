@@ -14,6 +14,7 @@ export const LoginErrors = ({
     unknownStatus,
     emailTwoFAIncorrect,
     isResetButtonPressed,
+    twoFAError,
 }) => {
     if (error) {
         return (
@@ -35,6 +36,15 @@ export const LoginErrors = ({
                     <span>{error?.message}</span>
                 )}
             </FormNotice>
+        )
+    }
+
+    if (twoFAError) {
+        return (
+            <FormNotice
+                title={i18n.t('Authentication code is required', { lngs })}
+                error
+            />
         )
     }
 
@@ -110,6 +120,7 @@ LoginErrors.propTypes = {
     lngs: PropTypes.arrayOf(PropTypes.string),
     passwordExpired: PropTypes.bool,
     passwordResetEnabled: PropTypes.bool,
+    twoFAError: PropTypes.bool,
     twoFAIncorrect: PropTypes.bool,
     unknownStatus: PropTypes.bool,
 }
