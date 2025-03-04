@@ -1,13 +1,6 @@
 import { useDataMutation } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import {
-    Button,
-    ReactFinalForm,
-    InputFieldFF,
-    createPattern,
-    dhis2Password,
-} from '@dhis2/ui'
-// import { dhis2Password } from '@dhis2/ui-forms'
+import { Button, ReactFinalForm, InputFieldFF, dhis2Password } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
@@ -21,6 +14,7 @@ import {
 import {
     getIsRequired,
     composeAndTranslateValidators,
+    getPasswordValidator,
 } from '../helpers/index.js'
 import { useGetErrorIfNotAllowed, useFeatureToggle } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
@@ -35,16 +29,10 @@ const passwordUpdateMutation = {
 const InnerPasswordUpdateForm = ({ handleSubmit, lngs, loading }) => {
     const { validatePasswordWithRegex } = useFeatureToggle()
     const { minPasswordLength, maxPasswordLength } = useLoginConfig()
-    const passwordRegex = new RegExp(
-        `^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[\\W_])[A-Za-z\\d\\W_]{${minPasswordLength},${maxPasswordLength}}$`
-    )
-    const passwordRegExValidator = createPattern(
-        passwordRegex,
-        i18n.t(
-            'Password should be between {{minPasswordLength}} and {{maxPasswordLength}} characters long, with at least one lowercase character, one uppercase character, one number, and one special character.',
-            { minPasswordLength, maxPasswordLength }
-        )
-    )
+    const passwordRegExValidator = getPasswordValidator({
+        minPasswordLength,
+        maxPasswordLength,
+    })
 
     const isRequired = getIsRequired(lngs?.[0])
 

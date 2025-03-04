@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-05-22T10:53:32.505Z\n"
+"POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
 "Last-Translator: Yury Rogachev <yury@dhis2.org>, 2024\n"
 "Language-Team: Russian (https://app.transifex.com/hisp-uio/teams/100509/ru/)\n"
@@ -21,6 +21,9 @@ msgstr ""
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr "Подтвердите, что вы не робот, установив флажок."
 
+msgid "Invalid password"
+msgstr ""
+
 msgid "Log in details"
 msgstr "Данные для входа в систему"
 
@@ -31,9 +34,10 @@ msgid "Password"
 msgstr "Пароль"
 
 msgid ""
-"Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
+"Password should be between {{minPasswordLength}} and {{maxPasswordLength}} "
+"characters long, with at least one lowercase character, one uppercase "
+"character, one number, and one special character."
 msgstr ""
-"Минимум 8 символов, не менее 1 прописного, 1 строчного, 1 цифры, 1 символа"
 
 msgid "Personal details"
 msgstr "Личные данные"
@@ -143,6 +147,47 @@ msgstr ""
 msgid "Download sidebar template"
 msgstr ""
 
+msgid "Email Verification Failed"
+msgstr ""
+
+msgid "Unable to verify your email"
+msgstr ""
+
+msgid ""
+"The verification link is invalid or has expired. Please request a new "
+"verification email."
+msgstr ""
+
+msgid "Email confirmed"
+msgstr ""
+
+msgid "Your email has been confirmed."
+msgstr ""
+
+msgid "You can now close this page."
+msgstr ""
+
+msgid "Something went wrong"
+msgstr "Что-то пошло не так"
+
+msgid "Incorrect username or password"
+msgstr ""
+
+msgid "Incorrect authentication code"
+msgstr ""
+
+msgid "Password expired"
+msgstr ""
+
+msgid "You can reset your password from the password reset page."
+msgstr ""
+
+msgid "Contact your system administrator."
+msgstr ""
+
+msgid "Account not accessible"
+msgstr ""
+
 msgid "Verify and log in"
 msgstr ""
 
@@ -156,15 +201,6 @@ msgid "Logging in..."
 msgstr ""
 
 msgid "Authentication code"
-msgstr ""
-
-msgid "Something went wrong"
-msgstr "Что-то пошло не так"
-
-msgid "Incorrect username or password"
-msgstr ""
-
-msgid "Incorrect authentication code"
 msgstr ""
 
 msgid "Two-factor authentication"

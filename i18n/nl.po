@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-08-28T07:47:39.528Z\n"
+"POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
 "Last-Translator: Rica, 2024\n"
 "Language-Team: Dutch (https://app.transifex.com/hisp-uio/teams/100509/nl/)\n"
@@ -21,6 +21,9 @@ msgstr ""
 "Bevestig a.u.b. dat je niet een robot bent door het selectievakje aan te "
 "vinken."
 
+msgid "Invalid password"
+msgstr ""
+
 msgid "Log in details"
 msgstr "Inloggegevens"
 
@@ -31,10 +34,10 @@ msgid "Password"
 msgstr "Wachtwoord"
 
 msgid ""
-"Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
+"Password should be between {{minPasswordLength}} and {{maxPasswordLength}} "
+"characters long, with at least one lowercase character, one uppercase "
+"character, one number, and one special character."
 msgstr ""
-"Minimum 8 karakters, ten minsten 1 hoofdletter, 1 kleine letter, 1 nummer, 1"
-" symbool"
 
 msgid "Personal details"
 msgstr "Persoonlijke gegevens"
@@ -148,6 +151,26 @@ msgstr "Download standaardsjabloon"
 
 msgid "Download sidebar template"
 msgstr "Download sjabloon voor zijbalk"
+
+msgid "Email Verification Failed"
+msgstr ""
+
+msgid "Unable to verify your email"
+msgstr ""
+
+msgid ""
+"The verification link is invalid or has expired. Please request a new "
+"verification email."
+msgstr ""
+
+msgid "Email confirmed"
+msgstr ""
+
+msgid "Your email has been confirmed."
+msgstr ""
+
+msgid "You can now close this page."
+msgstr ""
 
 msgid "Something went wrong"
 msgstr "Er is iets fout gegaan"
