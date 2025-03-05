@@ -1,3 +1,10 @@
+# [100.3.0](https://github.com/dhis2/login-app/compare/v100.2.6...v100.3.0) (2025-03-05)
+
+
+### Features
+
+* **login:** enhance two-factor authentication handling with email [DHIS2-18828]  ([#66](https://github.com/dhis2/login-app/issues/66)) ([b6c8c27](https://github.com/dhis2/login-app/commit/b6c8c2727e9059c5cb8e695402f7bf88a9143786))
+
 ## [100.2.6](https://github.com/dhis2/login-app/compare/v100.2.5...v100.2.6) (2025-02-23)
 
 
