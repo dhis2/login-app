@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-12-16T14:17:34.112Z\n"
+"POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
 "Last-Translator: Em Le <em.hispvietnam@gmail.com>, 2024\n"
 "Language-Team: Vietnamese (https://app.transifex.com/hisp-uio/teams/100509/vi/)\n"
@@ -22,6 +22,9 @@ msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr ""
 "Vui lòng xác nhận bạn không phải là người máy bằng cách đánh dấu vào ô kiểm."
 
+msgid "Invalid password"
+msgstr ""
+
 msgid "Log in details"
 msgstr "Chi tiết đăng nhập"
 
@@ -32,8 +35,10 @@ msgid "Password"
 msgstr "Mật khẩu"
 
 msgid ""
-"Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
-msgstr "Tối thiểu 8 ký tự, ít nhất 1 chữ hoa, 1 chữ thường, 1 số, 1 ký hiệu"
+"Password should be between {{minPasswordLength}} and {{maxPasswordLength}} "
+"characters long, with at least one lowercase character, one uppercase "
+"character, one number, and one special character."
+msgstr ""
 
 msgid "Personal details"
 msgstr "Thông tin cá nhân"

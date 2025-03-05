@@ -25,7 +25,9 @@ import {
     getIsRequired,
     removeHTMLTags,
     composeAndTranslateValidators,
+    getPasswordValidator,
 } from '../helpers/index.js'
+import { useFeatureToggle } from '../hooks/useFeatureToggle.js'
 import { useLoginConfig } from '../providers/index.js'
 import styles from './account-creation-form.module.css'
 
@@ -75,8 +77,16 @@ const InnerCreateAccountForm = ({
     recaptchaRef,
     recaptchaError,
     selfRegistrationNoRecaptcha,
+    minPasswordLength,
+    maxPasswordLength,
 }) => {
     const isRequired = getIsRequired(lngs?.[0])
+    const { validatePasswordWithRegex } = useFeatureToggle()
+    const passwordRegExValidator = getPasswordValidator({
+        minPasswordLength,
+        maxPasswordLength,
+        errorText: i18n.t('Invalid password'),
+    })
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -102,12 +112,15 @@ const InnerCreateAccountForm = ({
                         className={styles.inputField}
                         validate={composeAndTranslateValidators(
                             isRequired,
-                            dhis2Password
+                            validatePasswordWithRegex
+                                ? passwordRegExValidator
+                                : dhis2Password
                         )}
                         type="password"
                         readOnly={loading}
                         helpText={i18n.t(
-                            'Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol'
+                            'Password should be between {{minPasswordLength}} and {{maxPasswordLength}} characters long, with at least one lowercase character, one uppercase character, one number, and one special character.',
+                            { minPasswordLength, maxPasswordLength, lngs }
                         )}
                     />
                 </AccountFormSection>
@@ -191,6 +204,8 @@ InnerCreateAccountForm.propTypes = {
     handleSubmit: PropTypes.func,
     lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
+    maxPasswordLength: PropTypes.number,
+    minPasswordLength: PropTypes.number,
     prepopulatedFields: PropTypes.object,
     recaptchaError: PropTypes.bool,
     recaptchaRef: PropTypes.node,
@@ -215,6 +230,8 @@ export const CreateAccountForm = ({
         emailConfigured,
         recaptchaSite,
         selfRegistrationNoRecaptcha,
+        minPasswordLength,
+        maxPasswordLength,
     } = useLoginConfig()
 
     useEffect(() => {
@@ -295,6 +312,8 @@ export const CreateAccountForm = ({
                                 selfRegistrationNoRecaptcha={
                                     selfRegistrationNoRecaptcha
                                 }
+                                minPasswordLength={minPasswordLength}
+                                maxPasswordLength={maxPasswordLength}
                             />
                         )}
                     </ReactFinalForm.Form>
