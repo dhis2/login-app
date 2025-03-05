@@ -26,6 +26,7 @@ export const InnerLoginForm = ({
         handleSubmit()
         setTimeout(() => {
             setIsResendDisabled(false)
+            setIsResetButtonPressed(false)
         }, 30000)
     }
     const verify = () => {
@@ -111,7 +112,6 @@ export const InnerLoginForm = ({
                         secondary
                         disabled={isResendDisabled || loading}
                         onClick={resendCode}
-                        loading={loading}
                     >
                         {i18n.t('Resend Code', { lngs })}
                     </Button>

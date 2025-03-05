@@ -61,6 +61,7 @@ export const LoginForm = ({
                 emailTwoFAIncorrect={emailTwoFAIncorrect}
                 isResetButtonPressed={isResetButtonPressed}
                 twoFAError={twoFAError}
+                twoFAVerificationRequired={twoFAVerificationRequired}
             />
 
             <ReactFinalForm.Form onSubmit={handleLogin}>
