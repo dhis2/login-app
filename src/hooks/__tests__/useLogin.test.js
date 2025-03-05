@@ -19,15 +19,6 @@ describe('useLogin', () => {
         expect(typeof result.current.login).toBe('function')
     })
 
-    it('has a login mutation that points to auth/login', () => {
-        useDataMutation.mockImplementationOnce((mutation) => [
-            mutation.resource,
-            { loading: false },
-        ])
-        const { result } = renderHook(() => useLogin())
-        expect(result.current.login).toBe('auth/login')
-    })
-
     it('redirects after receiving SUCCESS', async () => {
         useDataMutation.mockImplementation((mutation, options) => [
             () => {

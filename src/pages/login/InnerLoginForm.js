@@ -11,10 +11,12 @@ export const InnerLoginForm = ({
     formSubmitted,
     twoFAVerificationRequired,
     showResentCode,
+    resendTwoFACode,
     cancelTwoFA,
     lngs = ['en'],
     loading,
     setFormUserName,
+    isResetButtonPressed,
     setIsResetButtonPressed,
 }) => {
     const [isResendDisabled, setIsResendDisabled] = useState(false)
@@ -23,16 +25,16 @@ export const InnerLoginForm = ({
         setIsResendDisabled(true)
         form.change('twoFA', undefined)
         setIsResetButtonPressed(true)
-        handleSubmit()
+        resendTwoFACode()
         setTimeout(() => {
             setIsResendDisabled(false)
-            setIsResetButtonPressed(false)
-        }, 30000)
+        }, 1000)
     }
-    const verify = () => {
+
+    const onSubmitPressed = () => {
         setIsResetButtonPressed(false)
-        handleSubmit()
     }
+
     const form = useForm()
     const ref = useRef()
     const clearTwoFA = () => {
@@ -101,11 +103,13 @@ export const InnerLoginForm = ({
             <div className={styles.formButtons}>
                 <Button
                     type="submit"
-                    onClick={verify}
-                    disabled={loading}
+                    onClick={onSubmitPressed}
+                    disabled={loading && !isResetButtonPressed}
                     primary
                 >
-                    {loading ? login2FAButtonText : loginButtonText}
+                    {loading && !isResetButtonPressed
+                        ? login2FAButtonText
+                        : loginButtonText}
                 </Button>
                 {showResentCode && (
                     <Button
@@ -131,8 +135,10 @@ InnerLoginForm.propTypes = {
     cancelTwoFA: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     formSubmitted: PropTypes.bool,
+    isResetButtonPressed: PropTypes.bool,
     lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
+    resendTwoFACode: PropTypes.func,
     setFormUserName: PropTypes.func,
     setIsResetButtonPressed: PropTypes.func,
     showResentCode: PropTypes.bool,

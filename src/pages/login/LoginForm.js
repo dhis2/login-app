@@ -10,6 +10,7 @@ export const LoginForm = ({
     cancelTwoFA,
     twoFAVerificationRequired,
     emailtwoFAVerificationRequired,
+    twoFACodeRequired,
     twoFAIncorrect,
     emailTwoFAIncorrect,
     accountInaccessible,
@@ -19,11 +20,11 @@ export const LoginForm = ({
     error,
     loading,
     setFormUserName,
+    resendTwoFACode,
     lngs = ['en'],
 }) => {
     const [formSubmitted, setFormSubmitted] = useState(false)
     const [isResetButtonPressed, setIsResetButtonPressed] = useState(false)
-    const [twoFAError, setTwoFAError] = useState(false)
 
     if (!login) {
         return null
@@ -31,16 +32,10 @@ export const LoginForm = ({
 
     const handleLogin = (values) => {
         setFormSubmitted(true)
-        if (
-            !checkIsLoginFormValid(values) ||
-            (twoFAVerificationRequired &&
-                !values.twoFA &&
-                !isResetButtonPressed)
-        ) {
-            setTwoFAError(true)
+        setIsResetButtonPressed(false)
+        if (!checkIsLoginFormValid(values)) {
             return
         }
-        setTwoFAError(false)
         login({
             username: values.username,
             password: values.password,
@@ -60,7 +55,7 @@ export const LoginForm = ({
                 unknownStatus={unknownStatus}
                 emailTwoFAIncorrect={emailTwoFAIncorrect}
                 isResetButtonPressed={isResetButtonPressed}
-                twoFAError={twoFAError}
+                twoFACodeRequired={twoFACodeRequired}
                 twoFAVerificationRequired={twoFAVerificationRequired}
             />
 
@@ -74,11 +69,13 @@ export const LoginForm = ({
                             emailtwoFAVerificationRequired ||
                             emailTwoFAIncorrect
                         }
+                        resendTwoFACode={resendTwoFACode}
                         twoFAIncorrect={twoFAIncorrect}
                         cancelTwoFA={cancelTwoFA}
                         lngs={lngs}
                         loading={loading}
                         setFormUserName={setFormUserName}
+                        isResetButtonPressed={isResetButtonPressed}
                         setIsResetButtonPressed={setIsResetButtonPressed}
                     />
                 )}
@@ -98,7 +95,9 @@ LoginForm.propTypes = {
     login: PropTypes.func,
     passwordExpired: PropTypes.bool,
     passwordResetEnabled: PropTypes.bool,
+    resendTwoFACode: PropTypes.func,
     setFormUserName: PropTypes.func,
+    twoFACodeRequired: PropTypes.bool,
     twoFAIncorrect: PropTypes.bool,
     twoFAVerificationRequired: PropTypes.bool,
     unknownStatus: PropTypes.bool,

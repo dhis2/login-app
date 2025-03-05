@@ -25,6 +25,7 @@ export const LoginFormContainer = () => {
     const {
         login,
         cancelTwoFA,
+        resendTwoFACode,
         twoFAVerificationRequired,
         OTPtwoFAVerificationRequired,
         emailtwoFAVerificationRequired,
@@ -32,6 +33,7 @@ export const LoginFormContainer = () => {
         twoFAIncorrect,
         accountInaccessible,
         passwordExpired,
+        twoFACodeRequired,
         unknownStatus,
         error,
         loading,
@@ -72,10 +74,12 @@ export const LoginFormContainer = () => {
                 lngs={lngs}
                 login={login}
                 cancelTwoFA={cancelTwoFA}
+                resendTwoFACode={resendTwoFACode}
                 twoFAVerificationRequired={twoFAVerificationRequired}
                 emailtwoFAVerificationRequired={emailtwoFAVerificationRequired}
                 twoFAIncorrect={twoFAIncorrect}
                 emailTwoFAIncorrect={emailTwoFAIncorrect}
+                twoFACodeRequired={twoFACodeRequired}
                 accountInaccessible={accountInaccessible}
                 passwordExpired={passwordExpired}
                 passwordResetEnabled={allowAccountRecovery && emailConfigured}

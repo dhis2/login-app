@@ -47,9 +47,15 @@ export const useLogin = () => {
     const { baseUrl, hashRedirect } = useLoginConfig()
     const [loginStatus, setLoginStatus] = useState(null)
     const [error, setError] = useState(null)
+    const [twoFACodeRequired, setTwoFACodeRequired] = useState(false)
+
+    const twoFAVerificationRequired =
+        invalidTWOFA.includes(loginStatus) ||
+        loginStatus === LOGIN_STATUSES.success2fa
 
     const cancelTwoFA = () => {
         setError(null)
+        setTwoFACodeRequired(false)
         setLoginStatus(null)
     }
 
@@ -120,9 +126,23 @@ export const useLogin = () => {
         },
     })
 
+    const resendTwoFACode = () => {
+        return login({})
+    }
+
+    const loginIfDataAvailable = (values) => {
+        if (twoFAVerificationRequired && !values.twoFA) {
+            setTwoFACodeRequired(true)
+            return
+        }
+        setTwoFACodeRequired(false)
+        return login(values)
+    }
+
     return {
-        login,
+        login: loginIfDataAvailable,
         cancelTwoFA,
+        resendTwoFACode,
         loading:
             loading ||
             fetching ||
@@ -146,6 +166,7 @@ export const useLogin = () => {
         twoFANotEnabled: loginStatus === LOGIN_STATUSES.notEnabled2fa,
         passwordExpired: loginStatus === LOGIN_STATUSES.passwordExpired,
         accountInaccessible: inaccessibleAccountStatuses.includes(loginStatus),
+        twoFACodeRequired,
         unknownStatus:
             loginStatus !== null &&
             !Object.values(LOGIN_STATUSES).includes(loginStatus),
