@@ -28,7 +28,7 @@ export const InnerLoginForm = ({
         resendTwoFACode()
         setTimeout(() => {
             setIsResendDisabled(false)
-        }, 1000)
+        }, 30000)
     }
 
     const onSubmitPressed = () => {
