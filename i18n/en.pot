@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
-"PO-Revision-Date: 2025-02-17T15:56:02.338Z\n"
+"POT-Creation-Date: 2025-03-05T14:22:55.118Z\n"
+"PO-Revision-Date: 2025-03-05T14:22:55.118Z\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr "Please confirm that you are not a robot by checking the checkbox."
@@ -164,6 +164,21 @@ msgstr "Your email has been confirmed."
 msgid "You can now close this page."
 msgstr "You can now close this page."
 
+msgid "Verify and log in"
+msgstr "Verify and log in"
+
+msgid "Log in"
+msgstr "Log in"
+
+msgid "Verifying..."
+msgstr "Verifying..."
+
+msgid "Logging in..."
+msgstr "Logging in..."
+
+msgid "Authentication code"
+msgstr "Authentication code"
+
 msgid "Something went wrong"
 msgstr "Something went wrong"
 
@@ -184,21 +199,6 @@ msgstr "Contact your system administrator."
 
 msgid "Account not accessible"
 msgstr "Account not accessible"
-
-msgid "Verify and log in"
-msgstr "Verify and log in"
-
-msgid "Log in"
-msgstr "Log in"
-
-msgid "Verifying..."
-msgstr "Verifying..."
-
-msgid "Logging in..."
-msgstr "Logging in..."
-
-msgid "Authentication code"
-msgstr "Authentication code"
 
 msgid "Two-factor authentication"
 msgstr "Two-factor authentication"
