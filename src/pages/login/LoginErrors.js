@@ -15,7 +15,7 @@ export const LoginErrors = ({
     emailTwoFAIncorrect,
     isResetButtonPressed,
     twoFAError,
-    twoFAVerificationRequired
+    twoFAVerificationRequired,
 }) => {
     if (error) {
         return (
@@ -123,5 +123,6 @@ LoginErrors.propTypes = {
     passwordResetEnabled: PropTypes.bool,
     twoFAError: PropTypes.bool,
     twoFAIncorrect: PropTypes.bool,
+    twoFAVerificationRequired: PropTypes.bool,
     unknownStatus: PropTypes.bool,
 }
