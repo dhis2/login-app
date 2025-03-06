@@ -24,6 +24,10 @@ export const Flag = () => {
     const { countryFlag } = useLoginConfig()
     const { baseUrl } = useConfig()
 
+    if (countryFlag === 'dhis2') {
+        return null
+    }
+
     return countryFlag ? (
         <img
             src={`${baseUrl}/dhis-web-commons/flags/${countryFlag}.png`}
