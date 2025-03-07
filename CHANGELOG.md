@@ -1,3 +1,16 @@
+# [100.4.0](https://github.com/dhis2/login-app/compare/v100.3.0...v100.4.0) (2025-03-07)
+
+
+### Bug Fixes
+
+* dom purify import ([ee68951](https://github.com/dhis2/login-app/commit/ee6895195192b4668bf02eb061ee0d1edb5df9cf))
+* **app-platform:** upgrade platform tools to use vite and react 18 ([9543dc4](https://github.com/dhis2/login-app/commit/9543dc4c9500c09cc925f065ef731cbc278652a8))
+
+
+### Features
+
+* **login:** refactor login components to use jsx file extensions ([c5acc99](https://github.com/dhis2/login-app/commit/c5acc997e8fadefc75155747af9801d88921a8c5))
+
 # [100.3.0](https://github.com/dhis2/login-app/compare/v100.2.6...v100.3.0) (2025-03-05)
 
 
