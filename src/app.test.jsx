@@ -1,11 +1,11 @@
 import { screen } from '@testing-library/react'
 import React from 'react'
-import { AppContent } from './app.js'
+import { AppContent } from './app.jsx'
 import { useLoginConfig } from './providers/use-login-config.js'
 import { renderWithRouter } from './test-utils/index.js'
 
-jest.mock('./components/customizable-elements.js', () => ({
-    ...jest.requireActual('./components/customizable-elements.js'),
+jest.mock('./components/customizable-elements.jsx', () => ({
+    ...jest.requireActual('./components/customizable-elements.jsx'),
     LanguageSelect: () => <div>MOCK_LANGUAGE_SELECT</div>,
     ApplicationTitle: () => <div>MOCK_APPLICATION_TITLE</div>,
     ApplicationDescription: () => <div>MOCK_APPLICATION_DESCRIPTION</div>,

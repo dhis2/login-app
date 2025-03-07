@@ -76,7 +76,8 @@ InnerPasswordResetRequestForm.propTypes = {
     loading: PropTypes.bool,
 }
 
-export const PasswordResetRequestForm = ({ lngs }) => {
+const defaultLngs = ['en']
+export const PasswordResetRequestForm = ({ lngs = defaultLngs }) => {
     // depends on https://dhis2.atlassian.net/browse/DHIS2-14618
     const [resetPasswordRequest, { loading, fetching, error, data }] =
         useDataMutation(passwordResetRequestMutation)
@@ -136,10 +137,6 @@ export const PasswordResetRequestForm = ({ lngs }) => {
             )}
         </>
     )
-}
-
-PasswordResetRequestForm.defaultProps = {
-    lngs: ['en'],
 }
 
 PasswordResetRequestForm.propTypes = {

@@ -80,7 +80,8 @@ InnerPasswordUpdateForm.propTypes = {
     loading: PropTypes.bool,
 }
 
-export const PasswordUpdateForm = ({ token, lngs }) => {
+const defaultLngs = ['en']
+export const PasswordUpdateForm = ({ token, lngs = defaultLngs }) => {
     // depends on https://dhis2.atlassian.net/browse/DHIS2-14618
     const [updatePassword, { loading, fetching, error, data }] =
         useDataMutation(passwordUpdateMutation)
@@ -135,10 +136,6 @@ export const PasswordUpdateForm = ({ token, lngs }) => {
             </div>
         </>
     )
-}
-
-PasswordUpdateForm.defaultProps = {
-    lngs: ['en'],
 }
 
 PasswordUpdateForm.propTypes = {

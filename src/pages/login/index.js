@@ -1,3 +1,3 @@
-export { InnerLoginForm } from './InnerLoginForm.js'
-export { LoginErrors } from './LoginErrors.js'
-export { LoginForm } from './LoginForm.js'
+export { InnerLoginForm } from './InnerLoginForm.jsx'
+export { LoginErrors } from './LoginErrors.jsx'
+export { LoginForm } from './LoginForm.jsx'

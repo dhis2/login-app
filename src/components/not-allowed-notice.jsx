@@ -1,9 +1,9 @@
 import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { BackToLoginButton } from './back-to-login-button.js'
-import { FormContainer } from './form-container.js'
-import { FormNotice } from './form-notice.js'
+import { BackToLoginButton } from './back-to-login-button.jsx'
+import { FormContainer } from './form-container.jsx'
+import { FormNotice } from './form-notice.jsx'
 
 export const NotAllowedNotice = ({ lngs }) => (
     <FormContainer>

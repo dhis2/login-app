@@ -62,7 +62,7 @@ LogoSvg.propTypes = {
 const blue = '#0080d4'
 const dark = '#212225'
 
-export const DHIS2Logo = ({ className, dataTest }) => (
+export const DHIS2Logo = ({ className, dataTest = 'dhis2-uicore-logo' }) => (
     <LogoSvg
         iconColor={blue}
         textColor={dark}
@@ -70,10 +70,6 @@ export const DHIS2Logo = ({ className, dataTest }) => (
         dataTest={dataTest}
     />
 )
-
-DHIS2Logo.defaultProps = {
-    dataTest: 'dhis2-uicore-logo',
-}
 
 DHIS2Logo.propTypes = {
     className: PropTypes.string,
