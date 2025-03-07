@@ -4,7 +4,7 @@ import { SingleSelectField, SingleSelectOption } from '@dhis2/ui'
 import React from 'react'
 import { convertHTML } from '../helpers/index.js'
 import { useLoginConfig } from '../providers/index.js'
-import { DHIS2Logo } from './dhis2-logo.js'
+import { DHIS2Logo } from './dhis2-logo.jsx'
 
 export const ApplicationTitle = () => {
     const { applicationTitle } = useLoginConfig()

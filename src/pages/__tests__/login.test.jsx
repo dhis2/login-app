@@ -1,11 +1,11 @@
-import { render, screen, fireEvent } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { render, screen } from '@testing-library/react'
+import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import { checkIsLoginFormValid } from '../../helpers/validators.js'
 import { useLogin } from '../../hooks/useLogin.js'
 import { useLoginConfig } from '../../providers/use-login-config.js'
-import { LoginFormContainer } from '../login.js'
+import { LoginFormContainer } from '../login.jsx'
 
 jest.mock('../../helpers/validators.js', () => ({
     getIsRequired: () => () => null,
@@ -42,10 +42,10 @@ describe('LoginForm', () => {
         jest.clearAllMocks()
     })
 
-    it('validates the form upon submission', () => {
+    it('validates the form upon submission', async () => {
         render(<LoginFormContainer />)
 
-        fireEvent.click(
+        await userEvent.click(
             screen.getByRole('button', {
                 name: /log in/i,
             })
@@ -53,19 +53,19 @@ describe('LoginForm', () => {
         expect(checkIsLoginFormValid).toHaveBeenCalled()
     })
 
-    it('performs login on submission (if form valid) ', () => {
+    it('performs login on submission (if form valid) ', async () => {
         checkIsLoginFormValid.mockImplementation(() => true)
         render(<LoginFormContainer />)
 
-        fireEvent.click(screen.getByRole('button'))
+        await userEvent.click(screen.getByRole('button'))
         expect(mockLogin).toHaveBeenCalled()
     })
 
-    it('does not perform login on submission (if form is not valid) ', () => {
+    it('does not perform login on submission (if form is not valid) ', async () => {
         checkIsLoginFormValid.mockImplementation(() => false)
         render(<LoginFormContainer />)
 
-        fireEvent.click(screen.getByRole('button'))
+        await userEvent.click(screen.getByRole('button'))
         expect(mockLogin).not.toHaveBeenCalled()
     })
 
@@ -99,12 +99,8 @@ describe('LoginForm', () => {
         render(<LoginFormContainer />)
 
         // populate form with username + password (this would need to be done )
-        fireEvent.change(screen.getByLabelText('Username'), {
-            target: { value: 'Tintin' },
-        })
-        fireEvent.change(screen.getByLabelText('Password'), {
-            target: { value: 'Milou' },
-        })
+        await userEvent.type(screen.getByLabelText('Username'), 'Tintin')
+        await userEvent.type(screen.getByLabelText('Password'), 'Milou')
 
         await user.type(screen.getByLabelText('Authentication code'), '123456')
         await user.click(
@@ -121,7 +117,7 @@ describe('LoginForm', () => {
         })
     })
 
-    it('cancels twofa when cancel is clicked', () => {
+    it('cancels twofa when cancel is clicked', async () => {
         const mockCancelTwoFA = jest.fn()
         useLogin.mockReturnValue({
             login: () => {},
@@ -130,7 +126,7 @@ describe('LoginForm', () => {
         })
         render(<LoginFormContainer />)
 
-        fireEvent.click(
+        await userEvent.click(
             screen.getByRole('button', {
                 name: /cancel/i,
             })
@@ -148,12 +144,8 @@ describe('LoginForm', () => {
         })
         render(<LoginFormContainer />)
         // populate form with username + password (this would need to be done )
-        fireEvent.change(screen.getByLabelText('Username'), {
-            target: { value: 'Bastian' },
-        })
-        fireEvent.change(screen.getByLabelText('Password'), {
-            target: { value: 'Kardemomme' },
-        })
+        await userEvent.type(screen.getByLabelText('Username'), 'Bastian')
+        await userEvent.type(screen.getByLabelText('Password'), 'Kardemomme')
         await user.click(screen.getByRole('button', { name: /log in/i }))
         await user.type(screen.getByLabelText('Authentication code'), '123456')
         await user.click(screen.getByRole('button', { name: /cancel/i }))

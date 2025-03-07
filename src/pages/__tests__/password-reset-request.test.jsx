@@ -1,16 +1,16 @@
 import { useDataMutation } from '@dhis2/app-runtime'
 import { screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import { useLoginConfig } from '../../providers/use-login-config.js'
-import { renderWithRouter } from '../../test-utils/render-with-router.js'
-import PasswordResetRequestPage from '../password-reset-request.js'
+import { renderWithRouter } from '../../test-utils/render-with-router.jsx'
+import PasswordResetRequestPage from '../password-reset-request.jsx'
 
-jest.mock('../../components/not-allowed-notice.js', () => ({
+jest.mock('../../components/not-allowed-notice.jsx', () => ({
     NotAllowedNotice: () => <div>NOT ALLOWED</div>,
 }))
 
-jest.mock('../../components/back-to-login-button.js', () => ({
+jest.mock('../../components/back-to-login-button.jsx', () => ({
     BackToLoginButton: () => <div>BACK_TO_LOGIN</div>,
 }))
 

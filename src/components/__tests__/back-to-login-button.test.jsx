@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
-import { BackToLoginButton } from '../back-to-login-button.js'
+import { BackToLoginButton } from '../back-to-login-button.jsx'
 
 const MainPage = () => <div>MAIN PAGE</div>
 const OtherPage = ({ children }) => <>{children}</>

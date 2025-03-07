@@ -1,9 +1,9 @@
 export {
     CREATE_FORM_TYPES,
     CreateAccountForm,
-} from './account-creation-form.js'
-export { ApplicationNotification } from './application-notification.js'
-export { BackToLoginButton } from './back-to-login-button.js'
+} from './account-creation-form.jsx'
+export { ApplicationNotification } from './application-notification.jsx'
+export { BackToLoginButton } from './back-to-login-button.jsx'
 export {
     ApplicationTitle,
     ApplicationDescription,
@@ -12,15 +12,15 @@ export {
     ApplicationLeftFooter,
     PoweredByDHIS2,
     LanguageSelect,
-} from './customizable-elements.js'
-export { FormContainer } from './form-container.js'
-export { FormNotice } from './form-notice.js'
-export { FormSubtitle } from './form-subtitle.js'
-export { Loader } from './loader.js'
-export { LoginLinks } from './login-links.js'
+} from './customizable-elements.jsx'
+export { FormContainer } from './form-container.jsx'
+export { FormNotice } from './form-notice.jsx'
+export { FormSubtitle } from './form-subtitle.jsx'
+export { Loader } from './loader.jsx'
+export { LoginLinks } from './login-links.jsx'
 export {
     NotAllowedNotice,
     NotAllowedNoticeCreateAccount,
-} from './not-allowed-notice.js'
-export { Popup } from './pop-up.js'
-export { OIDCLoginOptions } from './oidc-login-options.js'
+} from './not-allowed-notice.jsx'
+export { Popup } from './pop-up.jsx'
+export { OIDCLoginOptions } from './oidc-login-options.jsx'
