@@ -2,8 +2,8 @@ import { ReactFinalForm } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { checkIsLoginFormValid } from '../../helpers/index.js'
-import { InnerLoginForm } from './InnerLoginForm.js'
-import { LoginErrors } from './LoginErrors.js'
+import { InnerLoginForm } from './InnerLoginForm.jsx'
+import { LoginErrors } from './LoginErrors.jsx'
 
 export const LoginForm = ({
     login,
