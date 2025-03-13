@@ -1,3 +1,11 @@
+## [100.4.2](https://github.com/dhis2/login-app/compare/v100.4.1...v100.4.2) (2025-03-13)
+
+
+### Bug Fixes
+
+* force code to be undefined when resending code ([084f859](https://github.com/dhis2/login-app/commit/084f8591c30652d11790de7a549330db621627f2))
+* send login args when calling acllback ([58f3b0d](https://github.com/dhis2/login-app/commit/58f3b0d772e7031ab6112cd43f510edde0f55b39))
+
 ## [100.4.1](https://github.com/dhis2/login-app/compare/v100.4.0...v100.4.1) (2025-03-13)
 
 
