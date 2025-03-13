@@ -46,7 +46,7 @@
         "@dhis2/app-runtime": "^3.13.1",
         "@dhis2/ui": "^10.1.11",
         "classnames": "^2.3.2",
-        "dompurify": "^3.1.5",
+        "dompurify": "^3.2.4",
         "html-react-parser": "^5.1.10",
         "post-robot": "^10.0.46",
         "react-google-recaptcha": "^3.1.0",
