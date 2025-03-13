@@ -1,3 +1,11 @@
+## [100.4.1](https://github.com/dhis2/login-app/compare/v100.4.0...v100.4.1) (2025-03-13)
+
+
+### Bug Fixes
+
+* when sanitizing add target and rel if there is a link ([ae40864](https://github.com/dhis2/login-app/commit/ae408647c6e78fe3b70fb70d5f3606c4815738bf))
+* when sanitizing add target and rel if there is a link ([4f4aef1](https://github.com/dhis2/login-app/commit/4f4aef1f0b38285e0c2eaae1aea67d36a10464c5))
+
 # [100.4.0](https://github.com/dhis2/login-app/compare/v100.3.0...v100.4.0) (2025-03-07)
 
 
