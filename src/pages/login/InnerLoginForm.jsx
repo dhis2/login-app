@@ -25,7 +25,12 @@ export const InnerLoginForm = ({
         setIsResendDisabled(true)
         form.change('twoFA', undefined)
         setIsResetButtonPressed(true)
-        resendTwoFACode()
+        const values = form.getState().values
+        resendTwoFACode({
+            twoFA: undefined,
+            username: values.username,
+            password: values.password,
+        })
         setTimeout(() => {
             setIsResendDisabled(false)
         }, 30000)

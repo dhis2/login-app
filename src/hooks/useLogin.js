@@ -1,5 +1,5 @@
 import { useDataMutation } from '@dhis2/app-runtime'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { redirectTo, getRedirectString } from '../helpers/index.js'
 import { useLoginConfig } from '../providers/index.js'
 
@@ -126,9 +126,12 @@ export const useLogin = () => {
         },
     })
 
-    const resendTwoFACode = () => {
-        return login({})
-    }
+    const resendTwoFACode = useCallback(
+        (values) => {
+            login(values)
+        },
+        [login]
+    )
 
     const loginIfDataAvailable = (values) => {
         if (twoFAVerificationRequired && !values.twoFA) {
