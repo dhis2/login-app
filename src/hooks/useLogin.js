@@ -127,7 +127,7 @@ export const useLogin = () => {
     })
 
     const resendTwoFACode = () => {
-        return login({})
+        return login({ twoFA: undefined })
     }
 
     const loginIfDataAvailable = (values) => {
