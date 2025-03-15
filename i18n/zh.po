@@ -167,11 +167,32 @@ msgstr "您的电子邮件已被确认。"
 msgid "You can now close this page."
 msgstr "现在您可以关闭此页面。"
 
+msgid "Verify and log in"
+msgstr "确认并登录"
+
+msgid "Log in"
+msgstr "登录"
+
+msgid "Verifying..."
+msgstr "验证..."
+
+msgid "Logging in..."
+msgstr "登录..."
+
+msgid "Authentication code"
+msgstr "验证码"
+
+msgid "Resend Code"
+msgstr "重新发送代码"
+
 msgid "Something went wrong"
 msgstr "出问题了"
 
 msgid "Incorrect username or password"
 msgstr "用户名或密码不正确"
+
+msgid "Authentication code is required"
+msgstr "需要验证码"
 
 msgid "Incorrect authentication code"
 msgstr "验证码不正确"
@@ -188,26 +209,16 @@ msgstr "请联系您的系统管理员。"
 msgid "Account not accessible"
 msgstr "无法访问帐户"
 
-msgid "Verify and log in"
-msgstr "确认并登录"
-
-msgid "Log in"
-msgstr "登录"
-
-msgid "Verifying..."
-msgstr "验证..."
-
-msgid "Logging in..."
-msgstr "登录..."
-
-msgid "Authentication code"
-msgstr "验证码"
-
 msgid "Two-factor authentication"
 msgstr "双因素认证"
 
 msgid "Enter the code from your two-factor authentication app to log in."
 msgstr "输入双因素身份验证应用程序中的代码登录。"
+
+msgid ""
+"We have sent you an email with your authentication code. Enter it below to "
+"log in."
+msgstr "我们已经向您发送了一封包含验证码的电子邮件。请在下面输入验证码登录。"
 
 msgid "Username or email"
 msgstr "用户名或电子邮件"
