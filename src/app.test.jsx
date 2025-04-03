@@ -56,6 +56,15 @@ describe('AppContent', () => {
         expect(screen.getByText('STANDARD TEMPLATE')).toBeInTheDocument()
     })
 
+    it('loads standard template if loginPageLayout is CUSTOM and loginPageTemplate is empty string', () => {
+        useLoginConfig.mockReturnValue({
+            loginPageLayout: 'CUSTOM',
+            loginPageTemplate: '',
+        })
+        renderWithRouter(<AppContent />)
+        expect(screen.getByText('STANDARD TEMPLATE')).toBeInTheDocument()
+    })
+
     it('loads custom loginPageTemplate if loginPageLayout is CUSTOM and loginPageTemplate is not null', () => {
         useLoginConfig.mockReturnValue({
             loginPageLayout: 'CUSTOM',
