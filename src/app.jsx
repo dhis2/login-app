@@ -114,7 +114,10 @@ export const AppContent = () => {
     if (loginPageLayout === 'SIDEBAR') {
         html = sidebar
     } else if (loginPageLayout === 'CUSTOM') {
-        html = loginPageTemplate ?? standard
+        html =
+            loginPageTemplate && loginPageTemplate !== ''
+                ? loginPageTemplate
+                : standard
     } else {
         html = standard
     }
