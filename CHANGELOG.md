@@ -1,3 +1,10 @@
+## [100.4.4](https://github.com/dhis2/login-app/compare/v100.4.3...v100.4.4) (2025-04-03)
+
+
+### Bug Fixes
+
+* ignore blank string custom html ([#72](https://github.com/dhis2/login-app/issues/72)) ([66d484a](https://github.com/dhis2/login-app/commit/66d484aaef88d5d6578ce1d13b06bebf4623593a))
+
 ## [100.4.3](https://github.com/dhis2/login-app/compare/v100.4.2...v100.4.3) (2025-03-16)
 
 
