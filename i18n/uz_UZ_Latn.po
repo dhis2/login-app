@@ -1,13 +1,14 @@
 # 
 # Translators:
 # Yury Rogachev <yury@dhis2.org>, 2024
+# Khurshid Ibatov <x.ibatov@dtsj.uz>, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-05-22T10:53:32.505Z\n"
+"POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Yury Rogachev <yury@dhis2.org>, 2024\n"
+"Last-Translator: Khurshid Ibatov <x.ibatov@dtsj.uz>, 2025\n"
 "Language-Team: Uzbek (Latin) (https://app.transifex.com/hisp-uio/teams/100509/uz@Latn/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,6 +17,9 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
+msgstr ""
+
+msgid "Invalid password"
 msgstr ""
 
 msgid "Log in details"
@@ -28,7 +32,9 @@ msgid "Password"
 msgstr "Parol"
 
 msgid ""
-"Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
+"Password should be between {{minPasswordLength}} and {{maxPasswordLength}} "
+"characters long, with at least one lowercase character, one uppercase "
+"character, one number, and one special character."
 msgstr ""
 
 msgid "Personal details"
@@ -80,7 +86,7 @@ msgid "Powered by DHIS2"
 msgstr ""
 
 msgid "Language"
-msgstr ""
+msgstr "Til"
 
 msgid "Forgot password?"
 msgstr "Parolni unutdingizmi?"
@@ -137,6 +143,26 @@ msgstr ""
 msgid "Download sidebar template"
 msgstr ""
 
+msgid "Email Verification Failed"
+msgstr ""
+
+msgid "Unable to verify your email"
+msgstr ""
+
+msgid ""
+"The verification link is invalid or has expired. Please request a new "
+"verification email."
+msgstr ""
+
+msgid "Email confirmed"
+msgstr ""
+
+msgid "Your email has been confirmed."
+msgstr ""
+
+msgid "You can now close this page."
+msgstr ""
+
 msgid "Verify and log in"
 msgstr ""
 
@@ -152,19 +178,42 @@ msgstr ""
 msgid "Authentication code"
 msgstr ""
 
+msgid "Resend Code"
+msgstr ""
+
 msgid "Something went wrong"
 msgstr "Nimadir notoʼgʼri bajarildi"
 
 msgid "Incorrect username or password"
 msgstr ""
 
+msgid "Authentication code is required"
+msgstr ""
+
 msgid "Incorrect authentication code"
+msgstr ""
+
+msgid "Password expired"
+msgstr ""
+
+msgid "You can reset your password from the password reset page."
+msgstr ""
+
+msgid "Contact your system administrator."
+msgstr ""
+
+msgid "Account not accessible"
 msgstr ""
 
 msgid "Two-factor authentication"
 msgstr ""
 
 msgid "Enter the code from your two-factor authentication app to log in."
+msgstr ""
+
+msgid ""
+"We have sent you an email with your authentication code. Enter it below to "
+"log in."
 msgstr ""
 
 msgid "Username or email"
