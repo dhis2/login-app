@@ -1,3 +1,10 @@
+## [100.4.5](https://github.com/dhis2/login-app/compare/v100.4.4...v100.4.5) (2025-10-03)
+
+
+### Bug Fixes
+
+* button icon alignment for oidc login ([#75](https://github.com/dhis2/login-app/issues/75)) ([8510381](https://github.com/dhis2/login-app/commit/85103810750d3399337babcee1bf2f019bb920b1))
+
 ## [100.4.4](https://github.com/dhis2/login-app/compare/v100.4.3...v100.4.4) (2025-04-03)
 
 
