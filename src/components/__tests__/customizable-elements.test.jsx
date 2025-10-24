@@ -119,7 +119,7 @@ describe('PoweredByDHIS2', () => {
     })
 })
 
-describe('Fag', () => {
+describe('Flag', () => {
     it('returns link to relevant flag if specifed', () => {
         useLoginConfig.mockReturnValue({
             countryFlag: 'wales',
@@ -131,10 +131,16 @@ describe('Fag', () => {
         )
     })
 
-    it('returns nothing if countryFlag is dhis2', () => {
+    it('returns nothing if countryFlag is none', () => {
         useLoginConfig.mockReturnValue({
-            countryFlag: 'dhis2',
+            countryFlag: 'none',
         })
+        const { container } = render(<Flag />)
+        expect(container).toBeEmptyDOMElement()
+    })
+
+    it('returns nothing if countryFlag is null', () => {
+        useLoginConfig.mockReturnValue({})
         const { container } = render(<Flag />)
         expect(container).toBeEmptyDOMElement()
     })
