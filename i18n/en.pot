@@ -5,11 +5,19 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2024-08-28T07:47:39.528Z\n"
-"PO-Revision-Date: 2024-08-28T07:47:39.528Z\n"
+"POT-Creation-Date: 2025-03-05T07:31:43.512Z\n"
+"PO-Revision-Date: 2025-03-05T07:31:43.528Z\n"
+"POT-Creation-Date: 2025-03-04T11:41:36.161Z\n"
+"PO-Revision-Date: 2025-03-04T11:41:36.161Z\n"
+"POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
+"PO-Revision-Date: 2025-02-17T15:56:02.338Z\n"
+
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr "Please confirm that you are not a robot by checking the checkbox."
+
+msgid "Invalid password"
+msgstr "Invalid password"
 
 msgid "Log in details"
 msgstr "Log in details"
@@ -20,8 +28,14 @@ msgstr "Username"
 msgid "Password"
 msgstr "Password"
 
-msgid "Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
-msgstr "Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
+msgid ""
+"Password should be between {{minPasswordLength}} and {{maxPasswordLength}} "
+"characters long, with at least one lowercase character, one uppercase "
+"character, one number, and one special character."
+msgstr ""
+"Password should be between {{minPasswordLength}} and {{maxPasswordLength}} "
+"characters long, with at least one lowercase character, one uppercase "
+"character, one number, and one special character."
 
 msgid "Personal details"
 msgstr "Personal details"
@@ -133,26 +147,27 @@ msgstr "Download default template"
 msgid "Download sidebar template"
 msgstr "Download sidebar template"
 
-msgid "Something went wrong"
-msgstr "Something went wrong"
+msgid "Email Verification Failed"
+msgstr "Email Verification Failed"
 
-msgid "Incorrect username or password"
-msgstr "Incorrect username or password"
+msgid "Unable to verify your email"
+msgstr "Unable to verify your email"
 
-msgid "Incorrect authentication code"
-msgstr "Incorrect authentication code"
+msgid ""
+"The verification link is invalid or has expired. Please request a new "
+"verification email."
+msgstr ""
+"The verification link is invalid or has expired. Please request a new "
+"verification email."
 
-msgid "Password expired"
-msgstr "Password expired"
+msgid "Email confirmed"
+msgstr "Email confirmed"
 
-msgid "You can reset your password from the password reset page."
-msgstr "You can reset your password from the password reset page."
+msgid "Your email has been confirmed."
+msgstr "Your email has been confirmed."
 
-msgid "Contact your system administrator."
-msgstr "Contact your system administrator."
-
-msgid "Account not accessible"
-msgstr "Account not accessible"
+msgid "You can now close this page."
+msgstr "You can now close this page."
 
 msgid "Verify and log in"
 msgstr "Verify and log in"
@@ -169,11 +184,45 @@ msgstr "Logging in..."
 msgid "Authentication code"
 msgstr "Authentication code"
 
+msgid "Resend Code"
+msgstr "Resend Code"
+
+msgid "Something went wrong"
+msgstr "Something went wrong"
+
+msgid "Incorrect username or password"
+msgstr "Incorrect username or password"
+
+msgid "Authentication code is required"
+msgstr "Authentication code is required"
+
+msgid "Incorrect authentication code"
+msgstr "Incorrect authentication code"
+
+msgid "Password expired"
+msgstr "Password expired"
+
+msgid "You can reset your password from the password reset page."
+msgstr "You can reset your password from the password reset page."
+
+msgid "Contact your system administrator."
+msgstr "Contact your system administrator."
+
+msgid "Account not accessible"
+msgstr "Account not accessible"
+
 msgid "Two-factor authentication"
 msgstr "Two-factor authentication"
 
 msgid "Enter the code from your two-factor authentication app to log in."
 msgstr "Enter the code from your two-factor authentication app to log in."
+
+msgid ""
+"We have sent you an email with your authentication code. Enter it below to "
+"log in."
+msgstr ""
+"We have sent you an email with your authentication code. Enter it below to "
+"log in."
 
 msgid "Username or email"
 msgstr "Username or email"

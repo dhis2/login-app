@@ -1,23 +1,19 @@
 # 
 # Translators:
-# Gabriela Rodriguez <grodriguezcoronado@gmail.com>, 2024
-# Sheila André <sandre@saudigitus.org>, 2024
-# Viktor Varland <viktor@dhis2.org>, 2024
-# Philip Larsen Donnelly, 2024
-# Helton Dias, 2024
+# Siddharth Agarwal, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-08-28T07:47:39.528Z\n"
+"POT-Creation-Date: 2024-12-16T14:17:34.112Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Helton Dias, 2024\n"
-"Language-Team: Portuguese (https://app.transifex.com/hisp-uio/teams/100509/pt/)\n"
+"Last-Translator: Siddharth Agarwal, 2025\n"
+"Language-Team: Hindi (India) (https://app.transifex.com/hisp-uio/teams/100509/hi_IN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Language: hi_IN\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr ""
@@ -26,10 +22,10 @@ msgid "Log in details"
 msgstr ""
 
 msgid "Username"
-msgstr "Nome de usuário"
+msgstr ""
 
 msgid "Password"
-msgstr "Senha"
+msgstr ""
 
 msgid ""
 "Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
@@ -39,16 +35,16 @@ msgid "Personal details"
 msgstr ""
 
 msgid "First name"
-msgstr "Primeiro nome"
+msgstr ""
 
 msgid "Last name"
-msgstr "Último nome"
+msgstr ""
 
 msgid "Email"
-msgstr "E-mail"
+msgstr ""
 
 msgid "Phone number"
-msgstr "Número de telefone"
+msgstr "फ़ोन नंबर"
 
 msgid "Creating..."
 msgstr ""
@@ -57,7 +53,7 @@ msgid "Create account"
 msgstr ""
 
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "रद्द करें"
 
 msgid "Enter your details below to create a {{- applicationName}} account."
 msgstr ""
@@ -84,16 +80,16 @@ msgid "Powered by DHIS2"
 msgstr ""
 
 msgid "Language"
-msgstr "Idioma"
+msgstr "भाषा"
 
 msgid "Forgot password?"
-msgstr "Esqueceu a password?"
+msgstr ""
 
 msgid "Don't have an account?"
 msgstr ""
 
 msgid "Create an account"
-msgstr "Criar uma conta"
+msgstr ""
 
 msgid "The requested page is not configured for your system"
 msgstr ""
@@ -114,7 +110,7 @@ msgid "I agree"
 msgstr ""
 
 msgid "This field is required"
-msgstr "Este campo é obrigatorio"
+msgstr ""
 
 msgid "Cannot process registration"
 msgstr ""
@@ -141,8 +137,28 @@ msgstr ""
 msgid "Download sidebar template"
 msgstr ""
 
+msgid "Email Verification Failed"
+msgstr ""
+
+msgid "Unable to verify your email"
+msgstr ""
+
+msgid ""
+"The verification link is invalid or has expired. Please request a new "
+"verification email."
+msgstr ""
+
+msgid "Email confirmed"
+msgstr ""
+
+msgid "Your email has been confirmed."
+msgstr ""
+
+msgid "You can now close this page."
+msgstr ""
+
 msgid "Something went wrong"
-msgstr "Ocorreu algo de errado"
+msgstr "कुछ गलत हुआ"
 
 msgid "Incorrect username or password"
 msgstr ""
@@ -214,7 +230,7 @@ msgid ""
 msgstr ""
 
 msgid "Saving..."
-msgstr "Salvando..."
+msgstr ""
 
 msgid "Save new password"
 msgstr ""

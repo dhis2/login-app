@@ -11,13 +11,15 @@ import {
     LanguageSelect,
     Logo,
     PoweredByDHIS2,
-} from './components/customizable-elements.js'
-import { Popup } from './components/pop-up.js'
+} from './components/customizable-elements.jsx'
+import { Popup } from './components/pop-up.jsx'
 import { sanitizeMainHTML } from './helpers/handleHTML.js'
 import {
     LoginPage,
     CompleteRegistrationPage,
     CreateAccountPage,
+    EmailVerificationFailure,
+    EmailVerificationSuccess,
     PasswordResetRequestPage,
     PasswordUpdatePage,
     SafeModePage,
@@ -34,6 +36,14 @@ const LoginRoutes = () => {
             <Routes>
                 <Route path="/" element={<LoginPage />} />
                 <Route path="/create-account" element={<CreateAccountPage />} />
+                <Route
+                    path="/email-verification-success"
+                    element={<EmailVerificationSuccess />}
+                />
+                <Route
+                    path="/email-verification-failure"
+                    element={<EmailVerificationFailure />}
+                />
                 <Route
                     path="/complete-registration"
                     element={<CompleteRegistrationPage />}
@@ -104,7 +114,10 @@ export const AppContent = () => {
     if (loginPageLayout === 'SIDEBAR') {
         html = sidebar
     } else if (loginPageLayout === 'CUSTOM') {
-        html = loginPageTemplate ?? standard
+        html =
+            loginPageTemplate && loginPageTemplate !== ''
+                ? loginPageTemplate
+                : standard
     } else {
         html = standard
     }

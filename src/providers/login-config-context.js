@@ -12,6 +12,8 @@ const LoginConfigContext = createContext({
     emailConfigured: false,
     selfRegistrationEnabled: false,
     selfRegistrationNoRecaptcha: false,
+    minPasswordLength: 8,
+    maxPasswordLength: 72,
     uiLocale: 'undefined',
     localesUI: [],
     refreshOnTranslation: 'undefined (function)',

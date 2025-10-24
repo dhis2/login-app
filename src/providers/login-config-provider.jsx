@@ -2,7 +2,7 @@ import { useDataQuery, useDataEngine, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
-import { Loader } from '../components/loader.js'
+import { Loader } from '../components/loader.jsx'
 import {
     getHashFromLocation,
     parseLocale,
@@ -135,6 +135,16 @@ const LoginConfigProvider = ({ initialLocation, children }) => {
 
     const providerValue = {
         ...loginConfigData?.loginConfig,
+        minPasswordLength: Number.isInteger(
+            Number(loginConfigData?.loginConfig?.minPasswordLength)
+        )
+            ? loginConfigData?.loginConfig?.minPasswordLength
+            : 8,
+        maxPasswordLength: Number.isInteger(
+            Number(loginConfigData?.loginConfig?.maxPasswordLength)
+        )
+            ? loginConfigData?.loginConfig?.maxPasswordLength
+            : 72,
         hashRedirect,
         ...translatedValues,
         localesUI: localesData?.localesUI ?? defaultLocales,

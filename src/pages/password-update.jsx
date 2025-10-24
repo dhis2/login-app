@@ -1,7 +1,6 @@
 import { useDataMutation } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import { Button, ReactFinalForm, InputFieldFF } from '@dhis2/ui'
-import { dhis2Password } from '@dhis2/ui-forms'
+import { Button, ReactFinalForm, InputFieldFF, dhis2Password } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
@@ -15,8 +14,9 @@ import {
 import {
     getIsRequired,
     composeAndTranslateValidators,
+    getPasswordValidator,
 } from '../helpers/index.js'
-import { useGetErrorIfNotAllowed } from '../hooks/index.js'
+import { useGetErrorIfNotAllowed, useFeatureToggle } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
 import styles from './password-update.module.css'
 
@@ -27,6 +27,13 @@ const passwordUpdateMutation = {
 }
 
 const InnerPasswordUpdateForm = ({ handleSubmit, lngs, loading }) => {
+    const { validatePasswordWithRegex } = useFeatureToggle()
+    const { minPasswordLength, maxPasswordLength } = useLoginConfig()
+    const passwordRegExValidator = getPasswordValidator({
+        minPasswordLength,
+        maxPasswordLength,
+    })
+
     const isRequired = getIsRequired(lngs?.[0])
 
     return (
@@ -40,7 +47,9 @@ const InnerPasswordUpdateForm = ({ handleSubmit, lngs, loading }) => {
                     className={styles.inputField}
                     validate={composeAndTranslateValidators(
                         isRequired,
-                        dhis2Password
+                        validatePasswordWithRegex
+                            ? passwordRegExValidator
+                            : dhis2Password
                     )}
                     initialFocus
                     readOnly={loading}
@@ -71,7 +80,8 @@ InnerPasswordUpdateForm.propTypes = {
     loading: PropTypes.bool,
 }
 
-export const PasswordUpdateForm = ({ token, lngs }) => {
+const defaultLngs = ['en']
+export const PasswordUpdateForm = ({ token, lngs = defaultLngs }) => {
     // depends on https://dhis2.atlassian.net/browse/DHIS2-14618
     const [updatePassword, { loading, fetching, error, data }] =
         useDataMutation(passwordUpdateMutation)
@@ -126,10 +136,6 @@ export const PasswordUpdateForm = ({ token, lngs }) => {
             </div>
         </>
     )
-}
-
-PasswordUpdateForm.defaultProps = {
-    lngs: ['en'],
 }
 
 PasswordUpdateForm.propTypes = {

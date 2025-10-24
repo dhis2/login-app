@@ -1,3 +1,121 @@
+## [100.4.5](https://github.com/dhis2/login-app/compare/v100.4.4...v100.4.5) (2025-10-03)
+
+
+### Bug Fixes
+
+* button icon alignment for oidc login ([#75](https://github.com/dhis2/login-app/issues/75)) ([8510381](https://github.com/dhis2/login-app/commit/85103810750d3399337babcee1bf2f019bb920b1))
+
+## [100.4.4](https://github.com/dhis2/login-app/compare/v100.4.3...v100.4.4) (2025-04-03)
+
+
+### Bug Fixes
+
+* ignore blank string custom html ([#72](https://github.com/dhis2/login-app/issues/72)) ([66d484a](https://github.com/dhis2/login-app/commit/66d484aaef88d5d6578ce1d13b06bebf4623593a))
+
+## [100.4.3](https://github.com/dhis2/login-app/compare/v100.4.2...v100.4.3) (2025-03-16)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (main) ([43c8f96](https://github.com/dhis2/login-app/commit/43c8f961e48c663704a80f56b0abc3c50c7dee99))
+
+## [100.4.2](https://github.com/dhis2/login-app/compare/v100.4.1...v100.4.2) (2025-03-13)
+
+
+### Bug Fixes
+
+* force code to be undefined when resending code ([084f859](https://github.com/dhis2/login-app/commit/084f8591c30652d11790de7a549330db621627f2))
+* send login args when calling acllback ([58f3b0d](https://github.com/dhis2/login-app/commit/58f3b0d772e7031ab6112cd43f510edde0f55b39))
+
+## [100.4.1](https://github.com/dhis2/login-app/compare/v100.4.0...v100.4.1) (2025-03-13)
+
+
+### Bug Fixes
+
+* when sanitizing add target and rel if there is a link ([ae40864](https://github.com/dhis2/login-app/commit/ae408647c6e78fe3b70fb70d5f3606c4815738bf))
+* when sanitizing add target and rel if there is a link ([4f4aef1](https://github.com/dhis2/login-app/commit/4f4aef1f0b38285e0c2eaae1aea67d36a10464c5))
+
+# [100.4.0](https://github.com/dhis2/login-app/compare/v100.3.0...v100.4.0) (2025-03-07)
+
+
+### Bug Fixes
+
+* dom purify import ([ee68951](https://github.com/dhis2/login-app/commit/ee6895195192b4668bf02eb061ee0d1edb5df9cf))
+* **app-platform:** upgrade platform tools to use vite and react 18 ([9543dc4](https://github.com/dhis2/login-app/commit/9543dc4c9500c09cc925f065ef731cbc278652a8))
+
+
+### Features
+
+* **login:** refactor login components to use jsx file extensions ([c5acc99](https://github.com/dhis2/login-app/commit/c5acc997e8fadefc75155747af9801d88921a8c5))
+
+# [100.3.0](https://github.com/dhis2/login-app/compare/v100.2.6...v100.3.0) (2025-03-05)
+
+
+### Features
+
+* **login:** enhance two-factor authentication handling with email [DHIS2-18828]  ([#66](https://github.com/dhis2/login-app/issues/66)) ([b6c8c27](https://github.com/dhis2/login-app/commit/b6c8c2727e9059c5cb8e695402f7bf88a9143786))
+
+## [100.2.6](https://github.com/dhis2/login-app/compare/v100.2.5...v100.2.6) (2025-02-23)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (main) ([39cc607](https://github.com/dhis2/login-app/commit/39cc60768a3ccb239c07d98f34a6970060af2cab))
+
+## [100.2.5](https://github.com/dhis2/login-app/compare/v100.2.4...v100.2.5) (2025-02-18)
+
+
+### Bug Fixes
+
+* password logic account creation [DHIS2-15704] ([#64](https://github.com/dhis2/login-app/issues/64)) ([e2ee975](https://github.com/dhis2/login-app/commit/e2ee975e78024937952e3cbb0e8770c1f7021141))
+
+## [100.2.4](https://github.com/dhis2/login-app/compare/v100.2.3...v100.2.4) (2025-02-16)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (main) ([c18b2e0](https://github.com/dhis2/login-app/commit/c18b2e088f9d60278e23d7afd465ccb67332fd91))
+
+## [100.2.3](https://github.com/dhis2/login-app/compare/v100.2.2...v100.2.3) (2025-02-04)
+
+
+### Bug Fixes
+
+* harmonize password validation with backend [DHIS2-15704] ([#61](https://github.com/dhis2/login-app/issues/61)) ([c87611a](https://github.com/dhis2/login-app/commit/c87611ade06dd61b70194c2f667fb6b0abd4a936))
+
+## [100.2.2](https://github.com/dhis2/login-app/compare/v100.2.1...v100.2.2) (2025-02-04)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (main) ([8f6d672](https://github.com/dhis2/login-app/commit/8f6d6721d5209af4e3a53ee8f7d080ac0075bbeb))
+
+## [100.2.1](https://github.com/dhis2/login-app/compare/v100.2.0...v100.2.1) (2024-12-22)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (main) ([6385d34](https://github.com/dhis2/login-app/commit/6385d34317af0d529dfc74bd24d215030c489037))
+
+# [100.2.0](https://github.com/dhis2/login-app/compare/v100.1.15...v100.2.0) (2024-12-16)
+
+
+### Bug Fixes
+
+* use form container component for styling consistency ([c74a4ca](https://github.com/dhis2/login-app/commit/c74a4ca08f102e8f8c27065e079a066315577a7d))
+
+
+### Features
+
+* add email verification pages ([916dac3](https://github.com/dhis2/login-app/commit/916dac36a03ade4a05383af0be454517a165ed8c))
+
+## [100.1.15](https://github.com/dhis2/login-app/compare/v100.1.14...v100.1.15) (2024-12-08)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (main) ([0da02ed](https://github.com/dhis2/login-app/commit/0da02edc0dcd82067180549c0c726b817990a5c7))
+
 ## [100.1.14](https://github.com/dhis2/login-app/compare/v100.1.13...v100.1.14) (2024-10-06)
 
 
