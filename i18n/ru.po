@@ -4,13 +4,14 @@
 # Viktor Varland <viktor@dhis2.org>, 2024
 # Philip Larsen Donnelly, 2024
 # Yury Rogachev <yury@dhis2.org>, 2024
+# Nadiia <semchuk@aph.org.ua>, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Yury Rogachev <yury@dhis2.org>, 2024\n"
+"Last-Translator: Nadiia <semchuk@aph.org.ua>, 2025\n"
 "Language-Team: Russian (https://app.transifex.com/hisp-uio/teams/100509/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,6 +39,9 @@ msgid ""
 "characters long, with at least one lowercase character, one uppercase "
 "character, one number, and one special character."
 msgstr ""
+"Пароль должен содержать от {{minPasswordLength}} до {{maxPasswordLength}} "
+"символов, по крайней мере один строчный символ, один прописной, одну цифру и"
+" один специальный символ."
 
 msgid "Personal details"
 msgstr "Личные данные"
@@ -167,10 +171,31 @@ msgstr ""
 msgid "You can now close this page."
 msgstr ""
 
+msgid "Verify and log in"
+msgstr ""
+
+msgid "Log in"
+msgstr ""
+
+msgid "Verifying..."
+msgstr ""
+
+msgid "Logging in..."
+msgstr ""
+
+msgid "Authentication code"
+msgstr ""
+
+msgid "Resend Code"
+msgstr ""
+
 msgid "Something went wrong"
 msgstr "Что-то пошло не так"
 
 msgid "Incorrect username or password"
+msgstr ""
+
+msgid "Authentication code is required"
 msgstr ""
 
 msgid "Incorrect authentication code"
@@ -188,25 +213,15 @@ msgstr ""
 msgid "Account not accessible"
 msgstr ""
 
-msgid "Verify and log in"
-msgstr ""
-
-msgid "Log in"
-msgstr ""
-
-msgid "Verifying..."
-msgstr ""
-
-msgid "Logging in..."
-msgstr ""
-
-msgid "Authentication code"
-msgstr ""
-
 msgid "Two-factor authentication"
 msgstr ""
 
 msgid "Enter the code from your two-factor authentication app to log in."
+msgstr ""
+
+msgid ""
+"We have sent you an email with your authentication code. Enter it below to "
+"log in."
 msgstr ""
 
 msgid "Username or email"

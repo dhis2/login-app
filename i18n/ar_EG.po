@@ -1,20 +1,19 @@
 # 
 # Translators:
-# Philip Larsen Donnelly, 2024
-# Em Le <em.hispvietnam@gmail.com>, 2025
+# Yara Elkady, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Em Le <em.hispvietnam@gmail.com>, 2025\n"
-"Language-Team: Khmer (https://app.transifex.com/hisp-uio/teams/100509/km/)\n"
+"Last-Translator: Yara Elkady, 2025\n"
+"Language-Team: Arabic (Egypt) (https://app.transifex.com/hisp-uio/teams/100509/ar_EG/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: km\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ar_EG\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr ""
@@ -26,10 +25,10 @@ msgid "Log in details"
 msgstr ""
 
 msgid "Username"
-msgstr "ឈ្មោះ​គណនី"
+msgstr ""
 
 msgid "Password"
-msgstr "ពាក្យ​សម្ងាត់"
+msgstr ""
 
 msgid ""
 "Password should be between {{minPasswordLength}} and {{maxPasswordLength}} "
@@ -41,10 +40,10 @@ msgid "Personal details"
 msgstr ""
 
 msgid "First name"
-msgstr "នាមខ្លួន"
+msgstr ""
 
 msgid "Last name"
-msgstr "នាម​ត្រកូល"
+msgstr ""
 
 msgid "Email"
 msgstr ""
@@ -59,7 +58,7 @@ msgid "Create account"
 msgstr ""
 
 msgid "Cancel"
-msgstr "បោះបង់"
+msgstr "إلغاء"
 
 msgid "Enter your details below to create a {{- applicationName}} account."
 msgstr ""
@@ -182,7 +181,7 @@ msgid "Resend Code"
 msgstr ""
 
 msgid "Something went wrong"
-msgstr "មានអ្វីមួយខុសប្រក្រតី"
+msgstr ""
 
 msgid "Incorrect username or password"
 msgstr ""
