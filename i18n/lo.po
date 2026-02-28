@@ -1,19 +1,18 @@
-# 
 # Translators:
 # Philip Larsen Donnelly, 2024
 # Viktor Varland <viktor@dhis2.org>, 2024
-# Saysamone Sibounma, 2024
 # Namwan Chanthavisouk, 2025
+# Saysamone Sibounma, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Namwan Chanthavisouk, 2025\n"
+"Last-Translator: Saysamone Sibounma, 2026\n"
 "Language-Team: Lao (https://app.transifex.com/hisp-uio/teams/100509/lo/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: lo\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -22,7 +21,7 @@ msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr ""
 
 msgid "Invalid password"
-msgstr ""
+msgstr "ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ"
 
 msgid "Log in details"
 msgstr ""
@@ -38,6 +37,9 @@ msgid ""
 "characters long, with at least one lowercase character, one uppercase "
 "character, one number, and one special character."
 msgstr ""
+"ລະຫັດຜ່ານຄວນມີຄວາມຍາວລະຫວ່າງ {{minPasswordLength}} ຫາ {{maxPasswordLength}} "
+"ຕົວອັກສອນ, ໂດຍມີຢ່າງໜ້ອຍ ຕົວອັກສອນພິມນ້ອຍໜຶ່ງຕົວ, ຕົວອັກສອນພິມໃຫຍ່ໜຶ່ງຕົວ, "
+"ຕົວເລກໜຶ່ງຕົວ ແລະ ຕົວອັກສອນພິເສດໜຶ່ງຕົວ."
 
 msgid "Personal details"
 msgstr ""
@@ -241,7 +243,7 @@ msgid ""
 msgstr ""
 
 msgid "Reset password"
-msgstr ""
+msgstr "ຕັ້ງລະຫັດຜ່ານໃໝ່"
 
 msgid ""
 "Enter your username below, a link to reset your password will be sent to "
