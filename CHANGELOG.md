@@ -1,3 +1,10 @@
+## [100.4.6](https://github.com/dhis2/login-app/compare/v100.4.5...v100.4.6) (2026-03-17)
+
+
+### Bug Fixes
+
+* hide flag if no flag is selected ([#55](https://github.com/dhis2/login-app/issues/55)) ([d9f0383](https://github.com/dhis2/login-app/commit/d9f0383f56af53b4f9cd09bfd611f6848278630f))
+
 ## [100.4.5](https://github.com/dhis2/login-app/compare/v100.4.4...v100.4.5) (2025-10-03)
 
 
