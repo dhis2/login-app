@@ -10,6 +10,7 @@ import {
     ApplicationTitle,
     LanguageSelect,
     PoweredByDHIS2,
+    Flag,
 } from '../customizable-elements.jsx'
 
 const mockRefreshOnTranslation = jest.fn()
@@ -115,5 +116,32 @@ describe('PoweredByDHIS2', () => {
         expect(
             screen.getByText('Dipersembahkan oleh DHIS2')
         ).toBeInTheDocument()
+    })
+})
+
+describe('Flag', () => {
+    it('returns link to relevant flag if specifed', () => {
+        useLoginConfig.mockReturnValue({
+            countryFlag: 'wales',
+        })
+        const { getByRole } = render(<Flag />)
+        expect(getByRole('img')).toHaveAttribute(
+            'src',
+            '../dhis-web-commons/flags/wales.png'
+        )
+    })
+
+    it('returns nothing if countryFlag is none', () => {
+        useLoginConfig.mockReturnValue({
+            countryFlag: 'none',
+        })
+        const { container } = render(<Flag />)
+        expect(container).toBeEmptyDOMElement()
+    })
+
+    it('returns nothing if countryFlag is null', () => {
+        useLoginConfig.mockReturnValue({})
+        const { container } = render(<Flag />)
+        expect(container).toBeEmptyDOMElement()
     })
 })
