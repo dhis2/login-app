@@ -5,13 +5,14 @@
 # Viktor Varland <viktor@dhis2.org>, 2024
 # Philip Larsen Donnelly, 2024
 # Thomas Zemp, 2024
+# Esther Tokouli, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Thomas Zemp, 2024\n"
+"Last-Translator: Esther Tokouli, 2025\n"
 "Language-Team: French (https://app.transifex.com/hisp-uio/teams/100509/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr "Veuillez confirmer que vous n'êtes pas un robot en cochant la case."
 
 msgid "Invalid password"
-msgstr ""
+msgstr "Mot de passe invalide"
 
 msgid "Log in details"
 msgstr "Détails de connexion"
@@ -39,6 +40,9 @@ msgid ""
 "characters long, with at least one lowercase character, one uppercase "
 "character, one number, and one special character."
 msgstr ""
+"Le mot de passe doit comporter entre {{minPasswordLength}} et "
+"{{maxPasswordLength}} caractères, avec au moins un caractère minuscule, un "
+"caractère majuscule, un chiffre et un caractère spécial."
 
 msgid "Personal details"
 msgstr "Détails personnels"
@@ -144,9 +148,9 @@ msgid ""
 "You can download the templates used by the login app here. These can be "
 "modified and reloaded as custom HTML in the settings app."
 msgstr ""
-"Vous pouvez ici télécharger les modèles HTML utilisés par l'applis de "
-"connexion. Vous pouvez modifier ceux-ci et ensuite les téléverser sous forme"
-" de fichiers d'HTML personnalisés dans l'applis de paramètres du système."
+"Vous pouvez télécharger les modèles HTML utilisés par l'applis de connexion "
+"ici. Vous pouvez modifier ceux-ci et ensuite les téléverser sous forme de "
+"fichiers d'HTML personnalisés dans l'applis de paramètres du système."
 
 msgid "Refer to the documentation for more details."
 msgstr "Veuillez consulter la documentation pour plus de détails."
@@ -155,48 +159,29 @@ msgid "Download default template"
 msgstr "Télécharger le modèle standard"
 
 msgid "Download sidebar template"
-msgstr "Télécharger le modèle avec barre latérale"
+msgstr "Télécharger le modèle avec une barre latérale"
 
 msgid "Email Verification Failed"
-msgstr ""
+msgstr "Échec de la vérification de l'adresse électronique"
 
 msgid "Unable to verify your email"
-msgstr ""
+msgstr "Impossible de vérifier votre adresse électronique"
 
 msgid ""
 "The verification link is invalid or has expired. Please request a new "
 "verification email."
 msgstr ""
+"Le lien de vérification n'est pas valide ou a expiré. Veuillez renouveler "
+"votre demande d'e-mail de vérification."
 
 msgid "Email confirmed"
-msgstr ""
+msgstr "E-mail confirmé"
 
 msgid "Your email has been confirmed."
-msgstr ""
+msgstr "Votre email a été confirmé."
 
 msgid "You can now close this page."
-msgstr ""
-
-msgid "Something went wrong"
-msgstr "Un problème s'est produit"
-
-msgid "Incorrect username or password"
-msgstr "Nom d'utilisateur ou mot de passe incorrect"
-
-msgid "Incorrect authentication code"
-msgstr "Code d'authentification incorrect"
-
-msgid "Password expired"
-msgstr ""
-
-msgid "You can reset your password from the password reset page."
-msgstr ""
-
-msgid "Contact your system administrator."
-msgstr ""
-
-msgid "Account not accessible"
-msgstr ""
+msgstr "Vous pouvez maintenant fermer cette page."
 
 msgid "Verify and log in"
 msgstr "Vérifier et se connecter"
@@ -208,10 +193,39 @@ msgid "Verifying..."
 msgstr "En cours de vérification..."
 
 msgid "Logging in..."
-msgstr "En cours de connecter..."
+msgstr "En cours de connection..."
 
 msgid "Authentication code"
 msgstr "Code d'authentification"
+
+msgid "Resend Code"
+msgstr "Renvoyer le code"
+
+msgid "Something went wrong"
+msgstr "Un problème est survenu"
+
+msgid "Incorrect username or password"
+msgstr "Nom d'utilisateur ou mot de passe incorrect"
+
+msgid "Authentication code is required"
+msgstr "Code d'authentification requis"
+
+msgid "Incorrect authentication code"
+msgstr "Code d'authentification incorrect"
+
+msgid "Password expired"
+msgstr "Mot de passe expiré"
+
+msgid "You can reset your password from the password reset page."
+msgstr ""
+"Vous pouvez réinitialiser votre mot de passe à partir de la page de "
+"réinitialisation du mot de passe."
+
+msgid "Contact your system administrator."
+msgstr "Veuillez contacter votre administrateur système."
+
+msgid "Account not accessible"
+msgstr "Compte non accessible"
 
 msgid "Two-factor authentication"
 msgstr "Authentification à deux facteurs "
@@ -221,11 +235,18 @@ msgstr ""
 "Saisissez le code de votre application d'authentification à deux facteurs "
 "pour vous connecter"
 
+msgid ""
+"We have sent you an email with your authentication code. Enter it below to "
+"log in."
+msgstr ""
+"Nous vous avons envoyé un e-mail avec votre code d'authentification. "
+"Saisissez-le ci-dessous pour vous connecter."
+
 msgid "Username or email"
-msgstr "Nom d'utilisateur or adresse e-mail"
+msgstr "Nom d'utilisateur ou adresse e-mail"
 
 msgid "Sending..."
-msgstr "En cours d'envoyer..."
+msgstr "En cours d'envoi..."
 
 msgid "Send password reset request"
 msgstr "Envoyer une demande de réinitialisation de mot de passe"
@@ -237,7 +258,7 @@ msgid ""
 "Something went wrong. Please try again later, and contact your system "
 "administrator if the problem persists."
 msgstr ""
-"Un problème s'est produit. Veuillez réessayer plus tard et contacter votre "
+"Un problème est survenu. Veuillez réessayer plus tard et contacter votre "
 "administrateur système si le problème persiste."
 
 msgid ""
@@ -259,7 +280,7 @@ msgstr ""
 "votre mot de passe sera envoyé à votre adresse e-mail enregistrée."
 
 msgid "Saving..."
-msgstr "En cours d'enregistrer..."
+msgstr "En cours d'enregistrement..."
 
 msgid "Save new password"
 msgstr "Enregistrer un nouveau mot de passe"
@@ -272,7 +293,7 @@ msgid ""
 "administrator."
 msgstr ""
 "Un problème est survenu lors de l'enregistrement de votre mot de passe. "
-"Veuillez réessayer plus tard ou contacter votre administrateur système."
+"Veuillez réessayer plus tard ou contactez votre administrateur système."
 
 msgid "New password saved. You can use it to log in to your account."
 msgstr ""
@@ -288,5 +309,5 @@ msgid ""
 "You should shortly be redirected. If you are not redirected, please click "
 "redirect button."
 msgstr ""
-"L'application vous redirigera bientôt. Si l'application vous ne redirige "
-"pas, veuillez cliquer sur le bouton de redirection."
+"Vous devriez être redirigé sous peu. Si vous n'êtes pas redirigé, veuillez "
+"cliquer sur le bouton de redirection."

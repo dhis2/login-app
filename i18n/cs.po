@@ -19,7 +19,7 @@ msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr "Zaškrtnutím políčka potvrďte, že nejste robot."
 
 msgid "Invalid password"
-msgstr ""
+msgstr "Neplatné heslo"
 
 msgid "Log in details"
 msgstr "Přihlašovací údaje"
@@ -35,6 +35,9 @@ msgid ""
 "characters long, with at least one lowercase character, one uppercase "
 "character, one number, and one special character."
 msgstr ""
+"Heslo by mělo mít délku od {{minPasswordLength}} do {{maxPasswordLength}} a "
+"obsahovat alespoň jeden malý znak, jeden velký znak, jednu číslici a jeden "
+"speciální znak."
 
 msgid "Personal details"
 msgstr "Osobní údaje"
@@ -168,11 +171,32 @@ msgstr "Váš e-mail byl potvrzen."
 msgid "You can now close this page."
 msgstr "Nyní můžete tuto stránku zavřít."
 
+msgid "Verify and log in"
+msgstr "Ověření a přihlášení"
+
+msgid "Log in"
+msgstr "Přihlášení"
+
+msgid "Verifying..."
+msgstr "Ověřování..."
+
+msgid "Logging in..."
+msgstr "Přihlášování..."
+
+msgid "Authentication code"
+msgstr "Ověřovací kód"
+
+msgid "Resend Code"
+msgstr "Znovu odeslat kód"
+
 msgid "Something went wrong"
 msgstr "Něco se pokazilo"
 
 msgid "Incorrect username or password"
 msgstr "Nesprávné uživatelské jméno nebo heslo"
+
+msgid "Authentication code is required"
+msgstr "Je vyžadován ověřovací kód"
 
 msgid "Incorrect authentication code"
 msgstr "Nesprávný ověřovací kód"
@@ -189,26 +213,17 @@ msgstr "Obraťte se na správce systému."
 msgid "Account not accessible"
 msgstr "Účet není přístupný"
 
-msgid "Verify and log in"
-msgstr "Ověření a přihlášení"
-
-msgid "Log in"
-msgstr "Přihlášení"
-
-msgid "Verifying..."
-msgstr "Ověřování..."
-
-msgid "Logging in..."
-msgstr "Přihlášování..."
-
-msgid "Authentication code"
-msgstr "Ověřovací kód"
-
 msgid "Two-factor authentication"
 msgstr "Dvoufaktorové ověřování"
 
 msgid "Enter the code from your two-factor authentication app to log in."
 msgstr "Zadejte kód z aplikace dvoufaktorového ověřování a přihlaste se."
+
+msgid ""
+"We have sent you an email with your authentication code. Enter it below to "
+"log in."
+msgstr ""
+"Zaslali jsme vám e-mail s ověřovacím kódem. Pro přihlášení jej zadejte níže."
 
 msgid "Username or email"
 msgstr "Uživatelské jméno nebo e-mail"

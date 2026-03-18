@@ -3,14 +3,14 @@
 # Viktor Varland <viktor@dhis2.org>, 2024
 # Thuy Nguyen <thuynguyen@hispvietnam.org>, 2024
 # Philip Larsen Donnelly, 2024
-# Em Le <em.hispvietnam@gmail.com>, 2024
+# Em Le <em.hispvietnam@gmail.com>, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Em Le <em.hispvietnam@gmail.com>, 2024\n"
+"Last-Translator: Em Le <em.hispvietnam@gmail.com>, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/hisp-uio/teams/100509/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Vui lòng xác nhận bạn không phải là người máy bằng cách đánh dấu vào ô kiểm."
 
 msgid "Invalid password"
-msgstr ""
+msgstr "Mật khẩu không hợp lệ"
 
 msgid "Log in details"
 msgstr "Chi tiết đăng nhập"
@@ -39,6 +39,9 @@ msgid ""
 "characters long, with at least one lowercase character, one uppercase "
 "character, one number, and one special character."
 msgstr ""
+"Độ dài mật khẩu phải tối thiểu {{minPasswordLength}} và tối đa "
+"{{maxPasswordLength}} kí tự, với ít nhất một chữ viết thường, một chữ viết "
+"hoa, một con số, và một kí tự đặc biệt."
 
 msgid "Personal details"
 msgstr "Thông tin cá nhân"
@@ -154,45 +157,26 @@ msgid "Download sidebar template"
 msgstr "Tải xuống mẫu thanh bên"
 
 msgid "Email Verification Failed"
-msgstr ""
+msgstr "Xác nhận Email thất bại"
 
 msgid "Unable to verify your email"
-msgstr ""
+msgstr "Không thể xác nhận email của bạn"
 
 msgid ""
 "The verification link is invalid or has expired. Please request a new "
 "verification email."
 msgstr ""
+"Liên kết xác minh không hợp lệ hoặc đã hết hạn. Vui lòng yêu cầu email xác "
+"minh mới."
 
 msgid "Email confirmed"
-msgstr ""
+msgstr "Đã xác nhận email"
 
 msgid "Your email has been confirmed."
-msgstr ""
+msgstr "Email của bạn đã được xác nhận."
 
 msgid "You can now close this page."
-msgstr ""
-
-msgid "Something went wrong"
-msgstr "Có gì đó không đúng"
-
-msgid "Incorrect username or password"
-msgstr "Tên người dùng hoặc mật khẩu không đúng"
-
-msgid "Incorrect authentication code"
-msgstr "Mã xác thực không đúng"
-
-msgid "Password expired"
-msgstr "Mật khẩu đã hết hạn"
-
-msgid "You can reset your password from the password reset page."
-msgstr "Bạn có thể đặt lại mật khẩu từ trang đặt lại mật khẩu."
-
-msgid "Contact your system administrator."
-msgstr "Liên hệ với quản trị viên hệ thống của bạn."
-
-msgid "Account not accessible"
-msgstr "Tài khoản không thể truy cập"
+msgstr "Bạn có thể đóng trang lại bây giờ."
 
 msgid "Verify and log in"
 msgstr "Xác minh và đăng nhập"
@@ -209,11 +193,45 @@ msgstr "Đang đăng nhập..."
 msgid "Authentication code"
 msgstr "Mã xác thực"
 
+msgid "Resend Code"
+msgstr "Gửi lại mã"
+
+msgid "Something went wrong"
+msgstr "Có gì đó không đúng"
+
+msgid "Incorrect username or password"
+msgstr "Tên người dùng hoặc mật khẩu không đúng"
+
+msgid "Authentication code is required"
+msgstr "Mã xác thực là bắt buộc"
+
+msgid "Incorrect authentication code"
+msgstr "Mã xác thực không đúng"
+
+msgid "Password expired"
+msgstr "Mật khẩu đã hết hạn"
+
+msgid "You can reset your password from the password reset page."
+msgstr "Bạn có thể đặt lại mật khẩu từ trang đặt lại mật khẩu."
+
+msgid "Contact your system administrator."
+msgstr "Liên hệ với quản trị viên hệ thống của bạn."
+
+msgid "Account not accessible"
+msgstr "Tài khoản không thể truy cập"
+
 msgid "Two-factor authentication"
 msgstr "Xác thực 2 yếu tố"
 
 msgid "Enter the code from your two-factor authentication app to log in."
 msgstr "Nhập mã từ ứng dụng xác thực hai yếu tố của bạn để đăng nhập."
+
+msgid ""
+"We have sent you an email with your authentication code. Enter it below to "
+"log in."
+msgstr ""
+"Chúng tôi đã gửi cho bạn email có mã xác thực. Vui lòng nhập mã bên dưới để "
+"đăng nhập."
 
 msgid "Username or email"
 msgstr "Tên người dùng hoặc email"

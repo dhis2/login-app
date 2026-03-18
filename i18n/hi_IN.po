@@ -1,56 +1,62 @@
 # 
 # Translators:
 # Siddharth Agarwal, 2025
+# Rohit Wadhwani, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-12-16T14:17:34.112Z\n"
+"POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Siddharth Agarwal, 2025\n"
+"Last-Translator: Rohit Wadhwani, 2026\n"
 "Language-Team: Hindi (India) (https://app.transifex.com/hisp-uio/teams/100509/hi_IN/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: hi_IN\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
-msgstr ""
+msgstr "कृपया यह पुष्टि करें कि आप रोबोट नहीं हैं"
+
+msgid "Invalid password"
+msgstr "अमान्य पासवर्ड"
 
 msgid "Log in details"
-msgstr ""
+msgstr "लॉग इन डिटेल्स"
 
 msgid "Username"
-msgstr ""
+msgstr "यूज़रनेम"
 
 msgid "Password"
-msgstr ""
+msgstr "पासवर्ड"
 
 msgid ""
-"Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
+"Password should be between {{minPasswordLength}} and {{maxPasswordLength}} "
+"characters long, with at least one lowercase character, one uppercase "
+"character, one number, and one special character."
 msgstr ""
 
 msgid "Personal details"
-msgstr ""
+msgstr "पर्सनल डिटेल्स"
 
 msgid "First name"
-msgstr ""
+msgstr "पहला नाम"
 
 msgid "Last name"
-msgstr ""
+msgstr "अंतिम नाम"
 
 msgid "Email"
-msgstr ""
+msgstr "ईमेल"
 
 msgid "Phone number"
 msgstr "फ़ोन नंबर"
 
 msgid "Creating..."
-msgstr ""
+msgstr "बनाया जा रहा है…"
 
 msgid "Create account"
-msgstr ""
+msgstr "खाता बनाएँ"
 
 msgid "Cancel"
 msgstr "रद्द करें"
@@ -59,22 +65,23 @@ msgid "Enter your details below to create a {{- applicationName}} account."
 msgstr ""
 
 msgid "Already have an account?"
-msgstr ""
+msgstr "पहले से खाता है?"
 
 msgid "Log in."
-msgstr ""
+msgstr "लॉग इन करें"
 
 msgid "Something went wrong, and we could not register your account"
-msgstr ""
+msgstr "कुछ गलत हो गया, और हम आपका खाता पंजीकृत नहीं कर सके"
 
 msgid "Account created successfully"
-msgstr ""
+msgstr "खाता सफलतापूर्वक बनाया गया"
 
 msgid "You can use your username and password to log in."
 msgstr ""
+"आप लॉग इन करने के लिए अपने यूज़रनेम नाम और पासवर्ड का उपयोग कर सकते हैं।"
 
 msgid "Back to log in page"
-msgstr ""
+msgstr "लॉग इन पेज पर वापस जाएँ"
 
 msgid "Powered by DHIS2"
 msgstr ""
@@ -83,34 +90,34 @@ msgid "Language"
 msgstr "भाषा"
 
 msgid "Forgot password?"
-msgstr ""
+msgstr "पासवर्ड भूल गए?"
 
 msgid "Don't have an account?"
-msgstr ""
+msgstr "खाता नहीं है?"
 
 msgid "Create an account"
-msgstr ""
+msgstr "खाता बनाएँ"
 
 msgid "The requested page is not configured for your system"
 msgstr ""
 
 msgid "Creating account not available"
-msgstr ""
+msgstr "खाता बनाने की सुविधा उपलब्ध नहीं है"
 
 msgid "Contact a system administrator to create an account."
-msgstr ""
+msgstr "खाता बनाने के लिए सिस्टम प्रशासक से संपर्क करें।"
 
 msgid "Log in with Google"
-msgstr ""
+msgstr "Google से लॉग इन करें"
 
 msgid "Log in with Microsoft"
-msgstr ""
+msgstr "Microsoft से लॉग इन करें"
 
 msgid "I agree"
-msgstr ""
+msgstr "मैं सहमत हूँ"
 
 msgid "This field is required"
-msgstr ""
+msgstr "यह फ़ील्ड आवश्यक है"
 
 msgid "Cannot process registration"
 msgstr ""
@@ -118,7 +125,7 @@ msgstr ""
 msgid ""
 "Information required to process your registration is missing. Please contact"
 " your system administrator."
-msgstr ""
+msgstr "रजिस्ट्रेशन की जानकारी अधूरी है! रजिस्ट्रेशन की जानकारी मिसिंग है"
 
 msgid "HTML Template Download"
 msgstr ""
@@ -129,7 +136,7 @@ msgid ""
 msgstr ""
 
 msgid "Refer to the documentation for more details."
-msgstr ""
+msgstr "ज़्यादा जानकारी के लिए डॉक्यूमेंटेशन देखें।"
 
 msgid "Download default template"
 msgstr ""
@@ -138,10 +145,10 @@ msgid "Download sidebar template"
 msgstr ""
 
 msgid "Email Verification Failed"
-msgstr ""
+msgstr "ईमेल वेरिफिकेशन फेल"
 
 msgid "Unable to verify your email"
-msgstr ""
+msgstr "ईमेल वेरिफ़ाई नहीं हो पाया"
 
 msgid ""
 "The verification link is invalid or has expired. Please request a new "
@@ -149,67 +156,78 @@ msgid ""
 msgstr ""
 
 msgid "Email confirmed"
-msgstr ""
+msgstr "ईमेल कन्फ़र्म हुआ"
 
 msgid "Your email has been confirmed."
-msgstr ""
+msgstr "आपका ईमेल कन्फ़र्म हुआ"
 
 msgid "You can now close this page."
-msgstr ""
+msgstr "यह पेज बंद कर सकते हैं"
+
+msgid "Verify and log in"
+msgstr "वेरिफ़ाई और लॉग इन करें"
+
+msgid "Log in"
+msgstr "लॉग इन"
+
+msgid "Verifying..."
+msgstr "वेरिफ़ाई..."
+
+msgid "Logging in..."
+msgstr "लॉग इन हो रहा है…"
+
+msgid "Authentication code"
+msgstr "ऑथेंटिकेशन कोड"
+
+msgid "Resend Code"
+msgstr "कोड फिर से भेजें"
 
 msgid "Something went wrong"
 msgstr "कुछ गलत हुआ"
 
 msgid "Incorrect username or password"
-msgstr ""
+msgstr "गलत यूज़रनेम या पासवर्ड"
+
+msgid "Authentication code is required"
+msgstr "ऑथेंटिकेशन कोड ज़रूरी है"
 
 msgid "Incorrect authentication code"
-msgstr ""
+msgstr "गलत ऑथेंटिकेशन कोड"
 
 msgid "Password expired"
-msgstr ""
+msgstr "पासवर्ड एक्सपायर हो गया है"
 
 msgid "You can reset your password from the password reset page."
-msgstr ""
+msgstr "आप पासवर्ड रीसेट पेज से पासवर्ड बदल सकते हैं"
 
 msgid "Contact your system administrator."
-msgstr ""
+msgstr "सिस्टम एडमिन से संपर्क करें"
 
 msgid "Account not accessible"
-msgstr ""
-
-msgid "Verify and log in"
-msgstr ""
-
-msgid "Log in"
-msgstr ""
-
-msgid "Verifying..."
-msgstr ""
-
-msgid "Logging in..."
-msgstr ""
-
-msgid "Authentication code"
-msgstr ""
+msgstr "खाता उपलब्ध नहीं है"
 
 msgid "Two-factor authentication"
-msgstr ""
+msgstr "दो-फैक्टर ऑथेंटिकेशन"
 
 msgid "Enter the code from your two-factor authentication app to log in."
-msgstr ""
+msgstr "लॉग इन के लिए दो-फैक्टर ऐप का कोड डालें"
+
+msgid ""
+"We have sent you an email with your authentication code. Enter it below to "
+"log in."
+msgstr "हमने आपको ऑथेंटिकेशन कोड ईमेल किया है। लॉग इन के लिए नीचे डालें"
 
 msgid "Username or email"
-msgstr ""
+msgstr "यूज़रनेम या ईमेल"
 
 msgid "Sending..."
-msgstr ""
+msgstr "भेजा जा रहा है…"
 
 msgid "Send password reset request"
-msgstr ""
+msgstr "पासवर्ड रीसेट अनुरोध भेजें"
 
 msgid "Password reset failed"
-msgstr ""
+msgstr "पासवर्ड रीसेट फेल"
 
 msgid ""
 "Something went wrong. Please try again later, and contact your system "
@@ -222,7 +240,7 @@ msgid ""
 msgstr ""
 
 msgid "Reset password"
-msgstr ""
+msgstr "पासवर्ड रीसेट करें"
 
 msgid ""
 "Enter your username below, a link to reset your password will be sent to "
@@ -230,13 +248,13 @@ msgid ""
 msgstr ""
 
 msgid "Saving..."
-msgstr ""
+msgstr "सेव किया जा रहा है…"
 
 msgid "Save new password"
-msgstr ""
+msgstr "नया पासवर्ड सेव करें"
 
 msgid "New password not saved"
-msgstr ""
+msgstr "नया पासवर्ड सेव नहीं हो सका"
 
 msgid ""
 "There was a problem saving your password. Try again or contact your system "
@@ -244,13 +262,13 @@ msgid ""
 msgstr ""
 
 msgid "New password saved. You can use it to log in to your account."
-msgstr ""
+msgstr "नया पासवर्ड सेव हो गया है। आप इससे लॉग इन कर सकते हैं"
 
 msgid "Choose new password"
-msgstr ""
+msgstr "नया पासवर्ड चुनें"
 
 msgid "Enter the new password for your account below"
-msgstr ""
+msgstr "अपने खाते के लिए नया पासवर्ड नीचे दर्ज करें"
 
 msgid ""
 "You should shortly be redirected. If you are not redirected, please click "
