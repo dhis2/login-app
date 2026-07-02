@@ -2,6 +2,7 @@ export { default as CompleteRegistrationPage } from './complete-registration.jsx
 export { default as CreateAccountPage } from './create-account.jsx'
 export { default as EmailVerificationSuccess } from './email-verification-success.jsx'
 export { default as EmailVerificationFailure } from './email-verification-failure.jsx'
+export { default as ExpiredPasswordChangePage } from './expired-password-change.jsx'
 export { default as LoginPage } from './login.jsx'
 export { default as PasswordResetRequestPage } from './password-reset-request.jsx'
 export { default as PasswordUpdatePage } from './password-update.jsx'

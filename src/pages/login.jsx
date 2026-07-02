@@ -71,6 +71,7 @@ export const LoginFormContainer = () => {
             )}
             <LoginForm
                 setFormUserName={setFormUserName}
+                formUserName={formUserName}
                 lngs={lngs}
                 login={login}
                 cancelTwoFA={cancelTwoFA}

@@ -266,7 +266,7 @@ describe('LoginForm', () => {
         expect(screen.getByText('OIDC LOGIN OPTIONS')).toBeInTheDocument()
     })
 
-    it('Shows link to password-reset page if passwordExpired and allowAccountRecovery and emailConfigured are true', () => {
+    it('Shows the self-service change link and the reset link if passwordExpired and allowAccountRecovery and emailConfigured are true', () => {
         useLogin.mockReturnValue({
             login: () => {},
             passwordExpired: true,
@@ -286,12 +286,17 @@ describe('LoginForm', () => {
         expect(screen.getByText('Password expired')).toBeInTheDocument()
         expect(
             screen.getByRole('link', {
+                name: 'Change your expired password',
+            })
+        ).toHaveAttribute('href', '/change-expired-password')
+        expect(
+            screen.getByRole('link', {
                 name: 'You can reset your password from the password reset page.',
             })
         ).toHaveAttribute('href', '/reset-password')
     })
 
-    it('Shows password expired but no link to password-reset page if passwordExpired and allowAccountRecovery is false', () => {
+    it('Shows the self-service change link but no reset link if passwordExpired and allowAccountRecovery is false', () => {
         useLogin.mockReturnValue({
             login: () => {},
             passwordExpired: true,
@@ -302,9 +307,18 @@ describe('LoginForm', () => {
             emailConfigured: true,
         })
 
-        render(<LoginFormContainer />)
+        render(
+            <MemoryRouter>
+                <LoginFormContainer />
+            </MemoryRouter>
+        )
 
         expect(screen.getByText('Password expired')).toBeInTheDocument()
+        expect(
+            screen.getByRole('link', {
+                name: 'Change your expired password',
+            })
+        ).toHaveAttribute('href', '/change-expired-password')
         expect(
             screen.queryByRole('link', {
                 name: 'You can reset your password from the password reset page.',
@@ -312,7 +326,7 @@ describe('LoginForm', () => {
         ).not.toBeInTheDocument()
     })
 
-    it('Shows password expired but no link to password-reset page if passwordExpired and emailConfigured is false', () => {
+    it('Shows the self-service change link but no reset link if passwordExpired and emailConfigured is false', () => {
         useLogin.mockReturnValue({
             login: () => {},
             passwordExpired: true,
@@ -323,9 +337,18 @@ describe('LoginForm', () => {
             emailConfigured: false,
         })
 
-        render(<LoginFormContainer />)
+        render(
+            <MemoryRouter>
+                <LoginFormContainer />
+            </MemoryRouter>
+        )
 
         expect(screen.getByText('Password expired')).toBeInTheDocument()
+        expect(
+            screen.getByRole('link', {
+                name: 'Change your expired password',
+            })
+        ).toHaveAttribute('href', '/change-expired-password')
         expect(
             screen.queryByRole('link', {
                 name: 'You can reset your password from the password reset page.',

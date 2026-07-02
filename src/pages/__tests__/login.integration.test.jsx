@@ -46,7 +46,9 @@ describe('LoginForm', () => {
 
         expect(screen.getByText('Password expired')).toBeInTheDocument()
         expect(
-            screen.getByText('Contact your system administrator.')
+            screen.getByRole('link', {
+                name: 'Change your expired password',
+            })
         ).toBeInTheDocument()
     })
 

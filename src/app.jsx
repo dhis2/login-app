@@ -20,6 +20,7 @@ import {
     CreateAccountPage,
     EmailVerificationFailure,
     EmailVerificationSuccess,
+    ExpiredPasswordChangePage,
     PasswordResetRequestPage,
     PasswordUpdatePage,
     SafeModePage,
@@ -55,6 +56,10 @@ const LoginRoutes = () => {
                 <Route
                     path="/update-password"
                     element={<PasswordUpdatePage />}
+                />
+                <Route
+                    path="/change-expired-password"
+                    element={<ExpiredPasswordChangePage />}
                 />
                 <Route path="/safeMode" element={<SafeModePage />} />
                 <Route path="/download" element={<DownloadPage />} />
