@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { FormNotice } from '../../components/index.js'
+import { pathWithUsername } from '../../helpers/index.js'
 
 export const LoginErrors = ({
     lngs = ['en'],
@@ -16,6 +17,7 @@ export const LoginErrors = ({
     isResetButtonPressed,
     twoFACodeRequired,
     twoFAVerificationRequired,
+    formUserName,
 }) => {
     if (error) {
         return (
@@ -78,14 +80,24 @@ export const LoginErrors = ({
                 })}
                 error
             >
-                {passwordResetEnabled ? (
-                    <Link to="/reset-password">
-                        {i18n.t(
-                            'You can reset your password from the password reset page.'
+                <div>
+                    <Link
+                        to={pathWithUsername(
+                            '/change-expired-password',
+                            formUserName
                         )}
+                    >
+                        {i18n.t('Change your expired password', { lngs })}
                     </Link>
-                ) : (
-                    i18n.t('Contact your system administrator.')
+                </div>
+                {passwordResetEnabled && (
+                    <div>
+                        <Link to="/reset-password">
+                            {i18n.t(
+                                'You can reset your password from the password reset page.'
+                            )}
+                        </Link>
+                    </div>
                 )}
             </FormNotice>
         )
@@ -121,6 +133,7 @@ LoginErrors.propTypes = {
     accountInaccessible: PropTypes.bool,
     emailTwoFAIncorrect: PropTypes.bool,
     error: PropTypes.object,
+    formUserName: PropTypes.string,
     isResetButtonPressed: PropTypes.bool,
     lngs: PropTypes.arrayOf(PropTypes.string),
     passwordExpired: PropTypes.bool,

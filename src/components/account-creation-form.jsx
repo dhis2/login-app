@@ -9,7 +9,6 @@ import {
 } from '@dhis2/ui'
 import {
     createCharacterLengthRange,
-    dhis2Password,
     dhis2Username,
     email,
     internationalPhoneNumber,
@@ -25,9 +24,8 @@ import {
     getIsRequired,
     removeHTMLTags,
     composeAndTranslateValidators,
-    getPasswordValidator,
 } from '../helpers/index.js'
-import { useFeatureToggle } from '../hooks/useFeatureToggle.js'
+import { useNewPasswordValidator } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
 import styles from './account-creation-form.module.css'
 
@@ -81,10 +79,7 @@ const InnerCreateAccountForm = ({
     maxPasswordLength,
 }) => {
     const isRequired = getIsRequired(lngs?.[0])
-    const { validatePasswordWithRegex } = useFeatureToggle()
-    const passwordRegExValidator = getPasswordValidator({
-        minPasswordLength,
-        maxPasswordLength,
+    const newPasswordValidator = useNewPasswordValidator({
         errorText: i18n.t('Invalid password'),
     })
     return (
@@ -112,9 +107,7 @@ const InnerCreateAccountForm = ({
                         className={styles.inputField}
                         validate={composeAndTranslateValidators(
                             isRequired,
-                            validatePasswordWithRegex
-                                ? passwordRegExValidator
-                                : dhis2Password
+                            newPasswordValidator
                         )}
                         type="password"
                         readOnly={loading}

@@ -1,24 +1,26 @@
 import { useDataMutation } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import { Button, ReactFinalForm, InputFieldFF, dhis2Password } from '@dhis2/ui'
+import { Button, ReactFinalForm, InputFieldFF } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 import {
     BackToLoginButton,
     FormContainer,
-    FormNotice,
     FormSubtitle,
+    MutationFormShell,
     NotAllowedNotice,
 } from '../components/index.js'
 import {
     getIsRequired,
     composeAndTranslateValidators,
-    getPasswordValidator,
 } from '../helpers/index.js'
-import { useGetErrorIfNotAllowed, useFeatureToggle } from '../hooks/index.js'
+import {
+    useGetErrorIfNotAllowed,
+    useNewPasswordValidator,
+} from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
-import styles from './password-update.module.css'
+import styles from './password-form.module.css'
 
 const passwordUpdateMutation = {
     resource: 'auth/passwordReset',
@@ -27,13 +29,7 @@ const passwordUpdateMutation = {
 }
 
 const InnerPasswordUpdateForm = ({ handleSubmit, lngs, loading }) => {
-    const { validatePasswordWithRegex } = useFeatureToggle()
-    const { minPasswordLength, maxPasswordLength } = useLoginConfig()
-    const passwordRegExValidator = getPasswordValidator({
-        minPasswordLength,
-        maxPasswordLength,
-    })
-
+    const newPasswordValidator = useNewPasswordValidator()
     const isRequired = getIsRequired(lngs?.[0])
 
     return (
@@ -47,9 +43,7 @@ const InnerPasswordUpdateForm = ({ handleSubmit, lngs, loading }) => {
                     className={styles.inputField}
                     validate={composeAndTranslateValidators(
                         isRequired,
-                        validatePasswordWithRegex
-                            ? passwordRegExValidator
-                            : dhis2Password
+                        newPasswordValidator
                     )}
                     initialFocus
                     readOnly={loading}
@@ -59,7 +53,7 @@ const InnerPasswordUpdateForm = ({ handleSubmit, lngs, loading }) => {
                 <Button
                     type="submit"
                     disabled={loading}
-                    className={styles.resetButton}
+                    className={styles.submitButton}
                     primary
                 >
                     {loading
@@ -89,52 +83,30 @@ export const PasswordUpdateForm = ({ token, lngs = defaultLngs }) => {
     const handlePasswordUpdate = (values) => {
         updatePassword({ newPassword: values.password, token })
     }
+
     return (
-        <>
-            <div>
-                <div>
-                    {error && (
-                        <FormNotice
-                            title={i18n.t('New password not saved', {
-                                lngs,
-                            })}
-                            error={true}
-                        >
-                            <span>
-                                {i18n.t(
-                                    'There was a problem saving your password. Try again or contact your system administrator.',
-                                    { lngs }
-                                )}
-                            </span>
-                        </FormNotice>
-                    )}
-                    {data && (
-                        <>
-                            <FormNotice valid={true}>
-                                <span>
-                                    {i18n.t(
-                                        'New password saved. You can use it to log in to your account.',
-                                        { lngs }
-                                    )}
-                                </span>
-                            </FormNotice>
-                            <BackToLoginButton fullWidth />
-                        </>
-                    )}
-                    {!data && (
-                        <ReactFinalForm.Form onSubmit={handlePasswordUpdate}>
-                            {({ handleSubmit }) => (
-                                <InnerPasswordUpdateForm
-                                    handleSubmit={handleSubmit}
-                                    lngs={lngs}
-                                    loading={loading || fetching}
-                                />
-                            )}
-                        </ReactFinalForm.Form>
-                    )}
-                </div>
-            </div>
-        </>
+        <MutationFormShell
+            error={error}
+            errorTitle={i18n.t('New password not saved', { lngs })}
+            errorMessage={i18n.t(
+                'There was a problem saving your password. Try again or contact your system administrator.',
+                { lngs }
+            )}
+            data={data}
+            successMessage={i18n.t(
+                'New password saved. You can use it to log in to your account.',
+                { lngs }
+            )}
+            onSubmit={handlePasswordUpdate}
+        >
+            {({ handleSubmit }) => (
+                <InnerPasswordUpdateForm
+                    handleSubmit={handleSubmit}
+                    lngs={lngs}
+                    loading={loading || fetching}
+                />
+            )}
+        </MutationFormShell>
     )
 }
 

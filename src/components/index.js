@@ -18,6 +18,7 @@ export { FormNotice } from './form-notice.jsx'
 export { FormSubtitle } from './form-subtitle.jsx'
 export { Loader } from './loader.jsx'
 export { LoginLinks } from './login-links.jsx'
+export { MutationFormShell } from './mutation-form-shell.jsx'
 export {
     NotAllowedNotice,
     NotAllowedNoticeCreateAccount,

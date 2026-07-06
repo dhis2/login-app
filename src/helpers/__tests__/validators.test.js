@@ -2,6 +2,7 @@ import i18n from '@dhis2/d2-i18n'
 import {
     checkIsLoginFormValid,
     composeAndTranslateValidators,
+    passwordsMatch,
 } from '../validators.js'
 
 describe('checkIsLoginFormValid', () => {
@@ -51,5 +52,25 @@ describe('composeAndTranslateValidators', () => {
         const validatorText = composedValidators()
         expect(i18Spy).toHaveBeenCalledTimes(1)
         expect(validatorText).toBe('Det var en gang')
+    })
+})
+
+describe('passwordsMatch', () => {
+    it('returns undefined when the value equals the newPassword field', () => {
+        expect(
+            passwordsMatch('S3cret!', { newPassword: 'S3cret!' })
+        ).toBeUndefined()
+    })
+
+    it('returns an untranslated error when the values differ', () => {
+        expect(passwordsMatch('nope', { newPassword: 'S3cret!' })).toBe(
+            'Passwords do not match'
+        )
+    })
+
+    it('returns an error when there are no other values', () => {
+        expect(passwordsMatch('anything', undefined)).toBe(
+            'Passwords do not match'
+        )
     })
 })

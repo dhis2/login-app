@@ -14,7 +14,7 @@ import {
 import { getIsRequired } from '../helpers/index.js'
 import { useGetErrorIfNotAllowed } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
-import styles from './password-reset-request.module.css'
+import styles from './password-form.module.css'
 
 const passwordResetRequestMutation = {
     resource: 'auth/forgotPassword',
@@ -50,7 +50,7 @@ const InnerPasswordResetRequestForm = ({
                 <Button
                     type="submit"
                     disabled={loading}
-                    className={styles.resetButton}
+                    className={styles.submitButton}
                     primary
                 >
                     {loading

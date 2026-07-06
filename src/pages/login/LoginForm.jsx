@@ -20,6 +20,7 @@ export const LoginForm = ({
     error,
     loading,
     setFormUserName,
+    formUserName,
     resendTwoFACode,
     lngs = ['en'],
 }) => {
@@ -57,6 +58,7 @@ export const LoginForm = ({
                 isResetButtonPressed={isResetButtonPressed}
                 twoFACodeRequired={twoFACodeRequired}
                 twoFAVerificationRequired={twoFAVerificationRequired}
+                formUserName={formUserName}
             />
 
             <ReactFinalForm.Form onSubmit={handleLogin}>
@@ -90,6 +92,7 @@ LoginForm.propTypes = {
     emailTwoFAIncorrect: PropTypes.bool,
     emailtwoFAVerificationRequired: PropTypes.bool,
     error: PropTypes.object,
+    formUserName: PropTypes.string,
     lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
     login: PropTypes.func,
