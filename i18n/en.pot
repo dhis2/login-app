@@ -5,13 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2025-03-05T07:31:43.512Z\n"
-"PO-Revision-Date: 2025-03-05T07:31:43.528Z\n"
-"POT-Creation-Date: 2025-03-04T11:41:36.161Z\n"
-"PO-Revision-Date: 2025-03-04T11:41:36.161Z\n"
-"POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
-"PO-Revision-Date: 2025-02-17T15:56:02.338Z\n"
-
+"POT-Creation-Date: 2026-07-06T19:11:18.233Z\n"
+"PO-Revision-Date: 2026-07-06T19:11:18.233Z\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr "Please confirm that you are not a robot by checking the checkbox."
@@ -169,6 +164,40 @@ msgstr "Your email has been confirmed."
 msgid "You can now close this page."
 msgstr "You can now close this page."
 
+msgid "Current password"
+msgstr "Current password"
+
+msgid "New password"
+msgstr "New password"
+
+msgid "Confirm new password"
+msgstr "Confirm new password"
+
+msgid "Saving..."
+msgstr "Saving..."
+
+msgid "Save new password"
+msgstr "Save new password"
+
+msgid "Could not update password"
+msgstr "Could not update password"
+
+msgid "Try again, or contact your system administrator if the problem persists."
+msgstr "Try again, or contact your system administrator if the problem persists."
+
+msgid "Your password has been updated. You can now log in with your new password."
+msgstr "Your password has been updated. You can now log in with your new password."
+
+msgid "Change expired password"
+msgstr "Change expired password"
+
+msgid ""
+"Your password has expired. Enter your current password and choose a new one "
+"to continue."
+msgstr ""
+"Your password has expired. Enter your current password and choose a new one "
+"to continue."
+
 msgid "Verify and log in"
 msgstr "Verify and log in"
 
@@ -202,14 +231,17 @@ msgstr "Incorrect authentication code"
 msgid "Password expired"
 msgstr "Password expired"
 
+msgid "Change your expired password"
+msgstr "Change your expired password"
+
 msgid "You can reset your password from the password reset page."
 msgstr "You can reset your password from the password reset page."
 
-msgid "Contact your system administrator."
-msgstr "Contact your system administrator."
-
 msgid "Account not accessible"
 msgstr "Account not accessible"
+
+msgid "Contact your system administrator."
+msgstr "Contact your system administrator."
 
 msgid "Two-factor authentication"
 msgstr "Two-factor authentication"
@@ -259,12 +291,6 @@ msgid ""
 msgstr ""
 "Enter your username below, a link to reset your password will be sent to "
 "your registered e-mail."
-
-msgid "Saving..."
-msgstr "Saving..."
-
-msgid "Save new password"
-msgstr "Save new password"
 
 msgid "New password not saved"
 msgstr "New password not saved"

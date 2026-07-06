@@ -15,35 +15,24 @@ jest.mock('../../hooks/useFeatureToggle.js', () => ({
     useFeatureToggle: jest.fn(),
 }))
 
-const mockParamsGet = jest.fn((param) => {
-    if (param === 'token') {
-        return 'subway'
-    }
-    return null
-})
-
-jest.mock('react-router-dom', () => ({
-    ...jest.requireActual('react-router-dom'),
-    useSearchParams: jest.fn(() => [
-        {
-            get: mockParamsGet,
-        },
-    ]),
-}))
-
 const mockMutate = jest.fn()
 
 jest.mock('@dhis2/app-runtime', () => ({
     ...jest.requireActual('@dhis2/app-runtime'),
     useDataMutation: jest.fn(() => [
         mockMutate,
-        { loading: false, fetching: false, error: false, data: null },
+        { loading: false, fetching: false, error: undefined, data: null },
     ]),
 }))
 
 jest.mock('../../providers/use-login-config.js', () => ({
     useLoginConfig: jest.fn(),
 }))
+
+const renderPage = () =>
+    renderWithRouter(<PasswordUpdatePage />, {
+        initialEntries: ['/update-password?token=subway'],
+    })
 
 describe('PasswordUpdateForm', () => {
     afterEach(() => {
@@ -57,12 +46,13 @@ describe('PasswordUpdateForm', () => {
             emailConfigured: true,
         })
         useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
-        renderWithRouter(<PasswordUpdatePage />)
+        renderPage()
 
         await user.type(
             screen.getByLabelText('Password'),
-            'does not meet requirements[TAB]'
+            'does not meet requirements'
         )
+        await user.tab()
         expect(
             screen.queryByText(
                 'Password should contain at least one UPPERCASE letter'
@@ -79,12 +69,13 @@ describe('PasswordUpdateForm', () => {
             maxPasswordLength: 30,
         })
         useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: true })
-        renderWithRouter(<PasswordUpdatePage />)
+        renderPage()
 
         await user.type(
             screen.getByLabelText('Password'),
-            'does not meet requirements[TAB]'
+            'does not meet requirements'
         )
+        await user.tab()
         expect(
             screen.queryByText(
                 'Password should be between 10 and 30 characters long, with at least one lowercase character, one uppercase character, one number, and one special character.'
@@ -112,12 +103,10 @@ describe('PasswordUpdateForm', () => {
             useFeatureToggle.mockReturnValue({
                 validatePasswordWithRegex: true,
             })
-            renderWithRouter(<PasswordUpdatePage />)
+            renderPage()
 
-            await user.type(
-                screen.getByLabelText('Password'),
-                `${invalidPassword}[TAB]`
-            )
+            await user.type(screen.getByLabelText('Password'), invalidPassword)
+            await user.tab()
             const passwordWarningString = `Password should be between ${minPasswordLength} and ${maxPasswordLength} characters long, with at least one lowercase character, one uppercase character, one number, and one special character.`
             expect(
                 screen.queryByText(passwordWarningString)
@@ -142,12 +131,10 @@ describe('PasswordUpdateForm', () => {
             useFeatureToggle.mockReturnValue({
                 validatePasswordWithRegex: true,
             })
-            renderWithRouter(<PasswordUpdatePage />)
+            renderPage()
 
-            await user.type(
-                screen.getByLabelText('Password'),
-                `${validPassword}[TAB]`
-            )
+            await user.type(screen.getByLabelText('Password'), validPassword)
+            await user.tab()
             const passwordWarningString = `Password should be between ${minPasswordLength} and ${maxPasswordLength} characters long, with at least one lowercase character, one uppercase character, one number, and one special character.`
             expect(
                 screen.queryByText(passwordWarningString)
@@ -161,7 +148,7 @@ describe('PasswordUpdateForm', () => {
             emailConfigured: true,
         })
         useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
-        renderWithRouter(<PasswordUpdatePage />)
+        renderPage()
 
         expect(useDataMutation).toHaveBeenCalledWith(
             expect.objectContaining({ resource: 'auth/passwordReset' })
@@ -175,7 +162,7 @@ describe('PasswordUpdateForm', () => {
             emailConfigured: true,
         })
         useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
-        renderWithRouter(<PasswordUpdatePage />)
+        renderPage()
 
         await user.type(screen.getByLabelText('Password'), 'V3ry_$ecure_')
         await user.click(
@@ -197,7 +184,7 @@ describe('PasswordUpdateForm', () => {
             emailConfigured: true,
         })
         useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
-        renderWithRouter(<PasswordUpdatePage />)
+        renderPage()
 
         await user.type(
             screen.getByLabelText('Password'),
@@ -217,7 +204,7 @@ describe('PasswordUpdateForm', () => {
             emailConfigured: true,
         })
         useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
-        renderWithRouter(<PasswordUpdatePage />)
+        renderPage()
         expect(screen.getByText('NOT ALLOWED')).toBeInTheDocument()
     })
 
@@ -227,7 +214,7 @@ describe('PasswordUpdateForm', () => {
             emailConfigured: false,
         })
         useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
-        renderWithRouter(<PasswordUpdatePage />)
+        renderPage()
         expect(screen.getByText('NOT ALLOWED')).toBeInTheDocument()
     })
 
@@ -241,7 +228,7 @@ describe('PasswordUpdateForm', () => {
             () => {},
             { error: new Error('some random error') },
         ])
-        renderWithRouter(<PasswordUpdatePage />)
+        renderPage()
         expect(screen.getByText(/new password not saved/i)).toBeInTheDocument()
     })
 
@@ -252,7 +239,7 @@ describe('PasswordUpdateForm', () => {
         })
         useFeatureToggle.mockReturnValue({ validatePasswordWithRegex: false })
         useDataMutation.mockReturnValue([() => {}, { data: { success: true } }])
-        renderWithRouter(<PasswordUpdatePage />)
+        renderPage()
         expect(screen.getByText(/New password saved/i)).toBeInTheDocument()
     })
 })

@@ -1,23 +1,23 @@
 import { useDataMutation } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import { Button, ReactFinalForm, InputFieldFF, dhis2Password } from '@dhis2/ui'
+import { Button, ReactFinalForm, InputFieldFF } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 import {
     BackToLoginButton,
     FormContainer,
-    FormNotice,
     FormSubtitle,
+    MutationFormShell,
 } from '../components/index.js'
 import {
     getIsRequired,
     composeAndTranslateValidators,
-    getPasswordValidator,
+    passwordsMatch,
 } from '../helpers/index.js'
-import { useFeatureToggle } from '../hooks/index.js'
+import { useNewPasswordValidator } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
-import styles from './expired-password-change.module.css'
+import styles from './password-form.module.css'
 
 // POSTs to the JSON auth/* endpoint added in dhis2-core for DHIS2-21120. The account is
 // un-expired by a successful change, so the user then logs in again via the normal login form.
@@ -37,23 +37,8 @@ const InnerExpiredPasswordChangeForm = ({
     loading,
     username,
 }) => {
-    const { validatePasswordWithRegex } = useFeatureToggle()
-    const { minPasswordLength, maxPasswordLength } = useLoginConfig()
-    const passwordRegExValidator = getPasswordValidator({
-        minPasswordLength,
-        maxPasswordLength,
-    })
+    const newPasswordValidator = useNewPasswordValidator()
     const isRequired = getIsRequired(lngs?.[0])
-
-    const validateConfirmPassword = (value, allValues) => {
-        if (!value) {
-            return i18n.t('This field is required', { lng: lngs?.[0] })
-        }
-        if (value !== allValues?.password) {
-            return i18n.t('Passwords do not match', { lng: lngs?.[0] })
-        }
-        return undefined
-    }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -79,16 +64,14 @@ const InnerExpiredPasswordChangeForm = ({
                     initialFocus={Boolean(username)}
                 />
                 <ReactFinalForm.Field
-                    name="password"
+                    name="newPassword"
                     type="password"
                     label={i18n.t('New password', { lngs })}
                     component={InputFieldFF}
                     className={styles.inputField}
                     validate={composeAndTranslateValidators(
                         isRequired,
-                        validatePasswordWithRegex
-                            ? passwordRegExValidator
-                            : dhis2Password
+                        newPasswordValidator
                     )}
                     readOnly={loading}
                 />
@@ -98,7 +81,10 @@ const InnerExpiredPasswordChangeForm = ({
                     label={i18n.t('Confirm new password', { lngs })}
                     component={InputFieldFF}
                     className={styles.inputField}
-                    validate={validateConfirmPassword}
+                    validate={composeAndTranslateValidators(
+                        isRequired,
+                        passwordsMatch
+                    )}
                     readOnly={loading}
                 />
             </div>
@@ -106,7 +92,7 @@ const InnerExpiredPasswordChangeForm = ({
                 <Button
                     type="submit"
                     disabled={loading}
-                    className={styles.resetButton}
+                    className={styles.submitButton}
                     primary
                 >
                     {loading
@@ -134,56 +120,45 @@ export const ExpiredPasswordChangeForm = ({
     const [updatePassword, { loading, fetching, error, data }] =
         useDataMutation(updateExpiredPasswordMutation)
 
+    // The mutation's data function picks the three wire fields (and drops confirmPassword),
+    // so no second mapping layer is needed here. Do NOT return the promise: app-runtime
+    // resolves a failed mutation to a promise that never settles, and react-final-form would
+    // then keep submitting=true forever, silently blocking every retry after an error.
     const handleUpdate = (values) => {
-        updatePassword({
-            username: values.username,
-            oldPassword: values.oldPassword,
-            newPassword: values.password,
-        })
+        updatePassword(values)
     }
 
     return (
-        <div>
-            {error && (
-                <FormNotice
-                    title={i18n.t('Could not update password', { lngs })}
-                    error={true}
-                >
-                    <span>
-                        {error?.details?.message ||
-                            i18n.t(
-                                'Try again, or contact your system administrator if the problem persists.',
-                                { lngs }
-                            )}
-                    </span>
-                </FormNotice>
+        <MutationFormShell
+            error={error}
+            errorTitle={i18n.t('Could not update password', { lngs })}
+            // Surfaces the server message verbatim. Unlike password-update's fixed generic
+            // string, these backend messages ("Account is not expired", "Invalid username
+            // or password", the password-policy text) are deliberately specific and
+            // enumeration-safe, so we show them directly rather than through app i18n.
+            errorMessage={
+                error?.details?.message ||
+                i18n.t(
+                    'Try again, or contact your system administrator if the problem persists.',
+                    { lngs }
+                )
+            }
+            data={data}
+            successMessage={i18n.t(
+                'Your password has been updated. You can now log in with your new password.',
+                { lngs }
             )}
-            {data && (
-                <>
-                    <FormNotice valid={true}>
-                        <span>
-                            {i18n.t(
-                                'Your password has been updated. You can now log in with your new password.',
-                                { lngs }
-                            )}
-                        </span>
-                    </FormNotice>
-                    <BackToLoginButton fullWidth />
-                </>
+            onSubmit={handleUpdate}
+        >
+            {({ handleSubmit }) => (
+                <InnerExpiredPasswordChangeForm
+                    handleSubmit={handleSubmit}
+                    lngs={lngs}
+                    loading={loading || fetching}
+                    username={username}
+                />
             )}
-            {!data && (
-                <ReactFinalForm.Form onSubmit={handleUpdate}>
-                    {({ handleSubmit }) => (
-                        <InnerExpiredPasswordChangeForm
-                            handleSubmit={handleSubmit}
-                            lngs={lngs}
-                            loading={loading || fetching}
-                            username={username}
-                        />
-                    )}
-                </ReactFinalForm.Form>
-            )}
-        </div>
+        </MutationFormShell>
     )
 }
 

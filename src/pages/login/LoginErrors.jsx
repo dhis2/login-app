@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { FormNotice } from '../../components/index.js'
+import { pathWithUsername } from '../../helpers/index.js'
 
 export const LoginErrors = ({
     lngs = ['en'],
@@ -81,13 +82,10 @@ export const LoginErrors = ({
             >
                 <div>
                     <Link
-                        to={
+                        to={pathWithUsername(
+                            '/change-expired-password',
                             formUserName
-                                ? `/change-expired-password?username=${encodeURIComponent(
-                                      formUserName
-                                  )}`
-                                : '/change-expired-password'
-                        }
+                        )}
                     >
                         {i18n.t('Change your expired password', { lngs })}
                     </Link>

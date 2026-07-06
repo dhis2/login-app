@@ -1,5 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import React, { useState } from 'react'
+import { Navigate } from 'react-router-dom'
 import {
     ApplicationNotification,
     FormContainer,
@@ -7,6 +8,7 @@ import {
     LoginLinks,
     OIDCLoginOptions,
 } from '../components/index.js'
+import { pathWithUsername } from '../helpers/index.js'
 import { useLogin } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
 import { LoginForm } from './login/index.js'
@@ -40,6 +42,20 @@ export const LoginFormContainer = () => {
     } = useLogin()
     const [formUserName, setFormUserName] = useState('')
     const { lngs, allowAccountRecovery, emailConfigured } = useLoginConfig()
+    const passwordResetEnabled = allowAccountRecovery && emailConfigured
+
+    // On an expired password, skip the intermediate "password expired" notice and send the
+    // user straight to the self-service change page. Exception: when an email reset is also
+    // available we keep the notice so the user can choose between changing in place and
+    // resetting via email (DHIS2-21120).
+    if (passwordExpired && !passwordResetEnabled) {
+        return (
+            <Navigate
+                to={pathWithUsername('/change-expired-password', formUserName)}
+                replace
+            />
+        )
+    }
 
     return (
         <FormContainer
@@ -83,7 +99,7 @@ export const LoginFormContainer = () => {
                 twoFACodeRequired={twoFACodeRequired}
                 accountInaccessible={accountInaccessible}
                 passwordExpired={passwordExpired}
-                passwordResetEnabled={allowAccountRecovery && emailConfigured}
+                passwordResetEnabled={passwordResetEnabled}
                 unknownStatus={unknownStatus}
                 error={error}
                 loading={loading}

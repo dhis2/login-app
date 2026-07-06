@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { MemoryRouter } from 'react-router-dom'
+import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import LoginPage from '../login.jsx'
 
 const getCustomData = (statusMessage) => ({
@@ -36,20 +36,24 @@ describe('LoginForm', () => {
         jest.clearAllMocks()
     })
 
-    it('shows password expired messages if status is PASSWORD_EXPIRED', async () => {
+    it('redirects to the change page when status is PASSWORD_EXPIRED and no email reset is configured', async () => {
         render(
             <Wrapper statusMessage={'PASSWORD_EXPIRED'}>
-                <LoginPage />
+                <Routes>
+                    <Route path="/" element={<LoginPage />} />
+                    <Route
+                        path="/change-expired-password"
+                        element={<div>EXPIRED CHANGE PAGE</div>}
+                    />
+                </Routes>
             </Wrapper>
         )
         await login()
 
-        expect(screen.getByText('Password expired')).toBeInTheDocument()
         expect(
-            screen.getByRole('link', {
-                name: 'Change your expired password',
-            })
+            await screen.findByText('EXPIRED CHANGE PAGE')
         ).toBeInTheDocument()
+        expect(screen.queryByText('Password expired')).not.toBeInTheDocument()
     })
 
     it('shows account not accessible message if status is ACCOUNT_DISABLED', async () => {
