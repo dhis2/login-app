@@ -23,6 +23,11 @@ export const checkIsLoginFormValid = (values) => {
     return true
 }
 
+// Returns an untranslated message, like the other validators here, since
+// composeAndTranslateValidators runs the result through i18n.t.
+export const passwordsMatch = (value, allValues) =>
+    value === allValues?.newPassword ? undefined : 'Passwords do not match'
+
 export const composeAndTranslateValidators = (...validators) => {
     return (...args) => {
         return validators.reduce(

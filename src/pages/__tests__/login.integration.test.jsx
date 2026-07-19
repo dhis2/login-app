@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { MemoryRouter } from 'react-router-dom'
+import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import LoginPage from '../login.jsx'
 
 const getCustomData = (statusMessage) => ({
@@ -19,7 +19,15 @@ const login = async () => {
 
 const Wrapper = ({ statusMessage, children }) => (
     <CustomDataProvider data={getCustomData(statusMessage)}>
-        <MemoryRouter>{children}</MemoryRouter>
+        <MemoryRouter>
+            <Routes>
+                <Route path="/" element={children} />
+                <Route
+                    path="/change-expired-password"
+                    element={<div>CHANGE EXPIRED PASSWORD PAGE</div>}
+                />
+            </Routes>
+        </MemoryRouter>
     </CustomDataProvider>
 )
 
@@ -36,7 +44,7 @@ describe('LoginForm', () => {
         jest.clearAllMocks()
     })
 
-    it('shows password expired messages if status is PASSWORD_EXPIRED', async () => {
+    it('redirects to the change-expired-password page if status is PASSWORD_EXPIRED', async () => {
         render(
             <Wrapper statusMessage={'PASSWORD_EXPIRED'}>
                 <LoginPage />
@@ -44,9 +52,8 @@ describe('LoginForm', () => {
         )
         await login()
 
-        expect(screen.getByText('Password expired')).toBeInTheDocument()
         expect(
-            screen.getByText('Contact your system administrator.')
+            screen.getByText('CHANGE EXPIRED PASSWORD PAGE')
         ).toBeInTheDocument()
     })
 
