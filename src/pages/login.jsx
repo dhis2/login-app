@@ -21,7 +21,6 @@ export default function LoginPage() {
     )
 }
 
-// this is set up this way to isolate styling from login form logic
 export const LoginFormContainer = () => {
     const {
         login,

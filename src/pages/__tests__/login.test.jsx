@@ -115,7 +115,6 @@ describe('LoginForm', () => {
         checkIsLoginFormValid.mockImplementation(() => true)
         render(<LoginFormContainer />)
 
-        // populate form with username + password (this would need to be done )
         await userEvent.type(screen.getByLabelText('Username'), 'Tintin')
         await userEvent.type(screen.getByLabelText('Password'), 'Milou')
 
@@ -160,7 +159,6 @@ describe('LoginForm', () => {
             cancelTwoFA: mockCancelTwoFA,
         })
         render(<LoginFormContainer />)
-        // populate form with username + password (this would need to be done )
         await userEvent.type(screen.getByLabelText('Username'), 'Bastian')
         await userEvent.type(screen.getByLabelText('Password'), 'Kardemomme')
         await user.click(screen.getByRole('button', { name: /log in/i }))
@@ -184,7 +182,6 @@ describe('LoginForm', () => {
         expect(screen.getByText('Logging in...')).toBeInTheDocument()
     })
 
-    // ideally would check visibility of fields in these states, but not working in tests due to jsdom interpretation of css
     it('has header of "log in" if twoFAVerificationRequired is false', () => {
         useLogin.mockReturnValue({
             login: () => {},

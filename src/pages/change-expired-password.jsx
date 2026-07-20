@@ -20,8 +20,6 @@ import { useFeatureToggle } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
 import styles from './change-expired-password.module.css'
 
-// A successful change also un-expires the account server-side, so the user logs in again
-// via the normal login form afterward.
 const updateExpiredPasswordMutation = {
     resource: 'auth/updatePassword',
     type: 'create',
@@ -137,9 +135,6 @@ export const ChangeExpiredPasswordForm = ({
     const [updatePassword, { loading, fetching, error, data }] =
         useDataMutation(updateExpiredPasswordMutation)
 
-    // Do NOT return the promise: app-runtime resolves a failed mutation to a promise that
-    // never settles, and react-final-form would then keep submitting=true forever, silently
-    // blocking every retry after an error.
     const handleChangeExpiredPassword = (values) => {
         updatePassword(values)
     }
@@ -194,8 +189,6 @@ ChangeExpiredPasswordForm.propTypes = {
     username: PropTypes.string,
 }
 
-// Deliberately NOT gated by allowAccountRecovery / emailConfigured: the whole point of this
-// flow is that an expired user can self-serve a new password without an email server.
 const ChangeExpiredPasswordPage = () => {
     const { lngs } = useLoginConfig()
     const [searchParams] = useSearchParams()
