@@ -14,6 +14,9 @@ export const LoginForm = ({
     twoFAIncorrect,
     emailTwoFAIncorrect,
     accountInaccessible,
+    passwordExpired,
+    passwordResetEnabled,
+    formUserName,
     unknownStatus,
     error,
     loading,
@@ -48,6 +51,9 @@ export const LoginForm = ({
                 error={error}
                 twoFAIncorrect={twoFAIncorrect}
                 accountInaccessible={accountInaccessible}
+                passwordExpired={passwordExpired}
+                passwordResetEnabled={passwordResetEnabled}
+                formUserName={formUserName}
                 unknownStatus={unknownStatus}
                 emailTwoFAIncorrect={emailTwoFAIncorrect}
                 isResetButtonPressed={isResetButtonPressed}
@@ -86,9 +92,12 @@ LoginForm.propTypes = {
     emailTwoFAIncorrect: PropTypes.bool,
     emailtwoFAVerificationRequired: PropTypes.bool,
     error: PropTypes.object,
+    formUserName: PropTypes.string,
     lngs: PropTypes.arrayOf(PropTypes.string),
     loading: PropTypes.bool,
     login: PropTypes.func,
+    passwordExpired: PropTypes.bool,
+    passwordResetEnabled: PropTypes.bool,
     resendTwoFACode: PropTypes.func,
     setFormUserName: PropTypes.func,
     twoFACodeRequired: PropTypes.bool,

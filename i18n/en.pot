@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-07-19T13:20:40.593Z\n"
-"PO-Revision-Date: 2026-07-19T13:20:40.594Z\n"
+"POT-Creation-Date: 2026-07-22T13:41:37.215Z\n"
+"PO-Revision-Date: 2026-07-22T13:41:37.216Z\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr "Please confirm that you are not a robot by checking the checkbox."
@@ -113,6 +113,9 @@ msgstr "I agree"
 msgid "This field is required"
 msgstr "This field is required"
 
+msgid "Passwords do not match"
+msgstr "Passwords do not match"
+
 msgid "Current password"
 msgstr "Current password"
 
@@ -136,6 +139,9 @@ msgstr "Try again, or contact your system administrator if the problem persists.
 
 msgid "Your password has been updated. You can now log in with your new password."
 msgstr "Your password has been updated. You can now log in with your new password."
+
+msgid "Password updated"
+msgstr "Password updated"
 
 msgid "Password expired"
 msgstr "Password expired"
@@ -227,6 +233,12 @@ msgstr "Authentication code is required"
 
 msgid "Incorrect authentication code"
 msgstr "Incorrect authentication code"
+
+msgid "Change your expired password"
+msgstr "Change your expired password"
+
+msgid "You can reset your password from the password reset page."
+msgstr "You can reset your password from the password reset page."
 
 msgid "Account not accessible"
 msgstr "Account not accessible"
