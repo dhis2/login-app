@@ -2,7 +2,7 @@ import { useDataMutation } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { Button, ReactFinalForm, InputFieldFF, dhis2Password } from '@dhis2/ui'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import {
     BackToLoginButton,
@@ -131,9 +131,12 @@ const defaultLngs = ['en']
 export const ChangeExpiredPasswordForm = ({
     username = '',
     lngs = defaultLngs,
+    onSuccess,
 }) => {
     const [updatePassword, { loading, fetching, error, data }] =
-        useDataMutation(updateExpiredPasswordMutation)
+        useDataMutation(updateExpiredPasswordMutation, {
+            onComplete: onSuccess,
+        })
 
     const handleChangeExpiredPassword = (values) => {
         updatePassword(values)
@@ -187,24 +190,38 @@ export const ChangeExpiredPasswordForm = ({
 ChangeExpiredPasswordForm.propTypes = {
     lngs: PropTypes.arrayOf(PropTypes.string),
     username: PropTypes.string,
+    onSuccess: PropTypes.func,
 }
 
 const ChangeExpiredPasswordPage = () => {
     const { lngs } = useLoginConfig()
     const [searchParams] = useSearchParams()
     const username = searchParams.get('username') || ''
+    const [passwordUpdated, setPasswordUpdated] = useState(false)
 
     return (
-        <FormContainer title={i18n.t('Password expired', { lngs })}>
-            <FormSubtitle>
-                <p>
-                    {i18n.t(
-                        'Your password has expired. Enter your current password and choose a new one to continue.',
-                        { lngs }
-                    )}
-                </p>
-            </FormSubtitle>
-            <ChangeExpiredPasswordForm username={username} lngs={lngs} />
+        <FormContainer
+            title={
+                passwordUpdated
+                    ? i18n.t('Password updated', { lngs })
+                    : i18n.t('Password expired', { lngs })
+            }
+        >
+            {!passwordUpdated && (
+                <FormSubtitle>
+                    <p>
+                        {i18n.t(
+                            'Your password has expired. Enter your current password and choose a new one to continue.',
+                            { lngs }
+                        )}
+                    </p>
+                </FormSubtitle>
+            )}
+            <ChangeExpiredPasswordForm
+                username={username}
+                lngs={lngs}
+                onSuccess={() => setPasswordUpdated(true)}
+            />
         </FormContainer>
     )
 }

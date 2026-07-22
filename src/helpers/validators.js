@@ -24,7 +24,9 @@ export const checkIsLoginFormValid = (values) => {
 }
 
 export const passwordsMatch = (value, allValues) =>
-    value === allValues?.newPassword ? undefined : 'Passwords do not match'
+    value === allValues?.newPassword
+        ? undefined
+        : i18n.t('Passwords do not match')
 
 export const composeAndTranslateValidators = (...validators) => {
     return (...args) => {

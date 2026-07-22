@@ -1,5 +1,5 @@
 import { useDataMutation } from '@dhis2/app-runtime'
-import { render, screen } from '@testing-library/react'
+import { act, render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
@@ -56,7 +56,8 @@ describe('ChangeExpiredPasswordPage', () => {
         renderPage()
 
         expect(useDataMutation).toHaveBeenCalledWith(
-            expect.objectContaining({ resource: 'auth/updatePassword' })
+            expect.objectContaining({ resource: 'auth/updatePassword' }),
+            expect.anything()
         )
     })
 
@@ -232,6 +233,33 @@ describe('ChangeExpiredPasswordPage', () => {
         ).toBeInTheDocument()
         expect(
             screen.queryByRole('button', { name: /save new password/i })
+        ).not.toBeInTheDocument()
+    })
+
+    it('hides the expired-password subtitle and updates the title once the password update completes', () => {
+        let onComplete
+        useDataMutation.mockImplementation((_mutation, options) => {
+            onComplete = options?.onComplete
+            return [
+                mockMutate,
+                { loading: false, fetching: false, error: undefined, data: null },
+            ]
+        })
+        renderPage()
+
+        expect(screen.getByText('Password expired')).toBeInTheDocument()
+        expect(
+            screen.getByText(/your password has expired/i)
+        ).toBeInTheDocument()
+
+        act(() => {
+            onComplete({ httpStatus: 'OK' })
+        })
+
+        expect(screen.getByText('Password updated')).toBeInTheDocument()
+        expect(screen.queryByText('Password expired')).not.toBeInTheDocument()
+        expect(
+            screen.queryByText(/your password has expired/i)
         ).not.toBeInTheDocument()
     })
 })
