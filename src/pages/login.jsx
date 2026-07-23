@@ -1,5 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import React, { useState } from 'react'
+import { Navigate } from 'react-router-dom'
 import {
     ApplicationNotification,
     FormContainer,
@@ -41,6 +42,22 @@ export const LoginFormContainer = () => {
     const { lngs, allowAccountRecovery, emailConfigured } = useLoginConfig()
     const passwordResetEnabled = allowAccountRecovery && emailConfigured
 
+    if (passwordExpired) {
+        const usernameQuery = formUserName
+            ? `?username=${encodeURIComponent(formUserName)}`
+            : ''
+        return (
+            <Navigate
+                to={
+                    passwordResetEnabled
+                        ? `/reset-password-expired${usernameQuery}`
+                        : `/change-expired-password${usernameQuery}`
+                }
+                replace
+            />
+        )
+    }
+
     return (
         <FormContainer
             title={
@@ -81,8 +98,6 @@ export const LoginFormContainer = () => {
                 emailTwoFAIncorrect={emailTwoFAIncorrect}
                 twoFACodeRequired={twoFACodeRequired}
                 accountInaccessible={accountInaccessible}
-                passwordExpired={passwordExpired}
-                passwordResetEnabled={passwordResetEnabled}
                 formUserName={formUserName}
                 unknownStatus={unknownStatus}
                 error={error}

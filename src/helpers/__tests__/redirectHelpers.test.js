@@ -70,8 +70,6 @@ describe('pathWithUsername', () => {
     })
 
     it('returns the path unchanged when no username is provided', () => {
-        expect(pathWithUsername('/reset-password', '')).toBe(
-            '/reset-password'
-        )
+        expect(pathWithUsername('/reset-password', '')).toBe('/reset-password')
     })
 })

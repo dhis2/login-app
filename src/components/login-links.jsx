@@ -45,3 +45,19 @@ export const LoginLinks = ({ formUserName }) => {
 LoginLinks.propTypes = {
     formUserName: PropTypes.string,
 }
+
+export const ExpiredPasswordLink = () => {
+    const { lngs } = useLoginConfig()
+    return (
+        <div className={styles.links}>
+            <span>
+                <Link to={`/change-expired-password`}>
+                    {i18n.t(
+                        'If you do not have access to your email, you can reset your password here',
+                        { lngs }
+                    )}
+                </Link>
+            </span>
+        </div>
+    )
+}

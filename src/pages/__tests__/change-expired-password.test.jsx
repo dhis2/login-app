@@ -242,7 +242,12 @@ describe('ChangeExpiredPasswordPage', () => {
             onComplete = options?.onComplete
             return [
                 mockMutate,
-                { loading: false, fetching: false, error: undefined, data: null },
+                {
+                    loading: false,
+                    fetching: false,
+                    error: undefined,
+                    data: null,
+                },
             ]
         })
         renderPage()

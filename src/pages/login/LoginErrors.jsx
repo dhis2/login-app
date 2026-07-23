@@ -1,18 +1,13 @@
 import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { FormNotice } from '../../components/index.js'
-import { pathWithUsername } from '../../helpers/index.js'
 
 export const LoginErrors = ({
     lngs = ['en'],
     error,
     twoFAIncorrect,
     accountInaccessible,
-    passwordExpired,
-    passwordResetEnabled,
-    formUserName,
     unknownStatus,
     emailTwoFAIncorrect,
     isResetButtonPressed,
@@ -72,43 +67,6 @@ export const LoginErrors = ({
         )
     }
 
-    if (passwordExpired) {
-        return (
-            <FormNotice
-                title={i18n.t('Password expired', {
-                    lngs,
-                })}
-                error
-            >
-                <div>
-                    <Link
-                        to={pathWithUsername(
-                            '/change-expired-password',
-                            formUserName
-                        )}
-                    >
-                        {i18n.t('Change your expired password', { lngs })}
-                    </Link>
-                </div>
-                {passwordResetEnabled && (
-                    <div>
-                        <Link
-                            to={pathWithUsername(
-                                '/reset-password',
-                                formUserName
-                            )}
-                        >
-                            {i18n.t(
-                                'You can reset your password from the password reset page.',
-                                { lngs }
-                            )}
-                        </Link>
-                    </div>
-                )}
-            </FormNotice>
-        )
-    }
-
     if (accountInaccessible) {
         return (
             <FormNotice
@@ -140,11 +98,8 @@ LoginErrors.propTypes = {
     accountInaccessible: PropTypes.bool,
     emailTwoFAIncorrect: PropTypes.bool,
     error: PropTypes.object,
-    formUserName: PropTypes.string,
     isResetButtonPressed: PropTypes.bool,
     lngs: PropTypes.arrayOf(PropTypes.string),
-    passwordExpired: PropTypes.bool,
-    passwordResetEnabled: PropTypes.bool,
     twoFACodeRequired: PropTypes.bool,
     twoFAIncorrect: PropTypes.bool,
     twoFAVerificationRequired: PropTypes.bool,

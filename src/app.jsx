@@ -58,6 +58,12 @@ const LoginRoutes = () => {
                     element={<PasswordResetRequestPage />}
                 />
                 <Route
+                    path="/reset-password-expired"
+                    element={
+                        <PasswordResetRequestPage expiredPassword={true} />
+                    }
+                />
+                <Route
                     path="/update-password"
                     element={<PasswordUpdatePage />}
                 />

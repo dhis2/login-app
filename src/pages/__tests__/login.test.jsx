@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
-import { MemoryRouter } from 'react-router-dom'
+import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import { checkIsLoginFormValid } from '../../helpers/validators.js'
 import { useLogin } from '../../hooks/useLogin.js'
 import { useLoginConfig } from '../../providers/use-login-config.js'
@@ -37,8 +37,22 @@ jest.mock('../../components/index.js', () => ({
     OIDCLoginOptions: () => <p>OIDC LOGIN OPTIONS</p>,
 }))
 
-const renderWithRouter = (children) =>
-    render(<MemoryRouter>{children}</MemoryRouter>)
+const renderAtLoginRoute = (children) =>
+    render(
+        <MemoryRouter>
+            <Routes>
+                <Route path="/" element={children} />
+                <Route
+                    path="/change-expired-password"
+                    element={<div>CHANGE EXPIRED PASSWORD PAGE</div>}
+                />
+                <Route
+                    path="/reset-password-expired"
+                    element={<div>RESET PASSWORD PAGE</div>}
+                />
+            </Routes>
+        </MemoryRouter>
+    )
 
 describe('LoginForm', () => {
     afterEach(() => {
@@ -266,7 +280,7 @@ describe('LoginForm', () => {
         expect(screen.getByText('OIDC LOGIN OPTIONS')).toBeInTheDocument()
     })
 
-    it('shows a password-expired notice with links to change-expired-password and reset-password when allowAccountRecovery and emailConfigured are true', () => {
+    it('redirects to the reset-password-expired page if passwordExpired and allowAccountRecovery and emailConfigured are true', () => {
         useLogin.mockReturnValue({
             login: () => {},
             passwordExpired: true,
@@ -277,20 +291,12 @@ describe('LoginForm', () => {
             emailConfigured: true,
         })
 
-        renderWithRouter(<LoginFormContainer />)
+        renderAtLoginRoute(<LoginFormContainer />)
 
-        expect(screen.getByText('Password expired')).toBeInTheDocument()
-        expect(
-            screen.getByRole('link', { name: 'Change your expired password' })
-        ).toHaveAttribute('href', '/change-expired-password')
-        expect(
-            screen.getByRole('link', {
-                name: 'You can reset your password from the password reset page.',
-            })
-        ).toHaveAttribute('href', '/reset-password')
+        expect(screen.getByText('RESET PASSWORD PAGE')).toBeInTheDocument()
     })
 
-    it('shows a password-expired notice with only the change-expired-password link if allowAccountRecovery is false', () => {
+    it('redirects to the change-expired-password page if passwordExpired and allowAccountRecovery is false', () => {
         useLogin.mockReturnValue({
             login: () => {},
             passwordExpired: true,
@@ -301,19 +307,14 @@ describe('LoginForm', () => {
             emailConfigured: true,
         })
 
-        renderWithRouter(<LoginFormContainer />)
+        renderAtLoginRoute(<LoginFormContainer />)
 
         expect(
-            screen.getByRole('link', { name: 'Change your expired password' })
-        ).toHaveAttribute('href', '/change-expired-password')
-        expect(
-            screen.queryByRole('link', {
-                name: 'You can reset your password from the password reset page.',
-            })
-        ).not.toBeInTheDocument()
+            screen.getByText('CHANGE EXPIRED PASSWORD PAGE')
+        ).toBeInTheDocument()
     })
 
-    it('shows a password-expired notice with only the change-expired-password link if emailConfigured is false', () => {
+    it('redirects to the change-expired-password page if passwordExpired and emailConfigured is false', () => {
         useLogin.mockReturnValue({
             login: () => {},
             passwordExpired: true,
@@ -324,16 +325,11 @@ describe('LoginForm', () => {
             emailConfigured: false,
         })
 
-        renderWithRouter(<LoginFormContainer />)
+        renderAtLoginRoute(<LoginFormContainer />)
 
         expect(
-            screen.getByRole('link', { name: 'Change your expired password' })
-        ).toHaveAttribute('href', '/change-expired-password')
-        expect(
-            screen.queryByRole('link', {
-                name: 'You can reset your password from the password reset page.',
-            })
-        ).not.toBeInTheDocument()
+            screen.getByText('CHANGE EXPIRED PASSWORD PAGE')
+        ).toBeInTheDocument()
     })
 
     it('Shows Account not accessible if accountInaccessible is true', () => {

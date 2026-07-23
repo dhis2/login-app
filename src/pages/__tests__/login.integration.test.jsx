@@ -3,8 +3,16 @@ import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { MemoryRouter } from 'react-router-dom'
+import { MemoryRouter, Routes, Route } from 'react-router-dom'
+import { useLoginConfig } from '../../providers/use-login-config.js'
 import LoginPage from '../login.jsx'
+
+jest.mock('../../providers/use-login-config.js', () => ({
+    useLoginConfig: jest.fn(() => ({
+        allowAccountRecovery: false,
+        emailConfigured: false,
+    })),
+}))
 
 const getCustomData = (statusMessage) => ({
     'auth/login': { loginStatus: statusMessage },
@@ -19,7 +27,19 @@ const login = async () => {
 
 const Wrapper = ({ statusMessage, children }) => (
     <CustomDataProvider data={getCustomData(statusMessage)}>
-        <MemoryRouter>{children}</MemoryRouter>
+        <MemoryRouter>
+            <Routes>
+                <Route path="/" element={children} />
+                <Route
+                    path="/change-expired-password"
+                    element={<div>CHANGE EXPIRED PASSWORD PAGE</div>}
+                />
+                <Route
+                    path="/reset-password-expired"
+                    element={<div>RESET PASSWORD PAGE</div>}
+                />
+            </Routes>
+        </MemoryRouter>
     </CustomDataProvider>
 )
 
@@ -36,7 +56,11 @@ describe('LoginForm', () => {
         jest.clearAllMocks()
     })
 
-    it('shows a password-expired notice linking to the change-expired-password page if status is PASSWORD_EXPIRED', async () => {
+    it('redirects to the change-expired-password page if status is PASSWORD_EXPIRED and emailConfigured is false', async () => {
+        useLoginConfig.mockReturnValue({
+            allowAccountRecovery: true,
+            emailConfigured: false,
+        })
         render(
             <Wrapper statusMessage={'PASSWORD_EXPIRED'}>
                 <LoginPage />
@@ -44,13 +68,41 @@ describe('LoginForm', () => {
         )
         await login()
 
-        expect(screen.getByText('Password expired')).toBeInTheDocument()
         expect(
-            screen.getByRole('link', { name: 'Change your expired password' })
-        ).toHaveAttribute(
-            'href',
-            '/change-expired-password?username=Fl%40klypa.no'
+            screen.getByText('CHANGE EXPIRED PASSWORD PAGE')
+        ).toBeInTheDocument()
+    })
+
+    it('redirects to the change-expired-password page if status is PASSWORD_EXPIRED and allowAccountRecovery is false', async () => {
+        useLoginConfig.mockReturnValue({
+            allowAccountRecovery: false,
+            emailConfigured: true,
+        })
+        render(
+            <Wrapper statusMessage={'PASSWORD_EXPIRED'}>
+                <LoginPage />
+            </Wrapper>
         )
+        await login()
+
+        expect(
+            screen.getByText('CHANGE EXPIRED PASSWORD PAGE')
+        ).toBeInTheDocument()
+    })
+
+    it('redirects to the reset-password-expired page if status is PASSWORD_EXPIRED and emailConfigured and allowAccountRecovery are true', async () => {
+        useLoginConfig.mockReturnValue({
+            allowAccountRecovery: true,
+            emailConfigured: true,
+        })
+        render(
+            <Wrapper statusMessage={'PASSWORD_EXPIRED'}>
+                <LoginPage />
+            </Wrapper>
+        )
+        await login()
+
+        expect(screen.getByText('RESET PASSWORD PAGE')).toBeInTheDocument()
     })
 
     it('shows account not accessible message if status is ACCOUNT_DISABLED', async () => {
