@@ -8,6 +8,7 @@ import {
     LoginLinks,
     OIDCLoginOptions,
 } from '../components/index.js'
+import { pathWithUsername } from '../helpers/index.js'
 import { useLogin } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
 import { LoginForm } from './login/index.js'
@@ -43,16 +44,14 @@ export const LoginFormContainer = () => {
     const passwordResetEnabled = allowAccountRecovery && emailConfigured
 
     if (passwordExpired) {
-        const usernameQuery = formUserName
-            ? `?username=${encodeURIComponent(formUserName)}`
-            : ''
         return (
             <Navigate
-                to={
+                to={pathWithUsername(
                     passwordResetEnabled
-                        ? `/reset-password-expired${usernameQuery}`
-                        : `/change-expired-password${usernameQuery}`
-                }
+                        ? '/reset-password-expired'
+                        : '/change-expired-password',
+                    formUserName
+                )}
                 replace
             />
         )

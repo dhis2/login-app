@@ -151,6 +151,7 @@ const requiredPropsForPasswordReset = [
 
 const PasswordResetRequestPage = ({ expiredPassword = false }) => {
     const { lngs } = useLoginConfig()
+    const [params] = useSearchParams()
     const { notAllowed } = useGetErrorIfNotAllowed(
         requiredPropsForPasswordReset
     )
@@ -176,13 +177,15 @@ const PasswordResetRequestPage = ({ expiredPassword = false }) => {
                 </p>
             </FormSubtitle>
             <PasswordResetRequestForm lngs={lngs} />
-            {expiredPassword && <ExpiredPasswordLink />}
+            {expiredPassword && (
+                <ExpiredPasswordLink formUserName={params.get('username')} />
+            )}
         </FormContainer>
     )
 }
 
 PasswordResetRequestPage.propTypes = {
-    expiredPassword: PropTypes.boolean,
+    expiredPassword: PropTypes.bool,
 }
 
 export default PasswordResetRequestPage

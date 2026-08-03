@@ -2,6 +2,7 @@ import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { pathWithUsername } from '../helpers/index.js'
 import { useLoginConfig } from '../providers/index.js'
 import styles from './login-links.module.css'
 
@@ -19,11 +20,10 @@ export const LoginLinks = ({ formUserName }) => {
                 {allowAccountRecovery && emailConfigured && (
                     <span>
                         <Link
-                            to={
+                            to={pathWithUsername(
+                                '/reset-password',
                                 formUserName
-                                    ? `/reset-password?username=${formUserName}`
-                                    : `/reset-password`
-                            }
+                            )}
                         >
                             {i18n.t('Forgot password?', { lngs })}
                         </Link>
@@ -46,12 +46,17 @@ LoginLinks.propTypes = {
     formUserName: PropTypes.string,
 }
 
-export const ExpiredPasswordLink = () => {
+export const ExpiredPasswordLink = ({ formUserName }) => {
     const { lngs } = useLoginConfig()
     return (
         <div className={styles.links}>
             <span>
-                <Link to={`/change-expired-password`}>
+                <Link
+                    to={pathWithUsername(
+                        '/change-expired-password',
+                        formUserName
+                    )}
+                >
                     {i18n.t(
                         'If you do not have access to your email, you can reset your password here',
                         { lngs }
@@ -60,4 +65,8 @@ export const ExpiredPasswordLink = () => {
             </span>
         </div>
     )
+}
+
+ExpiredPasswordLink.propTypes = {
+    formUserName: PropTypes.string,
 }
