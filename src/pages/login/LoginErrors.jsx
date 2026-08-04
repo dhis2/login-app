@@ -1,15 +1,12 @@
 import i18n from '@dhis2/d2-i18n'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { FormNotice } from '../../components/index.js'
 
 export const LoginErrors = ({
     lngs = ['en'],
     error,
     twoFAIncorrect,
-    passwordExpired,
-    passwordResetEnabled,
     accountInaccessible,
     unknownStatus,
     emailTwoFAIncorrect,
@@ -70,26 +67,6 @@ export const LoginErrors = ({
         )
     }
 
-    if (passwordExpired) {
-        return (
-            <FormNotice
-                title={i18n.t('Password expired', {
-                    lngs,
-                })}
-                error
-            >
-                {passwordResetEnabled ? (
-                    <Link to="/reset-password">
-                        {i18n.t(
-                            'You can reset your password from the password reset page.'
-                        )}
-                    </Link>
-                ) : (
-                    i18n.t('Contact your system administrator.')
-                )}
-            </FormNotice>
-        )
-    }
     if (accountInaccessible) {
         return (
             <FormNotice
@@ -123,8 +100,6 @@ LoginErrors.propTypes = {
     error: PropTypes.object,
     isResetButtonPressed: PropTypes.bool,
     lngs: PropTypes.arrayOf(PropTypes.string),
-    passwordExpired: PropTypes.bool,
-    passwordResetEnabled: PropTypes.bool,
     twoFACodeRequired: PropTypes.bool,
     twoFAIncorrect: PropTypes.bool,
     twoFAVerificationRequired: PropTypes.bool,

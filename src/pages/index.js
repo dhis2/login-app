@@ -1,3 +1,4 @@
+export { default as ChangeExpiredPasswordPage } from './change-expired-password.jsx'
 export { default as CompleteRegistrationPage } from './complete-registration.jsx'
 export { default as CreateAccountPage } from './create-account.jsx'
 export { default as EmailVerificationSuccess } from './email-verification-success.jsx'

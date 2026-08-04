@@ -1,5 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import React, { useState } from 'react'
+import { Navigate } from 'react-router-dom'
 import {
     ApplicationNotification,
     FormContainer,
@@ -7,6 +8,7 @@ import {
     LoginLinks,
     OIDCLoginOptions,
 } from '../components/index.js'
+import { pathWithUsername } from '../helpers/index.js'
 import { useLogin } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
 import { LoginForm } from './login/index.js'
@@ -20,7 +22,6 @@ export default function LoginPage() {
     )
 }
 
-// this is set up this way to isolate styling from login form logic
 export const LoginFormContainer = () => {
     const {
         login,
@@ -40,6 +41,21 @@ export const LoginFormContainer = () => {
     } = useLogin()
     const [formUserName, setFormUserName] = useState('')
     const { lngs, allowAccountRecovery, emailConfigured } = useLoginConfig()
+    const passwordResetEnabled = allowAccountRecovery && emailConfigured
+
+    if (passwordExpired) {
+        return (
+            <Navigate
+                to={pathWithUsername(
+                    passwordResetEnabled
+                        ? '/reset-password-expired'
+                        : '/change-expired-password',
+                    formUserName
+                )}
+                replace
+            />
+        )
+    }
 
     return (
         <FormContainer
@@ -81,8 +97,7 @@ export const LoginFormContainer = () => {
                 emailTwoFAIncorrect={emailTwoFAIncorrect}
                 twoFACodeRequired={twoFACodeRequired}
                 accountInaccessible={accountInaccessible}
-                passwordExpired={passwordExpired}
-                passwordResetEnabled={allowAccountRecovery && emailConfigured}
+                formUserName={formUserName}
                 unknownStatus={unknownStatus}
                 error={error}
                 loading={loading}

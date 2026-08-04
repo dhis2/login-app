@@ -10,3 +10,6 @@ export const getRedirectString = ({ response, baseUrl, hashRedirect }) => {
 export const redirectTo = (redirectDestination) => {
     window.location.href = redirectDestination
 }
+
+export const pathWithUsername = (path, username) =>
+    username ? `${path}?username=${encodeURIComponent(username)}` : path

@@ -4,7 +4,7 @@ export const getIsRequired = (lng) => (val) =>
     val ? undefined : i18n.t('This field is required', { lng })
 
 export const checkIsLoginFormValid = (values) => {
-    const isRequired = getIsRequired('en') // 'en' because we do not need the actual translation for validation test
+    const isRequired = getIsRequired('en')
     const validatorsByField = {
         username: {
             value: values.username,
@@ -22,6 +22,11 @@ export const checkIsLoginFormValid = (values) => {
     }
     return true
 }
+
+export const passwordsMatch = (value, allValues) =>
+    value === allValues?.newPassword
+        ? undefined
+        : i18n.t('Passwords do not match')
 
 export const composeAndTranslateValidators = (...validators) => {
     return (...args) => {

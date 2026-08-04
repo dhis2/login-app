@@ -1,4 +1,7 @@
-import { getRedirectString } from '../../helpers/redirectHelpers.js'
+import {
+    getRedirectString,
+    pathWithUsername,
+} from '../../helpers/redirectHelpers.js'
 
 describe('getRedirectString', () => {
     const ACTUAL_ENVIRONMENT_VARIABLES = process.env
@@ -50,5 +53,23 @@ describe('getRedirectString', () => {
             hashRedirect: '#/withHash=true',
         })
         expect(redirectString).toBe('somewhere#/withHash=true')
+    })
+})
+
+describe('pathWithUsername', () => {
+    it('appends the username as a query param when provided', () => {
+        expect(pathWithUsername('/reset-password', 'mbise')).toBe(
+            '/reset-password?username=mbise'
+        )
+    })
+
+    it('encodes special characters in the username', () => {
+        expect(pathWithUsername('/reset-password', 'Fl@klypa.no')).toBe(
+            '/reset-password?username=Fl%40klypa.no'
+        )
+    })
+
+    it('returns the path unchanged when no username is provided', () => {
+        expect(pathWithUsername('/reset-password', '')).toBe('/reset-password')
     })
 })

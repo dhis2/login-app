@@ -17,7 +17,7 @@ export { FormContainer } from './form-container.jsx'
 export { FormNotice } from './form-notice.jsx'
 export { FormSubtitle } from './form-subtitle.jsx'
 export { Loader } from './loader.jsx'
-export { LoginLinks } from './login-links.jsx'
+export { LoginLinks, ExpiredPasswordLink } from './login-links.jsx'
 export {
     NotAllowedNotice,
     NotAllowedNoticeCreateAccount,

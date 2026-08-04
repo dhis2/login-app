@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import React from 'react'
-import { MemoryRouter } from 'react-router-dom'
+import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import { checkIsLoginFormValid } from '../../helpers/validators.js'
 import { useLogin } from '../../hooks/useLogin.js'
 import { useLoginConfig } from '../../providers/use-login-config.js'
@@ -36,6 +36,23 @@ jest.mock('../../components/index.js', () => ({
     LoginLinks: () => <p>LOGIN LINKS</p>,
     OIDCLoginOptions: () => <p>OIDC LOGIN OPTIONS</p>,
 }))
+
+const renderAtLoginRoute = (children) =>
+    render(
+        <MemoryRouter>
+            <Routes>
+                <Route path="/" element={children} />
+                <Route
+                    path="/change-expired-password"
+                    element={<div>CHANGE EXPIRED PASSWORD PAGE</div>}
+                />
+                <Route
+                    path="/reset-password-expired"
+                    element={<div>RESET PASSWORD PAGE</div>}
+                />
+            </Routes>
+        </MemoryRouter>
+    )
 
 describe('LoginForm', () => {
     afterEach(() => {
@@ -98,7 +115,6 @@ describe('LoginForm', () => {
         checkIsLoginFormValid.mockImplementation(() => true)
         render(<LoginFormContainer />)
 
-        // populate form with username + password (this would need to be done )
         await userEvent.type(screen.getByLabelText('Username'), 'Tintin')
         await userEvent.type(screen.getByLabelText('Password'), 'Milou')
 
@@ -143,7 +159,6 @@ describe('LoginForm', () => {
             cancelTwoFA: mockCancelTwoFA,
         })
         render(<LoginFormContainer />)
-        // populate form with username + password (this would need to be done )
         await userEvent.type(screen.getByLabelText('Username'), 'Bastian')
         await userEvent.type(screen.getByLabelText('Password'), 'Kardemomme')
         await user.click(screen.getByRole('button', { name: /log in/i }))
@@ -167,7 +182,6 @@ describe('LoginForm', () => {
         expect(screen.getByText('Logging in...')).toBeInTheDocument()
     })
 
-    // ideally would check visibility of fields in these states, but not working in tests due to jsdom interpretation of css
     it('has header of "log in" if twoFAVerificationRequired is false', () => {
         useLogin.mockReturnValue({
             login: () => {},
@@ -266,7 +280,7 @@ describe('LoginForm', () => {
         expect(screen.getByText('OIDC LOGIN OPTIONS')).toBeInTheDocument()
     })
 
-    it('Shows link to password-reset page if passwordExpired and allowAccountRecovery and emailConfigured are true', () => {
+    it('redirects to the reset-password-expired page if passwordExpired and allowAccountRecovery and emailConfigured are true', () => {
         useLogin.mockReturnValue({
             login: () => {},
             passwordExpired: true,
@@ -276,22 +290,13 @@ describe('LoginForm', () => {
             allowAccountRecovery: true,
             emailConfigured: true,
         })
-        // needs MemoryRouter because link is from react-router-dom
-        render(
-            <MemoryRouter>
-                <LoginFormContainer />
-            </MemoryRouter>
-        )
 
-        expect(screen.getByText('Password expired')).toBeInTheDocument()
-        expect(
-            screen.getByRole('link', {
-                name: 'You can reset your password from the password reset page.',
-            })
-        ).toHaveAttribute('href', '/reset-password')
+        renderAtLoginRoute(<LoginFormContainer />)
+
+        expect(screen.getByText('RESET PASSWORD PAGE')).toBeInTheDocument()
     })
 
-    it('Shows password expired but no link to password-reset page if passwordExpired and allowAccountRecovery is false', () => {
+    it('redirects to the change-expired-password page if passwordExpired and allowAccountRecovery is false', () => {
         useLogin.mockReturnValue({
             login: () => {},
             passwordExpired: true,
@@ -302,17 +307,14 @@ describe('LoginForm', () => {
             emailConfigured: true,
         })
 
-        render(<LoginFormContainer />)
+        renderAtLoginRoute(<LoginFormContainer />)
 
-        expect(screen.getByText('Password expired')).toBeInTheDocument()
         expect(
-            screen.queryByRole('link', {
-                name: 'You can reset your password from the password reset page.',
-            })
-        ).not.toBeInTheDocument()
+            screen.getByText('CHANGE EXPIRED PASSWORD PAGE')
+        ).toBeInTheDocument()
     })
 
-    it('Shows password expired but no link to password-reset page if passwordExpired and emailConfigured is false', () => {
+    it('redirects to the change-expired-password page if passwordExpired and emailConfigured is false', () => {
         useLogin.mockReturnValue({
             login: () => {},
             passwordExpired: true,
@@ -323,14 +325,11 @@ describe('LoginForm', () => {
             emailConfigured: false,
         })
 
-        render(<LoginFormContainer />)
+        renderAtLoginRoute(<LoginFormContainer />)
 
-        expect(screen.getByText('Password expired')).toBeInTheDocument()
         expect(
-            screen.queryByRole('link', {
-                name: 'You can reset your password from the password reset page.',
-            })
-        ).not.toBeInTheDocument()
+            screen.getByText('CHANGE EXPIRED PASSWORD PAGE')
+        ).toBeInTheDocument()
     })
 
     it('Shows Account not accessible if accountInaccessible is true', () => {

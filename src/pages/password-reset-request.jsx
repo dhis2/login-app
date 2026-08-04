@@ -6,6 +6,7 @@ import React, { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import {
     BackToLoginButton,
+    ExpiredPasswordLink,
     FormContainer,
     FormNotice,
     FormSubtitle,
@@ -148,8 +149,9 @@ const requiredPropsForPasswordReset = [
     'emailConfigured',
 ]
 
-const PasswordResetRequestPage = () => {
+const PasswordResetRequestPage = ({ expiredPassword = false }) => {
     const { lngs } = useLoginConfig()
+    const [params] = useSearchParams()
     const { notAllowed } = useGetErrorIfNotAllowed(
         requiredPropsForPasswordReset
     )
@@ -159,7 +161,13 @@ const PasswordResetRequestPage = () => {
     }
 
     return (
-        <FormContainer title={i18n.t('Reset password', { lngs })}>
+        <FormContainer
+            title={
+                expiredPassword
+                    ? i18n.t('Password expired', { lngs })
+                    : i18n.t('Reset password', { lngs })
+            }
+        >
             <FormSubtitle>
                 <p>
                     {i18n.t(
@@ -169,8 +177,15 @@ const PasswordResetRequestPage = () => {
                 </p>
             </FormSubtitle>
             <PasswordResetRequestForm lngs={lngs} />
+            {expiredPassword && (
+                <ExpiredPasswordLink formUserName={params.get('username')} />
+            )}
         </FormContainer>
     )
+}
+
+PasswordResetRequestPage.propTypes = {
+    expiredPassword: PropTypes.bool,
 }
 
 export default PasswordResetRequestPage

@@ -16,6 +16,7 @@ import { Popup } from './components/pop-up.jsx'
 import { sanitizeMainHTML } from './helpers/handleHTML.js'
 import {
     LoginPage,
+    ChangeExpiredPasswordPage,
     CompleteRegistrationPage,
     CreateAccountPage,
     EmailVerificationFailure,
@@ -35,6 +36,10 @@ const LoginRoutes = () => {
             <Popup />
             <Routes>
                 <Route path="/" element={<LoginPage />} />
+                <Route
+                    path="/change-expired-password"
+                    element={<ChangeExpiredPasswordPage />}
+                />
                 <Route path="/create-account" element={<CreateAccountPage />} />
                 <Route
                     path="/email-verification-success"
@@ -51,6 +56,12 @@ const LoginRoutes = () => {
                 <Route
                     path="/reset-password"
                     element={<PasswordResetRequestPage />}
+                />
+                <Route
+                    path="/reset-password-expired"
+                    element={
+                        <PasswordResetRequestPage expiredPassword={true} />
+                    }
                 />
                 <Route
                     path="/update-password"
