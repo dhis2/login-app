@@ -1,3 +1,17 @@
+# [100.5.0](https://github.com/dhis2/login-app/compare/v100.4.6...v100.5.0) (2026-08-04)
+
+
+### Bug Fixes
+
+* add redirect link ([8c3b624](https://github.com/dhis2/login-app/commit/8c3b6245b5842a85efa7148c9e982e04a8624df4))
+* conditionally render title ([9af36a6](https://github.com/dhis2/login-app/commit/9af36a62d27e2012fba3e4ec92ed7613a3f1238c))
+
+
+### Features
+
+* allow self-service change of expired password ([2569246](https://github.com/dhis2/login-app/commit/256924606d9bd434da19c16963bccc7274957d21))
+* update UX based on feedback ([7c7d77c](https://github.com/dhis2/login-app/commit/7c7d77c04a0764339baf3a2e8ddd34512593274f))
+
 ## [100.4.6](https://github.com/dhis2/login-app/compare/v100.4.5...v100.4.6) (2026-03-17)
 
 
