@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
+"POT-Creation-Date: 2026-08-03T09:01:57.592Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
 "Last-Translator: Esther Tokouli, 2025\n"
 "Language-Team: French (https://app.transifex.com/hisp-uio/teams/100509/fr/)\n"
@@ -108,6 +108,10 @@ msgstr "Vous n'avez pas de compte?"
 msgid "Create an account"
 msgstr "Créer un compte"
 
+msgid ""
+"If you do not have access to your email, you can reset your password here"
+msgstr ""
+
 msgid "The requested page is not configured for your system"
 msgstr ""
 "La page que vous avez demandée n'est pas configurée pour votre système"
@@ -129,6 +133,46 @@ msgstr "Je suis d'accord"
 
 msgid "This field is required"
 msgstr "Ce champs est requis"
+
+msgid "Passwords do not match"
+msgstr ""
+
+msgid "Current password"
+msgstr ""
+
+msgid "New password"
+msgstr ""
+
+msgid "Confirm new password"
+msgstr ""
+
+msgid "Saving..."
+msgstr "En cours d'enregistrement..."
+
+msgid "Save new password"
+msgstr "Enregistrer un nouveau mot de passe"
+
+msgid "Could not update password"
+msgstr ""
+
+msgid ""
+"Try again, or contact your system administrator if the problem persists."
+msgstr ""
+
+msgid ""
+"Your password has been updated. You can now log in with your new password."
+msgstr ""
+
+msgid "Password updated"
+msgstr ""
+
+msgid "Password expired"
+msgstr "Mot de passe expiré"
+
+msgid ""
+"Your password has expired. Enter your current password and choose a new one "
+"to continue."
+msgstr ""
 
 msgid "Cannot process registration"
 msgstr "Impossible de traiter l'inscription"
@@ -212,19 +256,11 @@ msgstr "Code d'authentification requis"
 msgid "Incorrect authentication code"
 msgstr "Code d'authentification incorrect"
 
-msgid "Password expired"
-msgstr "Mot de passe expiré"
-
-msgid "You can reset your password from the password reset page."
-msgstr ""
-"Vous pouvez réinitialiser votre mot de passe à partir de la page de "
-"réinitialisation du mot de passe."
+msgid "Account not accessible"
+msgstr "Compte non accessible"
 
 msgid "Contact your system administrator."
 msgstr "Veuillez contacter votre administrateur système."
-
-msgid "Account not accessible"
-msgstr "Compte non accessible"
 
 msgid "Two-factor authentication"
 msgstr "Authentification à deux facteurs "
@@ -277,12 +313,6 @@ msgid ""
 msgstr ""
 "Saisissez ci-dessous votre nom d'utilisateur et un lien pour réinitialiser "
 "votre mot de passe sera envoyé à votre adresse e-mail enregistrée."
-
-msgid "Saving..."
-msgstr "En cours d'enregistrement..."
-
-msgid "Save new password"
-msgstr "Enregistrer un nouveau mot de passe"
 
 msgid "New password not saved"
 msgstr "Le nouveau mot de passe n'est pas enregistré"

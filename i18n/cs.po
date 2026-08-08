@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
+"POT-Creation-Date: 2026-08-03T09:01:57.592Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
 "Last-Translator: Jiří Podhorecký <jirka.p@volny.cz>, 2025\n"
 "Language-Team: Czech (https://app.transifex.com/hisp-uio/teams/100509/cs/)\n"
@@ -98,6 +98,10 @@ msgstr "Nemáte účet?"
 msgid "Create an account"
 msgstr "Vytvořit účet"
 
+msgid ""
+"If you do not have access to your email, you can reset your password here"
+msgstr ""
+
 msgid "The requested page is not configured for your system"
 msgstr "Požadovaná stránka není nakonfigurována pro váš systém."
 
@@ -118,6 +122,46 @@ msgstr "Souhlasím"
 
 msgid "This field is required"
 msgstr "Toto pole je povinné"
+
+msgid "Passwords do not match"
+msgstr ""
+
+msgid "Current password"
+msgstr ""
+
+msgid "New password"
+msgstr ""
+
+msgid "Confirm new password"
+msgstr ""
+
+msgid "Saving..."
+msgstr "Ukládání..."
+
+msgid "Save new password"
+msgstr "Uložit nové heslo"
+
+msgid "Could not update password"
+msgstr ""
+
+msgid ""
+"Try again, or contact your system administrator if the problem persists."
+msgstr ""
+
+msgid ""
+"Your password has been updated. You can now log in with your new password."
+msgstr ""
+
+msgid "Password updated"
+msgstr ""
+
+msgid "Password expired"
+msgstr "Heslo vypršelo"
+
+msgid ""
+"Your password has expired. Enter your current password and choose a new one "
+"to continue."
+msgstr ""
 
 msgid "Cannot process registration"
 msgstr "Nelze zpracovat registraci"
@@ -200,17 +244,11 @@ msgstr "Je vyžadován ověřovací kód"
 msgid "Incorrect authentication code"
 msgstr "Nesprávný ověřovací kód"
 
-msgid "Password expired"
-msgstr "Heslo vypršelo"
-
-msgid "You can reset your password from the password reset page."
-msgstr "Heslo můžete obnovit na stránce pro obnovení hesla."
+msgid "Account not accessible"
+msgstr "Účet není přístupný"
 
 msgid "Contact your system administrator."
 msgstr "Obraťte se na správce systému."
-
-msgid "Account not accessible"
-msgstr "Účet není přístupný"
 
 msgid "Two-factor authentication"
 msgstr "Dvoufaktorové ověřování"
@@ -259,12 +297,6 @@ msgid ""
 msgstr ""
 "Níže zadejte své uživatelské jméno a na váš registrovaný e-mail vám bude "
 "zaslán odkaz pro obnovení hesla."
-
-msgid "Saving..."
-msgstr "Ukládání..."
-
-msgid "Save new password"
-msgstr "Uložit nové heslo"
 
 msgid "New password not saved"
 msgstr "Nové heslo není uloženo"
