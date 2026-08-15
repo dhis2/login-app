@@ -1,24 +1,26 @@
-# 
 # Translators:
 # Viktor Varland <viktor@dhis2.org>, 2024
 # Nadiia <semchuk@aph.org.ua>, 2024
-# Philip Larsen Donnelly, 2024
-# Éva Tamási, 2024
+# Philip Larsen Donnelly, 2026
+# Éva Tamási, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-05-22T10:53:32.505Z\n"
+"POT-Creation-Date: 2026-08-03T09:01:57.592Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Éva Tamási, 2024\n"
+"Last-Translator: Éva Tamási, 2026\n"
 "Language-Team: Ukrainian (https://app.transifex.com/hisp-uio/teams/100509/uk/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: uk\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
+msgstr ""
+
+msgid "Invalid password"
 msgstr ""
 
 msgid "Log in details"
@@ -31,7 +33,9 @@ msgid "Password"
 msgstr "Пароль"
 
 msgid ""
-"Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
+"Password should be between {{minPasswordLength}} and {{maxPasswordLength}} "
+"characters long, with at least one lowercase character, one uppercase "
+"character, one number, and one special character."
 msgstr ""
 
 msgid "Personal details"
@@ -94,6 +98,10 @@ msgstr ""
 msgid "Create an account"
 msgstr "Створити обліковий запис"
 
+msgid ""
+"If you do not have access to your email, you can reset your password here"
+msgstr ""
+
 msgid "The requested page is not configured for your system"
 msgstr ""
 
@@ -114,6 +122,46 @@ msgstr ""
 
 msgid "This field is required"
 msgstr "Обов'язкове поле"
+
+msgid "Passwords do not match"
+msgstr "Паролі не збігаються"
+
+msgid "Current password"
+msgstr ""
+
+msgid "New password"
+msgstr "Новий пароль"
+
+msgid "Confirm new password"
+msgstr ""
+
+msgid "Saving..."
+msgstr ""
+
+msgid "Save new password"
+msgstr ""
+
+msgid "Could not update password"
+msgstr ""
+
+msgid ""
+"Try again, or contact your system administrator if the problem persists."
+msgstr ""
+
+msgid ""
+"Your password has been updated. You can now log in with your new password."
+msgstr ""
+
+msgid "Password updated"
+msgstr ""
+
+msgid "Password expired"
+msgstr ""
+
+msgid ""
+"Your password has expired. Enter your current password and choose a new one "
+"to continue."
+msgstr ""
 
 msgid "Cannot process registration"
 msgstr ""
@@ -140,6 +188,26 @@ msgstr ""
 msgid "Download sidebar template"
 msgstr ""
 
+msgid "Email Verification Failed"
+msgstr ""
+
+msgid "Unable to verify your email"
+msgstr ""
+
+msgid ""
+"The verification link is invalid or has expired. Please request a new "
+"verification email."
+msgstr ""
+
+msgid "Email confirmed"
+msgstr ""
+
+msgid "Your email has been confirmed."
+msgstr ""
+
+msgid "You can now close this page."
+msgstr ""
+
 msgid "Verify and log in"
 msgstr ""
 
@@ -155,19 +223,36 @@ msgstr ""
 msgid "Authentication code"
 msgstr ""
 
+msgid "Resend Code"
+msgstr ""
+
 msgid "Something went wrong"
 msgstr "Сталася помилка"
 
 msgid "Incorrect username or password"
 msgstr ""
 
+msgid "Authentication code is required"
+msgstr ""
+
 msgid "Incorrect authentication code"
+msgstr ""
+
+msgid "Account not accessible"
+msgstr ""
+
+msgid "Contact your system administrator."
 msgstr ""
 
 msgid "Two-factor authentication"
 msgstr ""
 
 msgid "Enter the code from your two-factor authentication app to log in."
+msgstr ""
+
+msgid ""
+"We have sent you an email with your authentication code. Enter it below to "
+"log in."
 msgstr ""
 
 msgid "Username or email"
@@ -198,12 +283,6 @@ msgstr "Скинути пароль"
 msgid ""
 "Enter your username below, a link to reset your password will be sent to "
 "your registered e-mail."
-msgstr ""
-
-msgid "Saving..."
-msgstr ""
-
-msgid "Save new password"
 msgstr ""
 
 msgid "New password not saved"

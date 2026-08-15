@@ -1,13 +1,13 @@
 # Translators:
-# Philip Larsen Donnelly, 2024
 # Em Le <em.hispvietnam@gmail.com>, 2025
+# Philip Larsen Donnelly, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
+"POT-Creation-Date: 2026-08-03T09:01:57.592Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Em Le <em.hispvietnam@gmail.com>, 2025\n"
+"Last-Translator: Philip Larsen Donnelly, 2026\n"
 "Language-Team: Khmer (https://app.transifex.com/hisp-uio/teams/100509/km/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -96,6 +96,10 @@ msgstr ""
 msgid "Create an account"
 msgstr ""
 
+msgid ""
+"If you do not have access to your email, you can reset your password here"
+msgstr ""
+
 msgid "The requested page is not configured for your system"
 msgstr ""
 
@@ -115,6 +119,46 @@ msgid "I agree"
 msgstr ""
 
 msgid "This field is required"
+msgstr ""
+
+msgid "Passwords do not match"
+msgstr ""
+
+msgid "Current password"
+msgstr ""
+
+msgid "New password"
+msgstr "ពាក្យ​សម្ងាត់​ថ្មី"
+
+msgid "Confirm new password"
+msgstr ""
+
+msgid "Saving..."
+msgstr ""
+
+msgid "Save new password"
+msgstr ""
+
+msgid "Could not update password"
+msgstr ""
+
+msgid ""
+"Try again, or contact your system administrator if the problem persists."
+msgstr ""
+
+msgid ""
+"Your password has been updated. You can now log in with your new password."
+msgstr ""
+
+msgid "Password updated"
+msgstr ""
+
+msgid "Password expired"
+msgstr ""
+
+msgid ""
+"Your password has expired. Enter your current password and choose a new one "
+"to continue."
 msgstr ""
 
 msgid "Cannot process registration"
@@ -192,16 +236,10 @@ msgstr ""
 msgid "Incorrect authentication code"
 msgstr ""
 
-msgid "Password expired"
-msgstr ""
-
-msgid "You can reset your password from the password reset page."
+msgid "Account not accessible"
 msgstr ""
 
 msgid "Contact your system administrator."
-msgstr ""
-
-msgid "Account not accessible"
 msgstr ""
 
 msgid "Two-factor authentication"
@@ -243,12 +281,6 @@ msgstr ""
 msgid ""
 "Enter your username below, a link to reset your password will be sent to "
 "your registered e-mail."
-msgstr ""
-
-msgid "Saving..."
-msgstr ""
-
-msgid "Save new password"
 msgstr ""
 
 msgid "New password not saved"

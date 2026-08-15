@@ -1,16 +1,15 @@
-# 
 # Translators:
-# Khurshid Ibatov <Khurshid.Ibatov@tibbiysugurta.uz>, 2024
+# Khurshid Ibatov <x.ibatov@dtsj.uz>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
+"POT-Creation-Date: 2026-08-03T09:01:57.592Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Khurshid Ibatov <Khurshid.Ibatov@tibbiysugurta.uz>, 2024\n"
+"Last-Translator: Khurshid Ibatov <x.ibatov@dtsj.uz>, 2026\n"
 "Language-Team: Uzbek (Cyrillic) (https://app.transifex.com/hisp-uio/teams/100509/uz@Cyrl/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: uz@Cyrl\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -99,6 +98,10 @@ msgstr "Сиз аккаунт мавжуд эмасми?"
 msgid "Create an account"
 msgstr "Аккаунт яратиш"
 
+msgid ""
+"If you do not have access to your email, you can reset your password here"
+msgstr ""
+
 msgid "The requested page is not configured for your system"
 msgstr "Сўралган саҳифа тиимда созланмаган"
 
@@ -119,6 +122,46 @@ msgstr "Мен рози"
 
 msgid "This field is required"
 msgstr "Ушбу қатор тўлдирилиши шарт"
+
+msgid "Passwords do not match"
+msgstr "Пароллар мос келмади"
+
+msgid "Current password"
+msgstr ""
+
+msgid "New password"
+msgstr "Янги пароль"
+
+msgid "Confirm new password"
+msgstr ""
+
+msgid "Saving..."
+msgstr "Сақланмоқда..."
+
+msgid "Save new password"
+msgstr "Янги паролни сақлаш"
+
+msgid "Could not update password"
+msgstr ""
+
+msgid ""
+"Try again, or contact your system administrator if the problem persists."
+msgstr ""
+
+msgid ""
+"Your password has been updated. You can now log in with your new password."
+msgstr ""
+
+msgid "Password updated"
+msgstr ""
+
+msgid "Password expired"
+msgstr ""
+
+msgid ""
+"Your password has expired. Enter your current password and choose a new one "
+"to continue."
+msgstr ""
 
 msgid "Cannot process registration"
 msgstr "Рўйхатдан ўтишни амалга ошириб бўлмайди"
@@ -169,27 +212,6 @@ msgstr ""
 msgid "You can now close this page."
 msgstr ""
 
-msgid "Something went wrong"
-msgstr "Нимадир нотўғри бажарилди"
-
-msgid "Incorrect username or password"
-msgstr "Фойдаланувчи номи ёки пароль хато"
-
-msgid "Incorrect authentication code"
-msgstr "Аутентификация коди хато"
-
-msgid "Password expired"
-msgstr ""
-
-msgid "You can reset your password from the password reset page."
-msgstr ""
-
-msgid "Contact your system administrator."
-msgstr ""
-
-msgid "Account not accessible"
-msgstr ""
-
 msgid "Verify and log in"
 msgstr "Тасдиқланг ва тизимга киринг"
 
@@ -205,12 +227,38 @@ msgstr "Кириш..."
 msgid "Authentication code"
 msgstr "Аутентификация коди"
 
+msgid "Resend Code"
+msgstr ""
+
+msgid "Something went wrong"
+msgstr "Нимадир нотўғри бажарилди"
+
+msgid "Incorrect username or password"
+msgstr "Фойдаланувчи номи ёки пароль хато"
+
+msgid "Authentication code is required"
+msgstr ""
+
+msgid "Incorrect authentication code"
+msgstr "Аутентификация коди хато"
+
+msgid "Account not accessible"
+msgstr ""
+
+msgid "Contact your system administrator."
+msgstr ""
+
 msgid "Two-factor authentication"
 msgstr "Икки-факторли аутентификация"
 
 msgid "Enter the code from your two-factor authentication app to log in."
 msgstr ""
 "Тизимга кириш учун аутентификация иловасидан иккинчи фактор кодини киритинг"
+
+msgid ""
+"We have sent you an email with your authentication code. Enter it below to "
+"log in."
+msgstr ""
 
 msgid "Username or email"
 msgstr "Фойдаланувчи номи ёки электрон манзил"
@@ -248,12 +296,6 @@ msgid ""
 msgstr ""
 "Қуйида фойдаланувчи носини киритинг. Паролни тиклаш ҳаволаси электрон почта "
 "манзилига юборилади, агарда рўйхатдан ўтган бўлсангиз."
-
-msgid "Saving..."
-msgstr "Сақланмоқда..."
-
-msgid "Save new password"
-msgstr "Янги паролни сақлаш"
 
 msgid "New password not saved"
 msgstr "Янги пароль сақланмади"
