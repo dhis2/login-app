@@ -1,17 +1,16 @@
-# 
 # Translators:
-# Charel van den Elsen, 2024
-# Rica, 2024
+# Charel van den Elsen <zobeadzorg@gmail.com>, 2024
+# Rica, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
+"POT-Creation-Date: 2026-08-03T09:01:57.592Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Rica, 2024\n"
+"Last-Translator: Rica, 2026\n"
 "Language-Team: Dutch (https://app.transifex.com/hisp-uio/teams/100509/nl/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -101,6 +100,10 @@ msgstr "Heb je geen account?"
 msgid "Create an account"
 msgstr "Account aanmaken"
 
+msgid ""
+"If you do not have access to your email, you can reset your password here"
+msgstr ""
+
 msgid "The requested page is not configured for your system"
 msgstr "De gevraagde pagina is niet geconfigureerd voor jouw systeem"
 
@@ -121,6 +124,46 @@ msgstr "Ik ga akkoord"
 
 msgid "This field is required"
 msgstr "Dit veld is verplicht."
+
+msgid "Passwords do not match"
+msgstr ""
+
+msgid "Current password"
+msgstr ""
+
+msgid "New password"
+msgstr "Nieuw paswoord"
+
+msgid "Confirm new password"
+msgstr ""
+
+msgid "Saving..."
+msgstr "Opslaan..."
+
+msgid "Save new password"
+msgstr "Sla nieuw wachtwoord op"
+
+msgid "Could not update password"
+msgstr ""
+
+msgid ""
+"Try again, or contact your system administrator if the problem persists."
+msgstr ""
+
+msgid ""
+"Your password has been updated. You can now log in with your new password."
+msgstr ""
+
+msgid "Password updated"
+msgstr ""
+
+msgid "Password expired"
+msgstr "Wachtwoord vervallen"
+
+msgid ""
+"Your password has expired. Enter your current password and choose a new one "
+"to continue."
+msgstr ""
 
 msgid "Cannot process registration"
 msgstr "Kan inschrijving niet verwerken"
@@ -172,29 +215,6 @@ msgstr ""
 msgid "You can now close this page."
 msgstr ""
 
-msgid "Something went wrong"
-msgstr "Er is iets fout gegaan"
-
-msgid "Incorrect username or password"
-msgstr "Foute gebruikersnaam of wachtwoord"
-
-msgid "Incorrect authentication code"
-msgstr "Foute authenticatiecode"
-
-msgid "Password expired"
-msgstr "Wachtwoord vervallen"
-
-msgid "You can reset your password from the password reset page."
-msgstr ""
-"Je kan jouw wachtwoord opnieuw installen vanuit het pagina voor het opnieuw "
-"instellen van het wachtwoord."
-
-msgid "Contact your system administrator."
-msgstr "Contacteer jouw systeembeheerder"
-
-msgid "Account not accessible"
-msgstr "Account niet bereikbaar"
-
 msgid "Verify and log in"
 msgstr "Verifiëren en inloggen"
 
@@ -210,12 +230,38 @@ msgstr "Aan het inloggen..."
 msgid "Authentication code"
 msgstr "Authenticatiecode"
 
+msgid "Resend Code"
+msgstr ""
+
+msgid "Something went wrong"
+msgstr "Er is iets fout gegaan"
+
+msgid "Incorrect username or password"
+msgstr "Foute gebruikersnaam of wachtwoord"
+
+msgid "Authentication code is required"
+msgstr ""
+
+msgid "Incorrect authentication code"
+msgstr "Foute authenticatiecode"
+
+msgid "Account not accessible"
+msgstr "Account niet bereikbaar"
+
+msgid "Contact your system administrator."
+msgstr "Contacteer jouw systeembeheerder"
+
 msgid "Two-factor authentication"
 msgstr "Twee-factorauthenticatie"
 
 msgid "Enter the code from your two-factor authentication app to log in."
 msgstr ""
 "Voeg de code van jouw twee-factorauthenticatie-app toe om in te loggen."
+
+msgid ""
+"We have sent you an email with your authentication code. Enter it below to "
+"log in."
+msgstr ""
 
 msgid "Username or email"
 msgstr "Gebruikersnaam of email"
@@ -253,12 +299,6 @@ msgid ""
 msgstr ""
 "Voeg je gebruikersnaam onderaan in, een link om je wachtwoord opnieuw in te "
 "stellen zal naar jouw geregisteerde email gestuurd worden."
-
-msgid "Saving..."
-msgstr "Opslaan..."
-
-msgid "Save new password"
-msgstr "Sla nieuw wachtwoord op"
 
 msgid "New password not saved"
 msgstr "Nieuw wachtwoord niet opgeslagen"

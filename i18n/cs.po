@@ -1,16 +1,15 @@
-# 
 # Translators:
-# Jiří Podhorecký <jirka.p@volny.cz>, 2025
+# Jiří Podhorecký <jirka.p@volny.cz>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
+"POT-Creation-Date: 2026-08-03T09:01:57.592Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Jiří Podhorecký <jirka.p@volny.cz>, 2025\n"
+"Last-Translator: Jiří Podhorecký <jirka.p@volny.cz>, 2026\n"
 "Language-Team: Czech (https://app.transifex.com/hisp-uio/teams/100509/cs/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
@@ -19,7 +18,7 @@ msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr "Zaškrtnutím políčka potvrďte, že nejste robot."
 
 msgid "Invalid password"
-msgstr ""
+msgstr "Neplatné heslo"
 
 msgid "Log in details"
 msgstr "Přihlašovací údaje"
@@ -35,6 +34,9 @@ msgid ""
 "characters long, with at least one lowercase character, one uppercase "
 "character, one number, and one special character."
 msgstr ""
+"Heslo by mělo mít délku od {{minPasswordLength}} do {{maxPasswordLength}} a "
+"obsahovat alespoň jeden malý znak, jeden velký znak, jednu číslici a jeden "
+"speciální znak."
 
 msgid "Personal details"
 msgstr "Osobní údaje"
@@ -96,6 +98,10 @@ msgstr "Nemáte účet?"
 msgid "Create an account"
 msgstr "Vytvořit účet"
 
+msgid ""
+"If you do not have access to your email, you can reset your password here"
+msgstr ""
+
 msgid "The requested page is not configured for your system"
 msgstr "Požadovaná stránka není nakonfigurována pro váš systém."
 
@@ -116,6 +122,46 @@ msgstr "Souhlasím"
 
 msgid "This field is required"
 msgstr "Toto pole je povinné"
+
+msgid "Passwords do not match"
+msgstr "Hesla se neshodují"
+
+msgid "Current password"
+msgstr ""
+
+msgid "New password"
+msgstr "Nové heslo"
+
+msgid "Confirm new password"
+msgstr ""
+
+msgid "Saving..."
+msgstr "Ukládání..."
+
+msgid "Save new password"
+msgstr "Uložit nové heslo"
+
+msgid "Could not update password"
+msgstr ""
+
+msgid ""
+"Try again, or contact your system administrator if the problem persists."
+msgstr ""
+
+msgid ""
+"Your password has been updated. You can now log in with your new password."
+msgstr ""
+
+msgid "Password updated"
+msgstr ""
+
+msgid "Password expired"
+msgstr "Heslo vypršelo"
+
+msgid ""
+"Your password has expired. Enter your current password and choose a new one "
+"to continue."
+msgstr ""
 
 msgid "Cannot process registration"
 msgstr "Nelze zpracovat registraci"
@@ -168,27 +214,6 @@ msgstr "Váš e-mail byl potvrzen."
 msgid "You can now close this page."
 msgstr "Nyní můžete tuto stránku zavřít."
 
-msgid "Something went wrong"
-msgstr "Něco se pokazilo"
-
-msgid "Incorrect username or password"
-msgstr "Nesprávné uživatelské jméno nebo heslo"
-
-msgid "Incorrect authentication code"
-msgstr "Nesprávný ověřovací kód"
-
-msgid "Password expired"
-msgstr "Heslo vypršelo"
-
-msgid "You can reset your password from the password reset page."
-msgstr "Heslo můžete obnovit na stránce pro obnovení hesla."
-
-msgid "Contact your system administrator."
-msgstr "Obraťte se na správce systému."
-
-msgid "Account not accessible"
-msgstr "Účet není přístupný"
-
 msgid "Verify and log in"
 msgstr "Ověření a přihlášení"
 
@@ -204,11 +229,38 @@ msgstr "Přihlášování..."
 msgid "Authentication code"
 msgstr "Ověřovací kód"
 
+msgid "Resend Code"
+msgstr "Znovu odeslat kód"
+
+msgid "Something went wrong"
+msgstr "Něco se pokazilo"
+
+msgid "Incorrect username or password"
+msgstr "Nesprávné uživatelské jméno nebo heslo"
+
+msgid "Authentication code is required"
+msgstr "Je vyžadován ověřovací kód"
+
+msgid "Incorrect authentication code"
+msgstr "Nesprávný ověřovací kód"
+
+msgid "Account not accessible"
+msgstr "Účet není přístupný"
+
+msgid "Contact your system administrator."
+msgstr "Obraťte se na správce systému."
+
 msgid "Two-factor authentication"
 msgstr "Dvoufaktorové ověřování"
 
 msgid "Enter the code from your two-factor authentication app to log in."
 msgstr "Zadejte kód z aplikace dvoufaktorového ověřování a přihlaste se."
+
+msgid ""
+"We have sent you an email with your authentication code. Enter it below to "
+"log in."
+msgstr ""
+"Zaslali jsme vám e-mail s ověřovacím kódem. Pro přihlášení jej zadejte níže."
 
 msgid "Username or email"
 msgstr "Uživatelské jméno nebo e-mail"
@@ -245,12 +297,6 @@ msgid ""
 msgstr ""
 "Níže zadejte své uživatelské jméno a na váš registrovaný e-mail vám bude "
 "zaslán odkaz pro obnovení hesla."
-
-msgid "Saving..."
-msgstr "Ukládání..."
-
-msgid "Save new password"
-msgstr "Uložit nové heslo"
 
 msgid "New password not saved"
 msgstr "Nové heslo není uloženo"
