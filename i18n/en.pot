@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-08-03T09:01:57.592Z\n"
-"PO-Revision-Date: 2026-08-03T09:01:57.592Z\n"
+"POT-Creation-Date: 2026-09-25T10:47:13.730Z\n"
+"PO-Revision-Date: 2026-09-25T10:47:13.730Z\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr "Please confirm that you are not a robot by checking the checkbox."
@@ -228,6 +228,18 @@ msgstr "Resend Code"
 msgid "Something went wrong"
 msgstr "Something went wrong"
 
+msgid "Your account has been disabled"
+msgstr "Your account has been disabled"
+
+msgid "Your account is temporarily locked"
+msgstr "Your account is temporarily locked"
+
+msgid "Your account has expired"
+msgstr "Your account has expired"
+
+msgid "Contact your system administrator."
+msgstr "Contact your system administrator."
+
 msgid "Incorrect username or password"
 msgstr "Incorrect username or password"
 
@@ -236,12 +248,6 @@ msgstr "Authentication code is required"
 
 msgid "Incorrect authentication code"
 msgstr "Incorrect authentication code"
-
-msgid "Account not accessible"
-msgstr "Account not accessible"
-
-msgid "Contact your system administrator."
-msgstr "Contact your system administrator."
 
 msgid "Two-factor authentication"
 msgstr "Two-factor authentication"

@@ -28,11 +28,6 @@ const invalidTWOFA = [
     LOGIN_STATUSES.secondAttempt2faTOTP,
     LOGIN_STATUSES.secondAttempt2faEmail,
 ]
-const inaccessibleAccountStatuses = [
-    LOGIN_STATUSES.accountDisabled,
-    LOGIN_STATUSES.accountLocked,
-    LOGIN_STATUSES.accountExpired,
-]
 
 const loginMutation = {
     resource: 'auth/login',
@@ -168,7 +163,9 @@ export const useLogin = () => {
             loginStatus === LOGIN_STATUSES.incorrect2faEmail,
         twoFANotEnabled: loginStatus === LOGIN_STATUSES.notEnabled2fa,
         passwordExpired: loginStatus === LOGIN_STATUSES.passwordExpired,
-        accountInaccessible: inaccessibleAccountStatuses.includes(loginStatus),
+        accountDisabled: loginStatus === LOGIN_STATUSES.accountDisabled,
+        accountLocked: loginStatus === LOGIN_STATUSES.accountLocked,
+        accountExpired: loginStatus === LOGIN_STATUSES.accountExpired,
         twoFACodeRequired,
         unknownStatus:
             loginStatus !== null &&

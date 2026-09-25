@@ -113,7 +113,9 @@ describe('LoginForm', () => {
         )
         await login()
 
-        expect(screen.getByText('Account not accessible')).toBeInTheDocument()
+        expect(
+            screen.getByText('Your account has been disabled')
+        ).toBeInTheDocument()
         expect(
             screen.getByText('Contact your system administrator.')
         ).toBeInTheDocument()
@@ -127,7 +129,9 @@ describe('LoginForm', () => {
         )
         await login()
 
-        expect(screen.getByText('Account not accessible')).toBeInTheDocument()
+        expect(
+            screen.getByText('Your account is temporarily locked')
+        ).toBeInTheDocument()
         expect(
             screen.getByText('Contact your system administrator.')
         ).toBeInTheDocument()
@@ -141,7 +145,7 @@ describe('LoginForm', () => {
         )
         await login()
 
-        expect(screen.getByText('Account not accessible')).toBeInTheDocument()
+        expect(screen.getByText('Your account has expired')).toBeInTheDocument()
         expect(
             screen.getByText('Contact your system administrator.')
         ).toBeInTheDocument()

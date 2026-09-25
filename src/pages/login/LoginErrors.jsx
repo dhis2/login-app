@@ -3,11 +3,44 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { FormNotice } from '../../components/index.js'
 
+const ContactSysAdminNotice = ({
+    accountDisabled,
+    accountLocked,
+    accountExpired,
+    lngs,
+}) => {
+    let title = i18n.t('Something went wrong', { lngs })
+    if (accountDisabled) {
+        title = i18n.t('Your account has been disabled', { lngs })
+    }
+    if (accountLocked) {
+        title = i18n.t('Your account is temporarily locked', { lngs })
+    }
+    if (accountExpired) {
+        title = i18n.t('Your account has expired', { lngs })
+    }
+
+    return (
+        <FormNotice title={title} error>
+            {i18n.t('Contact your system administrator.', { lngs })}
+        </FormNotice>
+    )
+}
+
+ContactSysAdminNotice.propTypes = {
+    accountDisabled: PropTypes.bool,
+    accountExpired: PropTypes.bool,
+    accountLocked: PropTypes.bool,
+    lngs: PropTypes.arrayOf(PropTypes.string),
+}
+
 export const LoginErrors = ({
     lngs = ['en'],
     error,
     twoFAIncorrect,
-    accountInaccessible,
+    accountDisabled,
+    accountLocked,
+    accountExpired,
     unknownStatus,
     emailTwoFAIncorrect,
     isResetButtonPressed,
@@ -67,35 +100,23 @@ export const LoginErrors = ({
         )
     }
 
-    if (accountInaccessible) {
+    if (accountDisabled || accountLocked || accountExpired || unknownStatus) {
         return (
-            <FormNotice
-                title={i18n.t('Account not accessible', {
-                    lngs,
-                })}
-                error
-            >
-                {i18n.t('Contact your system administrator.')}
-            </FormNotice>
-        )
-    }
-    if (unknownStatus) {
-        return (
-            <FormNotice
-                title={i18n.t('Something went wrong', {
-                    lngs,
-                })}
-                error
-            >
-                {i18n.t('Contact your system administrator.')}
-            </FormNotice>
+            <ContactSysAdminNotice
+                accountDisabled={accountDisabled}
+                accountLocked={accountLocked}
+                accountExpired={accountExpired}
+                lngs={lngs}
+            />
         )
     }
     return null
 }
 
 LoginErrors.propTypes = {
-    accountInaccessible: PropTypes.bool,
+    accountDisabled: PropTypes.bool,
+    accountExpired: PropTypes.bool,
+    accountLocked: PropTypes.bool,
     emailTwoFAIncorrect: PropTypes.bool,
     error: PropTypes.object,
     isResetButtonPressed: PropTypes.bool,

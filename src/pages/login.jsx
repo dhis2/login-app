@@ -32,7 +32,9 @@ export const LoginFormContainer = () => {
         emailtwoFAVerificationRequired,
         emailTwoFAIncorrect,
         twoFAIncorrect,
-        accountInaccessible,
+        accountDisabled,
+        accountLocked,
+        accountExpired,
         passwordExpired,
         twoFACodeRequired,
         unknownStatus,
@@ -96,7 +98,9 @@ export const LoginFormContainer = () => {
                 twoFAIncorrect={twoFAIncorrect}
                 emailTwoFAIncorrect={emailTwoFAIncorrect}
                 twoFACodeRequired={twoFACodeRequired}
-                accountInaccessible={accountInaccessible}
+                accountDisabled={accountDisabled}
+                accountLocked={accountLocked}
+                accountExpired={accountExpired}
                 formUserName={formUserName}
                 unknownStatus={unknownStatus}
                 error={error}
