@@ -1,3 +1,10 @@
+# [100.6.0](https://github.com/dhis2/login-app/compare/v100.5.0...v100.6.0) (2026-10-07)
+
+
+### Features
+
+* update account status messages [DHIS2-22167] ([#80](https://github.com/dhis2/login-app/issues/80)) ([001323d](https://github.com/dhis2/login-app/commit/001323dd44cc99ccb28dad58293bfb817961006d))
+
 # [100.5.0](https://github.com/dhis2/login-app/compare/v100.4.6...v100.5.0) (2026-08-04)
 
 
