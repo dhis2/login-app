@@ -206,31 +206,56 @@ describe('useLogin', () => {
         expect(result.current.passwordExpired).toBe(true)
     })
 
-    const inaccessibleStatuses = [
-        'ACCOUNT_DISABLED',
-        'ACCOUNT_EXPIRED',
-        'ACCOUNT_LOCKED',
-    ]
+    it('sets accountDisabled to true after receiving ACCOUNT_DISABLED', async () => {
+        useDataMutation.mockImplementation((mutation, options) => [
+            () => {
+                options.onComplete({ loginStatus: 'ACCOUNT_DISABLED' })
+            },
+            { loading: false },
+        ])
 
-    it.each(inaccessibleStatuses)(
-        'sets accountInaccessible to true after receiving %p',
-        (inaccessibleStatus) => {
-            useDataMutation.mockImplementation((mutation, options) => [
-                () => {
-                    options.onComplete({ loginStatus: inaccessibleStatus })
-                },
-                { loading: false },
-            ])
+        const { result } = renderHook(() => useLogin())
+        expect(result.current.loading).toBe(false)
+        act(() => {
+            result.current.login()
+        })
+        expect(result.current.loading).toBe(false)
+        expect(result.current.accountDisabled).toBe(true)
+    })
 
-            const { result } = renderHook(() => useLogin())
-            expect(result.current.loading).toBe(false)
-            act(() => {
-                result.current.login()
-            })
-            expect(result.current.loading).toBe(false)
-            expect(result.current.accountInaccessible).toBe(true)
-        }
-    )
+    it('sets accountLocked to true after receiving ACCOUNT_LOCKED', async () => {
+        useDataMutation.mockImplementation((mutation, options) => [
+            () => {
+                options.onComplete({ loginStatus: 'ACCOUNT_LOCKED' })
+            },
+            { loading: false },
+        ])
+
+        const { result } = renderHook(() => useLogin())
+        expect(result.current.loading).toBe(false)
+        act(() => {
+            result.current.login()
+        })
+        expect(result.current.loading).toBe(false)
+        expect(result.current.accountLocked).toBe(true)
+    })
+
+    it('sets accountExpired to true after receiving ACCOUNT_EXPIRED', async () => {
+        useDataMutation.mockImplementation((mutation, options) => [
+            () => {
+                options.onComplete({ loginStatus: 'ACCOUNT_EXPIRED' })
+            },
+            { loading: false },
+        ])
+
+        const { result } = renderHook(() => useLogin())
+        expect(result.current.loading).toBe(false)
+        act(() => {
+            result.current.login()
+        })
+        expect(result.current.loading).toBe(false)
+        expect(result.current.accountExpired).toBe(true)
+    })
 
     it('sets unknownStatus to true after receiving an unexpected status', async () => {
         useDataMutation.mockImplementation((mutation, options) => [

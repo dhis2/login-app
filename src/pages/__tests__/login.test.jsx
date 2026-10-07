@@ -332,16 +332,50 @@ describe('LoginForm', () => {
         ).toBeInTheDocument()
     })
 
-    it('Shows Account not accessible if accountInaccessible is true', () => {
+    it('Shows Account not accessible if accountDisabled is true', () => {
         useLogin.mockReturnValue({
             login: () => {},
-            accountInaccessible: true,
+            accountDisabled: true,
             cancelTwoFA: () => {},
         })
 
         render(<LoginFormContainer />)
 
-        expect(screen.getByText('Account not accessible')).toBeInTheDocument()
+        expect(
+            screen.getByText('Your account has been disabled')
+        ).toBeInTheDocument()
+        expect(
+            screen.getByText('Contact your system administrator.')
+        ).toBeInTheDocument()
+    })
+
+    it('Shows Account not accessible if accountLocked is true', () => {
+        useLogin.mockReturnValue({
+            login: () => {},
+            accountLocked: true,
+            cancelTwoFA: () => {},
+        })
+
+        render(<LoginFormContainer />)
+
+        expect(
+            screen.getByText('Your account is temporarily locked')
+        ).toBeInTheDocument()
+        expect(
+            screen.getByText('Contact your system administrator.')
+        ).toBeInTheDocument()
+    })
+
+    it('Shows Account not accessible if accountExpired is true', () => {
+        useLogin.mockReturnValue({
+            login: () => {},
+            accountExpired: true,
+            cancelTwoFA: () => {},
+        })
+
+        render(<LoginFormContainer />)
+
+        expect(screen.getByText('Your account has expired')).toBeInTheDocument()
         expect(
             screen.getByText('Contact your system administrator.')
         ).toBeInTheDocument()
