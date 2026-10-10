@@ -1,19 +1,18 @@
 # Translators:
-# Viktor Varland <viktor@dhis2.org>, 2024
-# Philip Larsen Donnelly, 2026
+# Yara Elkady, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-08-03T09:01:57.592Z\n"
+"POT-Creation-Date: 2025-02-17T15:56:02.338Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Philip Larsen Donnelly, 2026\n"
-"Language-Team: Urdu (https://app.transifex.com/hisp-uio/teams/100509/ur/)\n"
+"Last-Translator: Yara Elkady, 2025\n"
+"Language-Team: Arabic (Egypt) (https://app.transifex.com/hisp-uio/teams/100509/ar_EG/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ur\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: ar_EG\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr ""
@@ -25,10 +24,10 @@ msgid "Log in details"
 msgstr ""
 
 msgid "Username"
-msgstr "ØµØ§Ø±Ù Ú©Ø§ ÙØ§Ù"
+msgstr ""
 
 msgid "Password"
-msgstr "پاسورڈ"
+msgstr ""
 
 msgid ""
 "Password should be between {{minPasswordLength}} and {{maxPasswordLength}} "
@@ -40,16 +39,16 @@ msgid "Personal details"
 msgstr ""
 
 msgid "First name"
-msgstr "Ù¾ÛÙØ§ ÙØ§Ù"
+msgstr ""
 
 msgid "Last name"
-msgstr "آخری نام"
+msgstr ""
 
 msgid "Email"
-msgstr "ای میل"
+msgstr ""
 
 msgid "Phone number"
-msgstr "فون نمبر"
+msgstr ""
 
 msgid "Creating..."
 msgstr ""
@@ -58,7 +57,7 @@ msgid "Create account"
 msgstr ""
 
 msgid "Cancel"
-msgstr "منسوخ"
+msgstr "إلغاء"
 
 msgid "Enter your details below to create a {{- applicationName}} account."
 msgstr ""
@@ -85,19 +84,15 @@ msgid "Powered by DHIS2"
 msgstr ""
 
 msgid "Language"
-msgstr "زبان"
+msgstr ""
 
 msgid "Forgot password?"
-msgstr "پاسورڈ بھول گے؟"
+msgstr ""
 
 msgid "Don't have an account?"
 msgstr ""
 
 msgid "Create an account"
-msgstr "اکاؤنٹ بناؤ"
-
-msgid ""
-"If you do not have access to your email, you can reset your password here"
 msgstr ""
 
 msgid "The requested page is not configured for your system"
@@ -119,46 +114,6 @@ msgid "I agree"
 msgstr ""
 
 msgid "This field is required"
-msgstr "اس کو پر کرنا ضروری ہے"
-
-msgid "Passwords do not match"
-msgstr ""
-
-msgid "Current password"
-msgstr ""
-
-msgid "New password"
-msgstr "ÙÛØ§ Ù¾Ø§Ø³ ÙØ±Ú"
-
-msgid "Confirm new password"
-msgstr ""
-
-msgid "Saving..."
-msgstr ""
-
-msgid "Save new password"
-msgstr ""
-
-msgid "Could not update password"
-msgstr ""
-
-msgid ""
-"Try again, or contact your system administrator if the problem persists."
-msgstr ""
-
-msgid ""
-"Your password has been updated. You can now log in with your new password."
-msgstr ""
-
-msgid "Password updated"
-msgstr ""
-
-msgid "Password expired"
-msgstr ""
-
-msgid ""
-"Your password has expired. Enter your current password and choose a new one "
-"to continue."
 msgstr ""
 
 msgid "Cannot process registration"
@@ -236,10 +191,16 @@ msgstr ""
 msgid "Incorrect authentication code"
 msgstr ""
 
-msgid "Account not accessible"
+msgid "Password expired"
+msgstr ""
+
+msgid "You can reset your password from the password reset page."
 msgstr ""
 
 msgid "Contact your system administrator."
+msgstr ""
+
+msgid "Account not accessible"
 msgstr ""
 
 msgid "Two-factor authentication"
@@ -281,6 +242,12 @@ msgstr ""
 msgid ""
 "Enter your username below, a link to reset your password will be sent to "
 "your registered e-mail."
+msgstr ""
+
+msgid "Saving..."
+msgstr ""
+
+msgid "Save new password"
 msgstr ""
 
 msgid "New password not saved"

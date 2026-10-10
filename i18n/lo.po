@@ -1,25 +1,27 @@
-# 
 # Translators:
 # Philip Larsen Donnelly, 2024
 # Viktor Varland <viktor@dhis2.org>, 2024
-# Namwan Chanthavisouk, 2024
-# Saysamone Sibounma, 2024
+# Namwan Chanthavisouk, 2025
+# Saysamone Sibounma, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-07-23T11:23:34.551Z\n"
+"POT-Creation-Date: 2026-08-03T09:01:57.592Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
-"Last-Translator: Saysamone Sibounma, 2024\n"
+"Last-Translator: Saysamone Sibounma, 2026\n"
 "Language-Team: Lao (https://app.transifex.com/hisp-uio/teams/100509/lo/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: lo\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr ""
+
+msgid "Invalid password"
+msgstr "ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ"
 
 msgid "Log in details"
 msgstr ""
@@ -31,8 +33,13 @@ msgid "Password"
 msgstr "ລະຫັດຜ່ານ"
 
 msgid ""
-"Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, 1 symbol"
+"Password should be between {{minPasswordLength}} and {{maxPasswordLength}} "
+"characters long, with at least one lowercase character, one uppercase "
+"character, one number, and one special character."
 msgstr ""
+"ລະຫັດຜ່ານຄວນມີຄວາມຍາວລະຫວ່າງ {{minPasswordLength}} ຫາ {{maxPasswordLength}} "
+"ຕົວອັກສອນ, ໂດຍມີຢ່າງໜ້ອຍ ຕົວອັກສອນພິມນ້ອຍໜຶ່ງຕົວ, ຕົວອັກສອນພິມໃຫຍ່ໜຶ່ງຕົວ, "
+"ຕົວເລກໜຶ່ງຕົວ ແລະ ຕົວອັກສອນພິເສດໜຶ່ງຕົວ."
 
 msgid "Personal details"
 msgstr ""
@@ -92,6 +99,10 @@ msgid "Don't have an account?"
 msgstr ""
 
 msgid "Create an account"
+msgstr "ສ້າງບັນຊີ"
+
+msgid ""
+"If you do not have access to your email, you can reset your password here"
 msgstr ""
 
 msgid "The requested page is not configured for your system"
@@ -114,6 +125,46 @@ msgstr ""
 
 msgid "This field is required"
 msgstr "This field is required"
+
+msgid "Passwords do not match"
+msgstr "ລະຫັດຜ່ານບໍ່ກົງກັນ"
+
+msgid "Current password"
+msgstr ""
+
+msgid "New password"
+msgstr "ລະຫັດຜ່ານໃໝ່"
+
+msgid "Confirm new password"
+msgstr ""
+
+msgid "Saving..."
+msgstr "ກຳລັງບັນທຶກ"
+
+msgid "Save new password"
+msgstr ""
+
+msgid "Could not update password"
+msgstr ""
+
+msgid ""
+"Try again, or contact your system administrator if the problem persists."
+msgstr ""
+
+msgid ""
+"Your password has been updated. You can now log in with your new password."
+msgstr ""
+
+msgid "Password updated"
+msgstr ""
+
+msgid "Password expired"
+msgstr ""
+
+msgid ""
+"Your password has expired. Enter your current password and choose a new one "
+"to continue."
+msgstr ""
 
 msgid "Cannot process registration"
 msgstr ""
@@ -140,25 +191,24 @@ msgstr ""
 msgid "Download sidebar template"
 msgstr ""
 
-msgid "Something went wrong"
-msgstr "ມີບາງຢ່າງຜິດພາດ"
-
-msgid "Incorrect username or password"
+msgid "Email Verification Failed"
 msgstr ""
 
-msgid "Incorrect authentication code"
+msgid "Unable to verify your email"
 msgstr ""
 
-msgid "Password expired"
+msgid ""
+"The verification link is invalid or has expired. Please request a new "
+"verification email."
 msgstr ""
 
-msgid "You can reset your from the password reset page."
+msgid "Email confirmed"
 msgstr ""
 
-msgid "Contact your system administrator."
+msgid "Your email has been confirmed."
 msgstr ""
 
-msgid "Account not accessible"
+msgid "You can now close this page."
 msgstr ""
 
 msgid "Verify and log in"
@@ -176,10 +226,36 @@ msgstr ""
 msgid "Authentication code"
 msgstr ""
 
+msgid "Resend Code"
+msgstr ""
+
+msgid "Something went wrong"
+msgstr "ມີບາງຢ່າງຜິດພາດ"
+
+msgid "Incorrect username or password"
+msgstr ""
+
+msgid "Authentication code is required"
+msgstr ""
+
+msgid "Incorrect authentication code"
+msgstr ""
+
+msgid "Account not accessible"
+msgstr ""
+
+msgid "Contact your system administrator."
+msgstr ""
+
 msgid "Two-factor authentication"
 msgstr ""
 
 msgid "Enter the code from your two-factor authentication app to log in."
+msgstr ""
+
+msgid ""
+"We have sent you an email with your authentication code. Enter it below to "
+"log in."
 msgstr ""
 
 msgid "Username or email"
@@ -205,17 +281,11 @@ msgid ""
 msgstr ""
 
 msgid "Reset password"
-msgstr ""
+msgstr "ຕັ້ງລະຫັດຜ່ານໃໝ່"
 
 msgid ""
 "Enter your username below, a link to reset your password will be sent to "
 "your registered e-mail."
-msgstr ""
-
-msgid "Saving..."
-msgstr "ກຳລັງບັນທຶກ"
-
-msgid "Save new password"
 msgstr ""
 
 msgid "New password not saved"
