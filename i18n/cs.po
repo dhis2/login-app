@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-08-03T09:01:57.592Z\n"
+"POT-Creation-Date: 2026-09-25T10:47:13.730Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
 "Last-Translator: Jiří Podhorecký <jirka.p@volny.cz>, 2026\n"
 "Language-Team: Czech (https://app.transifex.com/hisp-uio/teams/100509/cs/)\n"
@@ -235,6 +235,18 @@ msgstr "Znovu odeslat kód"
 msgid "Something went wrong"
 msgstr "Něco se pokazilo"
 
+msgid "Your account has been disabled"
+msgstr ""
+
+msgid "Your account is temporarily locked"
+msgstr ""
+
+msgid "Your account has expired"
+msgstr ""
+
+msgid "Contact your system administrator."
+msgstr "Obraťte se na správce systému."
+
 msgid "Incorrect username or password"
 msgstr "Nesprávné uživatelské jméno nebo heslo"
 
@@ -243,12 +255,6 @@ msgstr "Je vyžadován ověřovací kód"
 
 msgid "Incorrect authentication code"
 msgstr "Nesprávný ověřovací kód"
-
-msgid "Account not accessible"
-msgstr "Účet není přístupný"
-
-msgid "Contact your system administrator."
-msgstr "Obraťte se na správce systému."
 
 msgid "Two-factor authentication"
 msgstr "Dvoufaktorové ověřování"
