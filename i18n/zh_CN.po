@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-08-03T09:01:57.592Z\n"
+"POT-Creation-Date: 2026-09-25T10:47:13.730Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
 "Last-Translator: 晓东 林 <13981924470@126.com>, 2026\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/hisp-uio/teams/100509/zh_CN/)\n"
@@ -229,6 +229,18 @@ msgstr "重新发送代码"
 msgid "Something went wrong"
 msgstr "出问题了"
 
+msgid "Your account has been disabled"
+msgstr ""
+
+msgid "Your account is temporarily locked"
+msgstr ""
+
+msgid "Your account has expired"
+msgstr ""
+
+msgid "Contact your system administrator."
+msgstr "请联系您的系统管理员。"
+
 msgid "Incorrect username or password"
 msgstr "用户名或密码不正确"
 
@@ -237,12 +249,6 @@ msgstr "需要验证码"
 
 msgid "Incorrect authentication code"
 msgstr "验证码不正确"
-
-msgid "Account not accessible"
-msgstr "无法访问帐户"
-
-msgid "Contact your system administrator."
-msgstr "请联系您的系统管理员。"
 
 msgid "Two-factor authentication"
 msgstr "双因素认证"

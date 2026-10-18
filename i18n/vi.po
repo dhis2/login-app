@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-08-03T09:01:57.592Z\n"
+"POT-Creation-Date: 2026-09-25T10:47:13.730Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
 "Last-Translator: Mai Nguyen <thanhmai.jica@gmail.com>, 2026\n"
 "Language-Team: Vietnamese (https://app.transifex.com/hisp-uio/teams/100509/vi/)\n"
@@ -243,6 +243,18 @@ msgstr "Gửi lại mã"
 msgid "Something went wrong"
 msgstr "Có gì đó không đúng"
 
+msgid "Your account has been disabled"
+msgstr ""
+
+msgid "Your account is temporarily locked"
+msgstr ""
+
+msgid "Your account has expired"
+msgstr ""
+
+msgid "Contact your system administrator."
+msgstr "Liên hệ với quản trị viên hệ thống của bạn."
+
 msgid "Incorrect username or password"
 msgstr "Tên người dùng hoặc mật khẩu không đúng"
 
@@ -251,12 +263,6 @@ msgstr "Mã xác thực là bắt buộc"
 
 msgid "Incorrect authentication code"
 msgstr "Mã xác thực không đúng"
-
-msgid "Account not accessible"
-msgstr "Tài khoản không thể truy cập"
-
-msgid "Contact your system administrator."
-msgstr "Liên hệ với quản trị viên hệ thống của bạn."
 
 msgid "Two-factor authentication"
 msgstr "Xác thực 2 yếu tố"

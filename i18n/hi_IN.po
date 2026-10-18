@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-08-03T09:01:57.592Z\n"
+"POT-Creation-Date: 2026-09-25T10:47:13.730Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
 "Last-Translator: Rohit Wadhwani, 2026\n"
 "Language-Team: Hindi (India) (https://app.transifex.com/hisp-uio/teams/100509/hi_IN/)\n"
@@ -228,6 +228,18 @@ msgstr "कोड फिर से भेजें"
 msgid "Something went wrong"
 msgstr "कुछ गलत हुआ"
 
+msgid "Your account has been disabled"
+msgstr ""
+
+msgid "Your account is temporarily locked"
+msgstr ""
+
+msgid "Your account has expired"
+msgstr ""
+
+msgid "Contact your system administrator."
+msgstr "सिस्टम एडमिन से संपर्क करें"
+
 msgid "Incorrect username or password"
 msgstr "गलत यूज़रनेम या पासवर्ड"
 
@@ -236,12 +248,6 @@ msgstr "ऑथेंटिकेशन कोड ज़रूरी है"
 
 msgid "Incorrect authentication code"
 msgstr "गलत ऑथेंटिकेशन कोड"
-
-msgid "Account not accessible"
-msgstr "खाता उपलब्ध नहीं है"
-
-msgid "Contact your system administrator."
-msgstr "सिस्टम एडमिन से संपर्क करें"
 
 msgid "Two-factor authentication"
 msgstr "दो-फैक्टर ऑथेंटिकेशन"

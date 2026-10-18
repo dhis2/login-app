@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2026-08-03T09:01:57.592Z\n"
+"POT-Creation-Date: 2026-09-25T10:47:13.730Z\n"
 "PO-Revision-Date: 2024-05-22 09:51+0000\n"
 "Last-Translator: Rica, 2026\n"
 "Language-Team: Dutch (https://app.transifex.com/hisp-uio/teams/100509/nl/)\n"
@@ -236,6 +236,18 @@ msgstr ""
 msgid "Something went wrong"
 msgstr "Er is iets fout gegaan"
 
+msgid "Your account has been disabled"
+msgstr ""
+
+msgid "Your account is temporarily locked"
+msgstr ""
+
+msgid "Your account has expired"
+msgstr ""
+
+msgid "Contact your system administrator."
+msgstr "Contacteer jouw systeembeheerder"
+
 msgid "Incorrect username or password"
 msgstr "Foute gebruikersnaam of wachtwoord"
 
@@ -244,12 +256,6 @@ msgstr ""
 
 msgid "Incorrect authentication code"
 msgstr "Foute authenticatiecode"
-
-msgid "Account not accessible"
-msgstr "Account niet bereikbaar"
-
-msgid "Contact your system administrator."
-msgstr "Contacteer jouw systeembeheerder"
 
 msgid "Two-factor authentication"
 msgstr "Twee-factorauthenticatie"
