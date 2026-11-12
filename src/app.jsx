@@ -64,6 +64,15 @@ const LoginRoutes = () => {
                     }
                 />
                 <Route
+                    path="/reset-password-expired-email"
+                    element={
+                        <PasswordResetRequestPage
+                            expiredPassword={true}
+                            emailRecoveryRequired={true}
+                        />
+                    }
+                />
+                <Route
                     path="/update-password"
                     element={<PasswordUpdatePage />}
                 />

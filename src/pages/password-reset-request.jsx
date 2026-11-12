@@ -149,7 +149,12 @@ const requiredPropsForPasswordReset = [
     'emailConfigured',
 ]
 
-const PasswordResetRequestPage = ({ expiredPassword = false }) => {
+// emailRecoveryRequired: the server answered PASSWORD_EXPIRED_EMAIL_RECOVERY, so it
+// rejects the old-password change for this account; do not offer that fallback.
+const PasswordResetRequestPage = ({
+    expiredPassword = false,
+    emailRecoveryRequired = false,
+}) => {
     const { lngs } = useLoginConfig()
     const [params] = useSearchParams()
     const { notAllowed } = useGetErrorIfNotAllowed(
@@ -177,7 +182,7 @@ const PasswordResetRequestPage = ({ expiredPassword = false }) => {
                 </p>
             </FormSubtitle>
             <PasswordResetRequestForm lngs={lngs} />
-            {expiredPassword && (
+            {expiredPassword && !emailRecoveryRequired && (
                 <ExpiredPasswordLink formUserName={params.get('username')} />
             )}
         </FormContainer>
@@ -185,6 +190,7 @@ const PasswordResetRequestPage = ({ expiredPassword = false }) => {
 }
 
 PasswordResetRequestPage.propTypes = {
+    emailRecoveryRequired: PropTypes.bool,
     expiredPassword: PropTypes.bool,
 }
 

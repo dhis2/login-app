@@ -123,6 +123,38 @@ describe('PasswordResetRequestPage', () => {
         )
     })
 
+    it('offers the old-password change link on the expired-password page', () => {
+        useLoginConfig.mockReturnValue({
+            allowAccountRecovery: true,
+            emailConfigured: true,
+        })
+        renderWithRouter(<PasswordResetRequestPage expiredPassword={true} />)
+        expect(
+            screen.getByText(
+                'If you do not have access to your email, you can reset your password here'
+            )
+        ).toBeInTheDocument()
+    })
+
+    it('hides the old-password change link when email recovery is required', () => {
+        useLoginConfig.mockReturnValue({
+            allowAccountRecovery: true,
+            emailConfigured: true,
+        })
+        renderWithRouter(
+            <PasswordResetRequestPage
+                expiredPassword={true}
+                emailRecoveryRequired={true}
+            />
+        )
+        expect(screen.getByText('Password expired')).toBeInTheDocument()
+        expect(
+            screen.queryByText(
+                'If you do not have access to your email, you can reset your password here'
+            )
+        ).not.toBeInTheDocument()
+    })
+
     it('displays error message if error returned from mutation', async () => {
         useLoginConfig.mockReturnValue({
             allowAccountRecovery: true,
