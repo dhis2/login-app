@@ -38,6 +38,10 @@ const Wrapper = ({ statusMessage, children }) => (
                     path="/reset-password-expired"
                     element={<div>RESET PASSWORD PAGE</div>}
                 />
+                <Route
+                    path="/reset-password-expired-email"
+                    element={<div>EMAIL RECOVERY REQUIRED PAGE</div>}
+                />
             </Routes>
         </MemoryRouter>
     </CustomDataProvider>
@@ -103,6 +107,23 @@ describe('LoginForm', () => {
         await login()
 
         expect(screen.getByText('RESET PASSWORD PAGE')).toBeInTheDocument()
+    })
+
+    it('redirects to the email-only expired-password page if status is PASSWORD_EXPIRED_EMAIL_RECOVERY', async () => {
+        useLoginConfig.mockReturnValue({
+            allowAccountRecovery: true,
+            emailConfigured: true,
+        })
+        render(
+            <Wrapper statusMessage={'PASSWORD_EXPIRED_EMAIL_RECOVERY'}>
+                <LoginPage />
+            </Wrapper>
+        )
+        await login()
+
+        expect(
+            screen.getByText('EMAIL RECOVERY REQUIRED PAGE')
+        ).toBeInTheDocument()
     })
 
     it('shows account not accessible message if status is ACCOUNT_DISABLED', async () => {

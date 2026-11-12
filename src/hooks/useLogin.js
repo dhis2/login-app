@@ -15,6 +15,7 @@ const LOGIN_STATUSES = {
     secondAttempt2faTOTP: 'second_attempt_incorrect_2fa_OTP',
     success2fa: 'SUCCESS_2fa',
     passwordExpired: 'PASSWORD_EXPIRED',
+    passwordExpiredEmailRecovery: 'PASSWORD_EXPIRED_EMAIL_RECOVERY',
     accountDisabled: 'ACCOUNT_DISABLED',
     accountLocked: 'ACCOUNT_LOCKED',
     accountExpired: 'ACCOUNT_EXPIRED',
@@ -163,6 +164,8 @@ export const useLogin = () => {
             loginStatus === LOGIN_STATUSES.incorrect2faEmail,
         twoFANotEnabled: loginStatus === LOGIN_STATUSES.notEnabled2fa,
         passwordExpired: loginStatus === LOGIN_STATUSES.passwordExpired,
+        passwordExpiredEmailRecovery:
+            loginStatus === LOGIN_STATUSES.passwordExpiredEmailRecovery,
         accountDisabled: loginStatus === LOGIN_STATUSES.accountDisabled,
         accountLocked: loginStatus === LOGIN_STATUSES.accountLocked,
         accountExpired: loginStatus === LOGIN_STATUSES.accountExpired,
