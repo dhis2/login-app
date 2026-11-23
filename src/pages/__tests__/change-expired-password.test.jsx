@@ -221,6 +221,31 @@ describe('ChangeExpiredPasswordPage', () => {
         expect(screen.getByText('Account is not expired')).toBeInTheDocument()
     })
 
+    it('links to the email reset page when the server requires email recovery (409)', () => {
+        useDataMutation.mockReturnValue([
+            mockMutate,
+            {
+                error: {
+                    details: {
+                        httpStatusCode: 409,
+                        message: 'Password must be reset by email',
+                    },
+                },
+            },
+        ])
+        renderPage('mbise')
+
+        expect(
+            screen.getByText('Reset your password by email')
+        ).toBeInTheDocument()
+        expect(
+            screen.queryByText('Could not update password')
+        ).not.toBeInTheDocument()
+        expect(
+            screen.getByRole('link', { name: 'Send a password reset email' })
+        ).toHaveAttribute('href', '/reset-password-expired?username=mbise')
+    })
+
     it('shows a success message and hides the form when the mutation succeeds', () => {
         useDataMutation.mockReturnValue([
             mockMutate,

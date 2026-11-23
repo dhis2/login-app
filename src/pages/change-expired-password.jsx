@@ -3,7 +3,7 @@ import i18n from '@dhis2/d2-i18n'
 import { Button, ReactFinalForm, InputFieldFF, dhis2Password } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import {
     BackToLoginButton,
     FormContainer,
@@ -15,6 +15,7 @@ import {
     composeAndTranslateValidators,
     getPasswordValidator,
     passwordsMatch,
+    pathWithUsername,
 } from '../helpers/index.js'
 import { useFeatureToggle } from '../hooks/index.js'
 import { useLoginConfig } from '../providers/index.js'
@@ -138,13 +139,39 @@ export const ChangeExpiredPasswordForm = ({
             onComplete: onSuccess,
         })
 
+    const [submittedUsername, setSubmittedUsername] = useState()
+    // 409: this account must reset its password by email
+    const emailRecoveryRequired = error?.details?.httpStatusCode === 409
+
     const handleChangeExpiredPassword = (values) => {
+        setSubmittedUsername(values.username)
         updatePassword(values)
     }
 
     return (
         <>
-            {error && (
+            {emailRecoveryRequired && (
+                <FormNotice
+                    title={i18n.t('Reset your password by email', { lngs })}
+                    error
+                >
+                    <span>
+                        {i18n.t(
+                            'For this account, an expired password can only be reset by email.',
+                            { lngs }
+                        )}{' '}
+                        <Link
+                            to={pathWithUsername(
+                                '/reset-password-expired',
+                                submittedUsername ?? username
+                            )}
+                        >
+                            {i18n.t('Send a password reset email', { lngs })}
+                        </Link>
+                    </span>
+                </FormNotice>
+            )}
+            {error && !emailRecoveryRequired && (
                 <FormNotice
                     title={i18n.t('Could not update password', { lngs })}
                     error

@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-11-23T10:33:01.198Z\n"
-"PO-Revision-Date: 2026-11-23T10:33:01.199Z\n"
+"POT-Creation-Date: 2026-11-23T10:33:06.976Z\n"
+"PO-Revision-Date: 2026-11-23T10:33:06.977Z\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr "Please confirm that you are not a robot by checking the checkbox."
@@ -130,6 +130,15 @@ msgstr "Saving..."
 
 msgid "Save new password"
 msgstr "Save new password"
+
+msgid "Reset your password by email"
+msgstr "Reset your password by email"
+
+msgid "For this account, an expired password can only be reset by email."
+msgstr "For this account, an expired password can only be reset by email."
+
+msgid "Send a password reset email"
+msgstr "Send a password reset email"
 
 msgid "Could not update password"
 msgstr "Could not update password"
