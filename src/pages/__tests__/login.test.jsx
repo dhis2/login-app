@@ -280,15 +280,11 @@ describe('LoginForm', () => {
         expect(screen.getByText('OIDC LOGIN OPTIONS')).toBeInTheDocument()
     })
 
-    it('redirects to the reset-password-expired page if passwordExpired and allowAccountRecovery and emailConfigured are true', () => {
+    it('redirects to the reset-password-expired page if passwordExpiredEmailRecovery is true', () => {
         useLogin.mockReturnValue({
             login: () => {},
-            passwordExpired: true,
+            passwordExpiredEmailRecovery: true,
             cancelTwoFA: () => {},
-        })
-        useLoginConfig.mockReturnValueOnce({
-            allowAccountRecovery: true,
-            emailConfigured: true,
         })
 
         renderAtLoginRoute(<LoginFormContainer />)
@@ -296,25 +292,7 @@ describe('LoginForm', () => {
         expect(screen.getByText('RESET PASSWORD PAGE')).toBeInTheDocument()
     })
 
-    it('redirects to the change-expired-password page if passwordExpired and allowAccountRecovery is false', () => {
-        useLogin.mockReturnValue({
-            login: () => {},
-            passwordExpired: true,
-            cancelTwoFA: () => {},
-        })
-        useLoginConfig.mockReturnValueOnce({
-            allowAccountRecovery: false,
-            emailConfigured: true,
-        })
-
-        renderAtLoginRoute(<LoginFormContainer />)
-
-        expect(
-            screen.getByText('CHANGE EXPIRED PASSWORD PAGE')
-        ).toBeInTheDocument()
-    })
-
-    it('redirects to the change-expired-password page if passwordExpired and emailConfigured is false', () => {
+    it('redirects to the change-expired-password page if passwordExpired is true, regardless of recovery config', () => {
         useLogin.mockReturnValue({
             login: () => {},
             passwordExpired: true,
@@ -322,7 +300,7 @@ describe('LoginForm', () => {
         })
         useLoginConfig.mockReturnValueOnce({
             allowAccountRecovery: true,
-            emailConfigured: false,
+            emailConfigured: true,
         })
 
         renderAtLoginRoute(<LoginFormContainer />)

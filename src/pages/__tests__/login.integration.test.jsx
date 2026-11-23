@@ -56,47 +56,32 @@ describe('LoginForm', () => {
         jest.clearAllMocks()
     })
 
-    it('redirects to the change-expired-password page if status is PASSWORD_EXPIRED and emailConfigured is false', async () => {
-        useLoginConfig.mockReturnValue({
-            allowAccountRecovery: true,
-            emailConfigured: false,
-        })
+    it.each([
+        [true, true],
+        [false, false],
+    ])(
+        'redirects to the change-expired-password page if status is PASSWORD_EXPIRED (allowAccountRecovery: %s, emailConfigured: %s)',
+        async (allowAccountRecovery, emailConfigured) => {
+            useLoginConfig.mockReturnValue({
+                allowAccountRecovery,
+                emailConfigured,
+            })
+            render(
+                <Wrapper statusMessage={'PASSWORD_EXPIRED'}>
+                    <LoginPage />
+                </Wrapper>
+            )
+            await login()
+
+            expect(
+                screen.getByText('CHANGE EXPIRED PASSWORD PAGE')
+            ).toBeInTheDocument()
+        }
+    )
+
+    it('redirects to the reset-password-expired page if status is PASSWORD_EXPIRED_EMAIL_RECOVERY', async () => {
         render(
-            <Wrapper statusMessage={'PASSWORD_EXPIRED'}>
-                <LoginPage />
-            </Wrapper>
-        )
-        await login()
-
-        expect(
-            screen.getByText('CHANGE EXPIRED PASSWORD PAGE')
-        ).toBeInTheDocument()
-    })
-
-    it('redirects to the change-expired-password page if status is PASSWORD_EXPIRED and allowAccountRecovery is false', async () => {
-        useLoginConfig.mockReturnValue({
-            allowAccountRecovery: false,
-            emailConfigured: true,
-        })
-        render(
-            <Wrapper statusMessage={'PASSWORD_EXPIRED'}>
-                <LoginPage />
-            </Wrapper>
-        )
-        await login()
-
-        expect(
-            screen.getByText('CHANGE EXPIRED PASSWORD PAGE')
-        ).toBeInTheDocument()
-    })
-
-    it('redirects to the reset-password-expired page if status is PASSWORD_EXPIRED and emailConfigured and allowAccountRecovery are true', async () => {
-        useLoginConfig.mockReturnValue({
-            allowAccountRecovery: true,
-            emailConfigured: true,
-        })
-        render(
-            <Wrapper statusMessage={'PASSWORD_EXPIRED'}>
+            <Wrapper statusMessage={'PASSWORD_EXPIRED_EMAIL_RECOVERY'}>
                 <LoginPage />
             </Wrapper>
         )

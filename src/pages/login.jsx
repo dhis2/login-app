@@ -36,20 +36,21 @@ export const LoginFormContainer = () => {
         accountLocked,
         accountExpired,
         passwordExpired,
+        passwordExpiredEmailRecovery,
         twoFACodeRequired,
         unknownStatus,
         error,
         loading,
     } = useLogin()
     const [formUserName, setFormUserName] = useState('')
-    const { lngs, allowAccountRecovery, emailConfigured } = useLoginConfig()
-    const passwordResetEnabled = allowAccountRecovery && emailConfigured
+    const { lngs } = useLoginConfig()
 
-    if (passwordExpired) {
+    // The backend decides per user whether an expired password is renewed by email
+    if (passwordExpiredEmailRecovery || passwordExpired) {
         return (
             <Navigate
                 to={pathWithUsername(
-                    passwordResetEnabled
+                    passwordExpiredEmailRecovery
                         ? '/reset-password-expired'
                         : '/change-expired-password',
                     formUserName
