@@ -1,3 +1,21 @@
+# [100.7.0](https://github.com/dhis2/login-app/compare/v100.6.0...v100.7.0) (2026-11-27)
+
+
+### Bug Fixes
+
+* remove change-form link from expired-password reset page [DHIS2-22081] ([40fdd28](https://github.com/dhis2/login-app/commit/40fdd28f40bc5fde9131691039c6a1b3f1bb1c87))
+
+
+### Features
+
+* point to email reset when password change returns 409 [DHIS2-22081] ([e6b587b](https://github.com/dhis2/login-app/commit/e6b587bb7c615bd4a5337656ec949b6dd8a2bac4))
+* route expired passwords by login status [DHIS2-22081] ([c165b82](https://github.com/dhis2/login-app/commit/c165b8243d5e59218815f8ed9cef67c1c0d5990d))
+
+
+### Reverts
+
+* drop special 409 handling on change-expired-password page [DHIS2-22081] ([7960fa1](https://github.com/dhis2/login-app/commit/7960fa1b438b583e7f9dd93251b14eb09d9ea794))
+
 # [100.6.0](https://github.com/dhis2/login-app/compare/v100.5.0...v100.6.0) (2026-10-07)
 
 
