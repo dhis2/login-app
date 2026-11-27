@@ -206,6 +206,25 @@ describe('useLogin', () => {
         expect(result.current.passwordExpired).toBe(true)
     })
 
+    it('sets passwordExpiredEmailRecovery to true after receiving PASSWORD_EXPIRED_EMAIL_RECOVERY', async () => {
+        useDataMutation.mockImplementation((mutation, options) => [
+            () => {
+                options.onComplete({
+                    loginStatus: 'PASSWORD_EXPIRED_EMAIL_RECOVERY',
+                })
+            },
+            { loading: false },
+        ])
+
+        const { result } = renderHook(() => useLogin())
+        act(() => {
+            result.current.login()
+        })
+        expect(result.current.passwordExpiredEmailRecovery).toBe(true)
+        expect(result.current.passwordExpired).toBe(false)
+        expect(result.current.unknownStatus).toBe(false)
+    })
+
     it('sets accountDisabled to true after receiving ACCOUNT_DISABLED', async () => {
         useDataMutation.mockImplementation((mutation, options) => [
             () => {

@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-09-25T10:47:13.730Z\n"
-"PO-Revision-Date: 2026-09-25T10:47:13.730Z\n"
+"POT-Creation-Date: 2026-11-23T10:33:01.198Z\n"
+"PO-Revision-Date: 2026-11-23T10:33:01.199Z\n"
 
 msgid "Please confirm that you are not a robot by checking the checkbox."
 msgstr "Please confirm that you are not a robot by checking the checkbox."
@@ -91,9 +91,6 @@ msgstr "Don't have an account?"
 
 msgid "Create an account"
 msgstr "Create an account"
-
-msgid "If you do not have access to your email, you can reset your password here"
-msgstr "If you do not have access to your email, you can reset your password here"
 
 msgid "The requested page is not configured for your system"
 msgstr "The requested page is not configured for your system"
